@@ -45,7 +45,7 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "idESTADOS", "Nombre");
+            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
 
             return View();
         }
@@ -53,7 +53,7 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(cliente client)
+        public ActionResult Create(Clientes client)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace Dashboard.Controllers
         public ActionResult Edit(int id)
         {
             var client = gClient.getElementById(id);
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "idESTADOS", "Nombre");
+            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
 
             return View(client);
         }

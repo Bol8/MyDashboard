@@ -1,23 +1,27 @@
-﻿@model IEnumerable<Repository.cliente>
+﻿@model IEnumerable<Repository.Clientes>
 
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Locations</h3>
+                <h3 class="box-title">Clientes</h3>
                 @Html.ActionLink("Nuevo","Create","Client",null, new { @class="btn btn-primary pull-right"})
             </div><!-- /.box-header -->
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>NIF</th>
-                            <th>Razon Social</th>
-                            <th>Domicilio</th>
-                            <th>CP</th>
-                            <th>Mail</th>
-                            <th>Telefono</th>
-                            <th>Options</th>
+                            <th>@Html.DisplayNameFor(model => model.NIF)</th>
+                            <th>@Html.DisplayNameFor(model =>model.Razon_Social)</th>
+                            <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
+                            <th>@Html.DisplayNameFor(model => model.Poblacion)</th>
+                            <th>@Html.DisplayNameFor(model => model.Provincia)</th>
+                            <th>@Html.DisplayNameFor(model => model.Pais)</th>
+                            <th>@Html.DisplayNameFor(model => model.CP)</th>
+                            <th>@Html.DisplayNameFor(model => model.Mail)</th>
+                            <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+                            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,16 +29,20 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.NIF</td>
-                                <td>@item.Razon_Social</td>
-                                <td>@item.Domicilio</td>
-                                <td>@item.CP</td>
-                                <td>@item.Mail</td>
-                                <td>@item.Telefono</td>
+                                <td>@Html.DisplayFor(model => item.NIF)</td>
+                                <td>@Html.DisplayFor(model => item.Razon_Social)</td>
+                                <td>@Html.DisplayFor(model => item.Domicilio)</td>
+                                <td>@Html.DisplayFor(model => item.Poblacion)</td>
+                                <td>@Html.DisplayFor(model => item.Provincia)</td>
+                                <td>@Html.DisplayFor(model => item.Pais)</td>
+                                <td>@Html.DisplayFor(model => item.CP)</td>
+                                <td>@Html.DisplayFor(model => item.Mail)</td>
+                                <td>@Html.DisplayFor(model => item.Telefono)</td>
+                                <td>@Html.DisplayFor(model => item.Estados.Nombre)</td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", "Client", new { id = item.idCli }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Edit" })
+                                    @Html.ActionLink(" ", "Edit", "Client", new { id = item.IdCliente }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Client", new { id = item.idCli }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Delete" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Client", new { id = item.IdCliente }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
                                 </td>
                             </tr>
                         }
@@ -42,13 +50,17 @@
 
                     <tfoot>
                         <tr>
-                            <th>NIF</th>
-                            <th>Razon Social</th>
-                            <th>Domicilio</th>
-                            <th>CP</th>
-                            <th>Mail</th>
-                            <th>Telefono</th>
-                            <th>Options</th>
+                            <th>@Html.DisplayNameFor(model => model.NIF)</th>
+                            <th>@Html.DisplayNameFor(model => model.Razon_Social)</th>
+                            <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
+                            <th>@Html.DisplayNameFor(model => model.Poblacion)</th>
+                            <th>@Html.DisplayNameFor(model => model.Provincia)</th>
+                            <th>@Html.DisplayNameFor(model => model.Pais)</th>
+                            <th>@Html.DisplayNameFor(model => model.CP)</th>
+                            <th>@Html.DisplayNameFor(model => model.Mail)</th>
+                            <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+                            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            <th>Opciones</th>
                         </tr>
                     </tfoot>
 
