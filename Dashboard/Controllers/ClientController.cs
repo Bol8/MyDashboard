@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain.Manage;
+using Repository;
 
 namespace Dashboard.Controllers
 {
@@ -51,13 +52,13 @@ namespace Dashboard.Controllers
 
 
 
-        // POST: Client/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(cliente client)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (!ModelState.IsValid) return View(client);
+                if (!gClient.save(client)) return HttpNotFound();
 
                 return RedirectToAction("Index");
             }
@@ -69,10 +70,13 @@ namespace Dashboard.Controllers
 
 
 
-        // GET: Client/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            var client = gClient.getElementById(id);
+            ViewBag.Estado = new SelectList(gStatus.getElements(), "idESTADOS", "Nombre");
+
+            return View(client);
         }
 
 

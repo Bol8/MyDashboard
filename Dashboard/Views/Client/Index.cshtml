@@ -32,9 +32,9 @@
                                 <td>@item.Mail</td>
                                 <td>@item.Telefono</td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", "Location", new { id = item.idCli }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Edit" })
+                                    @Html.ActionLink(" ", "Edit", "Client", new { id = item.idCli }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Edit" })
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Location", new { id = item.idCli }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Delete" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Client", new { id = item.idCli }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Delete" })
                                 </td>
                             </tr>
                         }
