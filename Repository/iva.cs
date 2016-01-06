@@ -12,9 +12,18 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class iva
+    public partial class Iva
     {
-        public int idIVA { get; set; }
-        public float Porcentaje { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Iva()
+        {
+            this.Articulos = new HashSet<Articulos>();
+        }
+    
+        public int IdIVA { get; set; }
+        public double Porcentaje { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Articulos> Articulos { get; set; }
     }
 }

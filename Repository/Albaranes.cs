@@ -12,13 +12,8 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class contacto
+    public partial class Albaranes
     {
-        public int idCONTACTO { get; set; }
-        public string Nombre { get; set; }
-        public string Origen { get; set; }
-        public string Producto { get; set; }
-        public string Telefono { get; set; }
-        public string Mail { get; set; }
+        public int Numero { get; set; }
     }
 }

@@ -21,7 +21,5 @@ namespace Repository
         public float Precio { get; set; }
         public float IVA { get; set; }
         public Nullable<float> Importe { get; set; }
-    
-        public virtual facturas facturas { get; set; }
     }
 }

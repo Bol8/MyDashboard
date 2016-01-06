@@ -12,10 +12,10 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class tarifa
+    public partial class Tarifas
     {
-        public int idTARIFA { get; set; }
+        public int IdTarifa { get; set; }
         public string Nombre { get; set; }
-        public float Porcent { get; set; }
+        public double Porcentaje { get; set; }
     }
 }

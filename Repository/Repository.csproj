@@ -51,45 +51,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="albaran.cs">
+    <Compile Include="Albaranes.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="articulo.cs">
+    <Compile Include="Articulos.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="cliente.cs">
+    <Compile Include="Clientes.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="contacto.cs">
+    <Compile Include="Contactos.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="empresa.cs">
+    <Compile Include="Empresas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="estados.cs">
+    <Compile Include="Estados.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="estado_ped.cs">
+    <Compile Include="EstadosPedido.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="facturas.cs">
+    <Compile Include="Facturas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="forma_pago.cs">
+    <Compile Include="FormaPago.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="iva.cs">
+    <Compile Include="Iva.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="linea_factura.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="linea_pedido_c.cs">
+    <Compile Include="Linea_pedido_c.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="linea_pedido_p.cs">
+    <Compile Include="Linea_pedido_p.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Metadata\ClientMetadata.cs" />
+    <Compile Include="Metadata\ProviderMetadata.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,28 +107,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="pedido_c.cs">
+    <Compile Include="Pedido_c.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="pedido_p.cs">
+    <Compile Include="Pedido_p.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="proveedor.cs">
+    <Compile Include="Proveedores.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="roles.cs">
+    <Compile Include="Roles.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Tarifas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="tarifa.cs">
+    <Compile Include="TipoProducto.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="usuario.cs">
+    <Compile Include="Usuarios.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validations\CPAttribute.cs" />
+    <Compile Include="Validations\NIFAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model.edmx">

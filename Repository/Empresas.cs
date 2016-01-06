@@ -12,31 +12,28 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class proveedor
+    public partial class Empresas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public proveedor()
+        public Empresas()
         {
-            this.pedido_p = new HashSet<pedido_p>();
+            this.Facturas = new HashSet<Facturas>();
         }
     
-        public int idProv { get; set; }
+        public int IdEmpresa { get; set; }
         public string RazonSocial { get; set; }
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
         public string NIF { get; set; }
-        public string NIF_R { get; set; }
         public string Domicilio { get; set; }
         public string CP { get; set; }
         public string Poblacion { get; set; }
         public string Provincia { get; set; }
         public string Pais { get; set; }
-        public System.DateTime Fecha_A { get; set; }
-        public int Estado { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
-        public string Imagen { get; set; }
     
-        public virtual estados estados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido_p> pedido_p { get; set; }
+        public virtual ICollection<Facturas> Facturas { get; set; }
     }
 }

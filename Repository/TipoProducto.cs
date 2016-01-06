@@ -12,21 +12,18 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class estado_ped
+    public partial class TipoProducto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public estado_ped()
+        public TipoProducto()
         {
-            this.pedido_c = new HashSet<pedido_c>();
-            this.pedido_p = new HashSet<pedido_p>();
+            this.Articulos = new HashSet<Articulos>();
         }
     
-        public int idEstados { get; set; }
-        public string NombreE { get; set; }
+        public int IdTipoProd { get; set; }
+        public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido_c> pedido_c { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido_p> pedido_p { get; set; }
+        public virtual ICollection<Articulos> Articulos { get; set; }
     }
 }

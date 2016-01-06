@@ -4,126 +4,125 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GaluModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="albaran">
+    <Schema Namespace="GaluModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Albaranes">
           <Key>
             <PropertyRef Name="Numero" />
           </Key>
           <Property Name="Numero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <EntityType Name="articulo">
+        <EntityType Name="Articulos">
           <Key>
-            <PropertyRef Name="idArt" />
+            <PropertyRef Name="IdArticulo" />
           </Key>
-          <Property Name="idArt" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Peso" Type="real" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="IdArticulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Peso" Type="float" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Precio" Type="float" Nullable="false" />
-          <Property Name="IVA" Type="real" Nullable="false" />
-          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
-          <Property Name="Origen" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="IVA" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="Origen" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="cliente">
+        <EntityType Name="Clientes">
           <Key>
-            <PropertyRef Name="idCli" />
+            <PropertyRef Name="IdCliente" />
           </Key>
-          <Property Name="idCli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Razon Social" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Razon Social" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NIF" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="NIF_R" Type="nvarchar" MaxLength="9" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CP" Type="nvarchar" MaxLength="5" />
-          <Property Name="Poblacion" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Provincia" Type="nvarchar" MaxLength="45" />
-          <Property Name="Pais" Type="nvarchar" MaxLength="45" />
+          <Property Name="Poblacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Fecha_A" Type="date" Nullable="false" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="45" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="45" />
-          <Property Name="Web" Type="nvarchar" MaxLength="45" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nota" Type="nvarchar(max)" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="contacto">
+        <EntityType Name="Contactos">
           <Key>
-            <PropertyRef Name="idCONTACTO" />
+            <PropertyRef Name="IdContacto" />
           </Key>
-          <Property Name="idCONTACTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Origen" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Producto" Type="nvarchar" MaxLength="45" />
-          <Property Name="Telefono" Type="nchar" MaxLength="9" Nullable="false" />
-          <Property Name="Mail" Type="nchar" MaxLength="45" />
+          <Property Name="IdContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Origen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nota" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="empresa">
+        <EntityType Name="Empresas">
           <Key>
-            <PropertyRef Name="idEMPRESA" />
+            <PropertyRef Name="IdEmpresa" />
           </Key>
-          <Property Name="idEMPRESA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RazonSocial" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NIF" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="NIF_R" Type="nvarchar" MaxLength="9" />
-          <Property Name="Domicilio" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CP" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="Poblacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Provincia" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Pais" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Telefono" Type="nvarchar" MaxLength="9" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="45" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="estado_ped">
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadosPedido">
           <Key>
             <PropertyRef Name="idEstados" />
           </Key>
           <Property Name="idEstados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NombreE" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
         </EntityType>
-        <EntityType Name="estados">
-          <Key>
-            <PropertyRef Name="idESTADOS" />
-          </Key>
-          <Property Name="idESTADOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="45" />
-        </EntityType>
-        <EntityType Name="facturas">
+        <EntityType Name="Facturas">
           <Key>
             <PropertyRef Name="Numero" />
           </Key>
           <Property Name="Numero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Empresa" Type="int" Nullable="false" />
-          <Property Name="Facturado" Type="int" Nullable="false" />
-          <Property Name="Enviado" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdPedido" Type="int" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
-          <Property Name="Tipo_ped" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Forma_pago" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Cliente" Type="int" Nullable="false" />
+          <Property Name="TipoPedido" Type="int" Nullable="false" />
+          <Property Name="Forma_pago" Type="int" Nullable="false" />
           <Property Name="Total_bruto" Type="real" />
           <Property Name="Dto" Type="real" />
           <Property Name="Dpp" Type="real" />
           <Property Name="Portes" Type="real" />
-          <Property Name="IVA" Type="real" />
+          <Property Name="IVA" Type="int" />
           <Property Name="Re" Type="real" />
           <Property Name="Cuota_Re" Type="real" />
           <Property Name="Total" Type="real" />
         </EntityType>
-        <EntityType Name="forma_pago">
+        <EntityType Name="FormaPago">
           <Key>
-            <PropertyRef Name="idPAGO" />
+            <PropertyRef Name="IdPago" />
           </Key>
-          <Property Name="idPAGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tipo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="iva">
+        <EntityType Name="Iva">
           <Key>
-            <PropertyRef Name="idIVA" />
+            <PropertyRef Name="IdIVA" />
           </Key>
-          <Property Name="idIVA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Porcentaje" Type="real" Nullable="false" />
+          <Property Name="IdIVA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Porcentaje" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="linea_factura">
           <Key>
@@ -138,7 +137,18 @@
           <Property Name="IVA" Type="real" Nullable="false" />
           <Property Name="Importe" Type="real" />
         </EntityType>
-        <EntityType Name="linea_pedido_c">
+        <EntityType Name="Linea_pedido_c">
+          <Key>
+            <PropertyRef Name="Num_ped" />
+            <PropertyRef Name="Linea" />
+          </Key>
+          <Property Name="Num_ped" Type="int" Nullable="false" />
+          <Property Name="Linea" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="IdArticulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Linea_pedido_p">
           <Key>
             <PropertyRef Name="Linea" />
             <PropertyRef Name="Num_ped" />
@@ -146,506 +156,596 @@
           <Property Name="Linea" Type="int" Nullable="false" />
           <Property Name="Num_ped" Type="int" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
-          <Property Name="idArticulo" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Total" Type="real" />
+          <Property Name="IdArticulo" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="linea_pedido_p">
-          <Key>
-            <PropertyRef Name="Linea" />
-            <PropertyRef Name="Num_ped" />
-          </Key>
-          <Property Name="Linea" Type="int" Nullable="false" />
-          <Property Name="Num_ped" Type="int" Nullable="false" />
-          <Property Name="Cantidad" Type="int" Nullable="false" />
-          <Property Name="Total" Type="real" />
-          <Property Name="idArticulo" Type="nvarchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <EntityType Name="pedido_c">
+        <EntityType Name="Pedido_c">
           <Key>
             <PropertyRef Name="Num_ped" />
           </Key>
           <Property Name="Num_ped" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idCliente" Type="int" Nullable="false" />
-          <Property Name="Destino" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="Destino" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Forma_pago" Type="int" Nullable="false" />
           <Property Name="Fecha_A" Type="date" Nullable="false" />
-          <Property Name="Total" Type="real" />
+          <Property Name="Total" Type="real" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="pedido_p">
+        <EntityType Name="Pedido_p">
           <Key>
             <PropertyRef Name="Num_ped" />
           </Key>
           <Property Name="Num_ped" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Fecha_A" Type="date" Nullable="false" />
-          <Property Name="Total" Type="nvarchar" MaxLength="45" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="idProv" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Forma_pago" Type="int" Nullable="false" />
-          <Property Name="idProv" Type="int" Nullable="false" />
+          <Property Name="Fecha_A" Type="date" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="proveedor">
+        <EntityType Name="Proveedores">
           <Key>
-            <PropertyRef Name="idProv" />
+            <PropertyRef Name="IdProveedor" />
           </Key>
-          <Property Name="idProv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RazonSocial" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NIF" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="NIF_R" Type="nvarchar" MaxLength="9" />
-          <Property Name="Domicilio" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CP" Type="nvarchar" MaxLength="5" />
-          <Property Name="Poblacion" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Provincia" Type="nvarchar" MaxLength="45" />
-          <Property Name="Pais" Type="nvarchar" MaxLength="45" />
+          <Property Name="Poblacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Fecha_A" Type="date" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Telefono" Type="nchar" MaxLength="9" Nullable="false" />
-          <Property Name="Mail" Type="nchar" MaxLength="45" />
+          <Property Name="Mail" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nota" Type="nvarchar(max)" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="roles">
+        <EntityType Name="Roles">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="IdRol" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="Tarifas">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="IdTarifa" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="tarifa">
-          <Key>
-            <PropertyRef Name="idTARIFA" />
-          </Key>
-          <Property Name="idTARIFA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTarifa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
-          <Property Name="Porcent" Type="real" Nullable="false" />
+          <Property Name="Porcentaje" Type="float" Nullable="false" />
         </EntityType>
-        <EntityType Name="usuario">
+        <EntityType Name="TipoProducto">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="IdTipoProd" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoProd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Telefono" Type="nvarchar" MaxLength="12" />
-          <Property Name="Rol" Type="bigint" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="9" />
+          <Property Name="idRol" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <Association Name="articulo$FK_Estado_Art">
-          <End Role="estados" Type="Self.estados" Multiplicity="1" />
-          <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+        <Association Name="FK_Articulos_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estados">
-              <PropertyRef Name="idESTADOS" />
+            <Principal Role="Estados">
+              <PropertyRef Name="IdEstado" />
             </Principal>
-            <Dependent Role="articulo">
+            <Dependent Role="Articulos">
               <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="cliente$FK_Estado_Cli">
-          <End Role="estados" Type="Self.estados" Multiplicity="1" />
-          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+        <Association Name="FK_Articulos_Iva">
+          <End Role="Iva" Type="Self.Iva" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estados">
-              <PropertyRef Name="idESTADOS" />
+            <Principal Role="Iva">
+              <PropertyRef Name="IdIVA" />
             </Principal>
-            <Dependent Role="cliente">
+            <Dependent Role="Articulos">
+              <PropertyRef Name="IVA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articulos_TipoProducto">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="IdTipoProd" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Clientes">
               <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_linea_pedido_c_pedido_c">
-          <End Role="pedido_c" Type="Self.pedido_c" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="linea_pedido_c" Type="Self.linea_pedido_c" Multiplicity="*" />
+        <Association Name="FK_Facturas_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="pedido_c">
-              <PropertyRef Name="Num_ped" />
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
             </Principal>
-            <Dependent Role="linea_pedido_c">
-              <PropertyRef Name="Num_ped" />
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdCliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_usuario_Roles">
-          <End Role="roles" Type="Self.roles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+        <Association Name="FK_Facturas_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="roles">
-              <PropertyRef Name="id" />
+            <Principal Role="Empresas">
+              <PropertyRef Name="IdEmpresa" />
             </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="Rol" />
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdEmpresa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="linea_factura$FKN_factura">
-          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
-          <End Role="linea_factura" Type="Self.linea_factura" Multiplicity="*" />
+        <Association Name="FK_Linea_pedido_c_Articulos">
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
+          <End Role="Linea_pedido_c" Type="Self.Linea_pedido_c" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="facturas">
-              <PropertyRef Name="Numero" />
+            <Principal Role="Articulos">
+              <PropertyRef Name="IdArticulo" />
             </Principal>
-            <Dependent Role="linea_factura">
-              <PropertyRef Name="N_factura" />
+            <Dependent Role="Linea_pedido_c">
+              <PropertyRef Name="IdArticulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="linea_pedido_c$FK_Articulo_C">
-          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
-          <End Role="linea_pedido_c" Type="Self.linea_pedido_c" Multiplicity="*" />
+        <Association Name="FK_Linea_pedido_p_Articulos">
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
+          <End Role="Linea_pedido_p" Type="Self.Linea_pedido_p" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="articulo">
-              <PropertyRef Name="idArt" />
+            <Principal Role="Articulos">
+              <PropertyRef Name="IdArticulo" />
             </Principal>
-            <Dependent Role="linea_pedido_c">
-              <PropertyRef Name="idArticulo" />
+            <Dependent Role="Linea_pedido_p">
+              <PropertyRef Name="IdArticulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="linea_pedido_p$FK_Articulo_P">
-          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
-          <End Role="linea_pedido_p" Type="Self.linea_pedido_p" Multiplicity="*" />
+        <Association Name="FK_Pedido_c_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Pedido_c" Type="Self.Pedido_c" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="articulo">
-              <PropertyRef Name="idArt" />
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
             </Principal>
-            <Dependent Role="linea_pedido_p">
-              <PropertyRef Name="idArticulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="linea_pedido_p$FK_Num_ped_P">
-          <End Role="pedido_p" Type="Self.pedido_p" Multiplicity="1" />
-          <End Role="linea_pedido_p" Type="Self.linea_pedido_p" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pedido_p">
-              <PropertyRef Name="Num_ped" />
-            </Principal>
-            <Dependent Role="linea_pedido_p">
-              <PropertyRef Name="Num_ped" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="pedido_c$FK_Cliente">
-          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
-          <End Role="pedido_c" Type="Self.pedido_c" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cliente">
-              <PropertyRef Name="idCli" />
-            </Principal>
-            <Dependent Role="pedido_c">
+            <Dependent Role="Pedido_c">
               <PropertyRef Name="idCliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_c$FK_Estado_C">
-          <End Role="estado_ped" Type="Self.estado_ped" Multiplicity="1" />
-          <End Role="pedido_c" Type="Self.pedido_c" Multiplicity="*" />
+        <Association Name="FK_Pedido_c_EstadosPedido">
+          <End Role="EstadosPedido" Type="Self.EstadosPedido" Multiplicity="1" />
+          <End Role="Pedido_c" Type="Self.Pedido_c" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estado_ped">
+            <Principal Role="EstadosPedido">
               <PropertyRef Name="idEstados" />
             </Principal>
-            <Dependent Role="pedido_c">
+            <Dependent Role="Pedido_c">
               <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_c$FK_Pago_C">
-          <End Role="forma_pago" Type="Self.forma_pago" Multiplicity="1" />
-          <End Role="pedido_c" Type="Self.pedido_c" Multiplicity="*" />
+        <Association Name="FK_Pedido_c_FormaPago">
+          <End Role="FormaPago" Type="Self.FormaPago" Multiplicity="1" />
+          <End Role="Pedido_c" Type="Self.Pedido_c" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="forma_pago">
-              <PropertyRef Name="idPAGO" />
+            <Principal Role="FormaPago">
+              <PropertyRef Name="IdPago" />
             </Principal>
-            <Dependent Role="pedido_c">
+            <Dependent Role="Pedido_c">
               <PropertyRef Name="Forma_pago" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_p$FK_Estado_P">
-          <End Role="estado_ped" Type="Self.estado_ped" Multiplicity="1" />
-          <End Role="pedido_p" Type="Self.pedido_p" Multiplicity="*" />
+        <Association Name="FK_Pedido_p_EstadosPedido">
+          <End Role="EstadosPedido" Type="Self.EstadosPedido" Multiplicity="1" />
+          <End Role="Pedido_p" Type="Self.Pedido_p" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estado_ped">
+            <Principal Role="EstadosPedido">
               <PropertyRef Name="idEstados" />
             </Principal>
-            <Dependent Role="pedido_p">
+            <Dependent Role="Pedido_p">
               <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_p$FK_Pago_P">
-          <End Role="forma_pago" Type="Self.forma_pago" Multiplicity="1" />
-          <End Role="pedido_p" Type="Self.pedido_p" Multiplicity="*" />
+        <Association Name="FK_Pedido_p_FormaPago">
+          <End Role="FormaPago" Type="Self.FormaPago" Multiplicity="1" />
+          <End Role="Pedido_p" Type="Self.Pedido_p" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="forma_pago">
-              <PropertyRef Name="idPAGO" />
+            <Principal Role="FormaPago">
+              <PropertyRef Name="IdPago" />
             </Principal>
-            <Dependent Role="pedido_p">
+            <Dependent Role="Pedido_p">
               <PropertyRef Name="Forma_pago" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_p$FK_Prov">
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
-          <End Role="pedido_p" Type="Self.pedido_p" Multiplicity="*" />
+        <Association Name="FK_Pedido_p_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Pedido_p" Type="Self.Pedido_p" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="proveedor">
-              <PropertyRef Name="idProv" />
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
             </Principal>
-            <Dependent Role="pedido_p">
+            <Dependent Role="Pedido_p">
               <PropertyRef Name="idProv" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="proveedor$FK_Estado_Prov">
-          <End Role="estados" Type="Self.estados" Multiplicity="1" />
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+        <Association Name="FK_Proveedores_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estados">
-              <PropertyRef Name="idESTADOS" />
+            <Principal Role="Estados">
+              <PropertyRef Name="IdEstado" />
             </Principal>
-            <Dependent Role="proveedor">
+            <Dependent Role="Proveedores">
               <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="idRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="GaluModelStoreContainer">
-          <EntitySet Name="albaran" EntityType="Self.albaran" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="articulo" EntityType="Self.articulo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="contacto" EntityType="Self.contacto" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="estado_ped" EntityType="Self.estado_ped" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="estados" EntityType="Self.estados" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="facturas" EntityType="Self.facturas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="forma_pago" EntityType="Self.forma_pago" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="iva" EntityType="Self.iva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Albaranes" EntityType="Self.Albaranes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contactos" EntityType="Self.Contactos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadosPedido" EntityType="Self.EstadosPedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormaPago" EntityType="Self.FormaPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Iva" EntityType="Self.Iva" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="linea_factura" EntityType="Self.linea_factura" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="linea_pedido_c" EntityType="Self.linea_pedido_c" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="linea_pedido_p" EntityType="Self.linea_pedido_p" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="pedido_c" EntityType="Self.pedido_c" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="pedido_p" EntityType="Self.pedido_p" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tarifa" EntityType="Self.tarifa" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="articulo$FK_Estado_Art" Association="Self.articulo$FK_Estado_Art">
-            <End Role="estados" EntitySet="estados" />
-            <End Role="articulo" EntitySet="articulo" />
+          <EntitySet Name="Linea_pedido_c" EntityType="Self.Linea_pedido_c" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Linea_pedido_p" EntityType="Self.Linea_pedido_p" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido_c" EntityType="Self.Pedido_c" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido_p" EntityType="Self.Pedido_p" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarifas" EntityType="Self.Tarifas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Articulos_Estados" Association="Self.FK_Articulos_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Articulos" EntitySet="Articulos" />
           </AssociationSet>
-          <AssociationSet Name="cliente$FK_Estado_Cli" Association="Self.cliente$FK_Estado_Cli">
-            <End Role="estados" EntitySet="estados" />
-            <End Role="cliente" EntitySet="cliente" />
+          <AssociationSet Name="FK_Articulos_Iva" Association="Self.FK_Articulos_Iva">
+            <End Role="Iva" EntitySet="Iva" />
+            <End Role="Articulos" EntitySet="Articulos" />
           </AssociationSet>
-          <AssociationSet Name="FK_linea_pedido_c_pedido_c" Association="Self.FK_linea_pedido_c_pedido_c">
-            <End Role="pedido_c" EntitySet="pedido_c" />
-            <End Role="linea_pedido_c" EntitySet="linea_pedido_c" />
+          <AssociationSet Name="FK_Articulos_TipoProducto" Association="Self.FK_Articulos_TipoProducto">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="Articulos" EntitySet="Articulos" />
           </AssociationSet>
-          <AssociationSet Name="FK_usuario_Roles" Association="Self.FK_usuario_Roles">
-            <End Role="roles" EntitySet="roles" />
-            <End Role="usuario" EntitySet="usuario" />
+          <AssociationSet Name="FK_Clientes_Estados" Association="Self.FK_Clientes_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
-          <AssociationSet Name="linea_factura$FKN_factura" Association="Self.linea_factura$FKN_factura">
-            <End Role="facturas" EntitySet="facturas" />
-            <End Role="linea_factura" EntitySet="linea_factura" />
+          <AssociationSet Name="FK_Facturas_Clientes" Association="Self.FK_Facturas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <AssociationSet Name="linea_pedido_c$FK_Articulo_C" Association="Self.linea_pedido_c$FK_Articulo_C">
-            <End Role="articulo" EntitySet="articulo" />
-            <End Role="linea_pedido_c" EntitySet="linea_pedido_c" />
+          <AssociationSet Name="FK_Facturas_Empresas" Association="Self.FK_Facturas_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <AssociationSet Name="linea_pedido_p$FK_Articulo_P" Association="Self.linea_pedido_p$FK_Articulo_P">
-            <End Role="articulo" EntitySet="articulo" />
-            <End Role="linea_pedido_p" EntitySet="linea_pedido_p" />
+          <AssociationSet Name="FK_Linea_pedido_c_Articulos" Association="Self.FK_Linea_pedido_c_Articulos">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
           </AssociationSet>
-          <AssociationSet Name="linea_pedido_p$FK_Num_ped_P" Association="Self.linea_pedido_p$FK_Num_ped_P">
-            <End Role="pedido_p" EntitySet="pedido_p" />
-            <End Role="linea_pedido_p" EntitySet="linea_pedido_p" />
+          <AssociationSet Name="FK_Linea_pedido_p_Articulos" Association="Self.FK_Linea_pedido_p_Articulos">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
           </AssociationSet>
-          <AssociationSet Name="pedido_c$FK_Cliente" Association="Self.pedido_c$FK_Cliente">
-            <End Role="cliente" EntitySet="cliente" />
-            <End Role="pedido_c" EntitySet="pedido_c" />
+          <AssociationSet Name="FK_Pedido_c_Clientes" Association="Self.FK_Pedido_c_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
           </AssociationSet>
-          <AssociationSet Name="pedido_c$FK_Estado_C" Association="Self.pedido_c$FK_Estado_C">
-            <End Role="estado_ped" EntitySet="estado_ped" />
-            <End Role="pedido_c" EntitySet="pedido_c" />
+          <AssociationSet Name="FK_Pedido_c_EstadosPedido" Association="Self.FK_Pedido_c_EstadosPedido">
+            <End Role="EstadosPedido" EntitySet="EstadosPedido" />
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
           </AssociationSet>
-          <AssociationSet Name="pedido_c$FK_Pago_C" Association="Self.pedido_c$FK_Pago_C">
-            <End Role="forma_pago" EntitySet="forma_pago" />
-            <End Role="pedido_c" EntitySet="pedido_c" />
+          <AssociationSet Name="FK_Pedido_c_FormaPago" Association="Self.FK_Pedido_c_FormaPago">
+            <End Role="FormaPago" EntitySet="FormaPago" />
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
           </AssociationSet>
-          <AssociationSet Name="pedido_p$FK_Estado_P" Association="Self.pedido_p$FK_Estado_P">
-            <End Role="estado_ped" EntitySet="estado_ped" />
-            <End Role="pedido_p" EntitySet="pedido_p" />
+          <AssociationSet Name="FK_Pedido_p_EstadosPedido" Association="Self.FK_Pedido_p_EstadosPedido">
+            <End Role="EstadosPedido" EntitySet="EstadosPedido" />
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
           </AssociationSet>
-          <AssociationSet Name="pedido_p$FK_Pago_P" Association="Self.pedido_p$FK_Pago_P">
-            <End Role="forma_pago" EntitySet="forma_pago" />
-            <End Role="pedido_p" EntitySet="pedido_p" />
+          <AssociationSet Name="FK_Pedido_p_FormaPago" Association="Self.FK_Pedido_p_FormaPago">
+            <End Role="FormaPago" EntitySet="FormaPago" />
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
           </AssociationSet>
-          <AssociationSet Name="pedido_p$FK_Prov" Association="Self.pedido_p$FK_Prov">
-            <End Role="proveedor" EntitySet="proveedor" />
-            <End Role="pedido_p" EntitySet="pedido_p" />
+          <AssociationSet Name="FK_Pedido_p_Proveedores" Association="Self.FK_Pedido_p_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
           </AssociationSet>
-          <AssociationSet Name="proveedor$FK_Estado_Prov" Association="Self.proveedor$FK_Estado_Prov">
-            <End Role="estados" EntitySet="estados" />
-            <End Role="proveedor" EntitySet="proveedor" />
+          <AssociationSet Name="FK_Proveedores_Estados" Association="Self.FK_Proveedores_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Proveedores" EntitySet="Proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GaluModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="albaran">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Albaranes" EntityType="GaluModel.Albaranes" />
+          <EntitySet Name="Articulos" EntityType="GaluModel.Articulos" />
+          <EntitySet Name="Clientes" EntityType="GaluModel.Clientes" />
+          <EntitySet Name="Contactos" EntityType="GaluModel.Contactos" />
+          <EntitySet Name="Empresas" EntityType="GaluModel.Empresas" />
+          <EntitySet Name="Estados" EntityType="GaluModel.Estados" />
+          <EntitySet Name="EstadosPedido" EntityType="GaluModel.EstadosPedido" />
+          <EntitySet Name="Facturas" EntityType="GaluModel.Facturas" />
+          <EntitySet Name="FormaPago" EntityType="GaluModel.FormaPago" />
+          <EntitySet Name="Iva" EntityType="GaluModel.Iva" />
+          <EntitySet Name="linea_factura" EntityType="GaluModel.linea_factura" />
+          <EntitySet Name="Linea_pedido_c" EntityType="GaluModel.Linea_pedido_c" />
+          <EntitySet Name="Linea_pedido_p" EntityType="GaluModel.Linea_pedido_p" />
+          <EntitySet Name="Pedido_c" EntityType="GaluModel.Pedido_c" />
+          <EntitySet Name="Pedido_p" EntityType="GaluModel.Pedido_p" />
+          <EntitySet Name="Proveedores" EntityType="GaluModel.Proveedores" />
+          <EntitySet Name="Roles" EntityType="GaluModel.Roles" />
+          <EntitySet Name="Tarifas" EntityType="GaluModel.Tarifas" />
+          <EntitySet Name="TipoProducto" EntityType="GaluModel.TipoProducto" />
+          <EntitySet Name="Usuarios" EntityType="GaluModel.Usuarios" />
+          <AssociationSet Name="FK_Articulos_Estados" Association="GaluModel.FK_Articulos_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articulos_Iva" Association="GaluModel.FK_Articulos_Iva">
+            <End Role="Iva" EntitySet="Iva" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articulos_TipoProducto" Association="GaluModel.FK_Articulos_TipoProducto">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linea_pedido_c_Articulos" Association="GaluModel.FK_Linea_pedido_c_Articulos">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linea_pedido_p_Articulos" Association="GaluModel.FK_Linea_pedido_p_Articulos">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clientes_Estados" Association="GaluModel.FK_Clientes_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Clientes" Association="GaluModel.FK_Facturas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_c_Clientes" Association="GaluModel.FK_Pedido_c_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Empresas" Association="GaluModel.FK_Facturas_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proveedores_Estados" Association="GaluModel.FK_Proveedores_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Proveedores" EntitySet="Proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_c_EstadosPedido" Association="GaluModel.FK_Pedido_c_EstadosPedido">
+            <End Role="EstadosPedido" EntitySet="EstadosPedido" />
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_p_EstadosPedido" Association="GaluModel.FK_Pedido_p_EstadosPedido">
+            <End Role="EstadosPedido" EntitySet="EstadosPedido" />
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_c_FormaPago" Association="GaluModel.FK_Pedido_c_FormaPago">
+            <End Role="FormaPago" EntitySet="FormaPago" />
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_p_FormaPago" Association="GaluModel.FK_Pedido_p_FormaPago">
+            <End Role="FormaPago" EntitySet="FormaPago" />
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_p_Proveedores" Association="GaluModel.FK_Pedido_p_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="GaluModel.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Albaranes">
           <Key>
             <PropertyRef Name="Numero" />
           </Key>
           <Property Name="Numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <EntityType Name="articulo">
+        <EntityType Name="Articulos">
           <Key>
-            <PropertyRef Name="idArt" />
+            <PropertyRef Name="IdArticulo" />
           </Key>
-          <Property Name="idArt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Peso" Type="Single" />
-          <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Peso" Type="Double" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
           <Property Name="Precio" Type="Double" Nullable="false" />
-          <Property Name="IVA" Type="Single" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Origen" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IVA" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Origen" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="estados" Relationship="Self.articulo_FK_Estado_Art" FromRole="articulo" ToRole="estados" />
-          <NavigationProperty Name="linea_pedido_c" Relationship="Self.linea_pedido_c_FK_Articulo_C" FromRole="articulo" ToRole="linea_pedido_c" />
-          <NavigationProperty Name="linea_pedido_p" Relationship="Self.linea_pedido_p_FK_Articulo_P" FromRole="articulo" ToRole="linea_pedido_p" />
+          <NavigationProperty Name="Estados" Relationship="GaluModel.FK_Articulos_Estados" FromRole="Articulos" ToRole="Estados" />
+          <NavigationProperty Name="Iva1" Relationship="GaluModel.FK_Articulos_Iva" FromRole="Articulos" ToRole="Iva" />
+          <NavigationProperty Name="TipoProducto" Relationship="GaluModel.FK_Articulos_TipoProducto" FromRole="Articulos" ToRole="TipoProducto" />
+          <NavigationProperty Name="Linea_pedido_c" Relationship="GaluModel.FK_Linea_pedido_c_Articulos" FromRole="Articulos" ToRole="Linea_pedido_c" />
+          <NavigationProperty Name="Linea_pedido_p" Relationship="GaluModel.FK_Linea_pedido_p_Articulos" FromRole="Articulos" ToRole="Linea_pedido_p" />
         </EntityType>
-        <EntityType Name="cliente">
+        <EntityType Name="Clientes">
           <Key>
-            <PropertyRef Name="idCli" />
+            <PropertyRef Name="IdCliente" />
           </Key>
-          <Property Name="idCli" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Razon_Social" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NIF" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NIF_R" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
-          <Property Name="Domicilio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Razon_Social" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NIF" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Domicilio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Poblacion" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Provincia" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="Pais" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="Poblacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Mail" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="Web" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="estados" Relationship="Self.cliente_FK_Estado_Cli" FromRole="cliente" ToRole="estados" />
-          <NavigationProperty Name="pedido_c" Relationship="Self.pedido_c_FK_Cliente" FromRole="cliente" ToRole="pedido_c" />
+          <NavigationProperty Name="Estados" Relationship="GaluModel.FK_Clientes_Estados" FromRole="Clientes" ToRole="Estados" />
+          <NavigationProperty Name="Facturas" Relationship="GaluModel.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
+          <NavigationProperty Name="Pedido_c" Relationship="GaluModel.FK_Pedido_c_Clientes" FromRole="Clientes" ToRole="Pedido_c" />
         </EntityType>
-        <EntityType Name="contacto">
+        <EntityType Name="Contactos">
           <Key>
-            <PropertyRef Name="idCONTACTO" />
+            <PropertyRef Name="IdContacto" />
           </Key>
-          <Property Name="idCONTACTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Origen" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Producto" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Mail" Type="String" MaxLength="45" FixedLength="true" Unicode="true" />
+          <Property Name="IdContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Origen" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="empresa">
+        <EntityType Name="Empresas">
           <Key>
-            <PropertyRef Name="idEMPRESA" />
+            <PropertyRef Name="IdEmpresa" />
           </Key>
-          <Property Name="idEMPRESA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RazonSocial" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NIF" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NIF_R" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
-          <Property Name="Domicilio" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Poblacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Provincia" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Pais" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
-          <Property Name="Mail" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NIF" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Domicilio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CP" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Poblacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Facturas" Relationship="GaluModel.FK_Facturas_Empresas" FromRole="Empresas" ToRole="Facturas" />
         </EntityType>
-        <EntityType Name="estado_ped">
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Articulos" Relationship="GaluModel.FK_Articulos_Estados" FromRole="Estados" ToRole="Articulos" />
+          <NavigationProperty Name="Clientes" Relationship="GaluModel.FK_Clientes_Estados" FromRole="Estados" ToRole="Clientes" />
+          <NavigationProperty Name="Proveedores" Relationship="GaluModel.FK_Proveedores_Estados" FromRole="Estados" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="EstadosPedido">
           <Key>
             <PropertyRef Name="idEstados" />
           </Key>
           <Property Name="idEstados" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreE" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="pedido_c" Relationship="Self.pedido_c_FK_Estado_C" FromRole="estado_ped" ToRole="pedido_c" />
-          <NavigationProperty Name="pedido_p" Relationship="Self.pedido_p_FK_Estado_P" FromRole="estado_ped" ToRole="pedido_p" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pedido_c" Relationship="GaluModel.FK_Pedido_c_EstadosPedido" FromRole="EstadosPedido" ToRole="Pedido_c" />
+          <NavigationProperty Name="Pedido_p" Relationship="GaluModel.FK_Pedido_p_EstadosPedido" FromRole="EstadosPedido" ToRole="Pedido_p" />
         </EntityType>
-        <EntityType Name="estados">
-          <Key>
-            <PropertyRef Name="idESTADOS" />
-          </Key>
-          <Property Name="idESTADOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="articulo" Relationship="Self.articulo_FK_Estado_Art" FromRole="estados" ToRole="articulo" />
-          <NavigationProperty Name="cliente" Relationship="Self.cliente_FK_Estado_Cli" FromRole="estados" ToRole="cliente" />
-          <NavigationProperty Name="proveedor" Relationship="Self.proveedor_FK_Estado_Prov" FromRole="estados" ToRole="proveedor" />
-        </EntityType>
-        <EntityType Name="facturas">
+        <EntityType Name="Facturas">
           <Key>
             <PropertyRef Name="Numero" />
           </Key>
           <Property Name="Numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Empresa" Type="Int32" Nullable="false" />
-          <Property Name="Facturado" Type="Int32" Nullable="false" />
-          <Property Name="Enviado" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdPedido" Type="Int32" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Tipo_ped" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Forma_pago" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Cliente" Type="Int32" Nullable="false" />
+          <Property Name="TipoPedido" Type="Int32" Nullable="false" />
+          <Property Name="Forma_pago" Type="Int32" Nullable="false" />
           <Property Name="Total_bruto" Type="Single" />
           <Property Name="Dto" Type="Single" />
           <Property Name="Dpp" Type="Single" />
           <Property Name="Portes" Type="Single" />
-          <Property Name="IVA" Type="Single" />
+          <Property Name="IVA" Type="Int32" />
           <Property Name="Re" Type="Single" />
           <Property Name="Cuota_Re" Type="Single" />
           <Property Name="Total" Type="Single" />
-          <NavigationProperty Name="linea_factura" Relationship="Self.linea_factura_FKN_factura" FromRole="facturas" ToRole="linea_factura" />
+          <NavigationProperty Name="Clientes" Relationship="GaluModel.FK_Facturas_Clientes" FromRole="Facturas" ToRole="Clientes" />
+          <NavigationProperty Name="Empresas" Relationship="GaluModel.FK_Facturas_Empresas" FromRole="Facturas" ToRole="Empresas" />
         </EntityType>
-        <EntityType Name="forma_pago">
+        <EntityType Name="FormaPago">
           <Key>
-            <PropertyRef Name="idPAGO" />
+            <PropertyRef Name="IdPago" />
           </Key>
-          <Property Name="idPAGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="pedido_c" Relationship="Self.pedido_c_FK_Pago_C" FromRole="forma_pago" ToRole="pedido_c" />
-          <NavigationProperty Name="pedido_p" Relationship="Self.pedido_p_FK_Pago_P" FromRole="forma_pago" ToRole="pedido_p" />
+          <Property Name="IdPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pedido_c" Relationship="GaluModel.FK_Pedido_c_FormaPago" FromRole="FormaPago" ToRole="Pedido_c" />
+          <NavigationProperty Name="Pedido_p" Relationship="GaluModel.FK_Pedido_p_FormaPago" FromRole="FormaPago" ToRole="Pedido_p" />
         </EntityType>
-        <EntityType Name="iva">
+        <EntityType Name="Iva">
           <Key>
-            <PropertyRef Name="idIVA" />
+            <PropertyRef Name="IdIVA" />
           </Key>
-          <Property Name="idIVA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Porcentaje" Type="Single" Nullable="false" />
+          <Property Name="IdIVA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Porcentaje" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Articulos" Relationship="GaluModel.FK_Articulos_Iva" FromRole="Iva" ToRole="Articulos" />
         </EntityType>
         <EntityType Name="linea_factura">
           <Key>
@@ -659,22 +759,20 @@
           <Property Name="Precio" Type="Single" Nullable="false" />
           <Property Name="IVA" Type="Single" Nullable="false" />
           <Property Name="Importe" Type="Single" />
-          <NavigationProperty Name="facturas" Relationship="Self.linea_factura_FKN_factura" FromRole="linea_factura" ToRole="facturas" />
         </EntityType>
-        <EntityType Name="linea_pedido_c">
+        <EntityType Name="Linea_pedido_c">
           <Key>
-            <PropertyRef Name="Linea" />
             <PropertyRef Name="Num_ped" />
+            <PropertyRef Name="Linea" />
           </Key>
-          <Property Name="Linea" Type="Int32" Nullable="false" />
           <Property Name="Num_ped" Type="Int32" Nullable="false" />
+          <Property Name="Linea" Type="Int32" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <Property Name="idArticulo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Total" Type="Single" />
-          <NavigationProperty Name="articulo" Relationship="Self.linea_pedido_c_FK_Articulo_C" FromRole="linea_pedido_c" ToRole="articulo" />
-          <NavigationProperty Name="pedido_c" Relationship="Self.FK_linea_pedido_c_pedido_c" FromRole="linea_pedido_c" ToRole="pedido_c" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="IdArticulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articulos" Relationship="GaluModel.FK_Linea_pedido_c_Articulos" FromRole="Linea_pedido_c" ToRole="Articulos" />
         </EntityType>
-        <EntityType Name="linea_pedido_p">
+        <EntityType Name="Linea_pedido_p">
           <Key>
             <PropertyRef Name="Linea" />
             <PropertyRef Name="Num_ped" />
@@ -683,629 +781,550 @@
           <Property Name="Num_ped" Type="Int32" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
           <Property Name="Total" Type="Single" />
-          <Property Name="idArticulo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="articulo" Relationship="Self.linea_pedido_p_FK_Articulo_P" FromRole="linea_pedido_p" ToRole="articulo" />
-          <NavigationProperty Name="pedido_p" Relationship="Self.linea_pedido_p_FK_Num_ped_P" FromRole="linea_pedido_p" ToRole="pedido_p" />
+          <Property Name="IdArticulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articulos" Relationship="GaluModel.FK_Linea_pedido_p_Articulos" FromRole="Linea_pedido_p" ToRole="Articulos" />
         </EntityType>
-        <EntityType Name="pedido_c">
+        <EntityType Name="Pedido_c">
           <Key>
             <PropertyRef Name="Num_ped" />
           </Key>
           <Property Name="Num_ped" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idCliente" Type="Int32" Nullable="false" />
-          <Property Name="Destino" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Destino" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
           <Property Name="Forma_pago" Type="Int32" Nullable="false" />
           <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Total" Type="Single" />
-          <NavigationProperty Name="cliente" Relationship="Self.pedido_c_FK_Cliente" FromRole="pedido_c" ToRole="cliente" />
-          <NavigationProperty Name="estado_ped" Relationship="Self.pedido_c_FK_Estado_C" FromRole="pedido_c" ToRole="estado_ped" />
-          <NavigationProperty Name="forma_pago1" Relationship="Self.pedido_c_FK_Pago_C" FromRole="pedido_c" ToRole="forma_pago" />
-          <NavigationProperty Name="linea_pedido_c" Relationship="Self.FK_linea_pedido_c_pedido_c" FromRole="pedido_c" ToRole="linea_pedido_c" />
+          <Property Name="Total" Type="Single" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clientes" Relationship="GaluModel.FK_Pedido_c_Clientes" FromRole="Pedido_c" ToRole="Clientes" />
+          <NavigationProperty Name="EstadosPedido" Relationship="GaluModel.FK_Pedido_c_EstadosPedido" FromRole="Pedido_c" ToRole="EstadosPedido" />
+          <NavigationProperty Name="FormaPago" Relationship="GaluModel.FK_Pedido_c_FormaPago" FromRole="Pedido_c" ToRole="FormaPago" />
         </EntityType>
-        <EntityType Name="pedido_p">
+        <EntityType Name="Pedido_p">
           <Key>
             <PropertyRef Name="Num_ped" />
           </Key>
           <Property Name="Num_ped" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Total" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="Tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idProv" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
           <Property Name="Forma_pago" Type="Int32" Nullable="false" />
-          <Property Name="idProv" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="estado_ped" Relationship="Self.pedido_p_FK_Estado_P" FromRole="pedido_p" ToRole="estado_ped" />
-          <NavigationProperty Name="forma_pago1" Relationship="Self.pedido_p_FK_Pago_P" FromRole="pedido_p" ToRole="forma_pago" />
-          <NavigationProperty Name="linea_pedido_p" Relationship="Self.linea_pedido_p_FK_Num_ped_P" FromRole="pedido_p" ToRole="linea_pedido_p" />
-          <NavigationProperty Name="proveedor" Relationship="Self.pedido_p_FK_Prov" FromRole="pedido_p" ToRole="proveedor" />
+          <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EstadosPedido" Relationship="GaluModel.FK_Pedido_p_EstadosPedido" FromRole="Pedido_p" ToRole="EstadosPedido" />
+          <NavigationProperty Name="FormaPago" Relationship="GaluModel.FK_Pedido_p_FormaPago" FromRole="Pedido_p" ToRole="FormaPago" />
+          <NavigationProperty Name="Proveedores" Relationship="GaluModel.FK_Pedido_p_Proveedores" FromRole="Pedido_p" ToRole="Proveedores" />
         </EntityType>
-        <EntityType Name="proveedor">
+        <EntityType Name="Proveedores">
           <Key>
-            <PropertyRef Name="idProv" />
+            <PropertyRef Name="IdProveedor" />
           </Key>
-          <Property Name="idProv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RazonSocial" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NIF" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NIF_R" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
-          <Property Name="Domicilio" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NIF" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Domicilio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Poblacion" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Provincia" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="Pais" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="Poblacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Mail" Type="String" MaxLength="45" FixedLength="true" Unicode="true" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="estados" Relationship="Self.proveedor_FK_Estado_Prov" FromRole="proveedor" ToRole="estados" />
-          <NavigationProperty Name="pedido_p" Relationship="Self.pedido_p_FK_Prov" FromRole="proveedor" ToRole="pedido_p" />
+          <NavigationProperty Name="Estados" Relationship="GaluModel.FK_Proveedores_Estados" FromRole="Proveedores" ToRole="Estados" />
+          <NavigationProperty Name="Pedido_p" Relationship="GaluModel.FK_Pedido_p_Proveedores" FromRole="Proveedores" ToRole="Pedido_p" />
         </EntityType>
-        <EntityType Name="roles">
+        <EntityType Name="Roles">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="IdRol" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_Roles" FromRole="roles" ToRole="usuario" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Usuarios" Relationship="GaluModel.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="Tarifas">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="IdTarifa" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IdTarifa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="Porcentaje" Type="Double" Nullable="false" />
         </EntityType>
-        <EntityType Name="tarifa">
+        <EntityType Name="TipoProducto">
           <Key>
-            <PropertyRef Name="idTARIFA" />
+            <PropertyRef Name="IdTipoProd" />
           </Key>
-          <Property Name="idTARIFA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Porcent" Type="Single" Nullable="false" />
+          <Property Name="IdTipoProd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Articulos" Relationship="GaluModel.FK_Articulos_TipoProducto" FromRole="TipoProducto" ToRole="Articulos" />
         </EntityType>
-        <EntityType Name="usuario">
+        <EntityType Name="Usuarios">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="IdUsuario" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
-          <Property Name="Rol" Type="Int64" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="roles" Relationship="Self.FK_usuario_Roles" FromRole="usuario" ToRole="roles" />
+          <NavigationProperty Name="Roles" Relationship="GaluModel.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
         </EntityType>
-        <Association Name="articulo_FK_Estado_Art">
-          <End Role="estados" Type="Self.estados" Multiplicity="1" />
-          <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+        <Association Name="FK_Articulos_Estados">
+          <End Type="GaluModel.Estados" Role="Estados" Multiplicity="1" />
+          <End Type="GaluModel.Articulos" Role="Articulos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estados">
-              <PropertyRef Name="idESTADOS" />
+            <Principal Role="Estados">
+              <PropertyRef Name="IdEstado" />
             </Principal>
-            <Dependent Role="articulo">
+            <Dependent Role="Articulos">
               <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="linea_pedido_c_FK_Articulo_C">
-          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
-          <End Role="linea_pedido_c" Type="Self.linea_pedido_c" Multiplicity="*" />
+        <Association Name="FK_Articulos_Iva">
+          <End Type="GaluModel.Iva" Role="Iva" Multiplicity="1" />
+          <End Type="GaluModel.Articulos" Role="Articulos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="articulo">
-              <PropertyRef Name="idArt" />
+            <Principal Role="Iva">
+              <PropertyRef Name="IdIVA" />
             </Principal>
-            <Dependent Role="linea_pedido_c">
-              <PropertyRef Name="idArticulo" />
+            <Dependent Role="Articulos">
+              <PropertyRef Name="IVA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="linea_pedido_p_FK_Articulo_P">
-          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
-          <End Role="linea_pedido_p" Type="Self.linea_pedido_p" Multiplicity="*" />
+        <Association Name="FK_Articulos_TipoProducto">
+          <End Type="GaluModel.TipoProducto" Role="TipoProducto" Multiplicity="1" />
+          <End Type="GaluModel.Articulos" Role="Articulos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="articulo">
-              <PropertyRef Name="idArt" />
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="IdTipoProd" />
             </Principal>
-            <Dependent Role="linea_pedido_p">
-              <PropertyRef Name="idArticulo" />
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Tipo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="cliente_FK_Estado_Cli">
-          <End Role="estados" Type="Self.estados" Multiplicity="1" />
-          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+        <Association Name="FK_Linea_pedido_c_Articulos">
+          <End Type="GaluModel.Articulos" Role="Articulos" Multiplicity="1" />
+          <End Type="GaluModel.Linea_pedido_c" Role="Linea_pedido_c" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estados">
-              <PropertyRef Name="idESTADOS" />
+            <Principal Role="Articulos">
+              <PropertyRef Name="IdArticulo" />
             </Principal>
-            <Dependent Role="cliente">
+            <Dependent Role="Linea_pedido_c">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linea_pedido_p_Articulos">
+          <End Type="GaluModel.Articulos" Role="Articulos" Multiplicity="1" />
+          <End Type="GaluModel.Linea_pedido_p" Role="Linea_pedido_p" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="IdArticulo" />
+            </Principal>
+            <Dependent Role="Linea_pedido_p">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_Estados">
+          <End Type="GaluModel.Estados" Role="Estados" Multiplicity="1" />
+          <End Type="GaluModel.Clientes" Role="Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Clientes">
               <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_c_FK_Cliente">
-          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
-          <End Role="pedido_c" Type="Self.pedido_c" Multiplicity="*" />
+        <Association Name="FK_Facturas_Clientes">
+          <End Type="GaluModel.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="GaluModel.Facturas" Role="Facturas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="cliente">
-              <PropertyRef Name="idCli" />
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
             </Principal>
-            <Dependent Role="pedido_c">
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_c_Clientes">
+          <End Type="GaluModel.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="GaluModel.Pedido_c" Role="Pedido_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Pedido_c">
               <PropertyRef Name="idCliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_c_FK_Estado_C">
-          <End Role="estado_ped" Type="Self.estado_ped" Multiplicity="1" />
-          <End Role="pedido_c" Type="Self.pedido_c" Multiplicity="*" />
+        <Association Name="FK_Facturas_Empresas">
+          <End Type="GaluModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="GaluModel.Facturas" Role="Facturas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estado_ped">
+            <Principal Role="Empresas">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proveedores_Estados">
+          <End Type="GaluModel.Estados" Role="Estados" Multiplicity="1" />
+          <End Type="GaluModel.Proveedores" Role="Proveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Proveedores">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_c_EstadosPedido">
+          <End Type="GaluModel.EstadosPedido" Role="EstadosPedido" Multiplicity="1" />
+          <End Type="GaluModel.Pedido_c" Role="Pedido_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosPedido">
               <PropertyRef Name="idEstados" />
             </Principal>
-            <Dependent Role="pedido_c">
+            <Dependent Role="Pedido_c">
               <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_p_FK_Estado_P">
-          <End Role="estado_ped" Type="Self.estado_ped" Multiplicity="1" />
-          <End Role="pedido_p" Type="Self.pedido_p" Multiplicity="*" />
+        <Association Name="FK_Pedido_p_EstadosPedido">
+          <End Type="GaluModel.EstadosPedido" Role="EstadosPedido" Multiplicity="1" />
+          <End Type="GaluModel.Pedido_p" Role="Pedido_p" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estado_ped">
+            <Principal Role="EstadosPedido">
               <PropertyRef Name="idEstados" />
             </Principal>
-            <Dependent Role="pedido_p">
+            <Dependent Role="Pedido_p">
               <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="proveedor_FK_Estado_Prov">
-          <End Role="estados" Type="Self.estados" Multiplicity="1" />
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+        <Association Name="FK_Pedido_c_FormaPago">
+          <End Type="GaluModel.FormaPago" Role="FormaPago" Multiplicity="1" />
+          <End Type="GaluModel.Pedido_c" Role="Pedido_c" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estados">
-              <PropertyRef Name="idESTADOS" />
+            <Principal Role="FormaPago">
+              <PropertyRef Name="IdPago" />
             </Principal>
-            <Dependent Role="proveedor">
-              <PropertyRef Name="Estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="linea_factura_FKN_factura">
-          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
-          <End Role="linea_factura" Type="Self.linea_factura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="facturas">
-              <PropertyRef Name="Numero" />
-            </Principal>
-            <Dependent Role="linea_factura">
-              <PropertyRef Name="N_factura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="pedido_c_FK_Pago_C">
-          <End Role="forma_pago" Type="Self.forma_pago" Multiplicity="1" />
-          <End Role="pedido_c" Type="Self.pedido_c" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="forma_pago">
-              <PropertyRef Name="idPAGO" />
-            </Principal>
-            <Dependent Role="pedido_c">
+            <Dependent Role="Pedido_c">
               <PropertyRef Name="Forma_pago" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pedido_p_FK_Pago_P">
-          <End Role="forma_pago" Type="Self.forma_pago" Multiplicity="1" />
-          <End Role="pedido_p" Type="Self.pedido_p" Multiplicity="*" />
+        <Association Name="FK_Pedido_p_FormaPago">
+          <End Type="GaluModel.FormaPago" Role="FormaPago" Multiplicity="1" />
+          <End Type="GaluModel.Pedido_p" Role="Pedido_p" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="forma_pago">
-              <PropertyRef Name="idPAGO" />
+            <Principal Role="FormaPago">
+              <PropertyRef Name="IdPago" />
             </Principal>
-            <Dependent Role="pedido_p">
+            <Dependent Role="Pedido_p">
               <PropertyRef Name="Forma_pago" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_linea_pedido_c_pedido_c">
-          <End Role="pedido_c" Type="Self.pedido_c" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="linea_pedido_c" Type="Self.linea_pedido_c" Multiplicity="*" />
+        <Association Name="FK_Pedido_p_Proveedores">
+          <End Type="GaluModel.Proveedores" Role="Proveedores" Multiplicity="1" />
+          <End Type="GaluModel.Pedido_p" Role="Pedido_p" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="pedido_c">
-              <PropertyRef Name="Num_ped" />
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
             </Principal>
-            <Dependent Role="linea_pedido_c">
-              <PropertyRef Name="Num_ped" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="linea_pedido_p_FK_Num_ped_P">
-          <End Role="pedido_p" Type="Self.pedido_p" Multiplicity="1" />
-          <End Role="linea_pedido_p" Type="Self.linea_pedido_p" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pedido_p">
-              <PropertyRef Name="Num_ped" />
-            </Principal>
-            <Dependent Role="linea_pedido_p">
-              <PropertyRef Name="Num_ped" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="pedido_p_FK_Prov">
-          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
-          <End Role="pedido_p" Type="Self.pedido_p" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="proveedor">
-              <PropertyRef Name="idProv" />
-            </Principal>
-            <Dependent Role="pedido_p">
+            <Dependent Role="Pedido_p">
               <PropertyRef Name="idProv" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_usuario_Roles">
-          <End Role="roles" Type="Self.roles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+        <Association Name="FK_Usuarios_Roles">
+          <End Type="GaluModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="GaluModel.Usuarios" Role="Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="roles">
-              <PropertyRef Name="id" />
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRol" />
             </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="Rol" />
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="idRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="albaran" EntityType="Self.albaran" />
-          <EntitySet Name="articulo" EntityType="Self.articulo" />
-          <EntitySet Name="cliente" EntityType="Self.cliente" />
-          <EntitySet Name="contacto" EntityType="Self.contacto" />
-          <EntitySet Name="empresa" EntityType="Self.empresa" />
-          <EntitySet Name="estado_ped" EntityType="Self.estado_ped" />
-          <EntitySet Name="estados" EntityType="Self.estados" />
-          <EntitySet Name="facturas" EntityType="Self.facturas" />
-          <EntitySet Name="forma_pago" EntityType="Self.forma_pago" />
-          <EntitySet Name="iva" EntityType="Self.iva" />
-          <EntitySet Name="linea_factura" EntityType="Self.linea_factura" />
-          <EntitySet Name="linea_pedido_c" EntityType="Self.linea_pedido_c" />
-          <EntitySet Name="linea_pedido_p" EntityType="Self.linea_pedido_p" />
-          <EntitySet Name="pedido_c" EntityType="Self.pedido_c" />
-          <EntitySet Name="pedido_p" EntityType="Self.pedido_p" />
-          <EntitySet Name="proveedor" EntityType="Self.proveedor" />
-          <EntitySet Name="roles" EntityType="Self.roles" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="tarifa" EntityType="Self.tarifa" />
-          <EntitySet Name="usuario" EntityType="Self.usuario" />
-          <AssociationSet Name="articulo_FK_Estado_Art" Association="Self.articulo_FK_Estado_Art">
-            <End Role="estados" EntitySet="estados" />
-            <End Role="articulo" EntitySet="articulo" />
-          </AssociationSet>
-          <AssociationSet Name="linea_pedido_c_FK_Articulo_C" Association="Self.linea_pedido_c_FK_Articulo_C">
-            <End Role="articulo" EntitySet="articulo" />
-            <End Role="linea_pedido_c" EntitySet="linea_pedido_c" />
-          </AssociationSet>
-          <AssociationSet Name="linea_pedido_p_FK_Articulo_P" Association="Self.linea_pedido_p_FK_Articulo_P">
-            <End Role="articulo" EntitySet="articulo" />
-            <End Role="linea_pedido_p" EntitySet="linea_pedido_p" />
-          </AssociationSet>
-          <AssociationSet Name="cliente_FK_Estado_Cli" Association="Self.cliente_FK_Estado_Cli">
-            <End Role="estados" EntitySet="estados" />
-            <End Role="cliente" EntitySet="cliente" />
-          </AssociationSet>
-          <AssociationSet Name="pedido_c_FK_Cliente" Association="Self.pedido_c_FK_Cliente">
-            <End Role="cliente" EntitySet="cliente" />
-            <End Role="pedido_c" EntitySet="pedido_c" />
-          </AssociationSet>
-          <AssociationSet Name="pedido_c_FK_Estado_C" Association="Self.pedido_c_FK_Estado_C">
-            <End Role="estado_ped" EntitySet="estado_ped" />
-            <End Role="pedido_c" EntitySet="pedido_c" />
-          </AssociationSet>
-          <AssociationSet Name="pedido_p_FK_Estado_P" Association="Self.pedido_p_FK_Estado_P">
-            <End Role="estado_ped" EntitySet="estado_ped" />
-            <End Role="pedido_p" EntitySet="pedido_p" />
-          </AssociationSet>
-          <AssociationSet Name="proveedor_FK_Estado_Prov" Association="Self.proveedor_FK_Estado_Prov">
-            <End Role="estados" EntitySet="estados" />
-            <End Role="proveedor" EntitySet="proveedor" />
-          </AssociationSet>
-          <AssociationSet Name="linea_factura_FKN_factura" Association="Self.linea_factura_FKN_factura">
-            <End Role="facturas" EntitySet="facturas" />
-            <End Role="linea_factura" EntitySet="linea_factura" />
-          </AssociationSet>
-          <AssociationSet Name="pedido_c_FK_Pago_C" Association="Self.pedido_c_FK_Pago_C">
-            <End Role="forma_pago" EntitySet="forma_pago" />
-            <End Role="pedido_c" EntitySet="pedido_c" />
-          </AssociationSet>
-          <AssociationSet Name="pedido_p_FK_Pago_P" Association="Self.pedido_p_FK_Pago_P">
-            <End Role="forma_pago" EntitySet="forma_pago" />
-            <End Role="pedido_p" EntitySet="pedido_p" />
-          </AssociationSet>
-          <AssociationSet Name="FK_linea_pedido_c_pedido_c" Association="Self.FK_linea_pedido_c_pedido_c">
-            <End Role="pedido_c" EntitySet="pedido_c" />
-            <End Role="linea_pedido_c" EntitySet="linea_pedido_c" />
-          </AssociationSet>
-          <AssociationSet Name="linea_pedido_p_FK_Num_ped_P" Association="Self.linea_pedido_p_FK_Num_ped_P">
-            <End Role="pedido_p" EntitySet="pedido_p" />
-            <End Role="linea_pedido_p" EntitySet="linea_pedido_p" />
-          </AssociationSet>
-          <AssociationSet Name="pedido_p_FK_Prov" Association="Self.pedido_p_FK_Prov">
-            <End Role="proveedor" EntitySet="proveedor" />
-            <End Role="pedido_p" EntitySet="pedido_p" />
-          </AssociationSet>
-          <AssociationSet Name="FK_usuario_Roles" Association="Self.FK_usuario_Roles">
-            <End Role="roles" EntitySet="roles" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GaluModelStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="albaran">
-            <EntityTypeMapping TypeName="GaluModel.albaran">
-              <MappingFragment StoreEntitySet="albaran">
+          <EntitySetMapping Name="Albaranes">
+            <EntityTypeMapping TypeName="GaluModel.Albaranes">
+              <MappingFragment StoreEntitySet="Albaranes">
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="articulo">
-            <EntityTypeMapping TypeName="GaluModel.articulo">
-              <MappingFragment StoreEntitySet="articulo">
-                <ScalarProperty Name="idArt" ColumnName="idArt" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Peso" ColumnName="Peso" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="IVA" ColumnName="IVA" />
+          <EntitySetMapping Name="Articulos">
+            <EntityTypeMapping TypeName="GaluModel.Articulos">
+              <MappingFragment StoreEntitySet="Articulos">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Origen" ColumnName="Origen" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Origen" ColumnName="Origen" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="cliente">
-            <EntityTypeMapping TypeName="GaluModel.cliente">
-              <MappingFragment StoreEntitySet="cliente">
-                <ScalarProperty Name="idCli" ColumnName="idCli" />
-                <ScalarProperty Name="Razon_Social" ColumnName="Razon Social" />
-                <ScalarProperty Name="NIF" ColumnName="NIF" />
-                <ScalarProperty Name="NIF_R" ColumnName="NIF_R" />
-                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
-                <ScalarProperty Name="CP" ColumnName="CP" />
-                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Pais" ColumnName="Pais" />
-                <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="Web" ColumnName="Web" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="contacto">
-            <EntityTypeMapping TypeName="GaluModel.contacto">
-              <MappingFragment StoreEntitySet="contacto">
-                <ScalarProperty Name="idCONTACTO" ColumnName="idCONTACTO" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Origen" ColumnName="Origen" />
-                <ScalarProperty Name="Producto" ColumnName="Producto" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="empresa">
-            <EntityTypeMapping TypeName="GaluModel.empresa">
-              <MappingFragment StoreEntitySet="empresa">
-                <ScalarProperty Name="idEMPRESA" ColumnName="idEMPRESA" />
-                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="NIF" ColumnName="NIF" />
-                <ScalarProperty Name="NIF_R" ColumnName="NIF_R" />
-                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
-                <ScalarProperty Name="CP" ColumnName="CP" />
-                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Pais" ColumnName="Pais" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="estado_ped">
-            <EntityTypeMapping TypeName="GaluModel.estado_ped">
-              <MappingFragment StoreEntitySet="estado_ped">
-                <ScalarProperty Name="idEstados" ColumnName="idEstados" />
-                <ScalarProperty Name="NombreE" ColumnName="NombreE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="estados">
-            <EntityTypeMapping TypeName="GaluModel.estados">
-              <MappingFragment StoreEntitySet="estados">
-                <ScalarProperty Name="idESTADOS" ColumnName="idESTADOS" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="facturas">
-            <EntityTypeMapping TypeName="GaluModel.facturas">
-              <MappingFragment StoreEntitySet="facturas">
-                <ScalarProperty Name="Numero" ColumnName="Numero" />
-                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
-                <ScalarProperty Name="Facturado" ColumnName="Facturado" />
-                <ScalarProperty Name="Enviado" ColumnName="Enviado" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Tipo_ped" ColumnName="Tipo_ped" />
-                <ScalarProperty Name="Forma_pago" ColumnName="Forma_pago" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-                <ScalarProperty Name="Total_bruto" ColumnName="Total_bruto" />
-                <ScalarProperty Name="Dto" ColumnName="Dto" />
-                <ScalarProperty Name="Dpp" ColumnName="Dpp" />
-                <ScalarProperty Name="Portes" ColumnName="Portes" />
                 <ScalarProperty Name="IVA" ColumnName="IVA" />
-                <ScalarProperty Name="Re" ColumnName="Re" />
-                <ScalarProperty Name="Cuota_Re" ColumnName="Cuota_Re" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="forma_pago">
-            <EntityTypeMapping TypeName="GaluModel.forma_pago">
-              <MappingFragment StoreEntitySet="forma_pago">
-                <ScalarProperty Name="idPAGO" ColumnName="idPAGO" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="iva">
-            <EntityTypeMapping TypeName="GaluModel.iva">
-              <MappingFragment StoreEntitySet="iva">
-                <ScalarProperty Name="idIVA" ColumnName="idIVA" />
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="GaluModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon Social" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contactos">
+            <EntityTypeMapping TypeName="GaluModel.Contactos">
+              <MappingFragment StoreEntitySet="Contactos">
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Origen" ColumnName="Origen" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="GaluModel.Empresas">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="GaluModel.Estados">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadosPedido">
+            <EntityTypeMapping TypeName="GaluModel.EstadosPedido">
+              <MappingFragment StoreEntitySet="EstadosPedido">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idEstados" ColumnName="idEstados" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="GaluModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cuota_Re" ColumnName="Cuota_Re" />
+                <ScalarProperty Name="Re" ColumnName="Re" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Portes" ColumnName="Portes" />
+                <ScalarProperty Name="Dpp" ColumnName="Dpp" />
+                <ScalarProperty Name="Dto" ColumnName="Dto" />
+                <ScalarProperty Name="Total_bruto" ColumnName="Total_bruto" />
+                <ScalarProperty Name="Forma_pago" ColumnName="Forma_pago" />
+                <ScalarProperty Name="TipoPedido" ColumnName="TipoPedido" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormaPago">
+            <EntityTypeMapping TypeName="GaluModel.FormaPago">
+              <MappingFragment StoreEntitySet="FormaPago">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iva">
+            <EntityTypeMapping TypeName="GaluModel.Iva">
+              <MappingFragment StoreEntitySet="Iva">
                 <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="IdIVA" ColumnName="IdIVA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="linea_factura">
             <EntityTypeMapping TypeName="GaluModel.linea_factura">
               <MappingFragment StoreEntitySet="linea_factura">
-                <ScalarProperty Name="Linea" ColumnName="Linea" />
-                <ScalarProperty Name="N_factura" ColumnName="N_factura" />
-                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="IVA" ColumnName="IVA" />
                 <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="N_factura" ColumnName="N_factura" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="linea_pedido_c">
-            <EntityTypeMapping TypeName="GaluModel.linea_pedido_c">
-              <MappingFragment StoreEntitySet="linea_pedido_c">
+          <EntitySetMapping Name="Linea_pedido_c">
+            <EntityTypeMapping TypeName="GaluModel.Linea_pedido_c">
+              <MappingFragment StoreEntitySet="Linea_pedido_c">
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Linea" ColumnName="Linea" />
                 <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="linea_pedido_p">
-            <EntityTypeMapping TypeName="GaluModel.linea_pedido_p">
-              <MappingFragment StoreEntitySet="linea_pedido_p">
+          <EntitySetMapping Name="Linea_pedido_p">
+            <EntityTypeMapping TypeName="GaluModel.Linea_pedido_p">
+              <MappingFragment StoreEntitySet="Linea_pedido_p">
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
                 <ScalarProperty Name="Linea" ColumnName="Linea" />
-                <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="pedido_c">
-            <EntityTypeMapping TypeName="GaluModel.pedido_c">
-              <MappingFragment StoreEntitySet="pedido_c">
-                <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
-                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <EntitySetMapping Name="Pedido_c">
+            <EntityTypeMapping TypeName="GaluModel.Pedido_c">
+              <MappingFragment StoreEntitySet="Pedido_c">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
+                <ScalarProperty Name="Forma_pago" ColumnName="Forma_pago" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Destino" ColumnName="Destino" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Forma_pago" ColumnName="Forma_pago" />
-                <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="pedido_p">
-            <EntityTypeMapping TypeName="GaluModel.pedido_p">
-              <MappingFragment StoreEntitySet="pedido_p">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
-                <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido_p">
+            <EntityTypeMapping TypeName="GaluModel.Pedido_p">
+              <MappingFragment StoreEntitySet="Pedido_p">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Forma_pago" ColumnName="Forma_pago" />
-                <ScalarProperty Name="idProv" ColumnName="idProv" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="proveedor">
-            <EntityTypeMapping TypeName="GaluModel.proveedor">
-              <MappingFragment StoreEntitySet="proveedor">
-                <ScalarProperty Name="idProv" ColumnName="idProv" />
-                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
-                <ScalarProperty Name="NIF" ColumnName="NIF" />
-                <ScalarProperty Name="NIF_R" ColumnName="NIF_R" />
-                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
-                <ScalarProperty Name="CP" ColumnName="CP" />
-                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Pais" ColumnName="Pais" />
                 <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
+                <ScalarProperty Name="Forma_pago" ColumnName="Forma_pago" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="idProv" ColumnName="idProv" />
+                <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="GaluModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="roles">
-            <EntityTypeMapping TypeName="GaluModel.roles">
-              <MappingFragment StoreEntitySet="roles">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="GaluModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tarifa">
-            <EntityTypeMapping TypeName="GaluModel.tarifa">
-              <MappingFragment StoreEntitySet="tarifa">
-                <ScalarProperty Name="idTARIFA" ColumnName="idTARIFA" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Porcent" ColumnName="Porcent" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="GaluModel.usuario">
-              <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Rol" ColumnName="Rol" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="GaluModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarifas">
+            <EntityTypeMapping TypeName="GaluModel.Tarifas">
+              <MappingFragment StoreEntitySet="Tarifas">
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdTarifa" ColumnName="IdTarifa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoProducto">
+            <EntityTypeMapping TypeName="GaluModel.TipoProducto">
+              <MappingFragment StoreEntitySet="TipoProducto">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdTipoProd" ColumnName="IdTipoProd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="GaluModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

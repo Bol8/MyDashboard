@@ -12,15 +12,14 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class linea_pedido_p
+    public partial class Linea_pedido_p
     {
         public int Linea { get; set; }
         public int Num_ped { get; set; }
         public int Cantidad { get; set; }
         public Nullable<float> Total { get; set; }
-        public string idArticulo { get; set; }
+        public int IdArticulo { get; set; }
     
-        public virtual articulo articulo { get; set; }
-        public virtual pedido_p pedido_p { get; set; }
+        public virtual Articulos Articulos { get; set; }
     }
 }

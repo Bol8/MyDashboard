@@ -12,30 +12,33 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class articulo
+    public partial class Articulos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public articulo()
+        public Articulos()
         {
-            this.linea_pedido_c = new HashSet<linea_pedido_c>();
-            this.linea_pedido_p = new HashSet<linea_pedido_p>();
+            this.Linea_pedido_c = new HashSet<Linea_pedido_c>();
+            this.Linea_pedido_p = new HashSet<Linea_pedido_p>();
         }
     
-        public string idArt { get; set; }
+        public int IdArticulo { get; set; }
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
-        public Nullable<float> Peso { get; set; }
-        public string Tipo { get; set; }
+        public Nullable<double> Peso { get; set; }
+        public int Tipo { get; set; }
         public int Estado { get; set; }
         public double Precio { get; set; }
-        public float IVA { get; set; }
+        public int IVA { get; set; }
         public string Descripcion { get; set; }
         public string Origen { get; set; }
         public string Imagen { get; set; }
     
-        public virtual estados estados { get; set; }
+        public virtual Estados Estados { get; set; }
+        public virtual Iva Iva1 { get; set; }
+        public virtual TipoProducto TipoProducto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<linea_pedido_c> linea_pedido_c { get; set; }
+        public virtual ICollection<Linea_pedido_c> Linea_pedido_c { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<linea_pedido_p> linea_pedido_p { get; set; }
+        public virtual ICollection<Linea_pedido_p> Linea_pedido_p { get; set; }
     }
 }

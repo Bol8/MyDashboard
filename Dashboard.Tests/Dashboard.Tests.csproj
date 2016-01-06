@@ -96,6 +96,10 @@
       <Project>{3C90A158-8826-46EB-9E8F-F18D093D67C3}</Project>
       <Name>Dashboard</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{5665c56e-d6bc-449c-9b49-73e50c945086}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -12,27 +12,20 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class pedido_c
+    public partial class Pedido_c
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public pedido_c()
-        {
-            this.linea_pedido_c = new HashSet<linea_pedido_c>();
-        }
-    
         public int Num_ped { get; set; }
         public int idCliente { get; set; }
         public string Destino { get; set; }
-        public string Tipo { get; set; }
+        public int Tipo { get; set; }
         public int Estado { get; set; }
         public int Forma_pago { get; set; }
         public System.DateTime Fecha_A { get; set; }
-        public Nullable<float> Total { get; set; }
+        public float Total { get; set; }
+        public string Observaciones { get; set; }
     
-        public virtual cliente cliente { get; set; }
-        public virtual estado_ped estado_ped { get; set; }
-        public virtual forma_pago forma_pago1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<linea_pedido_c> linea_pedido_c { get; set; }
+        public virtual Clientes Clientes { get; set; }
+        public virtual EstadosPedido EstadosPedido { get; set; }
+        public virtual FormaPago FormaPago { get; set; }
     }
 }

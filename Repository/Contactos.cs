@@ -12,12 +12,14 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class Contactos
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int IdContacto { get; set; }
+        public string Nombre { get; set; }
+        public string Origen { get; set; }
+        public string Producto { get; set; }
+        public string Telefono { get; set; }
+        public string Mail { get; set; }
+        public string Nota { get; set; }
     }
 }

@@ -12,18 +12,18 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class roles
+    public partial class Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public roles()
+        public Roles()
         {
-            this.usuario = new HashSet<usuario>();
+            this.Usuarios = new HashSet<Usuarios>();
         }
     
-        public long id { get; set; }
+        public int IdRol { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<usuario> usuario { get; set; }
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

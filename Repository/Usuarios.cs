@@ -12,18 +12,18 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class Usuarios
     {
-        public long id { get; set; }
+        public int IdUsuario { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
-        public long Rol { get; set; }
+        public int idRol { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Imagen { get; set; }
     
-        public virtual roles roles { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }

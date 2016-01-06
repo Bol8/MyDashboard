@@ -11,34 +11,40 @@ namespace Repository
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using Metadata;
+
+
+    [MetadataType(typeof(ProviderMetadata))]
+    public partial class Proveedores { }
     
-    public partial class cliente
+
+
+    public partial class Proveedores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public cliente()
+        public Proveedores()
         {
-            this.pedido_c = new HashSet<pedido_c>();
+            this.Pedido_p = new HashSet<Pedido_p>();
         }
     
-        public int idCli { get; set; }
-        public string Razon_Social { get; set; }
+        public int IdProveedor { get; set; }
+        public string RazonSocial { get; set; }
         public string NIF { get; set; }
-        public string NIF_R { get; set; }
         public string Domicilio { get; set; }
         public string CP { get; set; }
         public string Poblacion { get; set; }
         public string Provincia { get; set; }
         public string Pais { get; set; }
         public System.DateTime Fecha_A { get; set; }
-        public string Tipo { get; set; }
         public int Estado { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
-        public string Web { get; set; }
+        public string Nota { get; set; }
         public string Imagen { get; set; }
     
-        public virtual estados estados { get; set; }
+        public virtual Estados Estados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido_c> pedido_c { get; set; }
+        public virtual ICollection<Pedido_p> Pedido_p { get; set; }
     }
 }
