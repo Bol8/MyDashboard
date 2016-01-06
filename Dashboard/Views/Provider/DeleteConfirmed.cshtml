@@ -1,0 +1,80 @@
+﻿@model Repository.Proveedores
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">¿Seguro que desea eliminar?</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div>
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin: 20px 20px 0px 20px;" })
+                    <br />
+                </div>
+
+                <div class="col-xs-12">
+                    @using (Html.BeginForm("Delete", "Provider", new { id = Model.IdProveedor }, FormMethod.Post))
+                    {
+                        @Html.HiddenFor(model => model.IdProveedor)
+
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.RazonSocial):</strong>
+                            @Html.DisplayFor(x => x.RazonSocial)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.NIF):</strong>
+                            @Html.DisplayFor(x => x.NIF)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Domicilio):</strong>
+                            @Html.DisplayFor(x => x.Domicilio)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Poblacion):</strong>
+                            @Html.DisplayFor(x => x.Poblacion)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Provincia):</strong>
+                            @Html.DisplayFor(x => x.Provincia)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Pais):</strong>
+                            @Html.DisplayFor(x => x.Pais)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Fecha_A):</strong>
+                            @Html.DisplayFor(x => x.Fecha_A)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Estado):</strong>
+                            @Html.DisplayFor(x => x.Estados.Nombre)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Telefono):</strong>
+                            @Html.DisplayFor(x => x.Telefono)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Mail):</strong>
+                            @Html.DisplayFor(x => x.Mail)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Nota):</strong>
+                            @Html.DisplayFor(x => x.Nota)
+                        </p>
+
+
+                        <div>
+                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
+                            <input class="btn btn-danger" type="submit" value="Eliminar" />
+                        </div>
+
+                    }
+
+
+                </div>
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
