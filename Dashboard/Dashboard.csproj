@@ -1160,6 +1160,7 @@
     <Content Include="Views\PedidoC\Index.cshtml" />
     <Content Include="Views\Client\Create.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\DeleteConfirmed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

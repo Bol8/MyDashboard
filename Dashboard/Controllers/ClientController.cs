@@ -23,7 +23,7 @@ namespace Dashboard.Controllers
 
         #endregion
 
-    
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -34,9 +34,11 @@ namespace Dashboard.Controllers
 
 
 
-        // GET: Client/Details/5
+        [HttpGet]
         public ActionResult Details(int id)
         {
+
+
             return View();
         }
 
@@ -55,17 +57,12 @@ namespace Dashboard.Controllers
         [HttpPost]
         public ActionResult Create(Clientes client)
         {
-            try
-            {
-                if (!ModelState.IsValid) return View(client);
-                if (!gClient.save(client)) return HttpNotFound();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            if (!ModelState.IsValid) return View(client);
+            if (!gClient.save(client)) throw new Exception("Error al intentar crear el cliente");
+
+            return RedirectToAction("Index");
+
         }
 
 
@@ -82,48 +79,37 @@ namespace Dashboard.Controllers
 
 
 
-        // POST: Client/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+        [HttpPost]
+        public ActionResult Edit(Clientes cliente)
+        {
+            if (!ModelState.IsValid) return View(cliente);
+            if (!gClient.edit(cliente)) throw new Exception("Error al intentar modificar el cliente");
+
+            return RedirectToAction("Index");
         }
 
 
 
 
-        // GET: Client/Delete/5
-        public ActionResult Delete(int id)
+
+        public ActionResult DeleteConfirmed(int id)
         {
-            return View();
+            var cliente = gClient.getElementById(id);
+
+            return View(cliente);
         }
 
 
 
 
-        // POST: Client/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+        [HttpPost]
+        public ActionResult Delete(Clientes cliente)
+        {
+            if (!gClient.delete(cliente.IdCliente)) throw new Exception("Error al intentar eliminar el cliente");
+
+            return RedirectToAction("Index");
         }
     }
 }
