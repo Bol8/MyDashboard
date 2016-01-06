@@ -20,9 +20,8 @@ namespace Dashboard.Controllers
 
         #endregion
 
-
-
-        // GET: Client
+    
+        [HttpGet]
         public ActionResult Index()
         {
             var clientList = gClient.getElements();
@@ -30,17 +29,23 @@ namespace Dashboard.Controllers
             return View(clientList);
         }
 
+
+
         // GET: Client/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
+
+
         // GET: Client/Create
         public ActionResult Create()
         {
             return View();
         }
+
+
 
         // POST: Client/Create
         [HttpPost]
@@ -58,11 +63,16 @@ namespace Dashboard.Controllers
             }
         }
 
+
+
         // GET: Client/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
+
+
+
 
         // POST: Client/Edit/5
         [HttpPost]
@@ -80,11 +90,17 @@ namespace Dashboard.Controllers
             }
         }
 
+
+
+
         // GET: Client/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
+
+
+
 
         // POST: Client/Delete/5
         [HttpPost]

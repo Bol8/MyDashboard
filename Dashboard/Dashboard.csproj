@@ -77,6 +77,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -199,7 +200,19 @@
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PedidoCController.cs" />
+    <Compile Include="GaluDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GaluDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="getInvoiceFromOrder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>getInvoiceFromOrder.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,6 +273,7 @@
     <Content Include="AdminLTE\dist\img\credit\visa.png" />
     <Content Include="AdminLTE\dist\img\default-50x50.gif" />
     <Content Include="AdminLTE\dist\img\icons.png" />
+    <Content Include="AdminLTE\dist\img\ImageUser.png" />
     <Content Include="AdminLTE\dist\img\photo1.png" />
     <Content Include="AdminLTE\dist\img\photo2.png" />
     <Content Include="AdminLTE\dist\img\user1-128x128.jpg" />
@@ -1063,6 +1077,28 @@
     <Content Include="AdminLTE\plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="AdminLTE\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="AdminLTE\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="getInvoiceFromOrder.xsc">
+      <DependentUpon>getInvoiceFromOrder.xsd</DependentUpon>
+    </Content>
+    <Content Include="GaluDataSet.xsc">
+      <DependentUpon>GaluDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="GaluDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GaluDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="GaluDataSet.xss">
+      <DependentUpon>GaluDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="getInvoiceFromOrder.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>getInvoiceFromOrder.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="getInvoiceFromOrder.xss">
+      <DependentUpon>getInvoiceFromOrder.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Dashboard.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1112,9 +1148,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Shared\MainHeader.cshtml" />
+    <Content Include="Views\Shared\MainSideBar.cshtml" />
+    <Content Include="Views\PedidoC\Index.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Invoice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1133,6 +1174,9 @@
       <Project>{a274d908-0e28-4242-906f-68c58d05bda3}</Project>
       <Name>Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
