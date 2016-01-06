@@ -10,12 +10,14 @@ namespace Dashboard.Controllers
     public class ClientController : Controller
     {
         private gClient gClient;
+        private gStatus gStatus;
 
         #region Constructors
 
         public ClientController()
         {
             gClient = new gClient();
+            gStatus = new gStatus();
         }
 
         #endregion
@@ -39,9 +41,11 @@ namespace Dashboard.Controllers
 
 
 
-        // GET: Client/Create
+        [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Estado = new SelectList(gStatus.getElements(), "idESTADOS", "Nombre");
+
             return View();
         }
 
