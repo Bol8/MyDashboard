@@ -4,9 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="14dc31eadd6f4e0a9f62db8cb2f95a5e" Name="Diagram1" ZoomLevel="108">
+      <Diagram DiagramId="14dc31eadd6f4e0a9f62db8cb2f95a5e" Name="Diagram1" ZoomLevel="103">
         <EntityTypeShape EntityType="GaluModel.Albaranes" Width="1.5" PointX="5.75" PointY="5.25" />
-        <EntityTypeShape EntityType="GaluModel.Articulos" Width="1.5" PointX="3" PointY="12.75" />
         <EntityTypeShape EntityType="GaluModel.Clientes" Width="1.5" PointX="3" PointY="17.875" />
         <EntityTypeShape EntityType="GaluModel.Contactos" Width="1.5" PointX="7.75" PointY="5.25" />
         <EntityTypeShape EntityType="GaluModel.Empresas" Width="1.5" PointX="3" PointY="23.25" />
@@ -25,11 +24,6 @@
         <EntityTypeShape EntityType="GaluModel.Tarifas" Width="1.5" PointX="9.75" PointY="5.25" />
         <EntityTypeShape EntityType="GaluModel.TipoProducto" Width="1.5" PointX="0.75" PointY="13.875" />
         <EntityTypeShape EntityType="GaluModel.Usuarios" Width="1.5" PointX="8" PointY="1.5" />
-        <AssociationConnector Association="GaluModel.FK_Articulos_Estados" />
-        <AssociationConnector Association="GaluModel.FK_Articulos_Iva" />
-        <AssociationConnector Association="GaluModel.FK_Articulos_TipoProducto" />
-        <AssociationConnector Association="GaluModel.FK_Linea_pedido_c_Articulos" />
-        <AssociationConnector Association="GaluModel.FK_Linea_pedido_p_Articulos" />
         <AssociationConnector Association="GaluModel.FK_Clientes_Estados" />
         <AssociationConnector Association="GaluModel.FK_Facturas_Clientes" />
         <AssociationConnector Association="GaluModel.FK_Pedido_c_Clientes" />
@@ -41,6 +35,12 @@
         <AssociationConnector Association="GaluModel.FK_Pedido_p_FormaPago" />
         <AssociationConnector Association="GaluModel.FK_Pedido_p_Proveedores" />
         <AssociationConnector Association="GaluModel.FK_Usuarios_Roles" />
+        <EntityTypeShape EntityType="GaluModel.Articulos" Width="1.5" PointX="3" PointY="12.25" />
+        <AssociationConnector Association="GaluModel.FK_Articulos_Estados" />
+        <AssociationConnector Association="GaluModel.FK_Articulos_Iva" />
+        <AssociationConnector Association="GaluModel.FK_Articulos_TipoProducto" />
+        <AssociationConnector Association="GaluModel.FK_Linea_pedido_c_Articulos" />
+        <AssociationConnector Association="GaluModel.FK_Linea_pedido_p_Articulos" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
