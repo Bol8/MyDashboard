@@ -59,7 +59,13 @@ namespace Dashboard.Controllers
         [HttpPost]
         public ActionResult Create(Proveedores provider)
         {
-            if (!ModelState.IsValid) return View(provider);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+
+                return View(provider);
+            }
+
             if (!gProvider.save(provider)) throw new Exception("Error al intentar crear el proveedor");
 
             return RedirectToAction("Index");
@@ -84,7 +90,13 @@ namespace Dashboard.Controllers
         [HttpPost]
         public ActionResult Edit(Proveedores provider)
         {
-            if (!ModelState.IsValid) return View(provider);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+
+                return View(provider);
+            }
+
             if (!gProvider.edit(provider)) throw new Exception("Error al intentar modificar el proveedor");
 
             return RedirectToAction("Index");

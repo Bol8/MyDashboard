@@ -58,7 +58,13 @@ namespace Dashboard.Controllers
         public ActionResult Create(Clientes client)
         {
 
-            if (!ModelState.IsValid) return View(client);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+
+                return View(client);
+            }
+
             if (!gClient.save(client)) throw new Exception("Error al intentar crear el cliente");
 
             return RedirectToAction("Index");
@@ -83,7 +89,13 @@ namespace Dashboard.Controllers
         [HttpPost]
         public ActionResult Edit(Clientes cliente)
         {
-            if (!ModelState.IsValid) return View(cliente);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+
+                return View(cliente);
+            }
+
             if (!gClient.edit(cliente)) throw new Exception("Error al intentar modificar el cliente");
 
             return RedirectToAction("Index");

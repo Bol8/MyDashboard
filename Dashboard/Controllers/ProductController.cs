@@ -11,12 +11,18 @@ namespace Dashboard.Controllers
     public class ProductController : Controller
     {
         private gProduct gProduct;
+        private gStatus gStatus;
+        private gTypeProduct gTypeProduct;
+        private gIVA gIva;
 
         #region Constructors
 
         public ProductController()
         {
             gProduct = new gProduct();
+            gStatus = new gStatus();
+            gTypeProduct = new gTypeProduct();
+            gIva = new gIVA();
         }
 
         #endregion
@@ -39,53 +45,71 @@ namespace Dashboard.Controllers
 
 
 
-       [HttpGet]
+        [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+            ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+            ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+
             return View();
         }
 
-        // POST: Product/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+        [HttpPost]
+        public ActionResult Create(Articulos product)
+        {
+            if (!ModelState.IsValid)
             {
-                return View();
+                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+                ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+                ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+
+                return View(product);
             }
+
+            if (!gProduct.save(product)) throw new Exception("Error al intentar guardar el producto");
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Product/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            var product = gProduct.getElementById(id);
+
+            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+            ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+            ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+
+            return View(product);
         }
 
-        // POST: Product/Edit/5
+
+
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Articulos product)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+                ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+                ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
 
-                return RedirectToAction("Index");
+                return View(product);
             }
-            catch
-            {
-                return View();
-            }
+
+            if (!gProduct.edit(product)) throw new Exception("Error al intentar modificar el producto");
+
+
+            return RedirectToAction("Index");
+
         }
 
-        // GET: Product/Delete/5
-        public ActionResult Delete(int id)
+       
+        public ActionResult DeleteConfirmed(int id)
         {
+
             return View();
         }
 
