@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\ICrud.cs" />
     <Compile Include="Manage\gClient.cs" />
+    <Compile Include="Manage\gContact.cs" />
     <Compile Include="Manage\gEstados.cs" />
     <Compile Include="Manage\gIVA.cs" />
     <Compile Include="Manage\gProduct.cs" />

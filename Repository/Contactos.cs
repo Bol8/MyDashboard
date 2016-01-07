@@ -11,7 +11,12 @@ namespace Repository
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using Metadata;
+
+    [MetadataType(typeof(ContactMetadata))]
+    public partial class Contactos { }
+
     public partial class Contactos
     {
         public int IdContacto { get; set; }
