@@ -38,6 +38,7 @@ namespace Repository
         public string Descripcion { get; set; }
         public string Origen { get; set; }
         public string Imagen { get; set; }
+        public int Cantidad { get; set; }
     
         public virtual Estados Estados { get; set; }
         public virtual Iva Iva1 { get; set; }

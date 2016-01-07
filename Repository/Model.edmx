@@ -22,6 +22,7 @@
           <Property Name="Tipo" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="IVA" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar(max)" />
           <Property Name="Origen" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -1008,6 +1009,7 @@
           <NavigationProperty Name="TipoProducto" Relationship="GaluModel.FK_Articulos_TipoProducto" FromRole="Articulos" ToRole="TipoProducto" />
           <NavigationProperty Name="Linea_pedido_c" Relationship="GaluModel.FK_Linea_pedido_c_Articulos" FromRole="Articulos" ToRole="Linea_pedido_c" />
           <NavigationProperty Name="Linea_pedido_p" Relationship="GaluModel.FK_Linea_pedido_p_Articulos" FromRole="Articulos" ToRole="Linea_pedido_p" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Articulos_Estados">
           <End Type="GaluModel.Estados" Role="Estados" Multiplicity="1" />
@@ -1314,6 +1316,7 @@
           <EntitySetMapping Name="Articulos">
             <EntityTypeMapping TypeName="GaluModel.Articulos">
               <MappingFragment StoreEntitySet="Articulos">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="Origen" ColumnName="Origen" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />

@@ -74,5 +74,11 @@ namespace Repository.Metadata
 
 
 
+        [Display(Name = "Unidades")]
+        [Required(ErrorMessage = "Campo obligatorio")]
+       //[Range(0,int.MaxValue,ErrorMessage ="Solo admite números positvos")]
+       [RegularExpression(@"^(([0-9]+))$",ErrorMessage ="Solo números enteros")]
+        public int Cantidad { get; set; }
+        
     }
 }
