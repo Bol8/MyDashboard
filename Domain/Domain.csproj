@@ -60,7 +60,10 @@
     <Compile Include="Interfaces\ICrud.cs" />
     <Compile Include="Manage\gClient.cs" />
     <Compile Include="Manage\gEstados.cs" />
+    <Compile Include="Manage\gIVA.cs" />
+    <Compile Include="Manage\gProduct.cs" />
     <Compile Include="Manage\gProvider.cs" />
+    <Compile Include="Manage\gTypeProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

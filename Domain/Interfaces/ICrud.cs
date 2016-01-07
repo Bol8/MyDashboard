@@ -11,6 +11,8 @@ namespace Domain.Interfaces
 
         T getElementById(long id);
 
+        List<T> getElements();
+
         bool save(T input);
 
 

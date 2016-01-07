@@ -40,9 +40,9 @@
                                 <td>@Html.DisplayFor(model => item.Descripcion)</td>
                                 <td>@Html.DisplayFor(model => item.Origen)</td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", "Client", new { id = item.IdArticulo }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                                    @Html.ActionLink(" ", "Edit", "Product", new { id = item.IdArticulo }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Client", new { id = item.IdArticulo }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Product", new { id = item.IdArticulo }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
                                 </td>
                             </tr>
                         }

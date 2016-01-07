@@ -11,6 +11,11 @@ namespace Repository
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using Metadata;
+
+    [MetadataType(typeof(ProductMetadata))]
+    public partial class Articulos { }
     
     public partial class Articulos
     {
