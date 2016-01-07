@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Repository.Articulos>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Productos</h3>
+                @Html.ActionLink("Nuevo", "Create", "Product", null, new { @class = "btn btn-primary pull-right" })
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.IdArticulo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Codigo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.Peso)</th>
+                            <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                            <th>@Html.DisplayNameFor(model => model.IVA)</th>
+                            <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                            <th>@Html.DisplayNameFor(model => model.Origen)</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.IdArticulo)</td>
+                                <td>@Html.DisplayFor(model => item.Codigo)</td>
+                                <td>@Html.DisplayFor(model => item.Nombre)</td>
+                                <td>@Html.DisplayFor(model => item.Peso)</td>
+                                <td>@Html.DisplayFor(model => item.TipoProducto.Nombre)</td>
+                                <td>@Html.DisplayFor(model => item.Estados.Nombre)</td>
+                                <td>@Html.DisplayFor(model => item.Precio)</td>
+                                <td>@Html.DisplayFor(model => item.Iva1.Porcentaje)%</td>
+                                <td>@Html.DisplayFor(model => item.Descripcion)</td>
+                                <td>@Html.DisplayFor(model => item.Origen)</td>
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", "Client", new { id = item.IdArticulo }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                                    <span> </span>
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Client", new { id = item.IdArticulo }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.IdArticulo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Codigo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.Peso)</th>
+                            <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                            <th>@Html.DisplayNameFor(model => model.IVA)</th>
+                            <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                            <th>@Html.DisplayNameFor(model => model.Origen)</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+<!-- DATA TABES SCRIPT -->
+
+<script src="~/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- page script -->
+
+<script type="text/javascript">
+    $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+    });
+</script>
