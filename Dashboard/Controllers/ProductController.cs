@@ -106,27 +106,24 @@ namespace Dashboard.Controllers
 
         }
 
-       
+
+
+        [HttpGet]
         public ActionResult DeleteConfirmed(int id)
         {
-
-            return View();
+            var product = gProduct.getElementById(id);
+            return View(product);
         }
 
-        // POST: Product/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+
+        [HttpPost]
+        public ActionResult Delete(Articulos product)
+        {
+            if (!gProduct.delete(product.IdArticulo)) throw new Exception("Error al intentar eliminar el producto");
+
+            return RedirectToAction("Index");
+
         }
     }
 }
