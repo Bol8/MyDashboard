@@ -42,6 +42,7 @@
         <AssociationConnector Association="GaluModel.FK_Facturas_Clientes" />
         <AssociationConnector Association="GaluModel.FK_Facturas_Empresas" />
         <AssociationConnector Association="GaluModel.FK_Facturas_Pedido_c" />
+        <AssociationConnector Association="GaluModel.FK_Empresas_Usuarios1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

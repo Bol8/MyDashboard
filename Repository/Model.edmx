@@ -284,6 +284,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Empresas_Usuarios1">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Empresas">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Facturas_Clientes">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
@@ -477,6 +489,10 @@
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
+          <AssociationSet Name="FK_Empresas_Usuarios1" Association="Self.FK_Empresas_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Empresas" EntitySet="Empresas" />
+          </AssociationSet>
           <AssociationSet Name="FK_Facturas_Clientes" Association="Self.FK_Facturas_Clientes">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Facturas" EntitySet="Facturas" />
@@ -623,6 +639,10 @@
             <End Role="Pedido_c" EntitySet="Pedido_c" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
+          <AssociationSet Name="FK_Empresas_Usuarios1" Association="GaluModel.FK_Empresas_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Empresas" EntitySet="Empresas" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Albaranes">
           <Key>
@@ -680,6 +700,7 @@
           <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Facturas" Relationship="GaluModel.FK_Facturas_Empresas" FromRole="Empresas" ToRole="Facturas" />
           <Property Name="idUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="GaluModel.FK_Empresas_Usuarios1" FromRole="Empresas" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Estados">
           <Key>
@@ -847,6 +868,7 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Roles" Relationship="GaluModel.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
+          <NavigationProperty Name="Empresas" Relationship="GaluModel.FK_Empresas_Usuarios1" FromRole="Usuarios" ToRole="Empresas" />
         </EntityType>
         <Association Name="FK_Clientes_Estados">
           <End Type="GaluModel.Estados" Role="Estados" Multiplicity="1" />
@@ -1090,6 +1112,18 @@
             </Principal>
             <Dependent Role="Facturas">
               <PropertyRef Name="IdPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresas_Usuarios1">
+          <End Type="GaluModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="GaluModel.Empresas" Role="Empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Empresas">
+              <PropertyRef Name="idUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

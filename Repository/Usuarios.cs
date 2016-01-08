@@ -14,6 +14,12 @@ namespace Repository
     
     public partial class Usuarios
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Usuarios()
+        {
+            this.Empresas = new HashSet<Empresas>();
+        }
+    
         public int IdUsuario { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
@@ -25,5 +31,7 @@ namespace Repository
         public string Imagen { get; set; }
     
         public virtual Roles Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Empresas> Empresas { get; set; }
     }
 }

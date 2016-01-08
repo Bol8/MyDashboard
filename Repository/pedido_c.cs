@@ -14,6 +14,12 @@ namespace Repository
     
     public partial class Pedido_c
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pedido_c()
+        {
+            this.Facturas = new HashSet<Facturas>();
+        }
+    
         public int Num_ped { get; set; }
         public int idCliente { get; set; }
         public string Destino { get; set; }
@@ -26,5 +32,7 @@ namespace Repository
         public virtual Clientes Clientes { get; set; }
         public virtual EstadosPedido EstadosPedido { get; set; }
         public virtual FormaPago FormaPago { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Facturas> Facturas { get; set; }
     }
 }
