@@ -15,8 +15,7 @@ namespace Repository
     using Metadata;
 
     [MetadataType(typeof(ProductMetadata))]
-    public partial class Articulos { }
-
+    public partial class Articulos{}
 
     public partial class Articulos
     {

@@ -11,7 +11,13 @@ namespace Repository
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using Metadata;
+
+
+    [MetadataType(typeof(ClientMetadata))]
+    public partial class Clientes { }
+
     public partial class Clientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

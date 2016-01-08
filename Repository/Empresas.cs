@@ -22,8 +22,6 @@ namespace Repository
     
         public int IdEmpresa { get; set; }
         public string RazonSocial { get; set; }
-        public string Nombre { get; set; }
-        public string Apellidos { get; set; }
         public string NIF { get; set; }
         public string Domicilio { get; set; }
         public string CP { get; set; }
@@ -32,6 +30,7 @@ namespace Repository
         public string Pais { get; set; }
         public string Telefono { get; set; }
         public string Mail { get; set; }
+        public int idUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturas> Facturas { get; set; }

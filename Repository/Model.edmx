@@ -65,8 +65,7 @@
           </Key>
           <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RazonSocial" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
           <Property Name="NIF" Type="nvarchar" MaxLength="9" Nullable="false" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CP" Type="nvarchar" MaxLength="5" Nullable="false" />
@@ -98,17 +97,13 @@
           <Property Name="IdCliente" Type="int" Nullable="false" />
           <Property Name="IdEmpresa" Type="int" Nullable="false" />
           <Property Name="IdPedido" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="date" Nullable="false" />
-          <Property Name="TipoPedido" Type="int" Nullable="false" />
-          <Property Name="Forma_pago" Type="int" Nullable="false" />
-          <Property Name="Total_bruto" Type="real" />
+          <Property Name="FechaF" Type="date" Nullable="false" />
           <Property Name="Dto" Type="real" />
           <Property Name="Dpp" Type="real" />
           <Property Name="Portes" Type="real" />
           <Property Name="IVA" Type="int" />
           <Property Name="Re" Type="real" />
           <Property Name="Cuota_Re" Type="real" />
-          <Property Name="Total" Type="real" />
         </EntityType>
         <EntityType Name="FormaPago">
           <Key>
@@ -313,6 +308,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Facturas_Pedido_c">
+          <End Role="Pedido_c" Type="Self.Pedido_c" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_c">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Linea_pedido_c_Articulos">
           <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
           <End Role="Linea_pedido_c" Type="Self.Linea_pedido_c" Multiplicity="*" />
@@ -478,6 +485,10 @@
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Pedido_c" Association="Self.FK_Facturas_Pedido_c">
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
           <AssociationSet Name="FK_Linea_pedido_c_Articulos" Association="Self.FK_Linea_pedido_c_Articulos">
             <End Role="Articulos" EntitySet="Articulos" />
             <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
@@ -530,7 +541,6 @@
           <EntitySet Name="Empresas" EntityType="GaluModel.Empresas" />
           <EntitySet Name="Estados" EntityType="GaluModel.Estados" />
           <EntitySet Name="EstadosPedido" EntityType="GaluModel.EstadosPedido" />
-          <EntitySet Name="Facturas" EntityType="GaluModel.Facturas" />
           <EntitySet Name="FormaPago" EntityType="GaluModel.FormaPago" />
           <EntitySet Name="Iva" EntityType="GaluModel.Iva" />
           <EntitySet Name="linea_factura" EntityType="GaluModel.linea_factura" />
@@ -547,17 +557,9 @@
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Facturas_Clientes" Association="GaluModel.FK_Facturas_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Facturas" EntitySet="Facturas" />
-          </AssociationSet>
           <AssociationSet Name="FK_Pedido_c_Clientes" Association="GaluModel.FK_Pedido_c_Clientes">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Pedido_c" EntitySet="Pedido_c" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Facturas_Empresas" Association="GaluModel.FK_Facturas_Empresas">
-            <End Role="Empresas" EntitySet="Empresas" />
-            <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
           <AssociationSet Name="FK_Proveedores_Estados" Association="GaluModel.FK_Proveedores_Estados">
             <End Role="Estados" EntitySet="Estados" />
@@ -608,6 +610,19 @@
             <End Role="Articulos" EntitySet="Articulos" />
             <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
           </AssociationSet>
+          <EntitySet Name="Facturas" EntityType="GaluModel.Facturas" />
+          <AssociationSet Name="FK_Facturas_Clientes" Association="GaluModel.FK_Facturas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Empresas" Association="GaluModel.FK_Facturas_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Pedido_c" Association="GaluModel.FK_Facturas_Pedido_c">
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Albaranes">
           <Key>
@@ -634,8 +649,8 @@
           <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Estados" Relationship="GaluModel.FK_Clientes_Estados" FromRole="Clientes" ToRole="Estados" />
-          <NavigationProperty Name="Facturas" Relationship="GaluModel.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
           <NavigationProperty Name="Pedido_c" Relationship="GaluModel.FK_Pedido_c_Clientes" FromRole="Clientes" ToRole="Pedido_c" />
+          <NavigationProperty Name="Facturas" Relationship="GaluModel.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
         </EntityType>
         <EntityType Name="Contactos">
           <Key>
@@ -655,8 +670,6 @@
           </Key>
           <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NIF" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
           <Property Name="Domicilio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CP" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
@@ -666,6 +679,7 @@
           <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Facturas" Relationship="GaluModel.FK_Facturas_Empresas" FromRole="Empresas" ToRole="Facturas" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Estados">
           <Key>
@@ -685,28 +699,6 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Pedido_c" Relationship="GaluModel.FK_Pedido_c_EstadosPedido" FromRole="EstadosPedido" ToRole="Pedido_c" />
           <NavigationProperty Name="Pedido_p" Relationship="GaluModel.FK_Pedido_p_EstadosPedido" FromRole="EstadosPedido" ToRole="Pedido_p" />
-        </EntityType>
-        <EntityType Name="Facturas">
-          <Key>
-            <PropertyRef Name="Numero" />
-          </Key>
-          <Property Name="Numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdCliente" Type="Int32" Nullable="false" />
-          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
-          <Property Name="IdPedido" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TipoPedido" Type="Int32" Nullable="false" />
-          <Property Name="Forma_pago" Type="Int32" Nullable="false" />
-          <Property Name="Total_bruto" Type="Single" />
-          <Property Name="Dto" Type="Single" />
-          <Property Name="Dpp" Type="Single" />
-          <Property Name="Portes" Type="Single" />
-          <Property Name="IVA" Type="Int32" />
-          <Property Name="Re" Type="Single" />
-          <Property Name="Cuota_Re" Type="Single" />
-          <Property Name="Total" Type="Single" />
-          <NavigationProperty Name="Clientes" Relationship="GaluModel.FK_Facturas_Clientes" FromRole="Facturas" ToRole="Clientes" />
-          <NavigationProperty Name="Empresas" Relationship="GaluModel.FK_Facturas_Empresas" FromRole="Facturas" ToRole="Empresas" />
         </EntityType>
         <EntityType Name="FormaPago">
           <Key>
@@ -778,6 +770,7 @@
           <NavigationProperty Name="Clientes" Relationship="GaluModel.FK_Pedido_c_Clientes" FromRole="Pedido_c" ToRole="Clientes" />
           <NavigationProperty Name="EstadosPedido" Relationship="GaluModel.FK_Pedido_c_EstadosPedido" FromRole="Pedido_c" ToRole="EstadosPedido" />
           <NavigationProperty Name="FormaPago" Relationship="GaluModel.FK_Pedido_c_FormaPago" FromRole="Pedido_c" ToRole="FormaPago" />
+          <NavigationProperty Name="Facturas" Relationship="GaluModel.FK_Facturas_Pedido_c" FromRole="Pedido_c" ToRole="Facturas" />
         </EntityType>
         <EntityType Name="Pedido_p">
           <Key>
@@ -867,18 +860,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Facturas_Clientes">
-          <End Type="GaluModel.Clientes" Role="Clientes" Multiplicity="1" />
-          <End Type="GaluModel.Facturas" Role="Facturas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="IdCliente" />
-            </Principal>
-            <Dependent Role="Facturas">
-              <PropertyRef Name="IdCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Pedido_c_Clientes">
           <End Type="GaluModel.Clientes" Role="Clientes" Multiplicity="1" />
           <End Type="GaluModel.Pedido_c" Role="Pedido_c" Multiplicity="*" />
@@ -888,18 +869,6 @@
             </Principal>
             <Dependent Role="Pedido_c">
               <PropertyRef Name="idCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Facturas_Empresas">
-          <End Type="GaluModel.Empresas" Role="Empresas" Multiplicity="1" />
-          <End Type="GaluModel.Facturas" Role="Facturas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empresas">
-              <PropertyRef Name="IdEmpresa" />
-            </Principal>
-            <Dependent Role="Facturas">
-              <PropertyRef Name="IdEmpresa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1069,6 +1038,61 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="Numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdPedido" Type="Int32" Nullable="false" />
+          <Property Name="FechaF" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Dto" Type="Single" />
+          <Property Name="Dpp" Type="Single" />
+          <Property Name="Portes" Type="Single" />
+          <Property Name="IVA" Type="Int32" />
+          <Property Name="Re" Type="Single" />
+          <Property Name="Cuota_Re" Type="Single" />
+          <NavigationProperty Name="Clientes" Relationship="GaluModel.FK_Facturas_Clientes" FromRole="Facturas" ToRole="Clientes" />
+          <NavigationProperty Name="Empresas" Relationship="GaluModel.FK_Facturas_Empresas" FromRole="Facturas" ToRole="Empresas" />
+          <NavigationProperty Name="Pedido_c" Relationship="GaluModel.FK_Facturas_Pedido_c" FromRole="Facturas" ToRole="Pedido_c" />
+        </EntityType>
+        <Association Name="FK_Facturas_Clientes">
+          <End Type="GaluModel.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="GaluModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Empresas">
+          <End Type="GaluModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="GaluModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Pedido_c">
+          <End Type="GaluModel.Pedido_c" Role="Pedido_c" Multiplicity="1" />
+          <End Type="GaluModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_c">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1118,6 +1142,7 @@
           <EntitySetMapping Name="Empresas">
             <EntityTypeMapping TypeName="GaluModel.Empresas">
               <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Pais" ColumnName="Pais" />
@@ -1126,8 +1151,6 @@
                 <ScalarProperty Name="CP" ColumnName="CP" />
                 <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
                 <ScalarProperty Name="NIF" ColumnName="NIF" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
               </MappingFragment>
@@ -1146,27 +1169,6 @@
               <MappingFragment StoreEntitySet="EstadosPedido">
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="idEstados" ColumnName="idEstados" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Facturas">
-            <EntityTypeMapping TypeName="GaluModel.Facturas">
-              <MappingFragment StoreEntitySet="Facturas">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Cuota_Re" ColumnName="Cuota_Re" />
-                <ScalarProperty Name="Re" ColumnName="Re" />
-                <ScalarProperty Name="IVA" ColumnName="IVA" />
-                <ScalarProperty Name="Portes" ColumnName="Portes" />
-                <ScalarProperty Name="Dpp" ColumnName="Dpp" />
-                <ScalarProperty Name="Dto" ColumnName="Dto" />
-                <ScalarProperty Name="Total_bruto" ColumnName="Total_bruto" />
-                <ScalarProperty Name="Forma_pago" ColumnName="Forma_pago" />
-                <ScalarProperty Name="TipoPedido" ColumnName="TipoPedido" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="Numero" ColumnName="Numero" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1325,6 +1327,23 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="GaluModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="Cuota_Re" ColumnName="Cuota_Re" />
+                <ScalarProperty Name="Re" ColumnName="Re" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Portes" ColumnName="Portes" />
+                <ScalarProperty Name="Dpp" ColumnName="Dpp" />
+                <ScalarProperty Name="Dto" ColumnName="Dto" />
+                <ScalarProperty Name="FechaF" ColumnName="FechaF" />
+                <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

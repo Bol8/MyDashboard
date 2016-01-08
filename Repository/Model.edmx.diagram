@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="GaluModel.Empresas" Width="1.5" PointX="3" PointY="23.25" />
         <EntityTypeShape EntityType="GaluModel.Estados" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="GaluModel.EstadosPedido" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="GaluModel.Facturas" Width="1.5" PointX="5.25" PointY="17.875" />
         <EntityTypeShape EntityType="GaluModel.FormaPago" Width="1.5" PointX="3" PointY="4" />
         <EntityTypeShape EntityType="GaluModel.Iva" Width="1.5" PointX="0.75" PointY="16.125" />
         <EntityTypeShape EntityType="GaluModel.linea_factura" Width="1.5" PointX="7.75" PointY="9.25" />
@@ -25,9 +24,7 @@
         <EntityTypeShape EntityType="GaluModel.TipoProducto" Width="1.5" PointX="0.75" PointY="13.875" />
         <EntityTypeShape EntityType="GaluModel.Usuarios" Width="1.5" PointX="8" PointY="1.5" />
         <AssociationConnector Association="GaluModel.FK_Clientes_Estados" />
-        <AssociationConnector Association="GaluModel.FK_Facturas_Clientes" />
         <AssociationConnector Association="GaluModel.FK_Pedido_c_Clientes" />
-        <AssociationConnector Association="GaluModel.FK_Facturas_Empresas" />
         <AssociationConnector Association="GaluModel.FK_Proveedores_Estados" />
         <AssociationConnector Association="GaluModel.FK_Pedido_c_EstadosPedido" />
         <AssociationConnector Association="GaluModel.FK_Pedido_p_EstadosPedido" />
@@ -41,6 +38,10 @@
         <AssociationConnector Association="GaluModel.FK_Articulos_TipoProducto" />
         <AssociationConnector Association="GaluModel.FK_Linea_pedido_c_Articulos" />
         <AssociationConnector Association="GaluModel.FK_Linea_pedido_p_Articulos" />
+        <EntityTypeShape EntityType="GaluModel.Facturas" Width="1.5" PointX="5.625" PointY="18.25" />
+        <AssociationConnector Association="GaluModel.FK_Facturas_Clientes" />
+        <AssociationConnector Association="GaluModel.FK_Facturas_Empresas" />
+        <AssociationConnector Association="GaluModel.FK_Facturas_Pedido_c" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

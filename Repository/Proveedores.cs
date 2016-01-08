@@ -11,7 +11,13 @@ namespace Repository
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using Metadata;
+
+    [MetadataType(typeof(ProviderMetadata))]
+    public partial class Proveedores { }
+
+
     public partial class Proveedores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

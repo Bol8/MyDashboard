@@ -18,19 +18,16 @@ namespace Repository
         public int IdCliente { get; set; }
         public int IdEmpresa { get; set; }
         public int IdPedido { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public int TipoPedido { get; set; }
-        public int Forma_pago { get; set; }
-        public Nullable<float> Total_bruto { get; set; }
+        public System.DateTime FechaF { get; set; }
         public Nullable<float> Dto { get; set; }
         public Nullable<float> Dpp { get; set; }
         public Nullable<float> Portes { get; set; }
         public Nullable<int> IVA { get; set; }
         public Nullable<float> Re { get; set; }
         public Nullable<float> Cuota_Re { get; set; }
-        public Nullable<float> Total { get; set; }
     
         public virtual Clientes Clientes { get; set; }
         public virtual Empresas Empresas { get; set; }
+        public virtual Pedido_c Pedido_c { get; set; }
     }
 }
