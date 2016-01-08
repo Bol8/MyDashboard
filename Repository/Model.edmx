@@ -167,7 +167,6 @@
           <Property Name="Num_ped" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idCliente" Type="int" Nullable="false" />
           <Property Name="Destino" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Tipo" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Forma_pago" Type="int" Nullable="false" />
           <Property Name="Fecha_A" Type="date" Nullable="false" />
@@ -771,7 +770,6 @@
           <Property Name="Num_ped" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idCliente" Type="Int32" Nullable="false" />
           <Property Name="Destino" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Tipo" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
           <Property Name="Forma_pago" Type="Int32" Nullable="false" />
           <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="0" />
@@ -1232,7 +1230,6 @@
                 <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
                 <ScalarProperty Name="Forma_pago" ColumnName="Forma_pago" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Destino" ColumnName="Destino" />
                 <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />

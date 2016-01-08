@@ -17,7 +17,6 @@ namespace Repository
         public int Num_ped { get; set; }
         public int idCliente { get; set; }
         public string Destino { get; set; }
-        public int Tipo { get; set; }
         public int Estado { get; set; }
         public int Forma_pago { get; set; }
         public System.DateTime Fecha_A { get; set; }

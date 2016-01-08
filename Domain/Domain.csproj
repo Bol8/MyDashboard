@@ -62,6 +62,7 @@
     <Compile Include="Manage\gContact.cs" />
     <Compile Include="Manage\gEstados.cs" />
     <Compile Include="Manage\gIVA.cs" />
+    <Compile Include="Manage\gPedidoC.cs" />
     <Compile Include="Manage\gProduct.cs" />
     <Compile Include="Manage\gProvider.cs" />
     <Compile Include="Manage\gTypeProduct.cs" />

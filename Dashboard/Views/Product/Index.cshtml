@@ -14,14 +14,14 @@
                             <th>@Html.DisplayNameFor(model => model.IdArticulo)</th>
                             <th>@Html.DisplayNameFor(model => model.Codigo)</th>
                             <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-                            <th>@Html.DisplayNameFor(model => model.Peso)</th>
                             <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Origen)</th>
                             <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            <th>@Html.DisplayNameFor(model => model.IVA)</th>
+                            <th>@Html.DisplayNameFor(model => model.Peso)</th>
                             <th>@Html.DisplayNameFor(model => model.Precio)</th>
                             <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
-                            <th>@Html.DisplayNameFor(model => model.IVA)</th>
                             <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
-                            <th>@Html.DisplayNameFor(model => model.Origen)</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -33,14 +33,14 @@
                                 <td>@Html.DisplayFor(model => item.IdArticulo)</td>
                                 <td>@Html.DisplayFor(model => item.Codigo)</td>
                                 <td>@Html.DisplayFor(model => item.Nombre)</td>
-                                <td>@Html.DisplayFor(model => item.Peso)</td>
                                 <td>@Html.DisplayFor(model => item.TipoProducto.Nombre)</td>
+                                <td>@Html.DisplayFor(model => item.Origen)</td>
                                 <td>@Html.DisplayFor(model => item.Estados.Nombre)</td>
+                                <td>@Html.DisplayFor(model => item.Iva1.Porcentaje)%</td>
+                                <td>@Html.DisplayFor(model => item.Peso)</td>
                                 <td>@Html.DisplayFor(model => item.Precio)€</td>
                                 <td>@Html.DisplayFor(model => item.Cantidad)</td>
-                                <td>@Html.DisplayFor(model => item.Iva1.Porcentaje)%</td>
                                 <td>@Html.DisplayFor(model => item.Descripcion)</td>
-                                <td>@Html.DisplayFor(model => item.Origen)</td>
                                 <td>
                                     @Html.ActionLink(" ", "Edit", "Product", new { id = item.IdArticulo }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
@@ -55,14 +55,14 @@
                             <th>@Html.DisplayNameFor(model => model.IdArticulo)</th>
                             <th>@Html.DisplayNameFor(model => model.Codigo)</th>
                             <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-                            <th>@Html.DisplayNameFor(model => model.Peso)</th>
                             <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Origen)</th>
                             <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            <th>@Html.DisplayNameFor(model => model.IVA)</th>
+                            <th>@Html.DisplayNameFor(model => model.Peso)</th>
                             <th>@Html.DisplayNameFor(model => model.Precio)</th>
                             <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
-                            <th>@Html.DisplayNameFor(model => model.IVA)</th>
                             <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
-                            <th>@Html.DisplayNameFor(model => model.Origen)</th>
                             <th>Opciones</th>
                         </tr>
                     </tfoot>
