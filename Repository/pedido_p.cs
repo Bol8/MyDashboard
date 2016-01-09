@@ -14,6 +14,12 @@ namespace Repository
     
     public partial class Pedido_p
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pedido_p()
+        {
+            this.Linea_pedido_p = new HashSet<Linea_pedido_p>();
+        }
+    
         public int Num_ped { get; set; }
         public int idProv { get; set; }
         public int Tipo { get; set; }
@@ -26,5 +32,7 @@ namespace Repository
         public virtual EstadosPedido EstadosPedido { get; set; }
         public virtual FormaPago FormaPago { get; set; }
         public virtual Proveedores Proveedores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Linea_pedido_p> Linea_pedido_p { get; set; }
     }
 }

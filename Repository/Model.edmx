@@ -344,6 +344,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Linea_pedido_c_Pedido_c">
+          <End Role="Pedido_c" Type="Self.Pedido_c" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Linea_pedido_c" Type="Self.Linea_pedido_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_c">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Linea_pedido_c">
+              <PropertyRef Name="Num_ped" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Linea_pedido_p_Articulos">
           <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
           <End Role="Linea_pedido_p" Type="Self.Linea_pedido_p" Multiplicity="*" />
@@ -353,6 +367,20 @@
             </Principal>
             <Dependent Role="Linea_pedido_p">
               <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linea_pedido_p_Pedido_p">
+          <End Role="Pedido_p" Type="Self.Pedido_p" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Linea_pedido_p" Type="Self.Linea_pedido_p" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_p">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Linea_pedido_p">
+              <PropertyRef Name="Num_ped" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -509,8 +537,16 @@
             <End Role="Articulos" EntitySet="Articulos" />
             <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
           </AssociationSet>
+          <AssociationSet Name="FK_Linea_pedido_c_Pedido_c" Association="Self.FK_Linea_pedido_c_Pedido_c">
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+            <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
+          </AssociationSet>
           <AssociationSet Name="FK_Linea_pedido_p_Articulos" Association="Self.FK_Linea_pedido_p_Articulos">
             <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linea_pedido_p_Pedido_p" Association="Self.FK_Linea_pedido_p_Pedido_p">
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
             <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
           </AssociationSet>
           <AssociationSet Name="FK_Pedido_c_Clientes" Association="Self.FK_Pedido_c_Clientes">
@@ -643,6 +679,14 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Empresas" EntitySet="Empresas" />
           </AssociationSet>
+          <AssociationSet Name="FK_Linea_pedido_c_Pedido_c" Association="GaluModel.FK_Linea_pedido_c_Pedido_c">
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+            <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linea_pedido_p_Pedido_p" Association="GaluModel.FK_Linea_pedido_p_Pedido_p">
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
+            <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Albaranes">
           <Key>
@@ -763,6 +807,7 @@
           <Property Name="Total" Type="Double" Nullable="false" />
           <Property Name="IdArticulo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Articulos" Relationship="GaluModel.FK_Linea_pedido_c_Articulos" FromRole="Linea_pedido_c" ToRole="Articulos" />
+          <NavigationProperty Name="Pedido_c" Relationship="GaluModel.FK_Linea_pedido_c_Pedido_c" FromRole="Linea_pedido_c" ToRole="Pedido_c" />
         </EntityType>
         <EntityType Name="Linea_pedido_p">
           <Key>
@@ -775,6 +820,7 @@
           <Property Name="Total" Type="Single" />
           <Property Name="IdArticulo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Articulos" Relationship="GaluModel.FK_Linea_pedido_p_Articulos" FromRole="Linea_pedido_p" ToRole="Articulos" />
+          <NavigationProperty Name="Pedido_p" Relationship="GaluModel.FK_Linea_pedido_p_Pedido_p" FromRole="Linea_pedido_p" ToRole="Pedido_p" />
         </EntityType>
         <EntityType Name="Pedido_c">
           <Key>
@@ -792,6 +838,7 @@
           <NavigationProperty Name="EstadosPedido" Relationship="GaluModel.FK_Pedido_c_EstadosPedido" FromRole="Pedido_c" ToRole="EstadosPedido" />
           <NavigationProperty Name="FormaPago" Relationship="GaluModel.FK_Pedido_c_FormaPago" FromRole="Pedido_c" ToRole="FormaPago" />
           <NavigationProperty Name="Facturas" Relationship="GaluModel.FK_Facturas_Pedido_c" FromRole="Pedido_c" ToRole="Facturas" />
+          <NavigationProperty Name="Linea_pedido_c" Relationship="GaluModel.FK_Linea_pedido_c_Pedido_c" FromRole="Pedido_c" ToRole="Linea_pedido_c" />
         </EntityType>
         <EntityType Name="Pedido_p">
           <Key>
@@ -808,6 +855,7 @@
           <NavigationProperty Name="EstadosPedido" Relationship="GaluModel.FK_Pedido_p_EstadosPedido" FromRole="Pedido_p" ToRole="EstadosPedido" />
           <NavigationProperty Name="FormaPago" Relationship="GaluModel.FK_Pedido_p_FormaPago" FromRole="Pedido_p" ToRole="FormaPago" />
           <NavigationProperty Name="Proveedores" Relationship="GaluModel.FK_Pedido_p_Proveedores" FromRole="Pedido_p" ToRole="Proveedores" />
+          <NavigationProperty Name="Linea_pedido_p" Relationship="GaluModel.FK_Linea_pedido_p_Pedido_p" FromRole="Pedido_p" ToRole="Linea_pedido_p" />
         </EntityType>
         <EntityType Name="Proveedores">
           <Key>
@@ -1124,6 +1172,34 @@
             </Principal>
             <Dependent Role="Empresas">
               <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linea_pedido_c_Pedido_c">
+          <End Type="GaluModel.Pedido_c" Role="Pedido_c" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GaluModel.Linea_pedido_c" Role="Linea_pedido_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_c">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Linea_pedido_c">
+              <PropertyRef Name="Num_ped" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linea_pedido_p_Pedido_p">
+          <End Type="GaluModel.Pedido_p" Role="Pedido_p" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GaluModel.Linea_pedido_p" Role="Linea_pedido_p" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_p">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Linea_pedido_p">
+              <PropertyRef Name="Num_ped" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

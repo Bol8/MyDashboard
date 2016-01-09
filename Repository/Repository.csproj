@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Metadata\ClientMetadata.cs" />
     <Compile Include="Metadata\ContactMetadata.cs" />
+    <Compile Include="Metadata\PedidoCMetadata.cs" />
     <Compile Include="Metadata\ProductMetadata.cs" />
     <Compile Include="Metadata\ProviderMetadata.cs" />
     <Compile Include="Model.Context.cs">

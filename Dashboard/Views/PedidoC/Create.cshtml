@@ -1,0 +1,109 @@
+﻿@model Repository.Pedido_c
+
+@{
+    ViewBag.title = "Nuevo pedido cliente";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Nuevo pedido [Cliente]</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        @using (Html.BeginForm("Create", "pedido_c"))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <p style="padding: 1px 2px 1px 2px;"> </p>
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <small>Cliente:</small><br>
+                                    @Html.DropDownList("idCliente", new SelectList(ViewBag.idCliente, "Value", "Text"), new { @Class = "form-control input-sm" })
+                                    <br />
+                                </div>
+
+                                <div class="col-md-4">
+                                    <small>Destino:</small><br />
+                                    @Html.TextBox("Destino", String.Empty, new { @Class = "form-control input-sm" })
+                                    <br />
+                                </div>
+
+                                <div class="col-md-4">
+                                    <small>Estado:</small><br>
+                                    @Html.DropDownList("Estado", new SelectList(ViewBag.Estado, "Value", "Text"), new { @Class = "form-control input-sm" })
+                                    <br>
+                                </div>
+
+
+                            </div>
+
+                                    <div class="row">
+                                        <br />
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <small>Fecha Alta:</small><br>
+                                            @Html.TextBox("Fecha_A", DateTime.Now.ToShortDateString(), new { @Class = "form-control input-sm", @readonly = true })
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <small>Forma Pago:</small><br />
+                                            @Html.DropDownList("Forma_pago", new SelectList(ViewBag.Forma_pago, "Value", "Text"), new { @Class = "form-control input-sm" })
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <small>Tipo:</small><br>
+                                            @Html.TextBox("Tipo", "Cliente", new { @Class = "form-control input-sm", @readonly = true })
+                                        </div>
+
+
+                                        <div class="col-md-12" style="text-align:right">
+                                            <div class="Button btn-group">
+                                                <br />
+                                                <input id="btnSubmit" type="submit" value="Guardar" class="btn btn-sm bg-olive" />
+                                                @Html.ActionLink("Volver", "Index", "Home", null, new { @class = "btn btn-sm bg-navy" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                        }
+                    </div>
+
+                </div>
+
+
+                @*<div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>*@
+
+            </div>
+
+            }
+
+            <div class="col-xs-12">
+                @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
+            </div>
+
+
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</div><!-- /.col -->
+</div><!-- /.row -->
