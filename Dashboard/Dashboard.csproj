@@ -1187,6 +1187,7 @@
     <Content Include="Views\Contact\DeleteConfirmed.cshtml" />
     <Content Include="Views\PedidoC\Create.cshtml" />
     <Content Include="Views\PedidoC\Edit.cshtml" />
+    <Content Include="Views\PedidoC\DeleteConfirmed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
