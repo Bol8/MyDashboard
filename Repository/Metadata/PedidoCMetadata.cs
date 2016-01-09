@@ -17,6 +17,7 @@ namespace Repository.Metadata
 
 
         [Display(Name = "Cliente")]
+        [Required(ErrorMessage = "Campo obligatorio")]
         public int idCliente { get; set; }
 
 
@@ -24,24 +25,28 @@ namespace Repository.Metadata
 
         [Display(Name = "Destino")]
         [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [Required(ErrorMessage = "Campo obligatorio")]
         public string Destino { get; set; }
 
 
 
 
         [Display(Name = "Estado")]
+        [Required(ErrorMessage = "Campo obligatorio")]
         public int Estado { get; set; }
 
 
 
 
         [Display(Name = "Pago")]
+        [Required(ErrorMessage = "Campo obligatorio")]
         public int Forma_pago { get; set; }
 
 
 
 
         [Display(Name = "Fecha")]
+        [Required(ErrorMessage = "Campo obligatorio")]
         public System.DateTime Fecha_A { get; set; }
 
 

@@ -70,6 +70,7 @@
     <Compile Include="Manage\gClient.cs" />
     <Compile Include="Manage\gContact.cs" />
     <Compile Include="Manage\gFpago.cs" />
+    <Compile Include="Manage\gOrderStatus.cs" />
     <Compile Include="Manage\gStatus.cs" />
     <Compile Include="Manage\gIVA.cs" />
     <Compile Include="Manage\gPedidoC.cs" />
