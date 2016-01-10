@@ -210,6 +210,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\LineaPedidoCController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PedidoCController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -1188,6 +1189,9 @@
     <Content Include="Views\PedidoC\Create.cshtml" />
     <Content Include="Views\PedidoC\Edit.cshtml" />
     <Content Include="Views\PedidoC\DeleteConfirmed.cshtml" />
+    <Content Include="Views\LineaPedidoC\Index.cshtml" />
+    <Content Include="Views\PedidoC\Details.cshtml" />
+    <Content Include="Views\LineaPedidoC\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

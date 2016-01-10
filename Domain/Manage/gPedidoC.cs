@@ -61,10 +61,12 @@ namespace Domain.Manage
             return true;
         }
 
+
         public Pedido_c getElementById(long id)
         {
             return db.Pedido_c.Find(id);
         }
+
 
         public List<Pedido_c> getElements()
         {
@@ -88,6 +90,21 @@ namespace Domain.Manage
         }
 
 
+        public Pedido_c create(Pedido_c input)
+        {
+            try
+            {
+                db.Pedido_c.Add(input);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                return null;
+            }
+
+            return input;
+        }
 
         #endregion
 
