@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Domain.Manage;
 using Repository;
+using Domain.Models.LineaPedidoC;
 
 namespace Dashboard.Controllers
 {
@@ -44,14 +45,9 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Create(int NumPed)
         {
-            var lpedido = new Linea_pedido_c();
-            lpedido.Num_ped = NumPed;
+            var model = new mCLineaPedido(NumPed);
             
-            var st = getNameArticle();
-            ViewBag.idArticulo = new SelectList(st, "idArt", "Nombre");
-
-
-            return View(lpedido);
+            return View(model);
         }
 
 
