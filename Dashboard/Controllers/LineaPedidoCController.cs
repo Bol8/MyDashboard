@@ -4,24 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain.Manage;
+using Repository;
 
 namespace Dashboard.Controllers
 {
     public class LineaPedidoCController : Controller
     {
         private gLineaPedidoC gLineaPedidoC;
+        private gProduct gProduct;
 
         #region Constructors
 
         public LineaPedidoCController()
         {
             gLineaPedidoC = new gLineaPedidoC();
+            gProduct = new gProduct();
         }
 
         #endregion
 
 
-        [HttpGet]
+        //[HttpGet]
         public ActionResult Index(int numPed)
         {
             var orderLines = gLineaPedidoC.getElementsById(numPed);
@@ -29,49 +32,67 @@ namespace Dashboard.Controllers
             return PartialView(orderLines);
         }
 
+
         // GET: LineaPedidoC/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
+
+
         [HttpGet]
         public ActionResult Create(int NumPed)
         {
-            ViewBag.NumPed = NumPed;
-
+            var lpedido = new Linea_pedido_c();
+            lpedido.Num_ped = NumPed;
+            
             var st = getNameArticle();
-
             ViewBag.idArticulo = new SelectList(st, "idArt", "Nombre");
 
 
-            return View();
+            return View(lpedido);
         }
 
 
 
 
-        // POST: LineaPedidoC/Create
+
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Linea_pedido_c lpedido)
         {
-            try
+            if(lpedido.Cantidad > gProduct.count(lpedido.IdArticulo))
             {
-                // TODO: Add insert logic here
+                ModelState.AddModelError(String.Empty, "No hay unidades suficientes");
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (!ModelState.IsValid)
             {
-                return View();
+                var st = getNameArticle();
+                ViewBag.idArticulo = new SelectList(st, "idArt", "Nombre");
+
+                return View(lpedido);
             }
+
+            lpedido.Linea = gLineaPedidoC.getNumLine(lpedido.Num_ped);
+            if (!gLineaPedidoC.save(lpedido)) throw new Exception("Error al intentar guardar el pedido");
+
+            
+            return RedirectToAction("Create", new { numPed = lpedido.Num_ped});
+
         }
+
+
+
 
         // GET: LineaPedidoC/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
+
+
+
 
         // POST: LineaPedidoC/Edit/5
         [HttpPost]
@@ -89,11 +110,17 @@ namespace Dashboard.Controllers
             }
         }
 
+
+
+
         // GET: LineaPedidoC/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
+
+
+
 
         // POST: LineaPedidoC/Delete/5
         [HttpPost]
@@ -110,6 +137,8 @@ namespace Dashboard.Controllers
                 return View();
             }
         }
+
+
 
 
         #region Private methods

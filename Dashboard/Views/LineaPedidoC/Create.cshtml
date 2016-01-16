@@ -1,53 +1,126 @@
 ﻿@model Repository.Linea_pedido_c
 
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-8">
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">Info. pedido [cliente]</h3>
             </div><!-- /.box-header -->
             <div class="box-body">
-
-                @Html.Action("Details", "PedidoC", new { id = ViewBag.Numped })
-
+                @Html.Action("Details", "PedidoC", new { id = Model.Num_ped })
             </div>
 
         </div>
     </div>
 
-    <div class="col-xs-8">
+    <div class="col-xs-4">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Añadir nuevo detalle </h3>
+                <h3 class="box-title">Añadir producto </h3>
             </div><!-- /.box-header -->
             <div class="box-body">
-                <div class="col-xs-4">
-                    <small>Producto:</small><br>
-                    @Html.DropDownList("idArticulo", new SelectList(ViewBag.idArticulo, "Value", "Text"), new { @Class = "form-control input-sm" })
-                    <br />
 
-                    <small>Cantidad:</small><br />
+                @using (Html.BeginForm("Create", "LineaPedidoC", FormMethod.Post))
+                {
+                    @Html.HiddenFor(model => model.Num_ped)
 
-                    @Html.TextBox("Cantidad", String.Empty, new { @Class = "form-control input-sm" })
-                    <br /> <br/>  
+                    <div id="Detalle" class="col-xs-12">
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:3px;" })
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Guardar" class="btn btn-primary" />
+                        <div class="col-xs-6">
+                            <small>Producto:</small><br>
+                            @Html.DropDownList("idArticulo", new SelectList(ViewBag.idArticulo, "Value", "Text"), "--Select--", new { @Class = "form-control input-sm", id = "dropProduct" })
+                            @*@Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })*@
+                            <br />
+
+                            <small>Cantidad:</small><br />
+                            @Html.TextBox("Cantidad", String.Empty, new { @Class = "form-control input-sm" })
+                            @* @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })*@
+                            <br /> <br />
+
+                            <div class="form-group">
+                                <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
                         </div>
+
+                        <div class="col-xs-6">
+                            <small>Unidades disponibles</small><br />
+                            <div style="background-color:#e6e6e6;">
+                                @Html.Label("Unidades", " ", new { @Class = "control-label", style = "padding:3px 4px 2px 4px;", id = "lbUnits" })
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
-                
-
+                }
             </div>
-
         </div>
     </div>
 
     <div class="col-xs-12">
-        @Html.Action("Index", "LineaPedidoC", new { numPed = ViewBag.NumPed })
+        @Html.Action("Index", "LineaPedidoC", new { numPed = Model.Num_ped })
     </div>
 
 </div>
 
+
+<script type="text/javascript">
+
+    var sizeDivInfo = $("#InfoPed").height();
+    var sizeDivDetalle = $("#Detalle").height();
+
+    //alert(sizeDivInfo + " " + sizeDivDetalle)
+
+    if (sizeDivInfo > sizeDivDetalle) {
+        $("#Detalle").css({ "height": sizeDivInfo });
+    }
+
+    if (sizeDivDetalle > sizeDivInfo) {
+        $("#InfoPed").css({ "height": sizeDivDetalle });
+    }
+
+
+
+    $("#dropProduct").change(function () {
+        var dato = $("#dropProduct").val();
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("getUnits", "Product")',
+            data: { id: dato },
+            dataType: 'json',
+            success: function (data) {
+                $("#lbUnits").text(data);
+            },
+            error: function () {
+                $("#lbUnits").text("No hay unidades");
+            }
+        });
+
+
+    });
+
+    //$(".customForm").each(function () {
+
+    //    var sizeDivInfo = $(this).children(".col-md-10").height();
+    //    var sizeDivDetalle = $(this).children(".col-md-2").height();
+
+
+    //    if (sizeDiv2 > sizeDiv10) {
+    //        if (sizeDiv10 < 200) {
+    //            $(this).children(".col-md-2").css({ "height": 300, "overflow-x": "hidden", "overflow-y": "scroll" });
+    //        } else {
+    //            $(this).children(".col-md-2").css({ "height": sizeDiv10, "overflow-x": "hidden", "overflow-y": "scroll" });
+    //        }
+
+    //    }
+
+    //    //alert("Tamaño del div(10): " + result + "/r Tamaño del div(2) : " + sizeDiv);
+    //});
+
+
+    //function SendDataList() {
+    //    $("#BrowseForm").submit();
+    //}
+
+</script>

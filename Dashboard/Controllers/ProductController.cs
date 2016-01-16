@@ -125,5 +125,13 @@ namespace Dashboard.Controllers
             return RedirectToAction("Index");
 
         }
+
+
+        public ActionResult getUnits(int id)
+        {
+            var units = gProduct.count(id);
+
+            return Json(units, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace Domain.Manage
 {
-    public class gProduct:ICrud<Articulos>
+    public class gProduct : ICrud<Articulos>
     {
         private Entities db;
 
@@ -62,9 +62,18 @@ namespace Domain.Manage
             return db.Articulos.Find(id);
         }
 
+
         public List<Articulos> getElements()
         {
             return db.Articulos.ToList();
+        }
+
+
+        public int count(int id)
+        {
+            var units = db.Articulos.Find(id).Cantidad;
+
+            return units;
         }
 
 

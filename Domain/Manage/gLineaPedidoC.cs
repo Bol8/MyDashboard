@@ -28,7 +28,19 @@ namespace Domain.Manage
 
         public bool delete(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var lpedido = db.Linea_pedido_c.Find(id);
+                db.Linea_pedido_c.Remove(lpedido);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                return false;
+            }
+
+            return true;
         }
 
         public bool edit(Linea_pedido_c input)
@@ -46,6 +58,7 @@ namespace Domain.Manage
             return true;
         }
 
+
         public Linea_pedido_c getElementById(long id)
         {
             return db.Linea_pedido_c.Find(id);
@@ -54,6 +67,17 @@ namespace Domain.Manage
         public List<Linea_pedido_c> getElements()
         {
             return db.Linea_pedido_c.ToList();
+        }
+
+
+        public int getNumLine(int numPed)
+        {
+            var query = (from l in db.Linea_pedido_c
+                         where l.Num_ped == numPed
+                         orderby l.Linea descending
+                         select l.Linea).FirstOrDefault();
+
+            return query + 1;
         }
 
 
@@ -67,7 +91,20 @@ namespace Domain.Manage
 
         public bool save(Linea_pedido_c input)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Linea_pedido_c.Add(input);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                return false;
+            }
+
+            return true;
+
+
         }
 
         #endregion
