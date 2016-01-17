@@ -23,9 +23,11 @@
                 @using (Html.BeginForm("Create", "LineaPedidoC", FormMethod.Post))
                 {
                     @Html.HiddenFor(model => model.Num_ped)
+                    
+                    @*@Html.Hidden("Unidades","")*@
 
                     <div id="Detalle" class="col-xs-12">
-                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:3px;" })
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:10px;" })
 
                         <div class="form-horizontal">
 
@@ -41,6 +43,7 @@
                                 <small>@Html.LabelFor(model => model.Unidades, htmlAttributes: new { @class = "control-label col-md-2" })</small>
                                 <div class="col-md-10">
                                     @Html.Label(Model.Unidades.ToString(), new { @Class = "control-label", style = "padding:3px 4px 2px 4px;", id = "lbUnits" })
+                                    <input name="Unidades" type="hidden" id="InputUnits"/>
                                     @Html.ValidationMessageFor(model => model.Unidades, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -52,6 +55,8 @@
                                     @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+
+
 
 
                             <div class="form-group">
@@ -116,6 +121,8 @@
             dataType: 'json',
             success: function (data) {
                 $("#lbUnits").text(data);
+                $("#InputUnits").val(data);
+                //$("#Unidades").val(data);
             },
             error: function () {
                 $("#lbUnits").text("No hay unidades");

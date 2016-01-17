@@ -55,7 +55,7 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(Linea_pedido_c lpedido)
+        public ActionResult Create(Linea_pedido_c lpedido,int Unidades)
         {
             if(lpedido.Cantidad > gProduct.count(lpedido.IdArticulo))
             {
@@ -64,10 +64,10 @@ namespace Dashboard.Controllers
 
             if (!ModelState.IsValid)
             {
-                var st = getNameArticle();
-                ViewBag.idArticulo = new SelectList(st, "idArt", "Nombre");
-
-                return View(lpedido);
+                var model = new mCLineaPedido(lpedido);
+                model.Unidades = Unidades;
+               
+                return View(model);
             }
 
             lpedido.Linea = gLineaPedidoC.getNumLine(lpedido.Num_ped);

@@ -53,6 +53,18 @@ namespace Domain.Models.LineaPedidoC
             
         }
 
+        public mCLineaPedido(Linea_pedido_c lpedido)
+        {
+            db = new Entities();
+            var articulos = getNameArticle();
+
+            Articulos = new SelectList(articulos, "idArt", "Nombre");
+            this.Num_ped = lpedido.Num_ped;
+            this.IdArticulo = lpedido.IdArticulo;
+            this.Cantidad = lpedido.Cantidad;
+            
+        }
+
 
 
 
