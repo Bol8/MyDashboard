@@ -7,18 +7,22 @@ using Repository;
 using Domain.Interfaces;
 using Elmah;
 using System.Data.Entity;
+using Domain.Connection;
 
 namespace Domain.Manage
 {
-    public class gProvider : ICrud<Proveedores>
+    public class gProveedor : ICrud<Proveedores>
     {
 
         private Entities db;
 
-        #region Constructors
+        private ConnectionDB conn;
 
-        public gProvider()
+        #region Constructores
+
+        public gProveedor()
         {
+            conn = new ConnectionDB();
             db = new Entities();
         }
 
@@ -33,13 +37,14 @@ namespace Domain.Manage
         {
             try
             {
-                var provider = db.Proveedores.Find(id);
-                db.Proveedores.Remove(provider);
-                db.SaveChanges();
+                var provider = conn.DB.Proveedores.Find(id);
+                conn.DB.Proveedores.Remove(provider);
+                conn.DB.SaveChanges();
             }
             catch (Exception ex)
             {
                 ErrorSignal.FromCurrentContext().Raise(ex);
+                conn.DB.Dispose();
                 return false;
             }
 
@@ -52,11 +57,13 @@ namespace Domain.Manage
         {
             try
             {
-                db.Entry(input).State = EntityState.Modified;
-                db.SaveChanges();
+                conn.DB.Entry(input).State = EntityState.Modified;
+                conn.DB.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                conn.DB.Dispose();
                 return false;
             }
 
@@ -66,13 +73,13 @@ namespace Domain.Manage
 
         public Proveedores getElementById(long id)
         {
-            return db.Proveedores.Find(id);
+            return conn.DB.Proveedores.Find(id);
         }
 
 
         public List<Proveedores> getElements()
         {
-            return db.Proveedores.ToList();
+            return conn.DB.Proveedores.ToList();
         }
 
 
@@ -80,12 +87,13 @@ namespace Domain.Manage
         {
             try
             {
-                db.Proveedores.Add(input);
-                db.SaveChanges();
+                conn.DB.Proveedores.Add(input);
+                conn.DB.SaveChanges();
             }
             catch (Exception ex)
             {
                 ErrorSignal.FromCurrentContext().Raise(ex);
+                conn.DB.Dispose();
                 return false;
             }
 

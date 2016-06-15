@@ -1,11 +1,16 @@
 ﻿@model IEnumerable<Repository.Proveedores>
 
+@{ 
+    ViewBag.Title = "Proveeores";
+}
+
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Clientes</h3>
-                @Html.ActionLink("Nuevo", "Create", "Provider", null, new { @class = "btn btn-primary pull-right" })
+                <h3 class="box-title">@ViewBag.Title</h3>
+                @Html.ActionLink("Nuevo", "Create", "Proveedor", null, new { @class = "btn btn-primary pull-right" })
             </div><!-- /.box-header -->
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">

@@ -53,7 +53,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\PROG_LOCAL\Core\branches\34271\CORE\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection\ConnectionDB.cs" />
     <Compile Include="DataSet\GaluDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -77,9 +81,12 @@
     <Compile Include="Manage\gIVA.cs" />
     <Compile Include="Manage\gPedidoC.cs" />
     <Compile Include="Manage\gProduct.cs" />
-    <Compile Include="Manage\gProvider.cs" />
+    <Compile Include="Manage\gProveedor.cs" />
     <Compile Include="Manage\gTypeProduct.cs" />
+    <Compile Include="Models\Cliente\mCliente.cs" />
     <Compile Include="Models\LineaPedidoC\mCLineaPedido.cs" />
+    <Compile Include="Models\Proveedor\mProveedor.cs" />
+    <Compile Include="Models\Proveedor\mProveedorCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -94,7 +101,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Client\" />
     <Folder Include="Tools\" />
   </ItemGroup>
   <ItemGroup>

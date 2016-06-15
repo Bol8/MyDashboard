@@ -31,8 +31,8 @@ namespace Repository
     
         public virtual EstadosPedido EstadosPedido { get; set; }
         public virtual FormaPago FormaPago { get; set; }
-        public virtual Proveedores Proveedores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Linea_pedido_p> Linea_pedido_p { get; set; }
+        public virtual Proveedores Proveedores { get; set; }
     }
 }

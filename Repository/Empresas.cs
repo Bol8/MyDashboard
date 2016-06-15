@@ -32,8 +32,8 @@ namespace Repository
         public string Mail { get; set; }
         public int idUser { get; set; }
     
+        public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturas> Facturas { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
     }
 }

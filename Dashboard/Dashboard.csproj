@@ -204,6 +204,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Connection\ConnectionDB.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -212,9 +213,8 @@
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\LineaPedidoCController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PedidoCController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProviderController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="GaluDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1174,10 +1174,10 @@
     <Content Include="Views\Client\Create.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\DeleteConfirmed.cshtml" />
-    <Content Include="Views\Provider\Index.cshtml" />
-    <Content Include="Views\Provider\Create.cshtml" />
-    <Content Include="Views\Provider\Edit.cshtml" />
-    <Content Include="Views\Provider\DeleteConfirmed.cshtml" />
+    <Content Include="Views\Proveedor\Index.cshtml" />
+    <Content Include="Views\Proveedor\Create.cshtml" />
+    <Content Include="Views\Proveedor\Edit.cshtml" />
+    <Content Include="Views\Proveedor\DeleteConfirmed.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />

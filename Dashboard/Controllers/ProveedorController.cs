@@ -5,21 +5,22 @@ using System.Web;
 using System.Web.Mvc;
 using Domain.Manage;
 using Repository;
+using Domain.Models.Proveedor;
 
 
 namespace Dashboard.Controllers
 {
-    public class ProviderController : Controller
+    public class ProveedorController : Controller
     {
-        private gProvider gProvider;
+        private gProveedor gProvider;
         private gStatus gStatus;
 
 
         #region Constructors
 
-        public ProviderController()
+        public ProveedorController()
         {
-            gProvider = new gProvider();
+            gProvider = new gProveedor();
             gStatus = new gStatus();
         }
 
@@ -49,8 +50,8 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-            return View();
+            var model = new mProveedorCreate();
+            return View(model);
         }
 
 
