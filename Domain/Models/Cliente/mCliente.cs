@@ -10,6 +10,9 @@ namespace Domain.Models.Cliente
 {
     public class mCliente
     {
+
+        #region Atributos
+
         [Display(Name = "Código")]
         public int IdCliente { get; set; }
 
@@ -89,12 +92,14 @@ namespace Domain.Models.Cliente
         [Display(Name = "Nota")]
         [DataType(DataType.MultilineText)]
         public string Nota { get; set; }
-        
+
         public string Imagen { get; set; }
 
+        #endregion
 
+        
 
-        #region Conatructores
+        #region Constructores
 
 
         public mCliente(Clientes cliente)

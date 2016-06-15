@@ -30,6 +30,13 @@ namespace Domain.Models.Proveedor
 
         }
 
+
+        public mProveedorCreate(Proveedores proveedor)
+            :base(proveedor)
+        {
+
+        }
+
         #endregion
 
 

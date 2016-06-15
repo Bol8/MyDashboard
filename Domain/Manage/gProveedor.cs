@@ -87,6 +87,8 @@ namespace Domain.Manage
         {
             try
             {
+                input.Fecha_A = DateTime.Now;
+
                 conn.DB.Proveedores.Add(input);
                 conn.DB.SaveChanges();
             }

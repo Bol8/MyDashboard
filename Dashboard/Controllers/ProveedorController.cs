@@ -58,16 +58,16 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(Proveedores provider)
+        public ActionResult Create(Proveedores proveedor)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+                var model = new mProveedorCreate(proveedor);
 
-                return View(provider);
+                return View(proveedor);
             }
 
-            if (!gProvider.save(provider)) throw new Exception("Error al intentar crear el proveedor");
+            if (!gProvider.save(proveedor)) throw new Exception("Error al intentar crear el proveedor");
 
             return RedirectToAction("Index");
         }

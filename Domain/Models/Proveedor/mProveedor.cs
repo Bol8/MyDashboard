@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Repository;
 
 namespace Domain.Models.Proveedor
 {
     public class mProveedor
     {
+        #region Atributos
+
         [Display(Name = "Código")]
         public int IdProveedor { get; set; }
 
@@ -85,8 +88,37 @@ namespace Domain.Models.Proveedor
         [DataType(DataType.MultilineText)]
         public string Nota { get; set; }
 
-        
+
         public string Imagen { get; set; }
+
+        #endregion
+        
+
+        #region Constructores
+
+        public mProveedor() { }
+
+
+        public mProveedor(Proveedores proveedor)
+        {
+            IdProveedor = proveedor.IdProveedor;
+            RazonSocial = proveedor.RazonSocial;
+            NIF = proveedor.NIF;
+            Domicilio = proveedor.Domicilio;
+            CP = proveedor.CP;
+            Poblacion = proveedor.Poblacion;
+            Provincia = proveedor.Provincia;
+            Pais = proveedor.Pais;
+            Fecha_A = proveedor.Fecha_A;
+            Estado = proveedor.Estado;
+            Telefono = proveedor.Telefono;
+            Mail = proveedor.Mail;
+            Nota = proveedor.Nota;
+        }
+
+
+        #endregion
+
 
     }
 }
