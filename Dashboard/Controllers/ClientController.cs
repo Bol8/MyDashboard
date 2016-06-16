@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Domain.Manage;
 using Repository;
+using Domain.Models.Cliente;
 
 namespace Dashboard.Controllers
 {
@@ -32,24 +33,14 @@ namespace Dashboard.Controllers
             return View(clientList);
         }
 
-
-
-        [HttpGet]
-        public ActionResult Details(int id)
-        {
-
-
-            return View();
-        }
-
-
+        
 
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+            var model = new mClientCreate();
 
-            return View();
+            return View(model);
         }
 
 

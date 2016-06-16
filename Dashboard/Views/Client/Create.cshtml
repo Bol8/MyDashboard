@@ -1,23 +1,15 @@
-﻿@model Domain.Models.Proveedor.mProveedorCreate
-
-@{ 
-    ViewBag.Title = "Editar proveedor";
-}
-
+﻿@model Domain.Models.Cliente.mClientCreate
 
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">@ViewBag.Title</h3>
+                <h3 class="box-title">Nuevo proveedor</h3>
             </div><!-- /.box-header -->
             <div class="box-body">
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-
-                    @Html.HiddenFor(model => model.IdProveedor)
-                    @Html.HiddenFor(model => model.Fecha_A)
 
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -81,6 +73,14 @@
                                     @Html.ValidationMessageFor(model => model.CP, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.Fecha_A, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Fecha_A, new { htmlAttributes = new { @class = "datepicker form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Fecha_A, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })

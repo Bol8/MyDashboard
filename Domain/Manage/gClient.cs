@@ -61,6 +61,7 @@ namespace Domain.Manage
         {
             try
             {
+                input.Fecha_A = DateTime.Now;
                 db.Clientes.Add(input);
                 db.SaveChanges();
             }

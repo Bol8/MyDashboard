@@ -1,4 +1,4 @@
-﻿@model Repository.Proveedores
+﻿@model Domain.Models.Proveedor.mProveedor
 
 <div class="row">
     <div class="col-xs-12">
@@ -6,13 +6,14 @@
             <div class="box-header with-border">
                 <h3 class="box-title">¿Seguro que desea eliminar?</h3>
             </div><!-- /.box-header -->
+
             <div class="box-body">
                 <div>
                     @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:20px;" })
                 </div>
 
                 <div class="col-xs-12">
-                    @using (Html.BeginForm("Delete", "Provider", new { id = Model.IdProveedor }, FormMethod.Post))
+                    @using (Html.BeginForm("Delete", "Proveedor", new { id = Model.IdProveedor }, FormMethod.Post))
                     {
                         @Html.HiddenFor(model => model.IdProveedor)
 
@@ -45,8 +46,8 @@
                             @Html.DisplayFor(x => x.Fecha_A)
                         </p>
                         <p>
-                            <strong>@Html.DisplayNameFor(x => x.Estado):</strong>
-                            @Html.DisplayFor(x => x.Estados.Nombre)
+                            <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
+                            @Html.DisplayFor(x => x.sEstado)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Telefono):</strong>

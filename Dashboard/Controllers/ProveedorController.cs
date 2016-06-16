@@ -73,18 +73,25 @@ namespace Dashboard.Controllers
         }
 
 
+        public ActionResult pruebaAjax()
+        {
+            if (Request.IsAjaxRequest())
+            {
+                var a = 1;
+            }
 
+
+            return View();
+        }
 
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var provider = gProvider.getElementById(id);
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+            var model = new mProveedorCreate(gProvider.getElementById(id));
 
-            return View(provider);
+            return View(model);
         }
-
 
 
 
@@ -93,8 +100,7 @@ namespace Dashboard.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-
+                var model = new mProveedorCreate(provider);
                 return View(provider);
             }
 
@@ -110,7 +116,7 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult DeleteConfirmed(int id)
         {
-            var provider = gProvider.getElementById(id);
+            var provider = new mProveedor(gProvider.getElementById(id));
 
             return View(provider);
         }
@@ -124,7 +130,6 @@ namespace Dashboard.Controllers
             if(!gProvider.delete(provider.IdProveedor)) throw new Exception("Error al intentar eliminar el proveedor");
 
             return RedirectToAction("Index");
-
         }
     }
 }

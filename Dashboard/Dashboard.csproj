@@ -1132,7 +1132,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1171,7 +1173,6 @@
     <Content Include="Views\Shared\MainHeader.cshtml" />
     <Content Include="Views\Shared\MainSideBar.cshtml" />
     <Content Include="Views\PedidoC\Index.cshtml" />
-    <Content Include="Views\Client\Create.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\DeleteConfirmed.cshtml" />
     <Content Include="Views\Proveedor\Index.cshtml" />
@@ -1192,6 +1193,7 @@
     <Content Include="Views\LineaPedidoC\Index.cshtml" />
     <Content Include="Views\PedidoC\Details.cshtml" />
     <Content Include="Views\LineaPedidoC\Create.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

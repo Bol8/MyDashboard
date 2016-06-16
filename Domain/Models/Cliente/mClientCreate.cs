@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 using Repository;
-using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 using Domain.Connection;
+using System.Web.Mvc;
 
-namespace Domain.Models.Proveedor
+namespace Domain.Models.Cliente
 {
-    public class mProveedorCreate:mProveedor
+    public class mClientCreate : mCliente
     {
         #region Atributos
 
@@ -20,25 +20,23 @@ namespace Domain.Models.Proveedor
         #endregion
 
 
-
         #region Constructores
 
-        public mProveedorCreate()
+        public mClientCreate()
         {
             conn = new ConnectionDB();
             Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
-
         }
 
-
-        public mProveedorCreate(Proveedores proveedor)
-            :base(proveedor)
+        public mClientCreate(Clientes client)
+            : base(client)
         {
             conn = new ConnectionDB();
             Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
         }
 
         #endregion
+
 
 
     }

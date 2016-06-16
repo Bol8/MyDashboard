@@ -70,6 +70,10 @@ namespace Domain.Models.Proveedor
         public int Estado { get; set; }
 
 
+        [Display(Name = "Estado")]
+        public string sEstado { get; set; }
+
+
         [Display(Name = "Telefono")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [DataType(DataType.PhoneNumber)]
@@ -111,6 +115,7 @@ namespace Domain.Models.Proveedor
             Pais = proveedor.Pais;
             Fecha_A = proveedor.Fecha_A;
             Estado = proveedor.Estado;
+            sEstado = proveedor.Estados.Nombre;
             Telefono = proveedor.Telefono;
             Mail = proveedor.Mail;
             Nota = proveedor.Nota;
