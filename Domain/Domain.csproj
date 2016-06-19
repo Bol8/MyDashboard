@@ -85,6 +85,7 @@
     <Compile Include="Manage\gTypeProduct.cs" />
     <Compile Include="Models\Cliente\mClientCreate.cs" />
     <Compile Include="Models\Cliente\mCliente.cs" />
+    <Compile Include="Models\Contact\mContact.cs" />
     <Compile Include="Models\LineaPedidoC\mCLineaPedido.cs" />
     <Compile Include="Models\Proveedor\mProveedor.cs" />
     <Compile Include="Models\Proveedor\mProveedorCreate.cs" />

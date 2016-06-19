@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Domain.Manage;
 using Repository;
+using Domain.Models.Contact;
 
 namespace Dashboard.Controllers
 {
@@ -42,15 +43,22 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            var model = new mContact();
+
+            return View(model);
         }
 
         // POST: Contact/Create
         [HttpPost]
         public ActionResult Create(Contactos contact)
         {
-            if (!ModelState.IsValid) return View(contact);
-            if (!gContact.save(contact)) throw new Exception("Error al intentar crear el contacto");
+            if (!ModelState.IsValid)
+            {
+                var model = new mContact(contact);
+                return View(model);
+            }
+
+            if (!gContact.save(contact)) throw new Exception("Error al intentar crear un contacto");
 
             return RedirectToAction("Index");
 
@@ -59,8 +67,8 @@ namespace Dashboard.Controllers
 
         public ActionResult Edit(int id)
         {
-            var contact = gContact.getElementById(id);
-            return View(contact);
+            var model = new mContact(gContact.getElementById(id));
+            return View(model);
         }
 
 
@@ -68,7 +76,7 @@ namespace Dashboard.Controllers
         public ActionResult Edit(Contactos contact)
         {
             if (!ModelState.IsValid) return View(contact);
-            if (!gContact.edit(contact)) throw new Exception("Error al intentar modificar el contacto");
+            if (!gContact.edit(contact)) throw new Exception("Error al intentar modificar el contacto nº:"+contact.IdContacto );
 
             return RedirectToAction("Index");
         }
