@@ -10,7 +10,6 @@ namespace Domain.Models.Cliente
 {
     public class mCliente
     {
-
         #region Atributos
 
         [Display(Name = "Código")]
@@ -20,7 +19,7 @@ namespace Domain.Models.Cliente
         [Display(Name = "Razón Social")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
-        public string RazonSocial { get; set; }
+        public string Razon_Social { get; set; }
 
 
         [Display(Name = "NIF")]
@@ -78,7 +77,7 @@ namespace Domain.Models.Cliente
         public string sEstado { get; set; }
 
 
-        [Display(Name = "Telefono")]
+        [Display(Name = "Teléfono")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]
@@ -109,7 +108,7 @@ namespace Domain.Models.Cliente
         public mCliente(Clientes cliente)
         {
             IdCliente = cliente.IdCliente;
-            RazonSocial = cliente.Razon_Social;
+            Razon_Social = cliente.Razon_Social;
             NIF = cliente.NIF;
             Domicilio = cliente.Domicilio;
             CP = cliente.CP;

@@ -213,6 +213,8 @@
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\LineaPedidoCController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PedidoCController.cs" />
+    <Compile Include="Controllers\PedidoProveedorController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="GaluDataSet.Designer.cs">
@@ -228,9 +230,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelBinding\ContactBinder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PruebaBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1172,7 +1176,6 @@
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Shared\MainHeader.cshtml" />
     <Content Include="Views\Shared\MainSideBar.cshtml" />
-    <Content Include="Views\PedidoC\Index.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\DeleteConfirmed.cshtml" />
     <Content Include="Views\Proveedor\Index.cshtml" />
@@ -1194,6 +1197,9 @@
     <Content Include="Views\PedidoC\Details.cshtml" />
     <Content Include="Views\LineaPedidoC\Create.cshtml" />
     <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Contact\pruebaBind.cshtml" />
+    <Content Include="Views\PedidoProveedor\Index.cshtml" />
+    <Content Include="Views\PedidoC\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -74,7 +74,7 @@ namespace Domain.Models.Proveedor
         public string sEstado { get; set; }
 
 
-        [Display(Name = "Telefono")]
+        [Display(Name = "Teléfono")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]

@@ -87,6 +87,10 @@
     <Compile Include="Models\Cliente\mCliente.cs" />
     <Compile Include="Models\Contact\mContact.cs" />
     <Compile Include="Models\LineaPedidoC\mCLineaPedido.cs" />
+    <Compile Include="Models\PedidoC\mPedidoC.cs" />
+    <Compile Include="Models\PedidoC\mPedidoCCreate.cs" />
+    <Compile Include="Models\PedidoProveedor\mPedidoProvCreate.cs" />
+    <Compile Include="Models\PedidoProveedor\mPedidoProveedor.cs" />
     <Compile Include="Models\Proveedor\mProveedor.cs" />
     <Compile Include="Models\Proveedor\mProveedorCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Domain.Manage;
 using Repository;
 using Domain.Models.Contact;
+using Dashboard.ModelBinding;
+using Dashboard.Models;
 
 namespace Dashboard.Controllers
 {
@@ -82,6 +84,24 @@ namespace Dashboard.Controllers
         }
 
 
+
+        public ActionResult pruebaBind()
+        {
+
+
+            return View();
+        }
+
+
+
+        public ActionResult createBind([ModelBinder(typeof(ContactBinder))] PruebaBinder model)
+        {
+
+            var a = model;
+
+            return View();
+           
+        }
 
 
         [HttpGet]
