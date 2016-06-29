@@ -23,6 +23,7 @@ namespace Repository
     
         public int IdCliente { get; set; }
         public string Razon_Social { get; set; }
+        public string NombreComercial { get; set; }
         public string NIF { get; set; }
         public string Domicilio { get; set; }
         public string CP { get; set; }

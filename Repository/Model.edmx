@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Albaranes">
           <Key>
             <PropertyRef Name="Numero" />
@@ -33,17 +33,18 @@
             <PropertyRef Name="IdCliente" />
           </Key>
           <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Razon_Social" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Razon_Social" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="NombreComercial" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="NIF" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="Domicilio" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CP" Type="nvarchar" MaxLength="5" />
-          <Property Name="Poblacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Provincia" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="250" />
+          <Property Name="CP" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Poblacion" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Fecha_A" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Nota" Type="nvarchar(max)" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
         </EntityType>
@@ -582,8 +583,7 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -614,28 +614,6 @@
           <NavigationProperty Name="TipoProducto" Relationship="Self.FK_Articulos_TipoProducto" FromRole="Articulos" ToRole="TipoProducto" />
           <NavigationProperty Name="Linea_pedido_c" Relationship="Self.FK_Linea_pedido_c_Articulos" FromRole="Articulos" ToRole="Linea_pedido_c" />
           <NavigationProperty Name="Linea_pedido_p" Relationship="Self.FK_Linea_pedido_p_Articulos" FromRole="Articulos" ToRole="Linea_pedido_p" />
-        </EntityType>
-        <EntityType Name="Clientes">
-          <Key>
-            <PropertyRef Name="IdCliente" />
-          </Key>
-          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Razon_Social" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NIF" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Domicilio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Poblacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Estados" Relationship="Self.FK_Clientes_Estados" FromRole="Clientes" ToRole="Estados" />
-          <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
-          <NavigationProperty Name="Pedido_c" Relationship="Self.FK_Pedido_c_Clientes" FromRole="Clientes" ToRole="Pedido_c" />
         </EntityType>
         <EntityType Name="Contactos">
           <Key>
@@ -674,8 +652,8 @@
           <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Articulos" Relationship="Self.FK_Articulos_Estados" FromRole="Estados" ToRole="Articulos" />
-          <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_Estados" FromRole="Estados" ToRole="Clientes" />
           <NavigationProperty Name="Proveedores" Relationship="Self.FK_Proveedores_Estados" FromRole="Estados" ToRole="Proveedores" />
+          <NavigationProperty Name="Clientes" Relationship="Model.FK_Clientes_Estados" FromRole="Estados" ToRole="Clientes" />
         </EntityType>
         <EntityType Name="EstadosPedido">
           <Key>
@@ -701,9 +679,9 @@
           <Property Name="IVA" Type="Int32" />
           <Property Name="Re" Type="Single" />
           <Property Name="Cuota_Re" Type="Single" />
-          <NavigationProperty Name="Clientes" Relationship="Self.FK_Facturas_Clientes" FromRole="Facturas" ToRole="Clientes" />
           <NavigationProperty Name="Empresas" Relationship="Self.FK_Facturas_Empresas" FromRole="Facturas" ToRole="Empresas" />
           <NavigationProperty Name="Pedido_c" Relationship="Self.FK_Facturas_Pedido_c" FromRole="Facturas" ToRole="Pedido_c" />
+          <NavigationProperty Name="Clientes" Relationship="Model.FK_Facturas_Clientes" FromRole="Facturas" ToRole="Clientes" />
         </EntityType>
         <EntityType Name="FormaPago">
           <Key>
@@ -774,11 +752,11 @@
           <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Total" Type="Single" Nullable="false" />
           <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Clientes" Relationship="Self.FK_Pedido_c_Clientes" FromRole="Pedido_c" ToRole="Clientes" />
           <NavigationProperty Name="EstadosPedido" Relationship="Self.FK_Pedido_c_EstadosPedido" FromRole="Pedido_c" ToRole="EstadosPedido" />
           <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_Pedido_c" FromRole="Pedido_c" ToRole="Facturas" />
           <NavigationProperty Name="FormaPago" Relationship="Self.FK_Pedido_c_FormaPago" FromRole="Pedido_c" ToRole="FormaPago" />
           <NavigationProperty Name="Linea_pedido_c" Relationship="Self.FK_Linea_pedido_c_Pedido_c" FromRole="Pedido_c" ToRole="Linea_pedido_c" />
+          <NavigationProperty Name="Clientes" Relationship="Model.FK_Pedido_c_Clientes" FromRole="Pedido_c" ToRole="Clientes" />
         </EntityType>
         <EntityType Name="Pedido_p">
           <Key>
@@ -915,42 +893,6 @@
             </Principal>
             <Dependent Role="Linea_pedido_p">
               <PropertyRef Name="IdArticulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Clientes_Estados">
-          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estados">
-              <PropertyRef Name="IdEstado" />
-            </Principal>
-            <Dependent Role="Clientes">
-              <PropertyRef Name="Estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Facturas_Clientes">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="IdCliente" />
-            </Principal>
-            <Dependent Role="Facturas">
-              <PropertyRef Name="IdCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pedido_c_Clientes">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Pedido_c" Type="Self.Pedido_c" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="IdCliente" />
-            </Principal>
-            <Dependent Role="Pedido_c">
-              <PropertyRef Name="idCliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1105,7 +1047,6 @@
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Albaranes" EntityType="Self.Albaranes" />
           <EntitySet Name="Articulos" EntityType="Self.Articulos" />
-          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
           <EntitySet Name="Contactos" EntityType="Self.Contactos" />
           <EntitySet Name="Empresas" EntityType="Self.Empresas" />
           <EntitySet Name="Estados" EntityType="Self.Estados" />
@@ -1142,18 +1083,6 @@
           <AssociationSet Name="FK_Linea_pedido_p_Articulos" Association="Self.FK_Linea_pedido_p_Articulos">
             <End Role="Articulos" EntitySet="Articulos" />
             <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Clientes_Estados" Association="Self.FK_Clientes_Estados">
-            <End Role="Estados" EntitySet="Estados" />
-            <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Facturas_Clientes" Association="Self.FK_Facturas_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Facturas" EntitySet="Facturas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedido_c_Clientes" Association="Self.FK_Pedido_c_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Pedido_c" EntitySet="Pedido_c" />
           </AssociationSet>
           <AssociationSet Name="FK_Empresas_Usuarios1" Association="Self.FK_Empresas_Usuarios1">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -1203,7 +1132,79 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
+          <EntitySet Name="Clientes" EntityType="Model.Clientes" />
+          <AssociationSet Name="FK_Clientes_Estados" Association="Model.FK_Clientes_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Clientes" Association="Model.FK_Facturas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_c_Clientes" Association="Model.FK_Pedido_c_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Razon_Social" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NombreComercial" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NIF" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Domicilio" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CP" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Poblacion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Provincia" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Estados" Relationship="Model.FK_Clientes_Estados" FromRole="Clientes" ToRole="Estados" />
+          <NavigationProperty Name="Facturas" Relationship="Model.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
+          <NavigationProperty Name="Pedido_c" Relationship="Model.FK_Pedido_c_Clientes" FromRole="Clientes" ToRole="Pedido_c" />
+        </EntityType>
+        <Association Name="FK_Clientes_Estados">
+          <End Type="Model.Estados" Role="Estados" Multiplicity="1" />
+          <End Type="Model.Clientes" Role="Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Clientes">
+          <End Type="Model.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="Model.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_c_Clientes">
+          <End Type="Model.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="Model.Pedido_c" Role="Pedido_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Pedido_c">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1232,26 +1233,6 @@
                 <ScalarProperty Name="Origen" ColumnName="Origen" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="Model.Clientes">
-              <MappingFragment StoreEntitySet="Clientes">
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
-                <ScalarProperty Name="NIF" ColumnName="NIF" />
-                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
-                <ScalarProperty Name="CP" ColumnName="CP" />
-                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Pais" ColumnName="Pais" />
-                <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="Nota" ColumnName="Nota" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1455,6 +1436,27 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="Model.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_A" ColumnName="Fecha_A" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
+                <ScalarProperty Name="Razon_Social" ColumnName="Razon_Social" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

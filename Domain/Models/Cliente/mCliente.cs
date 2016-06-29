@@ -16,21 +16,26 @@ namespace Domain.Models.Cliente
         public int IdCliente { get; set; }
 
 
-        [Display(Name = "Razón Social")]
+        [Display(Name = "Nombre fiscal")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Razon_Social { get; set; }
+
+        [Display(Name = "Nombre comercial")]
+        [Required(ErrorMessage = "Campo obligatorio")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
+        public string NombreComercial { get; set; }
 
 
         [Display(Name = "NIF")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [RegularExpression(@"^(([A-Z]{1})([-]?)(\d{8}))|((\d{8})([-]?)([A-Z]{1}))$", ErrorMessage = "NIF incorrecto")]
+        [RegularExpression(@"^(([A-Z]{1})([-]?)(\d{8}))|((\d{8})([-]?)([A-Z]{1}))|(([A-Z]{1})([-]?)(\d{7})([A-Z]{1}))$", ErrorMessage = "NIF incorrecto")]
         public string NIF { get; set; }
 
 
         [Display(Name = "Domicilio")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Domicilio { get; set; }
 
 
@@ -43,21 +48,21 @@ namespace Domain.Models.Cliente
 
         [Display(Name = "Población")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Poblacion { get; set; }
 
 
 
         [Display(Name = "Provincia")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Provincia { get; set; }
 
 
 
         [Display(Name = "País")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Pais { get; set; }
 
 
@@ -109,6 +114,7 @@ namespace Domain.Models.Cliente
         {
             IdCliente = cliente.IdCliente;
             Razon_Social = cliente.Razon_Social;
+            NombreComercial = cliente.NombreComercial;
             NIF = cliente.NIF;
             Domicilio = cliente.Domicilio;
             CP = cliente.CP;

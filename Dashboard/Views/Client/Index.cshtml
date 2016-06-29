@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Repository.Clientes>
+﻿@model IEnumerable<Domain.Models.Cliente.mCliente>
 
 <div class="row">
     <div class="col-xs-12">
@@ -13,6 +13,7 @@
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.NIF)</th>
                             <th>@Html.DisplayNameFor(model =>model.Razon_Social)</th>
+                            <th>@Html.DisplayNameFor(model => model.NombreComercial)</th>
                             <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
                             <th>@Html.DisplayNameFor(model => model.Poblacion)</th>
                             <th>@Html.DisplayNameFor(model => model.Provincia)</th>
@@ -20,7 +21,7 @@
                             <th>@Html.DisplayNameFor(model => model.CP)</th>
                             <th>@Html.DisplayNameFor(model => model.Mail)</th>
                             <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-                            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            @*<th>@Html.DisplayNameFor(model => model.Estado)</th>*@
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -31,6 +32,7 @@
                             <tr>
                                 <td>@Html.DisplayFor(model => item.NIF)</td>
                                 <td>@Html.DisplayFor(model => item.Razon_Social)</td>
+                                <td>@Html.DisplayFor(model => item.NombreComercial)</td>
                                 <td>@Html.DisplayFor(model => item.Domicilio)</td>
                                 <td>@Html.DisplayFor(model => item.Poblacion)</td>
                                 <td>@Html.DisplayFor(model => item.Provincia)</td>
@@ -38,7 +40,7 @@
                                 <td>@Html.DisplayFor(model => item.CP)</td>
                                 <td>@Html.DisplayFor(model => item.Mail)</td>
                                 <td>@Html.DisplayFor(model => item.Telefono)</td>
-                                <td>@Html.DisplayFor(model => item.Estados.Nombre)</td>
+                                @*<td>@Html.DisplayFor(model => item.Estados.Nombre)</td>*@
                                 <td>
                                     @Html.ActionLink(" ", "Edit", "Client", new { id = item.IdCliente }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
@@ -52,6 +54,7 @@
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.NIF)</th>
                             <th>@Html.DisplayNameFor(model => model.Razon_Social)</th>
+                            <th>@Html.DisplayNameFor(model => model.NombreComercial)</th>
                             <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
                             <th>@Html.DisplayNameFor(model => model.Poblacion)</th>
                             <th>@Html.DisplayNameFor(model => model.Provincia)</th>
@@ -59,7 +62,7 @@
                             <th>@Html.DisplayNameFor(model => model.CP)</th>
                             <th>@Html.DisplayNameFor(model => model.Mail)</th>
                             <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-                            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            @*<th>@Html.DisplayNameFor(model => model.Estado)</th>*@
                             <th>Opciones</th>
                         </tr>
                     </tfoot>

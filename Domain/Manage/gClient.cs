@@ -4,81 +4,39 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Elmah;
+using Domain.Connection;
+using Domain.Models.Cliente;
+using AutoMapper;
+using Domain.Interfaces;
+
 
 namespace Domain.Manage
 {
-    public class gClient:ICrud<Clientes>
+    public class gClient : GenericRepository<Entities, Clientes>, IClientRepository
     {
-        private Entities db;
 
+        public gClient() { }
 
-        #region Constructors
-
-        public gClient()
+        public gClient(long id)
         {
-            db = new Entities();
+
         }
 
 
-
-        #endregion
-
-        #region Public methods
-
-        public bool delete(long id)
+        public Clientes getSingle(long id)
         {
-            try
-            {
-                var client = db.Clientes.Find(id);
-                db.Clientes.Remove(client);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                ErrorSignal.FromCurrentContext().Raise(ex);
-                return false;
-            }
+            var client = GetAll().FirstOrDefault(x => x.IdCliente == id);
 
-            return true;
+            return client;
         }
 
-        public bool edit(Clientes input)
+        
+        public List<Clientes> getAll()
         {
-            throw new NotImplementedException();
+            var clients = GetAll().ToList();
+
+            return clients;
         }
-
-        public Clientes getElementById(long id)
-        {
-            return db.Clientes.Find(id);
-        }
-
-        public List<Clientes> getElements()
-        {
-            return db.Clientes.ToList();
-        }
-
-        public bool save(Clientes input)
-        {
-            try
-            {
-                input.Fecha_A = DateTime.Now;
-                db.Clientes.Add(input);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                ErrorSignal.FromCurrentContext().Raise(ex);
-                return false;
-            }
-
-            return true;
-        }
-
-        #endregion
-
-        #region Private methods
-
-        #endregion
 
     }
 }

@@ -51,8 +51,9 @@ namespace Domain.Manage
                 db.Entry(input).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorSignal.FromCurrentContext().Raise(ex);
                 return false;
             }
 

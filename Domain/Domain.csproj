@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.0.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -66,12 +70,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection\ConnectionDB.cs" />
+    <Compile Include="Connection\GenericRepository.cs" />
     <Compile Include="DataSet\GaluDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GaluDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\ICrud.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Manage\ControlClient.cs" />
     <Compile Include="Manage\gClient.cs" />
     <Compile Include="Manage\gContact.cs" />
     <Compile Include="Manage\gFpago.cs" />
@@ -107,6 +116,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Observers\" />
     <Folder Include="Tools\" />
   </ItemGroup>
   <ItemGroup>

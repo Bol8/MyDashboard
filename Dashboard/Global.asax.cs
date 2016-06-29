@@ -7,6 +7,11 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Dashboard.Models;
 using Dashboard.ModelBinding;
+using AutoMapper;
+using Domain.Models.Cliente;
+using Repository;
+using Dashboard.Configuration;
+
 
 namespace Dashboard
 {
@@ -19,6 +24,11 @@ namespace Dashboard
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(PruebaBinder), new ContactBinder());
+
+            Mapper.Initialize(cfg => {
+                cfg.AddProfile(new OrgConfiguration());
+            });
+
         }
     }
 }

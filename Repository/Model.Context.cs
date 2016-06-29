@@ -27,7 +27,6 @@ namespace Repository
     
         public virtual DbSet<Albaranes> Albaranes { get; set; }
         public virtual DbSet<Articulos> Articulos { get; set; }
-        public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Contactos> Contactos { get; set; }
         public virtual DbSet<Empresas> Empresas { get; set; }
         public virtual DbSet<Estados> Estados { get; set; }
@@ -45,5 +44,6 @@ namespace Repository
         public virtual DbSet<Tarifas> Tarifas { get; set; }
         public virtual DbSet<TipoProducto> TipoProducto { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Clientes> Clientes { get; set; }
     }
 }
