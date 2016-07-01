@@ -24,6 +24,7 @@ namespace Dashboard
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(PruebaBinder), new ContactBinder());
+            
 
             Mapper.Initialize(cfg => {
                 cfg.AddProfile(new OrgConfiguration());

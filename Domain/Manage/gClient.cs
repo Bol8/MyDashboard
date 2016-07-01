@@ -4,11 +4,9 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Elmah;
-using Domain.Connection;
 using Domain.Models.Cliente;
 using AutoMapper;
-using Domain.Interfaces;
-
+using GenericRepository.Repository;
 
 namespace Domain.Manage
 {
@@ -26,17 +24,20 @@ namespace Domain.Manage
         public Clientes getSingle(long id)
         {
             var client = GetAll().FirstOrDefault(x => x.IdCliente == id);
-
+            
             return client;
         }
 
         
-        public List<Clientes> getAll()
-        {
-            var clients = GetAll().ToList();
 
-            return clients;
-        }
+
+
+        //public List<Clientes> getAll()
+        //{
+        //    var clients = GetAll().ToList();
+
+        //    return clients;
+        //}
 
     }
 }
