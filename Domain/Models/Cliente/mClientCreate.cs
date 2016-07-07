@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using Domain.Connection;
 using System.Web.Mvc;
 
+
 namespace Domain.Models.Cliente
 {
     public class mClientCreate : mCliente
@@ -24,6 +25,7 @@ namespace Domain.Models.Cliente
 
         public mClientCreate()
         {
+            this.Fecha_A = DateTime.Now;
             conn = new ConnectionDB();
             Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
         }

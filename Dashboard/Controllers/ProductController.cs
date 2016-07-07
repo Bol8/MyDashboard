@@ -48,9 +48,9 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-            ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
-            ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+            //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+            //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+            //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
 
             return View();
         }
@@ -61,9 +61,9 @@ namespace Dashboard.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-                ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
-                ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+                //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+                //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+                //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
 
                 return View(product);
             }
@@ -78,9 +78,9 @@ namespace Dashboard.Controllers
         {
             var product = gProduct.getElementById(id);
 
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-            ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
-            ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+            //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+            //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+            //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
 
             return View(product);
         }
@@ -92,8 +92,8 @@ namespace Dashboard.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-                ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+                //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+                //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
                 ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
 
                 return View(product);

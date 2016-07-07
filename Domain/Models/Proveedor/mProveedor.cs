@@ -18,8 +18,14 @@ namespace Domain.Models.Proveedor
 
         [Display(Name = "Razón Social")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string RazonSocial { get; set; }
+
+
+        [Display(Name = "Nombre comercial")]
+        [Required(ErrorMessage = "Campo obligatorio")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
+        public string NombreComercial { get; set; }
 
 
         [Display(Name = "NIF")]
@@ -30,7 +36,7 @@ namespace Domain.Models.Proveedor
 
         [Display(Name = "Domicilio")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Domicilio { get; set; }
 
 
@@ -42,20 +48,20 @@ namespace Domain.Models.Proveedor
 
         [Display(Name = "Población")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Poblacion { get; set; }
 
 
 
         [Display(Name = "Provincia")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Provincia { get; set; }
 
 
         [Display(Name = "País")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Pais { get; set; }
 
 
@@ -82,9 +88,18 @@ namespace Domain.Models.Proveedor
         public string Telefono { get; set; }
 
 
+        [Display(Name = "Móvil")]
+        [Required(ErrorMessage = "Campo obligatorio")]
+        [DataType(DataType.PhoneNumber)]
+        [Phone(ErrorMessage = "Número incorrecto")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
+        public string Movil { get; set; }
+
+
         [Display(Name = "Mail")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [EmailAddress(ErrorMessage = "Mail incorrecto")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Mail { get; set; }
 
 

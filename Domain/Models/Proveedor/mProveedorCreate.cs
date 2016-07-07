@@ -25,6 +25,7 @@ namespace Domain.Models.Proveedor
 
         public mProveedorCreate()
         {
+            this.Fecha_A = DateTime.Now;
             conn = new ConnectionDB();
             Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
 

@@ -84,6 +84,7 @@
     <Compile Include="Interfaces\ICrud.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IStatusRepository.cs" />
     <Compile Include="Manage\ControlClient.cs" />
     <Compile Include="Manage\gClient.cs" />
     <Compile Include="Manage\gContact.cs" />

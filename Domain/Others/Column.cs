@@ -30,7 +30,7 @@ namespace Domain.Others
 
         public void AddRange(List<T> elements)
         {
-            elements.AddRange(elements);
+            this.elements.AddRange(elements);
         }
 
         //public IQueryable<T> Find(Expression<Func<T, bool>> predicate)

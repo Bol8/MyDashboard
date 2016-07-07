@@ -7,50 +7,49 @@ using Domain.Manage;
 using Repository;
 using Domain.Models.Cliente;
 using AutoMapper;
+using Domain.Interfaces;
 using Elmah;
 using Domain.Others;
+using Domain.Connection;
 
 
 namespace Dashboard.Controllers
 {
-    
+
     public class ClientController : Controller
     {
-        private ControlClient client;
-        private gStatus gStatus;
+        private IGenericRepository<Clientes> _gClient;
+        private IGenericRepository<Estados> _gStatus;
 
         #region Constructors
 
-        public ClientController()
+        public ClientController(IGenericRepository<Clientes> repo, IGenericRepository<Estados> st)
         {
-            gStatus = new gStatus();
+            this._gClient = repo;
+            this._gStatus = st;
         }
-
         #endregion
 
 
         [HttpGet]
         public ActionResult Index()
         {
-            gClient _gClient = new gClient();
-            var clients = _gClient.GetAll().ToList();
-            var modelList = Mapper.Map<IEnumerable<Clientes>, IEnumerable<mCliente>>(clients).ToList();
+            var list = _gClient.GetAll().ToList();
+            var modelList = Mapper.Map<IEnumerable<Clientes>, IEnumerable<mCliente>>(list).ToList();
 
-            Column<mCliente> column = new Column<mCliente>("Agentes", "Agente");
-            column.AddRange(modelList);
+            //Column<mCliente> column = new Column<mCliente>("Agentes", "Agente");
+            //column.AddRange(modelList);
 
-
-
+            //var a = column;
 
             return View(modelList);
         }
 
-        
+
 
         [HttpGet]
         public ActionResult Create()
         {
-            var _gClient = new gClient();
             var model = new mClientCreate();
 
             return View(model);
@@ -59,17 +58,24 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(Clientes client)
+        public ActionResult Create(Clientes element)
         {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var model = new mClientCreate(element);
 
-            //if (!ModelState.IsValid)
-            //{
-            //    ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+                    return View(model);
+                }
 
-            //    return View(client);
-            //}
-
-            //if (!ControlClient.save(client)) throw new Exception("Error al intentar crear el cliente");
+                _gClient.Add(element);
+                _gClient.Save();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar modificar el cliente. " + ex);
+            }
 
             return RedirectToAction("Index");
 
@@ -80,16 +86,11 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            gClient _gClient = new gClient();
-            var client = _gClient.getSingle(id);
-            var model = AutoMapper.Mapper.Map<Clientes, mCliente>(client);
+            var element = _gClient.FindBy(x=> x.IdCliente == id).FirstOrDefault();
+            var model = new mClientCreate(element);
 
-           return  HttpNotFound();
-
-            // client = new ControlClient(id);
-           // var model = ControlClient.getElement(id);
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-
+            ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "IdEstado", "Nombre");
+            
             return View(model);
         }
 
@@ -100,29 +101,23 @@ namespace Dashboard.Controllers
         [HttpPost]
         public ActionResult Edit(Clientes client)
         {
-            if (!ModelState.IsValid)
-            {
-                var model = AutoMapper.Mapper.Map<Clientes, mCliente>(client);
-                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-
-                return View(model);
-            }
-
-            var _glient = new gClient();
-
             try
             {
-                _glient.Edit(client);
-                _glient.Save();
+                if (!ModelState.IsValid)
+                {
+                    var model = AutoMapper.Mapper.Map<Clientes, mCliente>(client);
+                    ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "IdEstado", "Nombre");
+
+                    return View(model);
+                }
+
+                _gClient.Edit(client);
+                _gClient.Save();
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar modificar el cliente. " + ex);
+                throw new Exception("Error al intentar modificar el cliente." + ex);
             }
-
-           
-
-          //  if (!client.edit(cliente)) throw new Exception("Error al intentar modificar el cliente");
 
             return RedirectToAction("Index");
         }
@@ -131,23 +126,28 @@ namespace Dashboard.Controllers
 
 
 
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    var cliente = client.getElementById(id);
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var element = _gClient.FindBy(x=> x.IdCliente == id).FirstOrDefault();
 
-        //    return View(cliente);
-        //}
+            return View(element);
+        }
 
+        
 
+        [HttpPost]
+        public ActionResult Delete(Clientes element)
+        {
+            try
+            {
+                _gClient.Delete(element);
+            }
+            catch (Exception ex )
+            {
+                throw new Exception("Error al intentar eliminar el cliente." + ex);
+            }
 
-
-
-        //[HttpPost]
-        //public ActionResult Delete(Clientes cliente)
-        //{
-        //    if (!client.delete(cliente.IdCliente)) throw new Exception("Error al intentar eliminar el cliente");
-
-        //    return RedirectToAction("Index");
-        //}
+            return RedirectToAction("Index");
+        }
     }
 }

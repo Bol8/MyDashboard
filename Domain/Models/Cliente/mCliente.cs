@@ -90,6 +90,14 @@ namespace Domain.Models.Cliente
         public string Telefono { get; set; }
 
 
+        [Display(Name = "Móvil")]
+        [Required(ErrorMessage = "Campo obligatorio")]
+        [DataType(DataType.PhoneNumber)]
+        [Phone(ErrorMessage = "Número incorrecto")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
+        public string Movil { get; set; }
+
+
         [Display(Name = "Mail")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [EmailAddress(ErrorMessage = "Mail incorrecto")]

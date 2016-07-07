@@ -15,7 +15,6 @@ namespace Domain.Interfaces
 
         bool save(T input);
 
-
         bool delete(long id);
 
         bool edit(T input);
