@@ -2,17 +2,17 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-default">
+        <div class="box box-default flat">
             <div class="box-header with-border">
                 <h3 class="box-title">Clientes</h3>
-                @Html.ActionLink("Nuevo","Create","Client",null, new { @class="btn btn-primary pull-right"})
+                @Html.ActionLink("Nuevo","Create","Client",null, new { @class="btn btn-primary pull-right flat"})
             </div><!-- /.box-header -->
             <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.NIF)</th>
-                            <th>@Html.DisplayNameFor(model =>model.Razon_Social)</th>
+                            <th>@Html.DisplayNameFor(model => model.Razon_Social)</th>
                             <th>@Html.DisplayNameFor(model => model.NombreComercial)</th>
                             <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
                             <th>@Html.DisplayNameFor(model => model.Poblacion)</th>
@@ -21,9 +21,11 @@
                             <th>@Html.DisplayNameFor(model => model.CP)</th>
                             <th>@Html.DisplayNameFor(model => model.Mail)</th>
                             <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-                            @*<th>@Html.DisplayNameFor(model => model.Estado)</th>*@
+                            <th>@Html.DisplayNameFor(model => model.Movil)</th>
+                            <th>@Html.DisplayNameFor(model => model.sEstado)</th>
+
                             <th>Opciones</th>
-                        </tr>
+                        </tr>                                                    
                     </thead>
                     <tbody>
 
@@ -40,17 +42,18 @@
                                 <td>@Html.DisplayFor(model => item.CP)</td>
                                 <td>@Html.DisplayFor(model => item.Mail)</td>
                                 <td>@Html.DisplayFor(model => item.Telefono)</td>
-                                @*<td>@Html.DisplayFor(model => item.Estados.Nombre)</td>*@
+                                <td>@Html.DisplayFor(model => item.Movil)</td>
+                                <td>@Html.DisplayFor(model => item.sEstado)</td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", "Client", new { id = item.IdCliente }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                                    @Html.ActionLink(" ", "Edit", "Client", new { id = item.IdCliente }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Client", new { id = item.IdCliente }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Client", new { id = item.IdCliente }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
                                 </td>
                             </tr>
                         }
                     </tbody>
 
-                    <tfoot>
+                    @*<tfoot>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.NIF)</th>
                             <th>@Html.DisplayNameFor(model => model.Razon_Social)</th>
@@ -62,10 +65,11 @@
                             <th>@Html.DisplayNameFor(model => model.CP)</th>
                             <th>@Html.DisplayNameFor(model => model.Mail)</th>
                             <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-                            @*<th>@Html.DisplayNameFor(model => model.Estado)</th>*@
+                            <th>@Html.DisplayNameFor(model => model.Movil)</th>
+                            <th>@Html.DisplayNameFor(model => model.sEstado)</th>
                             <th>Opciones</th>
                         </tr>
-                    </tfoot>
+                    </tfoot>*@
 
                 </table>
             </div><!-- /.box-body -->

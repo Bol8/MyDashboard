@@ -1,8 +1,8 @@
-﻿@model Repository.Clientes
+﻿@model Domain.Models.Cliente.mCliente
 
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-danger">
+        <div class="box box-danger flat">
             <div class="box-header with-border">
                 <h3 class="box-title">¿Seguro que desea eliminar?</h3>
             </div><!-- /.box-header -->
@@ -46,8 +46,8 @@
                             @Html.DisplayFor(x => x.Fecha_A)
                         </p>
                         <p>
-                            <strong>@Html.DisplayNameFor(x => x.Estado):</strong>
-                            @Html.DisplayFor(x => x.Estados.Nombre)
+                            <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
+                            @Html.DisplayFor(x => x.sEstado)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Telefono):</strong>
@@ -65,8 +65,8 @@
 
                         <div>
                             <br />
-                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
-                            <input class="btn btn-danger" type="submit" value="Eliminar" />
+                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default flat" })
+                            <input class="btn btn-danger flat" type="submit" value="Eliminar" />
                         </div>
 
                     }

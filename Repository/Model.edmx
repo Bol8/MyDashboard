@@ -34,19 +34,20 @@
           </Key>
           <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Razon_Social" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="NombreComercial" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="NombreComercial" Type="nvarchar" MaxLength="250" />
           <Property Name="NIF" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="Domicilio" Type="nvarchar" MaxLength="250" />
-          <Property Name="CP" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CP" Type="nvarchar" MaxLength="5" />
           <Property Name="Poblacion" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Provincia" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Pais" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Fecha_A" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
-          <Property Name="Telefono" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="12" />
+          <Property Name="Movil" Type="nvarchar" MaxLength="12" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="250" />
           <Property Name="Nota" Type="nvarchar(max)" />
-          <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="Contactos">
           <Key>
@@ -187,19 +188,21 @@
             <PropertyRef Name="IdProveedor" />
           </Key>
           <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RazonSocial" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="NombreComercial" Type="nvarchar" MaxLength="250" />
           <Property Name="NIF" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="Domicilio" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="CP" Type="nvarchar" MaxLength="5" />
-          <Property Name="Poblacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Provincia" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Poblacion" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Fecha_A" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
-          <Property Name="Telefono" Type="nchar" MaxLength="9" Nullable="false" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="12" />
+          <Property Name="Movil" Type="nvarchar" MaxLength="12" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="250" />
           <Property Name="Nota" Type="nvarchar(max)" />
-          <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -780,21 +783,23 @@
             <PropertyRef Name="IdProveedor" />
           </Key>
           <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RazonSocial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NIF" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Domicilio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domicilio" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Poblacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Poblacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Provincia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Estados" Relationship="Self.FK_Proveedores_Estados" FromRole="Proveedores" ToRole="Estados" />
           <NavigationProperty Name="Pedido_p" Relationship="Self.FK_Pedido_p_Proveedores" FromRole="Proveedores" ToRole="Pedido_p" />
+          <Property Name="NombreComercial" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Movil" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -1152,22 +1157,23 @@
           </Key>
           <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Razon_Social" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="NombreComercial" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NombreComercial" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="NIF" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
-          <Property Name="Domicilio" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="CP" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Domicilio" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CP" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Poblacion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Provincia" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Pais" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
-          <Property Name="Mail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Estados" Relationship="Model.FK_Clientes_Estados" FromRole="Clientes" ToRole="Estados" />
           <NavigationProperty Name="Facturas" Relationship="Model.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
           <NavigationProperty Name="Pedido_c" Relationship="Model.FK_Pedido_c_Clientes" FromRole="Clientes" ToRole="Pedido_c" />
+          <Property Name="Movil" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Clientes_Estados">
           <End Type="Model.Estados" Role="Estados" Multiplicity="1" />
@@ -1382,6 +1388,8 @@
           <EntitySetMapping Name="Proveedores">
             <EntityTypeMapping TypeName="Model.Proveedores">
               <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="Movil" ColumnName="Movil" />
+                <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="NIF" ColumnName="NIF" />
@@ -1442,6 +1450,7 @@
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="Model.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Movil" ColumnName="Movil" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="Nota" ColumnName="Nota" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />

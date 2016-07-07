@@ -16,14 +16,13 @@ namespace Domain.Models.Proveedor
         public int IdProveedor { get; set; }
 
 
-        [Display(Name = "Razón Social")]
+        [Display(Name = "Nombre fiscal")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string RazonSocial { get; set; }
 
 
         [Display(Name = "Nombre comercial")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string NombreComercial { get; set; }
 
@@ -41,7 +40,6 @@ namespace Domain.Models.Proveedor
 
 
         [Display(Name = "CP")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [RegularExpression(@"^(([0-9]{5}))$", ErrorMessage = "CP incorrecto")]
         public string CP { get; set; }
 
@@ -81,7 +79,6 @@ namespace Domain.Models.Proveedor
 
 
         [Display(Name = "Teléfono")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
@@ -89,7 +86,6 @@ namespace Domain.Models.Proveedor
 
 
         [Display(Name = "Móvil")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
@@ -97,7 +93,6 @@ namespace Domain.Models.Proveedor
 
 
         [Display(Name = "Mail")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [EmailAddress(ErrorMessage = "Mail incorrecto")]
         [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Mail { get; set; }

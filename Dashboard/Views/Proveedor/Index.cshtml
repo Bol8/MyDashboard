@@ -25,7 +25,8 @@
                             <th>@Html.DisplayNameFor(model => model.CP)</th>
                             <th>@Html.DisplayNameFor(model => model.Mail)</th>
                             <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-                            @*<th>@Html.DisplayNameFor(model => model.Estado)</th>*@
+                            <th>@Html.DisplayNameFor(model => model.Movil)</th>
+                            <th>@Html.DisplayNameFor(model => model.sEstado)</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -43,7 +44,8 @@
                                 <td>@Html.DisplayFor(model => item.CP)</td>
                                 <td>@Html.DisplayFor(model => item.Mail)</td>
                                 <td>@Html.DisplayFor(model => item.Telefono)</td>
-                                @*<td>@Html.DisplayFor(model => item.Estados.Nombre)</td>*@
+                                <td>@Html.DisplayFor(model => item.Movil)</td>
+                                <td>@Html.DisplayFor(model => item.sEstado)</td>
                                 <td>
                                     @Html.ActionLink(" ", "Edit", "Proveedor", new { id = item.IdProveedor }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
@@ -64,7 +66,8 @@
                             <th>@Html.DisplayNameFor(model => model.CP)</th>
                             <th>@Html.DisplayNameFor(model => model.Mail)</th>
                             <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-                            @*<th>@Html.DisplayNameFor(model => model.Estado)</th>*@
+                            <th>@Html.DisplayNameFor(model => model.Movil)</th>
+                            <th>@Html.DisplayNameFor(model => model.sEstado)</th>
                             <th>Opciones</th>
                         </tr>
                     </tfoot>

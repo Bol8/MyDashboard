@@ -129,8 +129,9 @@ namespace Dashboard.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var element = _gClient.FindBy(x=> x.IdCliente == id).FirstOrDefault();
+            var model = AutoMapper.Mapper.Map<Clientes, mCliente>(element);
 
-            return View(element);
+            return View(model);
         }
 
         

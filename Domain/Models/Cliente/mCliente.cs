@@ -22,7 +22,6 @@ namespace Domain.Models.Cliente
         public string Razon_Social { get; set; }
 
         [Display(Name = "Nombre comercial")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string NombreComercial { get; set; }
 
@@ -33,7 +32,7 @@ namespace Domain.Models.Cliente
         public string NIF { get; set; }
 
 
-        [Display(Name = "Domicilio")]
+        [Display(Name = "Dirección")]
         [Required(ErrorMessage = "Campo obligatorio")]
         [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Domicilio { get; set; }
@@ -41,7 +40,6 @@ namespace Domain.Models.Cliente
 
 
         [Display(Name = "CP")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [RegularExpression(@"^(([0-9]{5}))$", ErrorMessage = "CP incorrecto")]
         public string CP { get; set; }
 
@@ -83,7 +81,6 @@ namespace Domain.Models.Cliente
 
 
         [Display(Name = "Teléfono")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
@@ -91,7 +88,6 @@ namespace Domain.Models.Cliente
 
 
         [Display(Name = "Móvil")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
@@ -99,7 +95,6 @@ namespace Domain.Models.Cliente
 
 
         [Display(Name = "Mail")]
-        [Required(ErrorMessage = "Campo obligatorio")]
         [EmailAddress(ErrorMessage = "Mail incorrecto")]
         public string Mail { get; set; }
 

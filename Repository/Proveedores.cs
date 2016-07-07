@@ -34,6 +34,8 @@ namespace Repository
         public string Mail { get; set; }
         public string Nota { get; set; }
         public string Imagen { get; set; }
+        public string NombreComercial { get; set; }
+        public string Movil { get; set; }
     
         public virtual Estados Estados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
