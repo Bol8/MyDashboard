@@ -29,7 +29,7 @@ namespace Domain.Models.Proveedor
 
         [Display(Name = "NIF")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [RegularExpression(@"^(([A-Z]{1})([-]?)(\d{8}))|((\d{8})([-]?)([A-Z]{1}))$", ErrorMessage = "NIF incorrecto")]
+        [RegularExpression(@"^(([A-Z]{1})([-]?)(\d{8}))|((\d{8})([-]?)([A-Z]{1}))|(([A-Z]{1})([-]?)(\d{7})([A-Z]{1}))$", ErrorMessage = "NIF incorrecto")]
         public string NIF { get; set; }
 
 

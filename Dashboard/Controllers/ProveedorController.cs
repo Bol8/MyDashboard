@@ -129,8 +129,9 @@ namespace Dashboard.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var element = _gProveedores.FindBy(x => x.IdProveedor == id).FirstOrDefault();
+            var model = Mapper.Map<Proveedores, mProveedor>(element);
 
-            return View(element);
+            return View(model);
         }
 
 

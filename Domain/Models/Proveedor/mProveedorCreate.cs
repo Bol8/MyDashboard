@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using Repository;
 using System.Web.Mvc;
 using Domain.Connection;
+using Domain.DefaultValues;
 
 namespace Domain.Models.Proveedor
 {
@@ -25,6 +26,7 @@ namespace Domain.Models.Proveedor
 
         public mProveedorCreate()
         {
+            this.Estado = DefaultStatus.Active;
             this.Fecha_A = DateTime.Now;
             conn = new ConnectionDB();
             Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
