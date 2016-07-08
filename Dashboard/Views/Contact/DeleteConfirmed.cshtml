@@ -1,4 +1,4 @@
-﻿@model Repository.Contactos
+﻿@model Domain.Models.Contact.mContact
 
 <div class="row">
     <div class="col-xs-12">
@@ -22,6 +22,10 @@
                             @Html.DisplayFor(x => x.Nombre)
                         </p>
                         <p>
+                            <strong>@Html.DisplayNameFor(x => x.Direccion):</strong>
+                            @Html.DisplayFor(x => x.Direccion)
+                        </p>
+                        <p>
                             <strong>@Html.DisplayNameFor(x => x.Origen):</strong>
                             @Html.DisplayFor(x => x.Origen)
                         </p>
@@ -32,6 +36,10 @@
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Telefono):</strong>
                             @Html.DisplayFor(x => x.Telefono)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Movil):</strong>
+                            @Html.DisplayFor(x => x.Movil)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Mail):</strong>

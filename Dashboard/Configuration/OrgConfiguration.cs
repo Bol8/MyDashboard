@@ -6,6 +6,7 @@ using AutoMapper;
 using Repository;
 using Domain.Models.Cliente;
 using Domain.Models.Proveedor;
+using Domain.Models.Contact;
 
 namespace Dashboard.Configuration
 {
@@ -25,6 +26,9 @@ namespace Dashboard.Configuration
             CreateMap<Proveedores, mProveedorCreate>()
                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
             CreateMap<mProveedor, Proveedores>();
+
+            CreateMap<Contactos, mContact>();
+            CreateMap<mContact, Contactos>();
 
         }
 

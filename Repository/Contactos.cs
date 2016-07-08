@@ -21,5 +21,7 @@ namespace Repository
         public string Telefono { get; set; }
         public string Mail { get; set; }
         public string Nota { get; set; }
+        public string Direccion { get; set; }
+        public string Movil { get; set; }
     }
 }

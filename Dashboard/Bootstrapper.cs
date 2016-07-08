@@ -39,7 +39,12 @@ namespace Dashboard
                                                                               new ResolvedParameter<gStatus>("gStatus"))
                                                                               );
 
+            container.RegisterType<IGenericRepository<Contactos>, gContact>();
+            //container.RegisterType<IGenericRepository<Estados>, gStatus>();
 
+            container.RegisterType<ContactController>(new InjectionConstructor(new ResolvedParameter<gContact>("gContact")));
+                                                                              
+                                                                             
 
 
             // register all your components with the container here

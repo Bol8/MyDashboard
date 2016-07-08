@@ -54,11 +54,13 @@
             <PropertyRef Name="IdContacto" />
           </Key>
           <Property Name="IdContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Origen" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
-          <Property Name="Telefono" Type="nvarchar" MaxLength="9" Nullable="false" />
-          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
+          <Property Name="Origen" Type="nvarchar" MaxLength="250" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="250" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="12" />
+          <Property Name="Movil" Type="nvarchar" MaxLength="12" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="250" />
           <Property Name="Nota" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Empresas">
@@ -623,12 +625,14 @@
             <PropertyRef Name="IdContacto" />
           </Key>
           <Property Name="IdContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Origen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Origen" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Producto" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Movil" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Empresas">
           <Key>
@@ -1245,6 +1249,8 @@
           <EntitySetMapping Name="Contactos">
             <EntityTypeMapping TypeName="Model.Contactos">
               <MappingFragment StoreEntitySet="Contactos">
+                <ScalarProperty Name="Movil" ColumnName="Movil" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Origen" ColumnName="Origen" />
