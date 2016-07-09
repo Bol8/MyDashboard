@@ -1260,6 +1260,9 @@
     <Content Include="Views\PedidoC\Index.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\Article\Create.cshtml" />
+    <Content Include="Views\Shared\NoCompany.cshtml" />
+    <Content Include="Views\Shared\_LayoutNoCompany.cshtml" />
+    <Content Include="Views\Shared\MainHeaderOff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,32 +12,25 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Empresas
+    public partial class Almacenes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Empresas()
+        public Almacenes()
         {
-            this.Almacenes = new HashSet<Almacenes>();
-            this.Facturas = new HashSet<Facturas>();
+            this.Almacen_Productos = new HashSet<Almacen_Productos>();
         }
     
         public int Id { get; set; }
-        public string NombreFiscal { get; set; }
-        public string NombreComercial { get; set; }
-        public string NIF { get; set; }
+        public string Nombre { get; set; }
         public string Domicilio { get; set; }
         public string CP { get; set; }
         public string Poblacion { get; set; }
         public string Provincia { get; set; }
-        public string Telefono { get; set; }
-        public string Movil { get; set; }
-        public string Mail { get; set; }
-        public int idUsuario { get; set; }
+        public string Observaciones { get; set; }
+        public int Empresa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Almacenes> Almacenes { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Facturas> Facturas { get; set; }
+        public virtual ICollection<Almacen_Productos> Almacen_Productos { get; set; }
+        public virtual Empresas Empresas { get; set; }
     }
 }

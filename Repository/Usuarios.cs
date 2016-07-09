@@ -30,8 +30,8 @@ namespace Repository
         public string Password { get; set; }
         public string Imagen { get; set; }
     
+        public virtual Roles Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Empresas> Empresas { get; set; }
-        public virtual Roles Roles { get; set; }
     }
 }

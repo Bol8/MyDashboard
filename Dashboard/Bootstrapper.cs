@@ -31,6 +31,8 @@ namespace Dashboard
             container.RegisterType<IGenericRepository<Estados>, gStatus>();
             container.RegisterType<IGenericRepository<Iva>, gIVA>();
             container.RegisterType<IGenericRepository<TipoProducto>, gTypeProduct>();
+            container.RegisterType<IGenericRepository<Usuarios>, gUser>();
+            container.RegisterType<IGenericRepository<Empresas>, gCompany>();
 
 
             container.RegisterType<ClientController>(new InjectionConstructor(new ResolvedParameter<gClient>("repo"),
@@ -55,6 +57,9 @@ namespace Dashboard
                                                                               new ResolvedParameter<gStatus>("gStatus"))
                                                                               );
 
+            container.RegisterType<HomeController>(new InjectionConstructor(new ResolvedParameter<gUser>("gUser"),
+                                                                             new ResolvedParameter<gCompany>("gCompany"))
+                                                                             );
 
             // register all your components with the container here
             // it is NOT necessary to register your controllers
