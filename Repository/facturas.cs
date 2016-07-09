@@ -27,7 +27,7 @@ namespace Repository
         public Nullable<float> Cuota_Re { get; set; }
     
         public virtual Empresas Empresas { get; set; }
-        public virtual Pedido_c Pedido_c { get; set; }
         public virtual Clientes Clientes { get; set; }
+        public virtual Pedido_c Pedido_c { get; set; }
     }
 }

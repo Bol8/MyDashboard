@@ -129,6 +129,9 @@
     <Compile Include="TipoProducto.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="TiposPedido.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -7,6 +7,7 @@ using Repository;
 using Domain.Models.Cliente;
 using Domain.Models.Proveedor;
 using Domain.Models.Contact;
+using Domain.Models.Articulo;
 
 namespace Dashboard.Configuration
 {
@@ -29,6 +30,10 @@ namespace Dashboard.Configuration
 
             CreateMap<Contactos, mContact>();
             CreateMap<mContact, Contactos>();
+
+            CreateMap<Articulos, mArticle>();
+            CreateMap<mArticle, Articulos>();
+
 
         }
 

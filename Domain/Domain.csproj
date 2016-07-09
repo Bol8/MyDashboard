@@ -98,6 +98,7 @@
     <Compile Include="Manage\gProduct.cs" />
     <Compile Include="Manage\gProveedor.cs" />
     <Compile Include="Manage\gTypeProduct.cs" />
+    <Compile Include="Models\Articulo\mArticle.cs" />
     <Compile Include="Models\Cliente\mClientCreate.cs" />
     <Compile Include="Models\Cliente\mCliente.cs" />
     <Compile Include="Models\Contact\mContact.cs" />
@@ -124,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Observers\" />
+    <Folder Include="Models\Observers\" />
     <Folder Include="Tools\" />
   </ItemGroup>
   <ItemGroup>

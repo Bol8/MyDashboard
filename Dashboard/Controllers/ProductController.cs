@@ -10,128 +10,128 @@ namespace Dashboard.Controllers
 {
     public class ProductController : Controller
     {
-        private gProduct gProduct;
-        private gStatus gStatus;
-        private gTypeProduct gTypeProduct;
-        private gIVA gIva;
+        //private gProduct gProduct;
+        //private gStatus gStatus;
+        //private gTypeProduct gTypeProduct;
+        //private gIVA gIva;
 
-        #region Constructors
+        //#region Constructors
 
-        public ProductController()
-        {
-            gProduct = new gProduct();
-            gStatus = new gStatus();
-            gTypeProduct = new gTypeProduct();
-            gIva = new gIVA();
-        }
+        //public ProductController()
+        //{
+        //    gProduct = new gProduct();
+        //    gStatus = new gStatus();
+        //    gTypeProduct = new gTypeProduct();
+        //    gIva = new gIVA();
+        //}
 
-        #endregion
-
-
-        [HttpGet]
-        public ActionResult Index()
-        {
-            var productList = gProduct.getElements();
-            return View(productList);
-        }
+        //#endregion
 
 
-
-        // GET: Product/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult Index()
+        //{
+        //    var productList = gProduct.getElements();
+        //    return View(productList);
+        //}
 
 
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-            //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
-            //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
-
-            return View();
-        }
-
-
-        [HttpPost]
-        public ActionResult Create(Articulos product)
-        {
-            if (!ModelState.IsValid)
-            {
-                //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-                //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
-                //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
-
-                return View(product);
-            }
-
-            if (!gProduct.save(product)) throw new Exception("Error al intentar guardar el producto");
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public ActionResult Edit(int id)
-        {
-            var product = gProduct.getElementById(id);
-
-            //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-            //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
-            //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
-
-            return View(product);
-        }
+        //// GET: Product/Details/5
+        //public ActionResult Details(int id)
+        //{
+        //    return View();
+        //}
 
 
 
-        [HttpPost]
-        public ActionResult Edit(Articulos product)
-        {
-            if (!ModelState.IsValid)
-            {
-                //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
-                //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
-                ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+        //[HttpGet]
+        //public ActionResult Create()
+        //{
+        //    //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+        //    //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+        //    //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
 
-                return View(product);
-            }
-
-            if (!gProduct.edit(product)) throw new Exception("Error al intentar modificar el producto");
+        //    return View();
+        //}
 
 
-            return RedirectToAction("Index");
+        //[HttpPost]
+        //public ActionResult Create(Articulos product)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+        //        //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+        //        //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
 
-        }
+        //        return View(product);
+        //    }
+
+        //    if (!gProduct.save(product)) throw new Exception("Error al intentar guardar el producto");
+
+        //    return RedirectToAction("Index");
+        //}
+
+        //[HttpGet]
+        //public ActionResult Edit(int id)
+        //{
+        //    var product = gProduct.getElementById(id);
+
+        //    //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+        //    //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+        //    //ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+
+        //    return View(product);
+        //}
 
 
 
-        [HttpGet]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            var product = gProduct.getElementById(id);
-            return View(product);
-        }
+        //[HttpPost]
+        //public ActionResult Edit(Articulos product)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        //ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+        //        //ViewBag.IVA = new SelectList(gIva.getElements(), "IdIVA", "Porcentaje");
+        //        ViewBag.Tipo = new SelectList(gTypeProduct.getElements(), "IdTipoProd", "Nombre");
+
+        //        return View(product);
+        //    }
+
+        //    if (!gProduct.edit(product)) throw new Exception("Error al intentar modificar el producto");
+
+
+        //    return RedirectToAction("Index");
+
+        //}
 
 
 
-        [HttpPost]
-        public ActionResult Delete(Articulos product)
-        {
-            if (!gProduct.delete(product.IdArticulo)) throw new Exception("Error al intentar eliminar el producto");
-
-            return RedirectToAction("Index");
-
-        }
+        //[HttpGet]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    var product = gProduct.getElementById(id);
+        //    return View(product);
+        //}
 
 
-        public ActionResult getUnits(int id)
-        {
-            var units = gProduct.count(id);
 
-            return Json(units, JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public ActionResult Delete(Articulos product)
+        //{
+        //    if (!gProduct.delete(product.IdArticulo)) throw new Exception("Error al intentar eliminar el producto");
+
+        //    return RedirectToAction("Index");
+
+        //}
+
+
+        //public ActionResult getUnits(int id)
+        //{
+        //    var units = gProduct.count(id);
+
+        //    return Json(units, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

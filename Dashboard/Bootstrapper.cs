@@ -23,28 +23,37 @@ namespace Dashboard
         private static IUnityContainer BuildUnityContainer()
         {
             var container = new UnityContainer();
-            
+
+            container.RegisterType<IGenericRepository<Articulos>, gProduct>();
+            container.RegisterType<IGenericRepository<Contactos>, gContact>();
+            container.RegisterType<IGenericRepository<Proveedores>, gProveedor>();
             container.RegisterType<IGenericRepository<Clientes>, gClient>();
             container.RegisterType<IGenericRepository<Estados>, gStatus>();
+            container.RegisterType<IGenericRepository<Iva>, gIVA>();
+            container.RegisterType<IGenericRepository<TipoProducto>, gTypeProduct>();
+
 
             container.RegisterType<ClientController>(new InjectionConstructor(new ResolvedParameter<gClient>("repo"),
                                                                               new ResolvedParameter<gStatus>("st"))
                                                                               );
 
-
-            container.RegisterType<IGenericRepository<Proveedores>, gProveedor>();
-            container.RegisterType<IGenericRepository<Estados>, gStatus>();
-
+           
             container.RegisterType<ProveedorController>(new InjectionConstructor(new ResolvedParameter<gProveedor>("gProveedor"),
-                                                                              new ResolvedParameter<gStatus>("gStatus"))
+                                                                                 new ResolvedParameter<gStatus>("gStatus"))
                                                                               );
 
-            container.RegisterType<IGenericRepository<Contactos>, gContact>();
-            //container.RegisterType<IGenericRepository<Estados>, gStatus>();
-
+            
             container.RegisterType<ContactController>(new InjectionConstructor(new ResolvedParameter<gContact>("gContact")));
-                                                                              
-                                                                             
+
+            
+            container.RegisterType<StoreController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle")));
+
+
+            container.RegisterType<ArticleController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle"),
+                                                                              new ResolvedParameter<gTypeProduct>("gArticleType"),
+                                                                              new ResolvedParameter<gIVA>("gIVA"),
+                                                                              new ResolvedParameter<gStatus>("gStatus"))
+                                                                              );
 
 
             // register all your components with the container here

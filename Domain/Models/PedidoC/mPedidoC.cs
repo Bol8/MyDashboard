@@ -13,7 +13,6 @@ namespace Domain.Models.PedidoC
 
         #region Atributos
 
-
         [Display(Name = "Pedido")]
         public int Num_ped { get; set; }
 
@@ -22,8 +21,8 @@ namespace Domain.Models.PedidoC
         public int idCliente { get; set; }
 
 
-        [Display(Name = "Destino")]
-        public string Destino { get; set; }
+        [Display(Name = "Direccion")]
+        public string Direccion { get; set; }
 
 
         [Display(Name = "Estado")]
@@ -38,11 +37,16 @@ namespace Domain.Models.PedidoC
         public System.DateTime Fecha_A { get; set; }
 
 
-        [Display(Name = "Total")]
-        public float Total { get; set; }
+        [Display(Name = "Peso")]
+        public decimal? Peso { get; set; }
+
+
+        [Display(Name = "Importe")]
+        public float Importe { get; set; }
 
 
         [Display(Name = "Observaciones")]
+        [StringLength(1000, ErrorMessage = "Max. {1} caracteres")]
         public string Observaciones { get; set; }
 
 
@@ -58,11 +62,12 @@ namespace Domain.Models.PedidoC
         {
             Num_ped = pedidoC.Num_ped;
             idCliente = pedidoC.idCliente;
-            Destino = pedidoC.Destino;
+            Direccion = pedidoC.Direccion;
             Estado = pedidoC.Estado;
             Forma_pago = pedidoC.Forma_pago;
             Fecha_A = pedidoC.Fecha_A;
-            Total = pedidoC.Total;
+            Importe = pedidoC.Importe;
+            Peso = pedidoC.Peso;
             Observaciones = pedidoC.Observaciones;
         }
 

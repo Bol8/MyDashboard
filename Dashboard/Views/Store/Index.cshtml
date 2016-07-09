@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Domain.Models.Articulo.mArticle>
+
+@{ 
+    ViewBag.Title = "Almacén";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-default flat">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewBag.Title</h3>
+                @Html.ActionLink("Añadir articulo", "Create", "Article", null, new { @class = "btn btn-primary pull-right flat" })
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example1" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Codigo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                            <th>@Html.DisplayNameFor(model => model.IVA)</th>
+                            <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                            <th>@Html.DisplayNameFor(model => model.Peso) (gr.)</th>
+                            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                            <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
+                            <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                          
+
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.Codigo)</td>
+                                <td>@Html.DisplayFor(model => item.Nombre)</td>
+                                <td>@Html.DisplayFor(model => item.Tipo)</td>
+                                <td>@Html.DisplayFor(model => item.IVA)</td>
+                                <td>@Html.DisplayFor(model => item.Precio)</td>
+                                <td>@Html.DisplayFor(model => item.Peso)gr.</td>
+                                <td>@Html.DisplayFor(model => item.Estado)</td>
+                                <td>@Html.DisplayFor(model => item.Cantidad)</td>
+                                <td>@Html.DisplayFor(model => item.Descripcion)</td>
+                                
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", "Article", new { id = item.IdArticulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                                    <span> </span>
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Article", new { id = item.IdArticulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+<!-- DATA TABES SCRIPT -->
+
+<script src="~/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- page script -->
+
+<script type="text/javascript">
+    $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+    });
+</script>
+

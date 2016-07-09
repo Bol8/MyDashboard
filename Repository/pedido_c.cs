@@ -23,19 +23,20 @@ namespace Repository
     
         public int Num_ped { get; set; }
         public int idCliente { get; set; }
-        public string Destino { get; set; }
+        public string Direccion { get; set; }
         public int Estado { get; set; }
         public int Forma_pago { get; set; }
         public System.DateTime Fecha_A { get; set; }
-        public float Total { get; set; }
+        public float Importe { get; set; }
+        public Nullable<decimal> Peso { get; set; }
         public string Observaciones { get; set; }
     
+        public virtual Clientes Clientes { get; set; }
         public virtual EstadosPedido EstadosPedido { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturas> Facturas { get; set; }
         public virtual FormaPago FormaPago { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Linea_pedido_c> Linea_pedido_c { get; set; }
-        public virtual Clientes Clientes { get; set; }
     }
 }

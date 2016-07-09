@@ -38,10 +38,10 @@ namespace Repository
         public string Imagen { get; set; }
         public string Movil { get; set; }
     
-        public virtual Estados Estados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturas> Facturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido_c> Pedido_c { get; set; }
+        public virtual Estados Estados { get; set; }
     }
 }

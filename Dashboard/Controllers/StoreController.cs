@@ -3,38 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Domain.Models.PedidoC;
+using Domain.Interfaces;
+using Domain.Manage;
+using Repository;
+using Domain.Models.Articulo;
+using AutoMapper;
 
 namespace Dashboard.Controllers
 {
-    public class PedidoCController : Controller
+    public class StoreController : Controller
     {
+        private IGenericRepository<Articulos> _gArticle;
 
-        // GET: PedidoC
+
+        public StoreController(IGenericRepository<Articulos> gArticle)
+        {
+            this._gArticle = gArticle;
+        }
+        
+
+        // GET: Store
         public ActionResult Index()
         {
-            return View();
+            var list = _gArticle.GetAll().ToList();
+            var modelList = Mapper.Map<IEnumerable<Articulos>, IEnumerable<mArticle>>(list).ToList();
+
+            return View(modelList);
         }
 
-        // GET: PedidoC/Details/5
+
+
+
+        // GET: Store/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-
-
-        // GET: PedidoC/Create
+        // GET: Store/Create
         public ActionResult Create()
         {
-            var model = new mPedidoCCreate();
-
-            return PartialView(model);
+            return View();
         }
 
-
-
-        // POST: PedidoC/Create
+        // POST: Store/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -50,13 +62,13 @@ namespace Dashboard.Controllers
             }
         }
 
-        // GET: PedidoC/Edit/5
+        // GET: Store/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: PedidoC/Edit/5
+        // POST: Store/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -72,13 +84,13 @@ namespace Dashboard.Controllers
             }
         }
 
-        // GET: PedidoC/Delete/5
+        // GET: Store/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: PedidoC/Delete/5
+        // POST: Store/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

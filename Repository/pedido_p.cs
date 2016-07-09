@@ -34,5 +34,6 @@ namespace Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Linea_pedido_p> Linea_pedido_p { get; set; }
         public virtual Proveedores Proveedores { get; set; }
+        public virtual TiposPedido TiposPedido { get; set; }
     }
 }

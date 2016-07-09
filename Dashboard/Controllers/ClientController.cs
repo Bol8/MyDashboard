@@ -36,12 +36,7 @@ namespace Dashboard.Controllers
         {
             var list = _gClient.GetAll().ToList();
             var modelList = Mapper.Map<IEnumerable<Clientes>, IEnumerable<mCliente>>(list).ToList();
-
-            //Column<mCliente> column = new Column<mCliente>("Agentes", "Agente");
-            //column.AddRange(modelList);
-
-            //var a = column;
-
+            
             return View(modelList);
         }
 
@@ -99,19 +94,19 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(Clientes client)
+        public ActionResult Edit(Clientes element)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    var model = AutoMapper.Mapper.Map<Clientes, mCliente>(client);
+                    var model = Mapper.Map<Clientes, mCliente>(element);
                     ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "IdEstado", "Nombre");
 
                     return View(model);
                 }
 
-                _gClient.Edit(client);
+                _gClient.Edit(element);
                 _gClient.Save();
             }
             catch (Exception ex)
@@ -129,7 +124,7 @@ namespace Dashboard.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var element = _gClient.FindBy(x=> x.IdCliente == id).FirstOrDefault();
-            var model = AutoMapper.Mapper.Map<Clientes, mCliente>(element);
+            var model = Mapper.Map<Clientes, mCliente>(element);
 
             return View(model);
         }
