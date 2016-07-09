@@ -31,7 +31,10 @@ namespace Dashboard.Configuration
             CreateMap<Contactos, mContact>();
             CreateMap<mContact, Contactos>();
 
-            CreateMap<Articulos, mArticle>();
+            CreateMap<Articulos, mArticle>()
+                .ForMember<string>(x => x.sEstado , opt => opt.MapFrom(x => x.Estados.Nombre))
+                .ForMember<string>(x => x.sIVA, opt => opt.MapFrom(x => x.Iva1.Valor))
+                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
             CreateMap<mArticle, Articulos>();
 
 

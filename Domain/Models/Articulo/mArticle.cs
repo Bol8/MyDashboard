@@ -33,9 +33,17 @@ namespace Domain.Models.Articulo
         public int Tipo { get; set; }
 
 
+        [Display(Name = "Tipo")]
+        public string sTipo { get; set; }
+
+
         [Display(Name = "Estado")]
         [Required(ErrorMessage = "Campo obligatorio")]
         public int Estado { get; set; }
+
+
+        [Display(Name = "Estado")]
+        public string sEstado { get; set; }
 
 
         [Display(Name = "Precio")]
@@ -48,6 +56,8 @@ namespace Domain.Models.Articulo
         [Required(ErrorMessage = "Campo obligatorio")]
         public int IVA { get; set; }
 
+        [Display(Name = "IVA")]
+        public string sIVA { get; set; }
 
 
         [Display(Name = "Descripción")]
