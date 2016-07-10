@@ -1,14 +1,18 @@
 ﻿@model IEnumerable<Domain.Models.Contact.mContact>
 
+@{ 
+    ViewBag.Title = "Contactos";
+}
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-default flat">
             <div class="box-header with-border">
-                <h3 class="box-title">Contactos</h3>
+                <h3 class="box-title">@ViewBag.Title</h3>
                 @Html.ActionLink("Nuevo", "Create", "Contact", null, new { @class = "btn btn-primary pull-right flat" })
             </div><!-- /.box-header -->
             <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example2" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.Nombre)</th>
@@ -57,14 +61,16 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#example1").dataTable();
         $('#example2').dataTable({
             "bPaginate": true,
-            "bLengthChange": false,
-            "bFilter": false,
+            "bLengthChange": true,
+            "bFilter": true,
             "bSort": true,
             "bInfo": true,
-            "bAutoWidth": false
+            "bAutoWidth": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json",
+            }
         });
     });
 </script>

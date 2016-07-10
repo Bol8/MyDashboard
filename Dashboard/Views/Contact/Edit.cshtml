@@ -1,10 +1,14 @@
 ﻿@model Domain.Models.Contact.mContact
 
+@{
+    ViewBag.Title = "Editar contacto";
+}
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-default flat">
             <div class="box-header with-border">
-                <h3 class="box-title">Nuevo contacto</h3>
+                <h3 class="box-title">@ViewBag.Title</h3>
             </div><!-- /.box-header -->
             <div class="box-body">
                 @using (Html.BeginForm())

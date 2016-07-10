@@ -22,7 +22,7 @@ namespace Domain.Models.Contact
         public string Nombre { get; set; }
 
 
-        [Display(Name = "Direccion")]
+        [Display(Name = "Dirección")]
         [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Direccion { get; set; }
 
@@ -37,14 +37,14 @@ namespace Domain.Models.Contact
         public string Producto { get; set; }
 
 
-        [Display(Name = "Telefono")]
+        [Display(Name = "Teléfono")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
         public string Telefono { get; set; }
 
 
-        [Display(Name = "Movil")]
+        [Display(Name = "Móvil")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
