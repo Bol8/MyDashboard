@@ -1,14 +1,18 @@
 ﻿@model IEnumerable<Domain.Models.Cliente.mCliente>
 
+@{ 
+    ViewBag.Title = "Clientes";
+}
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-default flat">
             <div class="box-header with-border">
-                <h3 class="box-title">Clientes</h3>
+                <h3 class="box-title">@ViewBag.Title</h3>
                 @Html.ActionLink("Nuevo","Create","Client",null, new { @class="btn btn-primary pull-right flat"})
             </div><!-- /.box-header -->
             <div class="box-body">
-                <table id="example1" class="table table-bordered">
+                <table id="example2" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.NIF)</th>
@@ -53,24 +57,6 @@
                         }
                     </tbody>
 
-                    @*<tfoot>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.NIF)</th>
-                            <th>@Html.DisplayNameFor(model => model.Razon_Social)</th>
-                            <th>@Html.DisplayNameFor(model => model.NombreComercial)</th>
-                            <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
-                            <th>@Html.DisplayNameFor(model => model.Poblacion)</th>
-                            <th>@Html.DisplayNameFor(model => model.Provincia)</th>
-                            <th>@Html.DisplayNameFor(model => model.Pais)</th>
-                            <th>@Html.DisplayNameFor(model => model.CP)</th>
-                            <th>@Html.DisplayNameFor(model => model.Mail)</th>
-                            <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-                            <th>@Html.DisplayNameFor(model => model.Movil)</th>
-                            <th>@Html.DisplayNameFor(model => model.sEstado)</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </tfoot>*@
-
                 </table>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
@@ -84,14 +70,17 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#example1").dataTable();
         $('#example2').dataTable({
             "bPaginate": true,
-            "bLengthChange": false,
-            "bFilter": false,
+            "bLengthChange": true,
+            "bFilter": true,
             "bSort": true,
             "bInfo": true,
-            "bAutoWidth": false
+            "bAutoWidth": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json",
+                
+            }
         });
     });
 </script>

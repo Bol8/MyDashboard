@@ -29,7 +29,7 @@ namespace Domain.Models.Proveedor
             this.Estado = DefaultStatus.Active;
             this.Fecha_A = DateTime.Now;
             conn = new ConnectionDB();
-            Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
+            Estados = new SelectList(conn.DB.Estados, "Id", "Nombre");
 
         }
 
@@ -38,7 +38,7 @@ namespace Domain.Models.Proveedor
             :base(proveedor)
         {
             conn = new ConnectionDB();
-            Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
+            Estados = new SelectList(conn.DB.Estados, "Id", "Nombre");
         }
 
         #endregion

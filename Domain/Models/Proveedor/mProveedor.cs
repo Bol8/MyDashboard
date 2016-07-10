@@ -117,6 +117,7 @@ namespace Domain.Models.Proveedor
         {
             IdProveedor = proveedor.IdProveedor;
             RazonSocial = proveedor.RazonSocial;
+            NombreComercial = proveedor.NombreComercial;
             NIF = proveedor.NIF;
             Domicilio = proveedor.Domicilio;
             CP = proveedor.CP;

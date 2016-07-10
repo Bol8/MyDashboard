@@ -92,7 +92,7 @@ namespace Dashboard.Controllers
         {
             var element = _gProveedores.FindBy(x => x.IdProveedor == id).FirstOrDefault();
             var model = new mProveedorCreate(element);
-            ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "IdEstado", "Nombre");
+            //ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
 
             return View(model);
         }

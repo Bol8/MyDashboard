@@ -29,14 +29,14 @@ namespace Domain.Models.Cliente
             this.Estado = DefaultStatus.Active;
             this.Fecha_A = DateTime.Now;
             conn = new ConnectionDB();
-            Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
+            Estados = new SelectList(conn.DB.Estados, "Id", "Nombre");
         }
 
         public mClientCreate(Clientes client)
             : base(client)
         {
             conn = new ConnectionDB();
-            Estados = new SelectList(conn.DB.Estados, "IdEstado", "Nombre");
+            Estados = new SelectList(conn.DB.Estados, "Id", "Nombre");
         }
 
         #endregion

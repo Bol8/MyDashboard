@@ -84,7 +84,7 @@ namespace Dashboard.Controllers
             var element = _gClient.FindBy(x=> x.IdCliente == id).FirstOrDefault();
             var model = new mClientCreate(element);
 
-            ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "IdEstado", "Nombre");
+            //ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "IdEstado", "Nombre");
             
             return View(model);
         }
@@ -101,7 +101,7 @@ namespace Dashboard.Controllers
                 if (!ModelState.IsValid)
                 {
                     var model = Mapper.Map<Clientes, mCliente>(element);
-                    ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "IdEstado", "Nombre");
+                    ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
 
                     return View(model);
                 }

@@ -1,5 +1,9 @@
 ﻿@model Domain.Models.Cliente.mCliente
 
+@{
+    ViewBag.Title = "Eliminar cliente";
+}
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-danger flat">
@@ -9,7 +13,6 @@
             <div class="box-body">    
                 <div>
                     @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:20px;" })
-                  
                 </div>
 
                 <div class="col-xs-12">
@@ -20,6 +23,10 @@
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Razon_Social):</strong>
                             @Html.DisplayFor(x => x.Razon_Social)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.NombreComercial):</strong>
+                            @Html.DisplayFor(x => x.NombreComercial)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.NIF):</strong>
@@ -52,6 +59,10 @@
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Telefono):</strong>
                             @Html.DisplayFor(x => x.Telefono)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Movil):</strong>
+                            @Html.DisplayFor(x => x.Movil)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Mail):</strong>

@@ -13,11 +13,12 @@
                 @Html.ActionLink("Nuevo", "Create", "Proveedor", null, new { @class = "btn btn-primary pull-right flat" })
             </div><!-- /.box-header -->
             <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example2" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.NIF)</th>
                             <th>@Html.DisplayNameFor(model => model.RazonSocial)</th>
+                            <th>@Html.DisplayNameFor(model => model.NombreComercial)</th>
                             <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
                             <th>@Html.DisplayNameFor(model => model.Poblacion)</th>
                             <th>@Html.DisplayNameFor(model => model.Provincia)</th>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>@Html.DisplayFor(model => item.NIF)</td>
                                 <td>@Html.DisplayFor(model => item.RazonSocial)</td>
+                                <td>@Html.DisplayFor(model => item.NombreComercial)</td>
                                 <td>@Html.DisplayFor(model => item.Domicilio)</td>
                                 <td>@Html.DisplayFor(model => item.Poblacion)</td>
                                 <td>@Html.DisplayFor(model => item.Provincia)</td>
@@ -68,14 +70,16 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#example1").dataTable();
         $('#example2').dataTable({
             "bPaginate": true,
-            "bLengthChange": false,
-            "bFilter": false,
+            "bLengthChange": true,
+            "bFilter": true,
             "bSort": true,
             "bInfo": true,
-            "bAutoWidth": false
+            "bAutoWidth": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json",
+            }
         });
     });
 </script>

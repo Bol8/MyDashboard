@@ -1,4 +1,8 @@
-﻿@model  Domain.Models.Cliente.mCliente
+﻿@model  Domain.Models.Cliente.mClientCreate
+
+@{ 
+    ViewBag.Title = "Editar cliente";
+}
 
 <div class="row">
     <div class="col-xs-12">
@@ -85,17 +89,9 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Fecha_A, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Fecha_A, new { htmlAttributes = new { @class = "datepicker form-control CformControl" } })
-                                    @Html.ValidationMessageFor(model => model.Fecha_A, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.Estado, null, "-- Selecciona --", new { @class = "form-control CformControl" })
+                                    @Html.DropDownListFor(model => model.Estado, Model.Estados, "-- Selecciona --", new { @class = "form-control CformControl" })
                                     @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
                                 </div>
                             </div>

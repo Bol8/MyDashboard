@@ -48,6 +48,7 @@ namespace Dashboard.Security
                 idUser = custonMembershipUser.idUser;
                 FirstName = custonMembershipUser.FirstName;
                 LastName = custonMembershipUser.LastName;
+                UserName = custonMembershipUser.UserName;
                 Mail = custonMembershipUser.Email;
                 RoleName = custonMembershipUser.RoleName;
                 Phone = custonMembershipUser.Phone;
