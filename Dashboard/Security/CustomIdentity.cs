@@ -15,9 +15,8 @@ namespace Dashboard.Security
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
-        public int MyProperty { get; set; }
         public string Phone { get; set; }
-        public string MvPhone { get; set; }
+        //public string MvPhone { get; set; }
         public string Mail { get; set; }
         public int Role { get; set; }
         public string RoleName { get; set; }
@@ -36,6 +35,25 @@ namespace Dashboard.Security
         public string Name
         {
             get { return Identity.Name; }
+        }
+
+        public CustomIdentity(IIdentity identity)
+        {
+            Identity = identity;
+
+            var custonMembershipUser = (CustomMembershipUser)Membership.GetUser(identity.Name);
+
+            if (custonMembershipUser != null)
+            {
+                idUser = custonMembershipUser.idUser;
+                FirstName = custonMembershipUser.FirstName;
+                LastName = custonMembershipUser.LastName;
+                Mail = custonMembershipUser.Email;
+                RoleName = custonMembershipUser.RoleName;
+                Phone = custonMembershipUser.Phone;
+                Role = custonMembershipUser.Role;
+            }
+
         }
     }
 }

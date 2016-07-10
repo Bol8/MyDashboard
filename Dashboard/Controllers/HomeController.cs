@@ -10,6 +10,7 @@ using Domain.Interfaces;
 
 namespace Dashboard.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IGenericRepository<Usuarios> _gUser;

@@ -10,13 +10,7 @@ namespace Dashboard.Security
     {
         public IIdentity Identity { get; private set; }
 
-        //public IIdentity Identity
-        //{
-        //    get
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //}
+      
 
         public CustomPrincipal(CustomIdentity identity)
         {

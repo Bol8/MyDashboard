@@ -8,6 +8,7 @@ using Domain.Manage;
 using System.Linq.Expressions;
 using System.Linq;
 using System;
+using Dashboard.Security;
 
 namespace Dashboard
 {
@@ -61,10 +62,12 @@ namespace Dashboard
                                                                              new ResolvedParameter<gCompany>("gCompany"))
                                                                              );
 
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
+            //container.RegisterType<CustomRoleProvider>(new InjectionConstructor(new ResolvedParameter<gUser>("gUser")));
+            //container.RegisterType<CustomMembershipProvider>(new InjectionConstructor(new ResolvedParameter<gUser>("gUser")));
+            
 
-            // e.g. container.RegisterType<ITestService, TestService>();            
+
+
 
             return container;
         }

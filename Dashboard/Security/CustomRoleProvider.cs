@@ -6,6 +6,7 @@ using System.Web.Caching;
 using System.Web.Security;
 using Domain.Interfaces;
 using Repository;
+using Domain.Manage;
 
 namespace Dashboard.Security
 {
@@ -13,13 +14,14 @@ namespace Dashboard.Security
     {
 
         private int _cacheTimeoutInMinutes = 300;
-        private IGenericRepository<Usuarios> _gUser;
+        private IGenericRepository<Usuarios> _gUser = new gUser();
 
+        public CustomRoleProvider() { }
 
-        public CustomRoleProvider(IGenericRepository<Usuarios> gUser)
-        {
-            this._gUser = gUser;
-        }
+        //public CustomRoleProvider(IGenericRepository<Usuarios> gUser)
+        //{
+        //    this._gUser = gUser;
+        //}
 
         public override string ApplicationName
         {
@@ -82,6 +84,7 @@ namespace Dashboard.Security
 
                     return userRoles.ToArray();
                 }
+                
             }
         }
 
@@ -92,7 +95,8 @@ namespace Dashboard.Security
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            throw new NotImplementedException();
+            var userRoles = GetRolesForUser(username);
+            return userRoles.Contains(roleName);
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)

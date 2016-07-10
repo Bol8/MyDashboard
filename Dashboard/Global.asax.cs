@@ -17,7 +17,7 @@ using Domain.Interfaces;
 using Dashboard.Controllers;
 using System.Reflection;
 using Dashboard.CustomControllers;
-
+using Dashboard.Security;
 
 namespace Dashboard
 {
@@ -37,34 +37,18 @@ namespace Dashboard
             });
 
             Bootstrapper.Initialise();
-
-
-            //var builder = new ContainerBuilder();
-            //builder.RegisterInstance(new gClient()).As<IGenericRepository<Clientes>>();
-            //builder.RegisterType<ClientController>();
-
-
-
-            // builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker();
-
-            //builder.RegisterAssemblyTypes(
-            //    Assembly.GetExecutingAssembly())
-            //    .Where(x => !x.IsAbstract && typeof(Controller).IsAssignableFrom(x))
-            //    .InstancePerMatchingLifetimeScope(DependencyResolver.Current);
-
-
-           
-            //var container = builder.Build();
-            // DependencyResolver.SetResolver(container);
-
-            //using (var scope = container.BeginLifetimeScope())
-            //{
-            //    var service = scope.Resolve<ClientController>();
-            //}
             
         }
 
-
+        protected void Application_PostAuthenticateRequest(object sender, EventArgs e)
+        {
+            if (Request.IsAuthenticated)
+            {
+                var identity = new CustomIdentity(HttpContext.Current.User.Identity);
+                var principal = new CustomPrincipal(identity);
+                HttpContext.Current.User = principal;
+            }
+        }
 
         private void RegisterCustomControllerFactory()
         {

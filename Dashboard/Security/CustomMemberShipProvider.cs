@@ -7,6 +7,7 @@ using Repository;
 using System.Collections.Specialized;
 using System.Web.Caching;
 using Domain.Interfaces;
+using Domain.Manage;
 
 namespace Dashboard.Security
 {
@@ -14,14 +15,34 @@ namespace Dashboard.Security
     {
 
         private int _cacheTimeoutInMinutes = 300;
-        private IGenericRepository<Usuarios> _gUser;
+        private IGenericRepository<Usuarios> _gUser = new gUser();
+
+        public CustomMembershipProvider() { }
+
+        //public CustomMembershipProvider(IGenericRepository<Usuarios> gUser)
+        //{
+        //    this._gUser = gUser;
+        //}
 
 
-        public CustomMembershipProvider(IGenericRepository<Usuarios> gUser)
+        /// <summary>
+        /// Inicializa valores del web.config.
+        /// </summary>
+        /// <param name="name">Nombre del proveedor.</param>
+        /// <param name="config">Colección de pares nombre/valor que representan los atributos específicos en la configuración de este proveedor.</param>
+        public override void Initialize(string name, NameValueCollection config)
         {
-            this._gUser = gUser;
+            // Set Properties
+            
+            int val;
+            if (!string.IsNullOrEmpty(config["cacheTimeoutInMinutes"]) && Int32.TryParse(config["cacheTimeoutInMinutes"], out val))
+            {
+                _cacheTimeoutInMinutes = val;
+            }
+
+            // Call base method
+            base.Initialize(name, config);
         }
-      
 
         public override string ApplicationName
         {
@@ -207,7 +228,9 @@ namespace Dashboard.Security
 
         public override bool ValidateUser(string username, string password)
         {
-            throw new NotImplementedException();
+            var user = _gUser.FindBy(x => x.UserName.Equals(username) && x.Password.Equals(password));
+            if (user == null) return false;
+            return true;
         }
     }
 }

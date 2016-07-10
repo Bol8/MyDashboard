@@ -249,7 +249,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Bootstrapper.cs" />
@@ -294,6 +293,7 @@
     <Compile Include="Security\CustomMembershipUser.cs" />
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\CustomRoleProvider.cs" />
+    <Compile Include="Security\SecurityExtensions.cs" />
     <Compile Include="Security\UserRoleAuthorizeAttribute.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1269,6 +1269,7 @@
     <Content Include="Views\Shared\NoCompany.cshtml" />
     <Content Include="Views\Shared\_LayoutNoCompany.cshtml" />
     <Content Include="Views\Shared\MainHeaderOff.cshtml" />
+    <Content Include="Views\Shared\_LayoutBasic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
