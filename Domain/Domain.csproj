@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStatusRepository.cs" />
     <Compile Include="Manage\ControlClient.cs" />
+    <Compile Include="Manage\gStoreArticle.cs" />
     <Compile Include="Manage\gClient.cs" />
     <Compile Include="Manage\gCompany.cs" />
     <Compile Include="Manage\gContact.cs" />
@@ -98,8 +99,11 @@
     <Compile Include="Manage\gPedidoC.cs" />
     <Compile Include="Manage\gProduct.cs" />
     <Compile Include="Manage\gProveedor.cs" />
+    <Compile Include="Manage\gStore.cs" />
     <Compile Include="Manage\gTypeProduct.cs" />
     <Compile Include="Manage\gUser.cs" />
+    <Compile Include="Models\AlmacenProducto\mAlmacenProducto.cs" />
+    <Compile Include="Models\AlmacenProducto\mStoreArticleCreate.cs" />
     <Compile Include="Models\Articulo\mArticle.cs" />
     <Compile Include="Models\Cliente\mClientCreate.cs" />
     <Compile Include="Models\Cliente\mCliente.cs" />

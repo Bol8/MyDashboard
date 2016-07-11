@@ -1271,6 +1271,7 @@
     <Content Include="Views\Shared\_LayoutNoCompany.cshtml" />
     <Content Include="Views\Shared\MainHeaderOff.cshtml" />
     <Content Include="Views\Shared\_LayoutBasic.cshtml" />
+    <Content Include="Views\Store\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

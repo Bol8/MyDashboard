@@ -34,6 +34,9 @@ namespace Dashboard
             container.RegisterType<IGenericRepository<TipoProducto>, gTypeProduct>();
             container.RegisterType<IGenericRepository<Usuarios>, gUser>();
             container.RegisterType<IGenericRepository<Empresas>, gCompany>();
+            container.RegisterType<IGenericRepository<Almacen_Productos>, gStoreArticle>();
+            container.RegisterType<IGenericRepository<Almacenes>, gStore>();
+
 
 
             container.RegisterType<ClientController>(new InjectionConstructor(new ResolvedParameter<gClient>("repo"),
@@ -49,8 +52,16 @@ namespace Dashboard
             container.RegisterType<ContactController>(new InjectionConstructor(new ResolvedParameter<gContact>("gContact")));
 
             
-            container.RegisterType<StoreController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle")));
+            //container.RegisterType<StoreController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle")));
+            //container.RegisterType<StoreController>(new InjectionConstructor(new ResolvedParameter<gStore>("gAlmacenProducto")));
 
+            container.RegisterType<StoreController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle"),
+                                                                             new ResolvedParameter<gStore>("gStore"),
+                                                                             new ResolvedParameter<gTypeProduct>("gArticleType"),
+                                                                             new ResolvedParameter<gIVA>("gIVA"),
+                                                                              new ResolvedParameter<gStoreArticle>("gStoreArticle"),
+                                                                             new ResolvedParameter<gStatus>("gStatus"))
+                                                                             );
 
             container.RegisterType<ArticleController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle"),
                                                                               new ResolvedParameter<gTypeProduct>("gArticleType"),

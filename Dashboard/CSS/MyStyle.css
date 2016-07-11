@@ -7,3 +7,7 @@
 .TableContent{
     overflow-x:scroll;
 }
+
+.FormFieldSet{
+    margin:5px 100px;
+}

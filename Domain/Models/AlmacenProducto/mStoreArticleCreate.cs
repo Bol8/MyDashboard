@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using Repository;
 
-namespace Domain.Models.Articulo
+
+namespace Domain.Models.AlmacenProducto
 {
-    public class mArticle
+    public class mStoreArticleCreate
     {
-        [Display(Name ="ID")]
+        [Display(Name = "ID")]
         public int IdArticulo { get; set; }
 
 
@@ -57,6 +57,7 @@ namespace Domain.Models.Articulo
         [Required(ErrorMessage = "Campo obligatorio")]
         public int IVA { get; set; }
 
+
         [Display(Name = "IVA")]
         public string sIVA { get; set; }
 
@@ -73,6 +74,42 @@ namespace Domain.Models.Articulo
         [Required(ErrorMessage = "Campo obligatorio")]
         public int Cantidad { get; set; }
 
-        
+
+        [Display(Name = "Almacén")]
+        public int Almacen { get; set; }
+
+
+        [Display(Name = "Articulo")]
+        public int Articulo { get; set; }
+
+
+        [Display(Name = "Stock")]
+        public int Stock { get; set; }
+
+        [Display(Name = "Stock disponible")]
+        public int StockDisponible { get; set; }
+
+
+        [Display(Name = "Stock min.")]
+        public int StockMin { get; set; }
+
+
+        [Display(Name = "Stock max.")]
+        public int StockMax { get; set; }
+
+
+        #region Constructores
+
+        public mStoreArticleCreate() { }
+
+        public mStoreArticleCreate(int idStore)
+        {
+            this.Almacen = idStore;
+        }
+
+        #endregion
+
+
+
     }
 }
