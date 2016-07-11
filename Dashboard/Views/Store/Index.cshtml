@@ -29,7 +29,6 @@
                             <th>@Html.DisplayNameFor(model => model.StockMin)</th>
                             <th>@Html.DisplayNameFor(model => model.Article.Descripcion)</th>
                           
-
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -53,9 +52,9 @@
                                 <td>@Html.DisplayFor(model => item.Article.Descripcion)</td>
                                 
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", "Article", new { id = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                                    @Html.ActionLink(" ", "Edit", "Store", new { idStore = ViewBag.idStore , idArticle = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Article", new { id = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Store", new { id = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
                                 </td>
                             </tr>
                         }

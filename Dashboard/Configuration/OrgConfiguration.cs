@@ -9,6 +9,7 @@ using Domain.Models.Proveedor;
 using Domain.Models.Contact;
 using Domain.Models.Articulo;
 using Domain.Models.AlmacenProducto;
+using System.Web.Mvc;
 
 namespace Dashboard.Configuration
 {
@@ -40,7 +41,8 @@ namespace Dashboard.Configuration
 
             CreateMap<Almacen_Productos, mAlmacenProducto>()
                 .ForMember<mArticle>(x => x.Article, opt => opt.MapFrom(x =>
-                new mArticle {
+                new mArticle
+                {
                     IdArticulo = x.Articulos.IdArticulo,
                     Codigo = x.Articulos.Codigo,
                     Nombre = x.Articulos.Nombre,
@@ -55,7 +57,30 @@ namespace Dashboard.Configuration
                     Descripcion = x.Articulos.Descripcion,
                 }));
 
-            CreateMap<mStoreArticleCreate, Articulos>();
+            CreateMap<Almacen_Productos, mStoreArticleCreate>()
+                //.ForMember<int>(x => x.Almacen, opt => opt.MapFrom(x => x.Almacen))
+                //.ForMember<int>(x => x.Articulo, opt => opt.MapFrom(x => x.Articulo))
+               .ForMember<int>(x => x.IdArticulo, opt => opt.MapFrom(x => x.Articulos.IdArticulo))
+               .ForMember<string>(x => x.Codigo, opt => opt.MapFrom(x => x.Articulos.Codigo))
+               .ForMember<string>(x => x.Nombre, opt => opt.MapFrom(x => x.Articulos.Nombre))
+               .ForMember<decimal?>(x => x.Peso, opt => opt.MapFrom(x => x.Articulos.Peso))
+               .ForMember<int>(x => x.Tipo, opt => opt.MapFrom(x => x.Articulos.Tipo))
+               .ForMember<int>(x => x.Estado, opt => opt.MapFrom(x => x.Articulos.Estado))
+               .ForMember<decimal>(x => x.Precio, opt => opt.MapFrom(x => x.Articulos.Precio))
+               .ForMember<int>(x => x.IVA, opt => opt.MapFrom(x => x.Articulos.IVA))
+                .ForMember<int>(x => x.Cantidad, opt => opt.MapFrom(x => x.Articulos.Cantidad))
+               .ForMember<string>(x => x.Descripcion, opt => opt.MapFrom(x => x.Articulos.Descripcion))
+               .ForMember<decimal>(x => x.Precio, opt => opt.MapFrom(x => x.Articulos.Precio))
+               ;
+
+
+            CreateMap<mStoreArticleCreate, Articulos>()
+                .ForMember<Estados>(x => x.Estados, opt => opt.Ignore())
+                .ForMember<Iva>(x => x.Iva1, opt => opt.Ignore())
+                .ForMember<TipoProducto>(x => x.TipoProducto, opt => opt.Ignore());
+
+
+
             CreateMap<mStoreArticleCreate, Almacen_Productos>();
 
         }

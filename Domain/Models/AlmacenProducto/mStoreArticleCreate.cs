@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-
+using System.Web.Mvc;
 
 namespace Domain.Models.AlmacenProducto
 {
@@ -96,6 +96,11 @@ namespace Domain.Models.AlmacenProducto
 
         [Display(Name = "Stock max.")]
         public int StockMax { get; set; }
+
+
+        public SelectList Estados { get; set; }
+        public SelectList Tipos { get; set; }
+        public SelectList Ivas { get; set; }
 
 
         #region Constructores

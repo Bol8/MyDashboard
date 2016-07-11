@@ -284,9 +284,11 @@
     </Compile>
     <Compile Include="ModelBinding\ContactBinder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Article\mArticleLists.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PruebaBinder.cs" />
+    <Compile Include="Models\Store\StoreArticleCreateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CustomIdentity.cs" />
     <Compile Include="Security\CustomMembershipProvider.cs" />
@@ -1272,6 +1274,7 @@
     <Content Include="Views\Shared\MainHeaderOff.cshtml" />
     <Content Include="Views\Shared\_LayoutBasic.cshtml" />
     <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

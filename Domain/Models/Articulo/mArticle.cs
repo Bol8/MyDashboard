@@ -72,7 +72,6 @@ namespace Domain.Models.Articulo
         [Display(Name = "Cantidad")]
         [Required(ErrorMessage = "Campo obligatorio")]
         public int Cantidad { get; set; }
-
         
     }
 }
