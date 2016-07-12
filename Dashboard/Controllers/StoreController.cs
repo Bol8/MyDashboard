@@ -111,6 +111,7 @@ namespace Dashboard.Controllers
 
 
         // GET: Store/Edit/5
+        //TODO: resolver problema con los decimales
         public ActionResult Edit(int idStore , int idArticle)
         {
             var store = _gStore.FindBy(x => x.Id == idStore).FirstOrDefault();

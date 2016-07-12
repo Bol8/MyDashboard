@@ -189,12 +189,12 @@
           </Key>
           <Property Name="Num_ped" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idCliente" Type="int" Nullable="false" />
-          <Property Name="Direccion" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="250" />
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="Forma_pago" Type="int" Nullable="false" />
           <Property Name="Fecha_A" Type="datetime" Nullable="false" />
-          <Property Name="Importe" Type="real" Nullable="false" />
-          <Property Name="Peso" Type="decimal" Precision="2" Scale="0" />
+          <Property Name="Importe" Type="real" />
+          <Property Name="Peso" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Observaciones" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Pedido_p">
@@ -1087,12 +1087,12 @@
           </Key>
           <Property Name="Num_ped" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idCliente" Type="Int32" Nullable="false" />
-          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
           <Property Name="Forma_pago" Type="Int32" Nullable="false" />
           <Property Name="Fecha_A" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Importe" Type="Single" Nullable="false" />
-          <Property Name="Peso" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="Importe" Type="Single" />
+          <Property Name="Peso" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Clientes" Relationship="Model.FK_Pedido_c_Clientes" FromRole="Pedido_c" ToRole="Clientes" />
           <NavigationProperty Name="EstadosPedido" Relationship="Model.FK_Pedido_c_EstadosPedido" FromRole="Pedido_c" ToRole="EstadosPedido" />

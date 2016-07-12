@@ -36,49 +36,49 @@ namespace Dashboard
             container.RegisterType<IGenericRepository<Empresas>, gCompany>();
             container.RegisterType<IGenericRepository<Almacen_Productos>, gStoreArticle>();
             container.RegisterType<IGenericRepository<Almacenes>, gStore>();
+            container.RegisterType<IGenericRepository<Pedido_c>, gPedidoC>();
+            container.RegisterType<IGenericRepository<FormaPago>, gPaymentType>();
+            container.RegisterType<IGenericRepository<EstadosPedido>, gOrderStatus>();
 
 
 
             container.RegisterType<ClientController>(new InjectionConstructor(new ResolvedParameter<gClient>("repo"),
-                                                                              new ResolvedParameter<gStatus>("st"))
-                                                                              );
+                                                                              new ResolvedParameter<gStatus>("st")
+                                                                              ));
 
            
             container.RegisterType<ProveedorController>(new InjectionConstructor(new ResolvedParameter<gProveedor>("gProveedor"),
-                                                                                 new ResolvedParameter<gStatus>("gStatus"))
-                                                                              );
+                                                                                 new ResolvedParameter<gStatus>("gStatus")
+                                                                                ));
 
             
             container.RegisterType<ContactController>(new InjectionConstructor(new ResolvedParameter<gContact>("gContact")));
 
-            
-            //container.RegisterType<StoreController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle")));
-            //container.RegisterType<StoreController>(new InjectionConstructor(new ResolvedParameter<gStore>("gAlmacenProducto")));
 
             container.RegisterType<StoreController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle"),
                                                                              new ResolvedParameter<gStore>("gStore"),
                                                                              new ResolvedParameter<gTypeProduct>("gArticleType"),
                                                                              new ResolvedParameter<gIVA>("gIVA"),
-                                                                              new ResolvedParameter<gStoreArticle>("gStoreArticle"),
-                                                                             new ResolvedParameter<gStatus>("gStatus"))
-                                                                             );
+                                                                             new ResolvedParameter<gStoreArticle>("gStoreArticle"),
+                                                                             new ResolvedParameter<gStatus>("gStatus")
+                                                                             ));
 
             container.RegisterType<ArticleController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle"),
                                                                               new ResolvedParameter<gTypeProduct>("gArticleType"),
                                                                               new ResolvedParameter<gIVA>("gIVA"),
-                                                                              new ResolvedParameter<gStatus>("gStatus"))
-                                                                              );
+                                                                              new ResolvedParameter<gStatus>("gStatus")
+                                                                              ));
 
             container.RegisterType<HomeController>(new InjectionConstructor(new ResolvedParameter<gUser>("gUser"),
-                                                                             new ResolvedParameter<gCompany>("gCompany"))
-                                                                             );
+                                                                             new ResolvedParameter<gCompany>("gCompany")
+                                                                             ));
 
-            //container.RegisterType<CustomRoleProvider>(new InjectionConstructor(new ResolvedParameter<gUser>("gUser")));
-            //container.RegisterType<CustomMembershipProvider>(new InjectionConstructor(new ResolvedParameter<gUser>("gUser")));
+            container.RegisterType<PedidoCController>(new InjectionConstructor(new ResolvedParameter<gPedidoC>("gPedidoC"),
+                                                                               new ResolvedParameter<gOrderStatus>("gOrderStatus"),
+                                                                               new ResolvedParameter<gPaymentType>("gPaymentType"),
+                                                                               new ResolvedParameter<gClient>("gClient")
+                                                                               ));
             
-
-
-
 
             return container;
         }

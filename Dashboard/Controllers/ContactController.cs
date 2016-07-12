@@ -16,10 +16,9 @@ namespace Dashboard.Controllers
     public class ContactController : Controller
     {
         IGenericRepository<Contactos> _gContact;
-        private gContact gContact;
 
 
-        #region Constructors
+        #region Constructores
         
         public ContactController(IGenericRepository<Contactos> gContact)
         {

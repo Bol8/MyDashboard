@@ -8,6 +8,7 @@ using Domain.Models.Cliente;
 using Domain.Models.Proveedor;
 using Domain.Models.Contact;
 using Domain.Models.Articulo;
+using Domain.Models.PedidoC;
 using Domain.Models.AlmacenProducto;
 using System.Web.Mvc;
 
@@ -17,27 +18,49 @@ namespace Dashboard.Configuration
     {
         public OrgConfiguration()
         {
+            configureClients();
+            configureProviders();
+            configureContacts();
+            configureArticles();
+            configureClientOrder();
+            
+        }
+
+
+        private void configureClients()
+        {
             CreateMap<Clientes, mCliente>()
                 .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
             CreateMap<Clientes, mClientCreate>()
                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
             CreateMap<mCliente, Clientes>();
+        }
 
+        private void configureProviders()
+        {
             CreateMap<Proveedores, mProveedor>()
-              .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
+             .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
             CreateMap<Proveedores, mProveedorCreate>()
                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
             CreateMap<mProveedor, Proveedores>();
+        }
 
+
+        private void configureContacts()
+        {
             CreateMap<Contactos, mContact>();
             CreateMap<mContact, Contactos>();
+        }
 
+        private void configureArticles()
+        {
             CreateMap<Articulos, mArticle>()
-                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre))
-                .ForMember<string>(x => x.sIVA, opt => opt.MapFrom(x => x.Iva1.Valor))
-                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
+               .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre))
+               .ForMember<string>(x => x.sIVA, opt => opt.MapFrom(x => x.Iva1.Valor))
+               .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
 
             CreateMap<mArticle, Articulos>();
+
 
             CreateMap<Almacen_Productos, mAlmacenProducto>()
                 .ForMember<mArticle>(x => x.Article, opt => opt.MapFrom(x =>
@@ -76,10 +99,18 @@ namespace Dashboard.Configuration
                 .ForMember<Iva>(x => x.Iva1, opt => opt.Ignore())
                 .ForMember<TipoProducto>(x => x.TipoProducto, opt => opt.Ignore());
 
-
-
             CreateMap<mStoreArticleCreate, Almacen_Productos>();
+        }
 
+
+        private void configureClientOrder()
+        {
+            CreateMap<Pedido_c, mPedidoC>()
+                .ForMember<string>(x => x.clienteNombre, opt => opt.MapFrom(x => x.Clientes.Razon_Social))
+                .ForMember<string>(x => x.sForma_pago, opt => opt.MapFrom(x => x.FormaPago.Nombre))
+                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.EstadosPedido.Nombre));
+
+            CreateMap<Pedido_c, mPedidoCCreate>();
         }
 
     }

@@ -20,6 +20,9 @@ namespace Domain.Models.PedidoC
         [Display(Name = "Cliente")]
         public int idCliente { get; set; }
 
+        [Display(Name = "Cliente")]
+        public string clienteNombre { get; set; }
+
 
         [Display(Name = "Direccion")]
         public string Direccion { get; set; }
@@ -29,8 +32,15 @@ namespace Domain.Models.PedidoC
         public int Estado { get; set; }
 
 
+        [Display(Name = "Estado")]
+        public string sEstado { get; set; }
+
+
         [Display(Name = "Pago")]
         public int Forma_pago { get; set; }
+
+        [Display(Name = "Pago")]
+        public string sForma_pago { get; set; }
 
 
         [Display(Name = "Fecha")]
@@ -58,18 +68,18 @@ namespace Domain.Models.PedidoC
        public  mPedidoC() { }
 
 
-       public  mPedidoC(Pedido_c pedidoC)
-        {
-            Num_ped = pedidoC.Num_ped;
-            idCliente = pedidoC.idCliente;
-            Direccion = pedidoC.Direccion;
-            Estado = pedidoC.Estado;
-            Forma_pago = pedidoC.Forma_pago;
-            Fecha_A = pedidoC.Fecha_A;
-            Importe = pedidoC.Importe;
-            Peso = pedidoC.Peso;
-            Observaciones = pedidoC.Observaciones;
-        }
+       //public  mPedidoC(Pedido_c pedidoC)
+       // {
+       //     Num_ped = pedidoC.Num_ped;
+       //     idCliente = pedidoC.idCliente;
+       //     Direccion = pedidoC.Direccion;
+       //     Estado = pedidoC.Estado;
+       //     Forma_pago = pedidoC.Forma_pago;
+       //     Fecha_A = pedidoC.Fecha_A;
+       //     Importe = pedidoC.Importe;
+       //     Peso = pedidoC.Peso;
+       //     Observaciones = pedidoC.Observaciones;
+       // }
 
 
         #endregion
