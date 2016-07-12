@@ -40,7 +40,6 @@ namespace Repository
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Pedido_c> Pedido_c { get; set; }
-        public virtual DbSet<Articulos> Articulos { get; set; }
         public virtual DbSet<TiposPedido> TiposPedido { get; set; }
         public virtual DbSet<Estados> Estados { get; set; }
         public virtual DbSet<Iva> Iva { get; set; }
@@ -48,5 +47,6 @@ namespace Repository
         public virtual DbSet<Almacen_Productos> Almacen_Productos { get; set; }
         public virtual DbSet<Almacenes> Almacenes { get; set; }
         public virtual DbSet<Empresas> Empresas { get; set; }
+        public virtual DbSet<Articulos> Articulos { get; set; }
     }
 }

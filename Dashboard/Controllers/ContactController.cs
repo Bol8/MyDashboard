@@ -67,7 +67,7 @@ namespace Dashboard.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar modificar el cliente. " + ex);
+                throw new Exception("Error al intentar modificar el contacto. " + ex);
             }
 
             return RedirectToAction("Index");
@@ -105,7 +105,7 @@ namespace Dashboard.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar modificar el cliente." + ex);
+                throw new Exception("Error al intentar modificar el contacto." + ex);
             }
 
             return RedirectToAction("Index");
@@ -134,7 +134,7 @@ namespace Dashboard.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar eliminar el cliente." + ex);
+                throw new Exception("Error al intentar eliminar el contacto." + ex);
             }
 
             return RedirectToAction("Index");

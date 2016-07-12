@@ -22,7 +22,6 @@
                             <th>@Html.DisplayNameFor(model => model.Article.Precio)</th>
                             <th>@Html.DisplayNameFor(model => model.Article.Peso) (gr.)</th>
                             <th>@Html.DisplayNameFor(model => model.Article.Estado)</th>
-                            <th>@Html.DisplayNameFor(model => model.Article.Cantidad)</th>
                             <th>@Html.DisplayNameFor(model => model.Stock)</th>
                             <th>@Html.DisplayNameFor(model => model.StockDisponible)</th>
                             <th>@Html.DisplayNameFor(model => model.StockMax)</th>
@@ -44,7 +43,6 @@
                                 <td>@Html.DisplayFor(model => item.Article.Precio) €</td>
                                 <td>@Html.DisplayFor(model => item.Article.Peso) gr.</td>
                                 <td>@Html.DisplayFor(model => item.Article.sEstado)</td>
-                                <td>@Html.DisplayFor(model => item.Article.Cantidad)</td>
                                 <td>@Html.DisplayFor(model => item.Stock)</td>
                                 <td>@Html.DisplayFor(model => item.StockDisponible)</td>
                                 <td>@Html.DisplayFor(model => item.StockMax)</td>
@@ -54,7 +52,7 @@
                                 <td>
                                     @Html.ActionLink(" ", "Edit", "Store", new { idStore = ViewBag.idStore , idArticle = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Store", new { id = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Store", new { idStore = ViewBag.idStore, idArticle = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
                                 </td>
                             </tr>
                         }

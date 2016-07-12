@@ -11,6 +11,7 @@ using Domain.Models.AlmacenProducto;
 using AutoMapper;
 using Dashboard.Models.Store;
 using Dashboard.Models.Article;
+using Domain.DefaultValues;
 
 namespace Dashboard.Controllers
 {
@@ -48,8 +49,8 @@ namespace Dashboard.Controllers
         // GET: Store
         public ActionResult Index()
         {
-            var store = _gStore.FindBy(x => x.Id == 1).FirstOrDefault();
-            ViewBag.idStore = 1;
+            var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
+            ViewBag.idStore = DefaultStoreValues.DefaultStore;
             var list = store.Almacen_Productos.ToList();
             var modelList = Mapper.Map<IEnumerable<Almacen_Productos>, IEnumerable<mAlmacenProducto>>(list).ToList();
 
@@ -132,9 +133,9 @@ namespace Dashboard.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
-                    ViewBag.Tipo = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
-                    ViewBag.IVA = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+                    model.Estados = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
+                    model.Ivas = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+                    model.Tipos = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
 
                     return View(model);
                 }
@@ -160,27 +161,30 @@ namespace Dashboard.Controllers
 
 
 
-        // GET: Store/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteConfirmed(int idStore, int idArticle)
         {
-            return View();
+            var storeArticle = _gStoreArticle.FindBy(x => x.Almacen == idStore && x.Articulo == idArticle).FirstOrDefault();
+            var model = AutoMapper.Mapper.Map<Almacen_Productos, mAlmacenProducto>(storeArticle);
+
+            return View(model);
         }
 
 
-        // POST: Store/Delete/5
+
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Almacen_Productos element)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                _gStoreArticle.Delete(element);
+                _gStoreArticle.Save();
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                throw new Exception("Error al intentar eliminar un articulo del almacén." + ex);
             }
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -58,8 +58,6 @@ namespace Dashboard.Configuration
                 }));
 
             CreateMap<Almacen_Productos, mStoreArticleCreate>()
-                //.ForMember<int>(x => x.Almacen, opt => opt.MapFrom(x => x.Almacen))
-                //.ForMember<int>(x => x.Articulo, opt => opt.MapFrom(x => x.Articulo))
                .ForMember<int>(x => x.IdArticulo, opt => opt.MapFrom(x => x.Articulos.IdArticulo))
                .ForMember<string>(x => x.Codigo, opt => opt.MapFrom(x => x.Articulos.Codigo))
                .ForMember<string>(x => x.Nombre, opt => opt.MapFrom(x => x.Articulos.Nombre))
@@ -68,7 +66,6 @@ namespace Dashboard.Configuration
                .ForMember<int>(x => x.Estado, opt => opt.MapFrom(x => x.Articulos.Estado))
                .ForMember<decimal>(x => x.Precio, opt => opt.MapFrom(x => x.Articulos.Precio))
                .ForMember<int>(x => x.IVA, opt => opt.MapFrom(x => x.Articulos.IVA))
-                .ForMember<int>(x => x.Cantidad, opt => opt.MapFrom(x => x.Articulos.Cantidad))
                .ForMember<string>(x => x.Descripcion, opt => opt.MapFrom(x => x.Articulos.Descripcion))
                .ForMember<decimal>(x => x.Precio, opt => opt.MapFrom(x => x.Articulos.Precio))
                ;

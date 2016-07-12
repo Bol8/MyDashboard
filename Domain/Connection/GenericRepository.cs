@@ -28,6 +28,7 @@ namespace Domain.Connection
 
         public void Delete(T entity)
         {
+            _entities.Set<T>().Attach(entity);
             _entities.Set<T>().Remove(entity);
         }
 

@@ -17,9 +17,9 @@ namespace Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Articulos()
         {
+            this.Almacen_Productos = new HashSet<Almacen_Productos>();
             this.Linea_pedido_c = new HashSet<Linea_pedido_c>();
             this.Linea_pedido_p = new HashSet<Linea_pedido_p>();
-            this.Almacen_Productos = new HashSet<Almacen_Productos>();
         }
     
         public int IdArticulo { get; set; }
@@ -32,16 +32,15 @@ namespace Repository
         public int IVA { get; set; }
         public string Descripcion { get; set; }
         public string Imagen { get; set; }
-        public int Cantidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Linea_pedido_c> Linea_pedido_c { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Linea_pedido_p> Linea_pedido_p { get; set; }
+        public virtual ICollection<Almacen_Productos> Almacen_Productos { get; set; }
         public virtual Estados Estados { get; set; }
         public virtual Iva Iva1 { get; set; }
         public virtual TipoProducto TipoProducto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Almacen_Productos> Almacen_Productos { get; set; }
+        public virtual ICollection<Linea_pedido_c> Linea_pedido_c { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Linea_pedido_p> Linea_pedido_p { get; set; }
     }
 }

@@ -31,27 +31,27 @@
         <AssociationConnector Association="Model.FK_Facturas_Pedido_c" />
         <AssociationConnector Association="Model.FK_Pedido_c_FormaPago" />
         <AssociationConnector Association="Model.FK_Linea_pedido_c_Pedido_c" />
-        <EntityTypeShape EntityType="Model.Articulos" Width="1.5" PointX="3" PointY="6" />
         <EntityTypeShape EntityType="Model.TiposPedido" Width="1.5" PointX="3" PointY="14.125" />
-        <AssociationConnector Association="Model.FK_Linea_pedido_c_Articulos" />
-        <AssociationConnector Association="Model.FK_Linea_pedido_p_Articulos" />
         <AssociationConnector Association="Model.FK_Pedido_p_TiposPedido" />
         <EntityTypeShape EntityType="Model.Estados" Width="1.5" PointX="1.875" PointY="10.875" />
         <EntityTypeShape EntityType="Model.Iva" Width="1.5" PointX="9.125" PointY="6.875" />
         <EntityTypeShape EntityType="Model.TipoProducto" Width="1.5" PointX="0.75" PointY="4.125" />
-        <AssociationConnector Association="Model.FK_Articulos_Estados" />
-        <AssociationConnector Association="Model.FK_Articulos_Iva" />
-        <AssociationConnector Association="Model.FK_Articulos_TipoProducto" />
         <AssociationConnector Association="Model.FK_Clientes_Estados" />
         <AssociationConnector Association="Model.FK_Proveedores_Estados" />
         <EntityTypeShape EntityType="Model.Almacen_Productos" Width="1.5" PointX="8.5" PointY="19.375" />
         <EntityTypeShape EntityType="Model.Almacenes" Width="1.5" PointX="5.25" PointY="30.5" />
         <EntityTypeShape EntityType="Model.Empresas" Width="1.5" PointX="3" PointY="30" />
         <AssociationConnector Association="Model.FK_Almacen_Productos_Almacenes" />
-        <AssociationConnector Association="Model.FK_Almacen_Productos_Articulos" />
         <AssociationConnector Association="Model.FK_Almacenes_Empresas" />
         <AssociationConnector Association="Model.FK_Empresas_Usuarios1" />
         <AssociationConnector Association="Model.FK_Facturas_Empresas" />
+        <EntityTypeShape EntityType="Model.Articulos" Width="1.5" PointX="3.5" PointY="6" />
+        <AssociationConnector Association="Model.FK_Almacen_Productos_Articulos" />
+        <AssociationConnector Association="Model.FK_Articulos_Estados" />
+        <AssociationConnector Association="Model.FK_Articulos_Iva" />
+        <AssociationConnector Association="Model.FK_Articulos_TipoProducto" />
+        <AssociationConnector Association="Model.FK_Linea_pedido_c_Articulos" />
+        <AssociationConnector Association="Model.FK_Linea_pedido_p_Articulos" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

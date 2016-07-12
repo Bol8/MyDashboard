@@ -80,6 +80,7 @@
       <DependentUpon>GaluDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DefaultValues\DefaultStatus.cs" />
+    <Compile Include="DefaultValues\DefaultStoreValues.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\ICollectionServices.cs" />
     <Compile Include="Interfaces\ICrud.cs" />

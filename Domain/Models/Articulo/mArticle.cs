@@ -68,10 +68,6 @@ namespace Domain.Models.Articulo
 
         public string Imagen { get; set; }
 
-
-        [Display(Name = "Cantidad")]
-        [Required(ErrorMessage = "Campo obligatorio")]
-        public int Cantidad { get; set; }
         
     }
 }

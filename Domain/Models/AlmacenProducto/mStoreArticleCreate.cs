@@ -69,11 +69,7 @@ namespace Domain.Models.AlmacenProducto
 
         public string Imagen { get; set; }
 
-
-        [Display(Name = "Cantidad")]
-        [Required(ErrorMessage = "Campo obligatorio")]
-        public int Cantidad { get; set; }
-
+        
 
         [Display(Name = "Almacén")]
         public int Almacen { get; set; }
