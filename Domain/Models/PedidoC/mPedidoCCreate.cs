@@ -66,7 +66,7 @@ namespace Domain.Models.PedidoC
         public string Observaciones { get; set; }
 
 
-        public SelectList Clientes { get; set; }
+        public SelectList ClientList { get; set; }
         public SelectList Estados { get; set; }
         public SelectList FormasPago { get; set; }
 

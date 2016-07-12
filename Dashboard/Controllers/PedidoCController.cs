@@ -56,7 +56,7 @@ namespace Dashboard.Controllers
         {
             var model = new mPedidoCCreate();
             model.FormasPago = new SelectList(_gPaymentType.GetAll().ToList(), "IdPago", "Nombre");
-            model.Clientes = new SelectList(_gClient.GetAll().ToList(), "IdCliente", "Razon_Social");
+            model.ClientList = new SelectList(_gClient.GetAll().ToList(), "IdCliente", "Razon_Social");
             model.Estados = new SelectList(_gOrderStatus.GetAll().ToList(), "idEstados", "Nombre");
             
             return View(model);
@@ -73,7 +73,7 @@ namespace Dashboard.Controllers
                 {
                     var model = Mapper.Map<Pedido_c, mPedidoCCreate>(element);
                     model.FormasPago = new SelectList(_gPaymentType.GetAll().ToList(), "IdPago", "Nombre");
-                    model.Clientes = new SelectList(_gClient.GetAll().ToList(), "IdCliente", "Razon_Social");
+                    model.ClientList = new SelectList(_gClient.GetAll().ToList(), "IdCliente", "Razon_Social");
                     model.Estados = new SelectList(_gOrderStatus.GetAll().ToList(), "idEstados", "Nombre");
 
                     return View(model);
@@ -97,7 +97,11 @@ namespace Dashboard.Controllers
         public ActionResult Edit(int id)
         {
             var element = _gPedidoC.FindBy(x => x.Num_ped == id).FirstOrDefault();
-            var model = Mapper.Map<Pedido_c, mPedidoC>(element);
+
+            var model = Mapper.Map<Pedido_c, mPedidoCCreate>(element);
+            model.FormasPago = new SelectList(_gPaymentType.GetAll().ToList(), "IdPago", "Nombre");
+            model.ClientList = new SelectList(_gClient.GetAll().ToList(), "IdCliente", "Razon_Social");
+            model.Estados = new SelectList(_gOrderStatus.GetAll().ToList(), "idEstados", "Nombre");
 
             return View(model);
         }
@@ -113,7 +117,11 @@ namespace Dashboard.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    var model = AutoMapper.Mapper.Map<Pedido_c, mPedidoC>(element);
+                    var model = Mapper.Map<Pedido_c, mPedidoCCreate>(element);
+                    model.FormasPago = new SelectList(_gPaymentType.GetAll().ToList(), "IdPago", "Nombre");
+                    model.ClientList = new SelectList(_gClient.GetAll().ToList(), "IdCliente", "Razon_Social");
+                    model.Estados = new SelectList(_gOrderStatus.GetAll().ToList(), "idEstados", "Nombre");
+
                     return View(model);
                 }
 
@@ -148,6 +156,7 @@ namespace Dashboard.Controllers
             try
             {
                 _gPedidoC.Delete(element);
+                _gPedidoC.Save();
             }
             catch (Exception ex)
             {

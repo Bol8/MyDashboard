@@ -41,9 +41,9 @@
                                 <td>@Html.DisplayFor(model => item.Importe)</td>
                                 <td>@Html.DisplayFor(model => item.Observaciones)</td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", "Contact", new { id = item.Num_ped }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-pencil", title = "Editar" })
+                                    @Html.ActionLink(" ", "Edit", "PedidoC", new { id = item.Num_ped }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Contact", new { id = item.Num_ped }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "PedidoC", new { id = item.Num_ped }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })
                                 </td>
                             </tr>
                         }

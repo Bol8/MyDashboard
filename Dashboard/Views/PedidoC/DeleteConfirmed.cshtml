@@ -1,8 +1,8 @@
-﻿@model Repository.Pedido_c
+﻿@model Domain.Models.PedidoC.mPedidoC
 
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-danger">
+        <div class="box box-danger flat">
             <div class="box-header with-border">
                 <h3 class="box-title">¿Seguro que desea eliminar?</h3>
             </div><!-- /.box-header -->
@@ -16,32 +16,36 @@
                     @using (Html.BeginForm("Delete", "PedidoC", new { id = Model.Num_ped }, FormMethod.Post))
                     {
                         @Html.HiddenFor(model => model.Num_ped)
+                        @Html.HiddenFor(model => model.idCliente)
+                        @Html.HiddenFor(model => model.Estado)
+                        @Html.HiddenFor(model => model.Forma_pago)
+                        @Html.HiddenFor(model => model.Fecha_A)
 
                         <p>
-                            <strong>@Html.DisplayNameFor(x => x.Clientes.Razon_Social):</strong>
-                            @Html.DisplayFor(x => x.Clientes.Razon_Social)
+                            <strong>@Html.DisplayNameFor(x => x.clienteNombre):</strong>
+                            @Html.DisplayFor(x => x.clienteNombre)
+                        </p>
+                       
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.sForma_pago):</strong>
+                            @Html.DisplayFor(x => x.sForma_pago)
                         </p>
                         <p>
-                            <strong>@Html.DisplayNameFor(x => x.Destino):</strong>
-                            @Html.DisplayFor(x => x.Destino)
-                        </p>
-                        <p>
-                            <strong>@Html.DisplayNameFor(x => x.EstadosPedido.Nombre):</strong>
-                            @Html.DisplayFor(x => x.EstadosPedido.Nombre)
-                        </p>
-                        <p>
-                            <strong>@Html.DisplayNameFor(x => x.FormaPago.Nombre):</strong>
-                            @Html.DisplayFor(x => x.FormaPago.Nombre)
+                            <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
+                            @Html.DisplayFor(x => x.sEstado)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Fecha_A):</strong>
                             @Html.DisplayFor(x => x.Fecha_A)
                         </p>
                         <p>
-                            <strong>@Html.DisplayNameFor(x => x.Total):</strong>
-                            @Html.DisplayFor(x => x.Total)
+                            <strong>@Html.DisplayNameFor(x => x.Importe):</strong>
+                            @Html.DisplayFor(x => x.Importe) €
                         </p>
-
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Peso):</strong>
+                            @Html.DisplayFor(x => x.Peso) .gr
+                        </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Observaciones):</strong>
                             @Html.DisplayFor(x => x.Observaciones)
@@ -50,8 +54,8 @@
 
                         <div>
                             <br />
-                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
-                            <input class="btn btn-danger" type="submit" value="Eliminar" />
+                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default flat" })
+                            <input class="btn btn-danger flat" type="submit" value="Eliminar" />
                         </div>
 
                     }
