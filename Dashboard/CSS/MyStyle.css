@@ -1,0 +1,13 @@
+﻿
+
+.CformControl{
+    width:60%;
+}
+
+.TableContent{
+    overflow-x:scroll;
+}
+
+.FormFieldSet{
+    margin:5px 100px;
+}

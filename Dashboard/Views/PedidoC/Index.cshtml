@@ -1,11 +1,80 @@
-﻿
-@{ 
-    ViewBag.title = "Pedidos Cliente";
+﻿@model IEnumerable<Domain.Models.PedidoC.mPedidoC>
+
+
+@{
+    ViewBag.Title = "Pedidos cliente";
 }
 
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-default flat">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewBag.Title</h3>
+                @Html.ActionLink("Nuevo", "Create", "PedidoC", null, new { @class = "btn btn-primary pull-right flat" })
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Num_ped)</th>
+                            <th>@Html.DisplayNameFor(model => model.clienteNombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.sEstado)</th>
+                            <th>@Html.DisplayNameFor(model => model.sForma_pago)</th>
+                            <th>@Html.DisplayNameFor(model => model.Fecha_A)</th>
+                            <th>@Html.DisplayNameFor(model => model.Peso)</th>
+                            <th>@Html.DisplayNameFor(model => model.Importe)</th>
+                            <th>@Html.DisplayNameFor(model => model.Observaciones)</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-<div id="PedidoCCreate">
-    @Html.Action("Create")
-</div>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.Num_ped)</td>
+                                <td>@Html.DisplayFor(model => item.clienteNombre)</td>
+                                <td>@Html.DisplayFor(model => item.sEstado)</td>
+                                <td>@Html.DisplayFor(model => item.sForma_pago)</td>
+                                <td>@Html.DisplayFor(model => item.Fecha_A)</td>
+                                <td>@Html.DisplayFor(model => item.Peso)</td>
+                                <td>@Html.DisplayFor(model => item.Importe)</td>
+                                <td>@Html.DisplayFor(model => item.Observaciones)</td>
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", "PedidoC", new { id = item.Num_ped }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-pencil", title = "Editar" })
+                                    <span> </span>
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "PedidoC", new { id = item.Num_ped }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+<!-- DATA TABES SCRIPT -->
+
+<script src="~/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- page script -->
+
+<script type="text/javascript">
+    $(function () {
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json",
+            }
+        });
+    });
+</script>
+
 
 

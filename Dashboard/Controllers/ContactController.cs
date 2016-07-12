@@ -8,19 +8,21 @@ using Repository;
 using Domain.Models.Contact;
 using Dashboard.ModelBinding;
 using Dashboard.Models;
+using Domain.Interfaces;
+using AutoMapper;
 
 namespace Dashboard.Controllers
 {
     public class ContactController : Controller
     {
+        IGenericRepository<Contactos> _gContact;
 
-        private gContact gContact;
 
-        #region Constructors
-
-        public ContactController()
+        #region Constructores
+        
+        public ContactController(IGenericRepository<Contactos> gContact)
         {
-            gContact = new gContact();
+            _gContact = gContact;
         }
 
         #endregion
@@ -29,15 +31,10 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var contactList = gContact.getElements();
-            return View(contactList);
-        }
-
-
-        [HttpGet]
-        public ActionResult Details(int id)
-        {
-            return View();
+            var list = _gContact.GetAll().ToList();
+            var modelList = Mapper.Map<IEnumerable<Contactos>, IEnumerable<mContact>>(list).ToList();
+            
+            return View(modelList);
         }
 
 
@@ -50,78 +47,96 @@ namespace Dashboard.Controllers
             return View(model);
         }
 
-        // POST: Contact/Create
-        [HttpPost]
-        public ActionResult Create(Contactos contact)
-        {
-            if (!ModelState.IsValid)
-            {
-                var model = new mContact(contact);
-                return View(model);
-            }
 
-            if (!gContact.save(contact)) throw new Exception("Error al intentar crear un contacto");
+
+        [HttpPost]
+        public ActionResult Create(Contactos element)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var model = Mapper.Map<Contactos, mContact>(element);
+
+                    return View(model);
+                }
+
+                _gContact.Add(element);
+                _gContact.Save();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar modificar el contacto. " + ex);
+            }
 
             return RedirectToAction("Index");
 
         }
 
 
+
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            var model = new mContact(gContact.getElementById(id));
+            var element = _gContact.FindBy(x => x.IdContacto == id).FirstOrDefault();
+            var model = Mapper.Map<Contactos, mContact>(element);
+            
             return View(model);
         }
 
 
+
+
+
         [HttpPost]
-        public ActionResult Edit(Contactos contact)
+        public ActionResult Edit(Contactos element)
         {
-            if (!ModelState.IsValid) return View(contact);
-            if (!gContact.edit(contact)) throw new Exception("Error al intentar modificar el contacto nº:"+contact.IdContacto );
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var model = AutoMapper.Mapper.Map<Contactos, mContact>(element);
+                    return View(model);
+                }
+
+                _gContact.Edit(element);
+                _gContact.Save();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar modificar el contacto." + ex);
+            }
 
             return RedirectToAction("Index");
         }
 
 
 
-        public ActionResult pruebaBind()
-        {
 
 
-            return View();
-        }
-
-
-
-        public ActionResult createBind([ModelBinder(typeof(ContactBinder))] PruebaBinder model)
-        {
-
-            var a = model;
-
-            return View();
-           
-        }
-
-
-        [HttpGet]
         public ActionResult DeleteConfirmed(int id)
         {
-            var contact = gContact.getElementById(id);
+            var element = _gContact.FindBy(x => x.IdContacto == id).FirstOrDefault();
+            var model = AutoMapper.Mapper.Map<Contactos, mContact>(element);
 
-            return View(contact);
+            return View(model);
         }
 
 
 
-
         [HttpPost]
-        public ActionResult Delete(Contactos contact)
+        public ActionResult Delete(Contactos element)
         {
-            if (!gContact.delete(contact.IdContacto)) throw new Exception("Error al intentar eliminar el contacto");
+            try
+            {
+                _gContact.Delete(element);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar eliminar el contacto." + ex);
+            }
 
             return RedirectToAction("Index");
-
         }
     }
 }

@@ -1,0 +1,94 @@
+﻿@model Domain.Models.AlmacenProducto.mAlmacenProducto
+
+
+@{
+    ViewBag.Title = "Eliminar articulo";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger flat">
+            <div class="box-header with-border">
+                <h3 class="box-title">¿Seguro que desea eliminar este articulo?</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div>
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:20px;" })
+                </div>
+
+                <div class="col-xs-12">
+
+                    @using (Html.BeginForm("Delete", "Store", new { idStore = Model.Almacen , idArticle = Model.Articulo}, FormMethod.Post))
+                    {
+                        @Html.HiddenFor(model => model.Almacen)
+                        @Html.HiddenFor(model => model.Articulo)
+                        @Html.HiddenFor(model => model.Stock)
+                        @Html.HiddenFor(model => model.StockDisponible)
+                        @Html.HiddenFor(model => model.StockMax)
+                        @Html.HiddenFor(model => model.StockMin)
+
+
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Article.Nombre):</strong>
+                            @Html.DisplayFor(x => x.Article.Nombre)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Article.Codigo):</strong>
+                            @Html.DisplayFor(x => x.Article.Codigo)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Article.Peso):</strong>
+                            @Html.DisplayFor(x => x.Article.Peso) gr.
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Article.Precio):</strong>
+                            @Html.DisplayFor(x => x.Article.Precio) €
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Article.sIVA):</strong>
+                            @Html.DisplayFor(x => x.Article.sIVA)%
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Article.sEstado):</strong>
+                            @Html.DisplayFor(x => x.Article.sEstado)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Article.sTipo):</strong>
+                            @Html.DisplayFor(x => x.Article.sTipo)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Stock):</strong>
+                            @Html.DisplayFor(x => x.Stock)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.StockDisponible):</strong>
+                            @Html.DisplayFor(x => x.StockDisponible)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.StockMin):</strong>
+                            @Html.DisplayFor(x => x.StockMin)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.StockMax):</strong>
+                            @Html.DisplayFor(x => x.StockMax)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Article.Descripcion):</strong>
+                            @Html.DisplayFor(x => x.Article.Descripcion)
+                        </p>
+                       
+                        <div>
+                            <br />
+                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default flat" })
+                            <input class="btn btn-danger flat" type="submit" value="Eliminar" />
+                        </div>
+                    }
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+
+
+

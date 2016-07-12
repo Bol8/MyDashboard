@@ -17,16 +17,16 @@ namespace Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EstadosPedido()
         {
-            this.Pedido_c = new HashSet<Pedido_c>();
             this.Pedido_p = new HashSet<Pedido_p>();
+            this.Pedido_c = new HashSet<Pedido_c>();
         }
     
         public int idEstados { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido_c> Pedido_c { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido_p> Pedido_p { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pedido_c> Pedido_c { get; set; }
     }
 }

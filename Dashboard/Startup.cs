@@ -9,6 +9,7 @@ namespace Dashboard
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+           
         }
     }
 }

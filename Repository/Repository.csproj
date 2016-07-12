@@ -54,6 +54,12 @@
     <Compile Include="Albaranes.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Almacenes.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Almacen_Productos.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Articulos.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -127,6 +133,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoProducto.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposPedido.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.cs">

@@ -23,11 +23,12 @@ namespace Repository
     
         public int Num_ped { get; set; }
         public int idCliente { get; set; }
-        public string Destino { get; set; }
+        public string Direccion { get; set; }
         public int Estado { get; set; }
         public int Forma_pago { get; set; }
         public System.DateTime Fecha_A { get; set; }
-        public float Total { get; set; }
+        public Nullable<float> Importe { get; set; }
+        public Nullable<decimal> Peso { get; set; }
         public string Observaciones { get; set; }
     
         public virtual Clientes Clientes { get; set; }

@@ -18,29 +18,38 @@ namespace Domain.Models.Contact
 
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Nombre { get; set; }
 
 
+        [Display(Name = "Dirección")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
+        public string Direccion { get; set; }
+
+
         [Display(Name = "Origen")]
-        [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Origen { get; set; }
 
 
         [Display(Name = "Producto")]
-        [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(50, ErrorMessage = "Max. {1} caracteres")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string Producto { get; set; }
 
 
-
-        [Display(Name = "Telefono")]
-        [Required(ErrorMessage = "Campo obligatorio")]
+        [Display(Name = "Teléfono")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Número incorrecto")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
         public string Telefono { get; set; }
+
+
+        [Display(Name = "Móvil")]
+        [DataType(DataType.PhoneNumber)]
+        [Phone(ErrorMessage = "Número incorrecto")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Número incorrecto")]
+        public string Movil { get; set; }
+
 
 
         [Display(Name = "Mail")]

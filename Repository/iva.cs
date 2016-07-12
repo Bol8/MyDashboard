@@ -20,8 +20,8 @@ namespace Repository
             this.Articulos = new HashSet<Articulos>();
         }
     
-        public int IdIVA { get; set; }
-        public double Porcentaje { get; set; }
+        public int Id { get; set; }
+        public double Valor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Articulos> Articulos { get; set; }

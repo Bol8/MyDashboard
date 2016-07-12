@@ -5,23 +5,25 @@ using System.Web;
 using System.Web.Mvc;
 using Domain.Manage;
 using Repository;
+using Domain.Interfaces;
 using Domain.Models.Proveedor;
-
+using Domain.Connection;
+using AutoMapper;
 
 namespace Dashboard.Controllers
 {
     public class ProveedorController : Controller
     {
-        private gProveedor gProvider;
-        private gStatus gStatus;
-
+        private IGenericRepository<Proveedores> _gProveedores;
+        private IGenericRepository<Estados> _gStatus;
+        
 
         #region Constructors
 
-        public ProveedorController()
+        public ProveedorController(IGenericRepository<Proveedores> gProveedor,IGenericRepository<Estados> gStatus)
         {
-            gProvider = new gProveedor();
-            gStatus = new gStatus();
+            _gProveedores = gProveedor;
+            _gStatus = gStatus;
         }
 
         #endregion
@@ -31,8 +33,10 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var providerList = gProvider.getElements();
-            return View(providerList);
+            var list = _gProveedores.GetAll().ToList();
+            var modelList = Mapper.Map<IEnumerable<Proveedores>, IEnumerable<mProveedor>>(list).ToList();
+
+            return View(modelList);
         }
 
 
@@ -58,37 +62,37 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(Proveedores proveedor)
+        public ActionResult Create(Proveedores element)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                var model = new mProveedorCreate(proveedor);
+                if (!ModelState.IsValid)
+                {
+                    var model = new mProveedorCreate(element);
+                    return View(element);
+                }
 
-                return View(proveedor);
+                _gProveedores.Add(element);
+                _gProveedores.Save();
+
             }
-
-            if (!gProvider.save(proveedor)) throw new Exception("Error al intentar crear el proveedor");
-
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar modificar el proveedor. " + ex);
+            }
+            
             return RedirectToAction("Index");
         }
 
-
-        public ActionResult pruebaAjax()
-        {
-            if (Request.IsAjaxRequest())
-            {
-                var a = 1;
-            }
-
-
-            return View();
-        }
+        
 
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var model = new mProveedorCreate(gProvider.getElementById(id));
+            var element = _gProveedores.FindBy(x => x.IdProveedor == id).FirstOrDefault();
+            var model = new mProveedorCreate(element);
+            //ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
 
             return View(model);
         }
@@ -96,16 +100,24 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(Proveedores provider)
+        public ActionResult Edit(Proveedores element)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                var model = new mProveedorCreate(provider);
-                return View(provider);
+                if (!ModelState.IsValid)
+                {
+                    var model = new mProveedorCreate(element);
+                    return View(element);
+                }
+
+                _gProveedores.Edit(element);
+                _gProveedores.Save();
             }
-
-            if (!gProvider.edit(provider)) throw new Exception("Error al intentar modificar el proveedor");
-
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar modificar el proveedor." + ex);
+            }
+            
             return RedirectToAction("Index");
         }
 
@@ -116,18 +128,26 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult DeleteConfirmed(int id)
         {
-            var provider = new mProveedor(gProvider.getElementById(id));
+            var element = _gProveedores.FindBy(x => x.IdProveedor == id).FirstOrDefault();
+            var model = Mapper.Map<Proveedores, mProveedor>(element);
 
-            return View(provider);
+            return View(model);
         }
 
 
 
 
         [HttpPost]
-        public ActionResult Delete(Proveedores provider)
+        public ActionResult Delete(Proveedores element)
         {
-            if(!gProvider.delete(provider.IdProveedor)) throw new Exception("Error al intentar eliminar el proveedor");
+            try
+            {
+                _gProveedores.Delete(element);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar eliminar el cliente." + ex);
+            }
 
             return RedirectToAction("Index");
         }

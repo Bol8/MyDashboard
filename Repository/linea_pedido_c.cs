@@ -20,7 +20,7 @@ namespace Repository
         public double Total { get; set; }
         public int IdArticulo { get; set; }
     
-        public virtual Articulos Articulos { get; set; }
         public virtual Pedido_c Pedido_c { get; set; }
+        public virtual Articulos Articulos { get; set; }
     }
 }

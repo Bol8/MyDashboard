@@ -17,6 +17,7 @@ namespace Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Articulos()
         {
+            this.Almacen_Productos = new HashSet<Almacen_Productos>();
             this.Linea_pedido_c = new HashSet<Linea_pedido_c>();
             this.Linea_pedido_p = new HashSet<Linea_pedido_p>();
         }
@@ -24,16 +25,16 @@ namespace Repository
         public int IdArticulo { get; set; }
         public string Codigo { get; set; }
         public string Nombre { get; set; }
-        public Nullable<double> Peso { get; set; }
+        public Nullable<decimal> Peso { get; set; }
         public int Tipo { get; set; }
         public int Estado { get; set; }
-        public double Precio { get; set; }
+        public decimal Precio { get; set; }
         public int IVA { get; set; }
         public string Descripcion { get; set; }
-        public string Origen { get; set; }
         public string Imagen { get; set; }
-        public int Cantidad { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Almacen_Productos> Almacen_Productos { get; set; }
         public virtual Estados Estados { get; set; }
         public virtual Iva Iva1 { get; set; }
         public virtual TipoProducto TipoProducto { get; set; }

@@ -20,7 +20,7 @@ namespace Repository
             this.Articulos = new HashSet<Articulos>();
         }
     
-        public int IdTipoProd { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

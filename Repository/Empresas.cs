@@ -17,21 +17,25 @@ namespace Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empresas()
         {
+            this.Almacenes = new HashSet<Almacenes>();
             this.Facturas = new HashSet<Facturas>();
         }
     
-        public int IdEmpresa { get; set; }
-        public string RazonSocial { get; set; }
+        public int Id { get; set; }
+        public string NombreFiscal { get; set; }
+        public string NombreComercial { get; set; }
         public string NIF { get; set; }
         public string Domicilio { get; set; }
         public string CP { get; set; }
         public string Poblacion { get; set; }
         public string Provincia { get; set; }
-        public string Pais { get; set; }
         public string Telefono { get; set; }
+        public string Movil { get; set; }
         public string Mail { get; set; }
-        public int idUser { get; set; }
+        public int idUsuario { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Almacenes> Almacenes { get; set; }
         public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturas> Facturas { get; set; }

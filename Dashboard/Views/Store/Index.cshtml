@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Domain.Models.AlmacenProducto.mAlmacenProducto>
+
+@{ 
+    ViewBag.Title = "Almacén";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-default flat">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewBag.Title</h3>
+                @Html.ActionLink("Añadir articulo", "Create", "Store", new { idStore = ViewBag.idStore}, new { @class = "btn btn-primary pull-right flat" })
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Article.Codigo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.Nombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.Tipo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.IVA)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.Precio)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.Peso) (gr.)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.Estado)</th>
+                            <th>@Html.DisplayNameFor(model => model.Stock)</th>
+                            <th>@Html.DisplayNameFor(model => model.StockDisponible)</th>
+                            <th>@Html.DisplayNameFor(model => model.StockMax)</th>
+                            <th>@Html.DisplayNameFor(model => model.StockMin)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.Descripcion)</th>
+                          
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.Article.Codigo)</td>
+                                <td>@Html.DisplayFor(model => item.Article.Nombre)</td>
+                                <td>@Html.DisplayFor(model => item.Article.sTipo)</td>
+                                <td>@Html.DisplayFor(model => item.Article.sIVA)%</td>
+                                <td>@Html.DisplayFor(model => item.Article.Precio) €</td>
+                                <td>@Html.DisplayFor(model => item.Article.Peso) gr.</td>
+                                <td>@Html.DisplayFor(model => item.Article.sEstado)</td>
+                                <td>@Html.DisplayFor(model => item.Stock)</td>
+                                <td>@Html.DisplayFor(model => item.StockDisponible)</td>
+                                <td>@Html.DisplayFor(model => item.StockMax)</td>
+                                <td>@Html.DisplayFor(model => item.StockMin)</td>
+                                <td>@Html.DisplayFor(model => item.Article.Descripcion)</td>
+                                
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", "Store", new { idStore = ViewBag.idStore , idArticle = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                                    <span> </span>
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Store", new { idStore = ViewBag.idStore, idArticle = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+<!-- DATA TABES SCRIPT -->
+
+<script src="~/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- page script -->
+
+<script type="text/javascript">
+    $(function () {
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json",
+            }
+        });
+    });
+</script>
+

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Repository;
+using System.Data.Entity;
+
 
 namespace Domain.Connection
 {
@@ -19,13 +21,23 @@ namespace Domain.Connection
 
         #region Constructores
 
+        public ConnectionDB(DbContext context)
+        {
+            if (context is Entities)
+            {
+                db = (Entities)context;
+            }
+           
+
+        }
+
         public ConnectionDB()
         {
+
             db = new Entities();
         }
 
         #endregion
-
 
 
         public void Dispose()

@@ -6,34 +6,41 @@ using System.Web.Mvc;
 using Domain.Manage;
 using Repository;
 using Domain.Models.Cliente;
+using AutoMapper;
+using Domain.Interfaces;
+using Elmah;
+using Domain.Others;
+using Domain.Connection;
+
 
 namespace Dashboard.Controllers
 {
+
     public class ClientController : Controller
     {
-        private gClient gClient;
-        private gStatus gStatus;
+        private IGenericRepository<Clientes> _gClient;
+        private IGenericRepository<Estados> _gStatus;
 
         #region Constructors
 
-        public ClientController()
+        public ClientController(IGenericRepository<Clientes> repo, IGenericRepository<Estados> st)
         {
-            gClient = new gClient();
-            gStatus = new gStatus();
+            this._gClient = repo;
+            this._gStatus = st;
         }
-
         #endregion
 
 
         [HttpGet]
         public ActionResult Index()
         {
-            var clientList = gClient.getElements();
-
-            return View(clientList);
+            var list = _gClient.GetAll().ToList();
+            var modelList = Mapper.Map<IEnumerable<Clientes>, IEnumerable<mCliente>>(list).ToList();
+            
+            return View(modelList);
         }
 
-        
+
 
         [HttpGet]
         public ActionResult Create()
@@ -46,17 +53,24 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(Clientes client)
+        public ActionResult Create(Clientes element)
         {
-
-            if (!ModelState.IsValid)
+            try
             {
-                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+                if (!ModelState.IsValid)
+                {
+                    var model = new mClientCreate(element);
 
-                return View(client);
+                    return View(model);
+                }
+
+                _gClient.Add(element);
+                _gClient.Save();
             }
-
-            if (!gClient.save(client)) throw new Exception("Error al intentar crear el cliente");
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar modificar el cliente. " + ex);
+            }
 
             return RedirectToAction("Index");
 
@@ -67,10 +81,12 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var client = gClient.getElementById(id);
-            ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+            var element = _gClient.FindBy(x=> x.IdCliente == id).FirstOrDefault();
+            var model = new mClientCreate(element);
 
-            return View(client);
+            //ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "IdEstado", "Nombre");
+            
+            return View(model);
         }
 
 
@@ -78,16 +94,25 @@ namespace Dashboard.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(Clientes cliente)
+        public ActionResult Edit(Clientes element)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                ViewBag.Estado = new SelectList(gStatus.getElements(), "IdEstado", "Nombre");
+                if (!ModelState.IsValid)
+                {
+                    var model = Mapper.Map<Clientes, mCliente>(element);
+                    ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
 
-                return View(cliente);
+                    return View(model);
+                }
+
+                _gClient.Edit(element);
+                _gClient.Save();
             }
-
-            if (!gClient.edit(cliente)) throw new Exception("Error al intentar modificar el cliente");
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar modificar el cliente." + ex);
+            }
 
             return RedirectToAction("Index");
         }
@@ -98,19 +123,25 @@ namespace Dashboard.Controllers
 
         public ActionResult DeleteConfirmed(int id)
         {
-            var cliente = gClient.getElementById(id);
+            var element = _gClient.FindBy(x=> x.IdCliente == id).FirstOrDefault();
+            var model = Mapper.Map<Clientes, mCliente>(element);
 
-            return View(cliente);
+            return View(model);
         }
 
-
-
-
+        
 
         [HttpPost]
-        public ActionResult Delete(Clientes cliente)
+        public ActionResult Delete(Clientes element)
         {
-            if (!gClient.delete(cliente.IdCliente)) throw new Exception("Error al intentar eliminar el cliente");
+            try
+            {
+                _gClient.Delete(element);
+            }
+            catch (Exception ex )
+            {
+                throw new Exception("Error al intentar eliminar el cliente." + ex);
+            }
 
             return RedirectToAction("Index");
         }

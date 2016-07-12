@@ -1,20 +1,26 @@
-﻿@model IEnumerable<Repository.Contactos>
+﻿@model IEnumerable<Domain.Models.Contact.mContact>
+
+@{ 
+    ViewBag.Title = "Contactos";
+}
 
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-default">
+        <div class="box box-default flat">
             <div class="box-header with-border">
-                <h3 class="box-title">Contactos</h3>
-                @Html.ActionLink("Nuevo", "Create", "Contact", null, new { @class = "btn btn-primary pull-right" })
+                <h3 class="box-title">@ViewBag.Title</h3>
+                @Html.ActionLink("Nuevo", "Create", "Contact", null, new { @class = "btn btn-primary pull-right flat" })
             </div><!-- /.box-header -->
             <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example2" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.Direccion)</th>
                             <th>@Html.DisplayNameFor(model => model.Origen)</th>
                             <th>@Html.DisplayNameFor(model => model.Producto)</th>
                             <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+                            <th>@Html.DisplayNameFor(model => model.Movil)</th>
                             <th>@Html.DisplayNameFor(model => model.Mail)</th>
                             <th>@Html.DisplayNameFor(model => model.Nota)</th>
                             <th>Opciones</th>
@@ -26,31 +32,21 @@
                         {
                             <tr>
                                 <td>@Html.DisplayFor(model => item.Nombre)</td>
+                                <td>@Html.DisplayFor(model => item.Direccion)</td>
                                 <td>@Html.DisplayFor(model => item.Origen)</td>
                                 <td>@Html.DisplayFor(model => item.Producto)</td>
                                 <td>@Html.DisplayFor(model => item.Telefono)</td>
+                                <td>@Html.DisplayFor(model => item.Movil)</td>
                                 <td>@Html.DisplayFor(model => item.Mail)</td>
                                 <td>@Html.DisplayFor(model => item.Nota)</td>
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", "Contact", new { id = item.IdContacto }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                                    @Html.ActionLink(" ", "Edit", "Contact", new { id = item.IdContacto }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-pencil", title = "Editar" })
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Contact", new { id = item.IdContacto }, new { @class = "btn btn-default btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                    @Html.ActionLink(" ", "DeleteConfirmed", "Contact", new { id = item.IdContacto }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })
                                 </td>
                             </tr>
                         }
                     </tbody>
-
-                    <tfoot>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-                            <th>@Html.DisplayNameFor(model => model.Origen)</th>
-                            <th>@Html.DisplayNameFor(model => model.Producto)</th>
-                            <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-                            <th>@Html.DisplayNameFor(model => model.Mail)</th>
-                            <th>@Html.DisplayNameFor(model => model.Nota)</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </tfoot>
 
                 </table>
             </div><!-- /.box-body -->
@@ -65,14 +61,16 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#example1").dataTable();
         $('#example2').dataTable({
             "bPaginate": true,
-            "bLengthChange": false,
-            "bFilter": false,
+            "bLengthChange": true,
+            "bFilter": true,
             "bSort": true,
             "bInfo": true,
-            "bAutoWidth": false
+            "bAutoWidth": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json",
+            }
         });
     });
 </script>

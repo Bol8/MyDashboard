@@ -1,15 +1,18 @@
-﻿@model Repository.Clientes
+﻿@model Domain.Models.Cliente.mCliente
+
+@{
+    ViewBag.Title = "Eliminar cliente";
+}
 
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-danger">
+        <div class="box box-danger flat">
             <div class="box-header with-border">
                 <h3 class="box-title">¿Seguro que desea eliminar?</h3>
             </div><!-- /.box-header -->
             <div class="box-body">    
                 <div>
                     @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:20px;" })
-                  
                 </div>
 
                 <div class="col-xs-12">
@@ -20,6 +23,10 @@
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Razon_Social):</strong>
                             @Html.DisplayFor(x => x.Razon_Social)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.NombreComercial):</strong>
+                            @Html.DisplayFor(x => x.NombreComercial)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.NIF):</strong>
@@ -46,12 +53,16 @@
                             @Html.DisplayFor(x => x.Fecha_A)
                         </p>
                         <p>
-                            <strong>@Html.DisplayNameFor(x => x.Estado):</strong>
-                            @Html.DisplayFor(x => x.Estados.Nombre)
+                            <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
+                            @Html.DisplayFor(x => x.sEstado)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Telefono):</strong>
                             @Html.DisplayFor(x => x.Telefono)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Movil):</strong>
+                            @Html.DisplayFor(x => x.Movil)
                         </p>
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Mail):</strong>
@@ -65,8 +76,8 @@
 
                         <div>
                             <br />
-                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
-                            <input class="btn btn-danger" type="submit" value="Eliminar" />
+                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default flat" })
+                            <input class="btn btn-danger flat" type="submit" value="Eliminar" />
                         </div>
 
                     }
