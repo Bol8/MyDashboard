@@ -7,8 +7,7 @@ using Domain.Models.PedidoC;
 using Domain.Interfaces;
 using Repository;
 using AutoMapper;
-
-
+using Domain.DefaultValues;
 
 namespace Dashboard.Controllers
 {
@@ -20,6 +19,7 @@ namespace Dashboard.Controllers
         private IGenericRepository<Clientes> _gClient;
         private IGenericRepository<FormaPago> _gPaymentType;
         private IGenericRepository<EstadosPedido> _gOrderStatus;
+        private IGenericRepository<Almacenes> _gStore;
 
         #endregion
 
@@ -29,12 +29,14 @@ namespace Dashboard.Controllers
         public PedidoCController(IGenericRepository<Pedido_c> gPedidoC,
                                  IGenericRepository<EstadosPedido> gOrderStatus,
                                  IGenericRepository<FormaPago> gPaymentType,
-                                 IGenericRepository<Clientes> gClient)
+                                 IGenericRepository<Clientes> gClient,
+                                 IGenericRepository<Almacenes> gStore)
         {
             this._gPedidoC = gPedidoC;
             this._gOrderStatus = gOrderStatus;
             this._gPaymentType = gPaymentType;
             this._gClient = gClient;
+            this._gStore = gStore;
         }
 
         #endregion
@@ -165,5 +167,42 @@ namespace Dashboard.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+
+        #region lineas pedido
+
+
+        public ActionResult OpenOrder(int id)
+        {
+            var element = _gPedidoC.FindBy(x => x.Num_ped == id).FirstOrDefault();
+            var model = Mapper.Map<Pedido_c, mPedidoC>(element);
+            return View(model);
+        }
+
+
+        public ActionResult OrderLineCreate(int id)
+        {
+            var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
+            ViewBag.idOrder = id;
+
+            var model = new mOderLineCreate();
+            model.ArticleList = new SelectList(store.Almacen_Productos.Select(x => x.Articulos).ToList(), "IdArticulo", "Nombre");
+            
+            return PartialView(model);
+        }
+
+        public ActionResult OrderLines(int id)
+        {
+            var order = _gPedidoC.FindBy(x => x.Num_ped == id).FirstOrDefault();
+            var list = order.Linea_pedido_c.ToList();
+
+            var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(list).ToList();
+
+
+            return PartialView(modelList);
+        }
+
+        #endregion
     }
 }

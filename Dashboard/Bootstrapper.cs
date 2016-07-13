@@ -76,7 +76,8 @@ namespace Dashboard
             container.RegisterType<PedidoCController>(new InjectionConstructor(new ResolvedParameter<gPedidoC>("gPedidoC"),
                                                                                new ResolvedParameter<gOrderStatus>("gOrderStatus"),
                                                                                new ResolvedParameter<gPaymentType>("gPaymentType"),
-                                                                               new ResolvedParameter<gClient>("gClient")
+                                                                               new ResolvedParameter<gClient>("gClient"),
+                                                                               new ResolvedParameter<gStore>("gStore")
                                                                                ));
             
 

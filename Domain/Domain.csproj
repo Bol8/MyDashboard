@@ -111,6 +111,8 @@
     <Compile Include="Models\Cliente\mCliente.cs" />
     <Compile Include="Models\Contact\mContact.cs" />
     <Compile Include="Models\LineaPedidoC\mCLineaPedido.cs" />
+    <Compile Include="Models\PedidoC\mOderLineCreate.cs" />
+    <Compile Include="Models\PedidoC\mOrderLine.cs" />
     <Compile Include="Models\PedidoC\mPedidoC.cs" />
     <Compile Include="Models\PedidoC\mPedidoCCreate.cs" />
     <Compile Include="Models\PedidoProveedor\mPedidoProvCreate.cs" />

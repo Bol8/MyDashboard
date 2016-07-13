@@ -33,18 +33,7 @@ namespace Dashboard.Controllers
         }
         #endregion
 
-
-        //[HttpGet]
-        //public ActionResult Index()
-        //{
-        //    var list = _gClient.GetAll().ToList();
-        //    var modelList = Mapper.Map<IEnumerable<Clientes>, IEnumerable<mCliente>>(list).ToList();
-
-        //    return View(modelList);
-        //}
-
-
-
+        
         [HttpGet]
         public ActionResult Create()
         {

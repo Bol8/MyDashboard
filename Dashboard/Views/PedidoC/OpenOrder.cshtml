@@ -1,0 +1,66 @@
+﻿@model Domain.Models.PedidoC.mPedidoC
+
+@{ 
+    ViewBag.Title = "Pedido cliente";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="box box-info flat">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Pedido</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div>
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:20px;" })
+                    </div>
+                            <p>
+                                <strong>@Html.DisplayNameFor(x => x.clienteNombre):</strong>
+                                @Html.DisplayFor(x => x.clienteNombre)
+                            </p>
+                            <p>
+                                <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
+                                @Html.DisplayFor(x => x.sEstado)
+                            </p>
+                            <p>
+                                <strong>@Html.DisplayNameFor(x => x.sForma_pago):</strong>
+                                @Html.DisplayFor(x => x.sForma_pago)
+                            </p>
+                            <p>
+                                <strong>@Html.DisplayNameFor(x => x.Fecha_A):</strong>
+                                @Html.DisplayFor(x => x.Fecha_A)
+                            </p>
+                            <p>
+                                <strong>@Html.DisplayNameFor(x => x.Peso):</strong>
+                                @Html.DisplayFor(x => x.Peso) gr.
+                            </p>
+                            <p>
+                                <strong>@Html.DisplayNameFor(x => x.Importe):</strong>
+                                @Html.DisplayFor(x => x.Importe)
+                            </p>
+                            <p>
+                                <strong>@Html.DisplayNameFor(x => x.Observaciones):</strong>
+                                @Html.DisplayFor(x => x.Observaciones)
+                            </p>
+                            
+                            <div>
+                                <br />
+                                @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default flat" })
+                            </div>
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+
+        <div class="col-md-8">
+           @Html.Action("OrderLineCreate",new { id = Model.Num_ped})
+        </div>
+
+        <div class="col-md-12">
+            @Html.Action("OrderLines", new { id = Model.Num_ped })
+        </div>
+
+    </div>
+</div>

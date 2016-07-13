@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Domain.Models.PedidoC.mOrderLine>
+
+
+<div class="box box-primary flat">
+    <div class="box-header with-border">
+        <h3 class="box-title">Detalles pedido</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Linea)</th>
+                    <th>@Html.DisplayNameFor(model => model.IdArticulo)</th>
+                    <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
+                    <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                    <th>@Html.DisplayNameFor(model => model.Peso)</th>
+                    <th>@Html.DisplayNameFor(model => model.TotalPeso)</th>
+                    <th>@Html.DisplayNameFor(model => model.Total)</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.Linea)</td>
+                        <td>@Html.DisplayFor(model => item.IdArticulo)</td>
+                        <td>@Html.DisplayFor(model => item.Cantidad)</td>
+                        <td>@Html.DisplayFor(model => item.Precio)</td>
+                        <td>@Html.DisplayFor(model => item.Peso)</td>
+                        <td>@Html.DisplayFor(model => item.TotalPeso)</td>
+                        <td>@Html.DisplayFor(model => item.Total)</td>
+                        <td>
+                            @Html.ActionLink(" ", "EditOrderLine", "PedidoC", new { idOrder = item.Num_ped, idOrderLine = item.Linea }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-pencil", title = "Editar" })
+                            <span> </span>
+                            @Html.ActionLink(" ", "DeleteOrderLine", "PedidoC", new { idOrder = item.Num_ped, idOrderLine = item.Linea }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
+
+
+<script src="~/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- page script -->
+
+<script type="text/javascript">
+    $(function () {
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json",
+            }
+        });
+    });
+</script>
+
