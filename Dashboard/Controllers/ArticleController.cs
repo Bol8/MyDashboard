@@ -117,6 +117,14 @@ namespace Dashboard.Controllers
 
 
 
+        public ActionResult _Details(int id)
+        {
+            var element = _gArticle.FindBy(x => x.IdArticulo == id).FirstOrDefault();
+            var model = AutoMapper.Mapper.Map<Articulos, mArticle>(element);
+
+            return PartialView(model);
+        }
+
 
 
         public ActionResult DeleteConfirmed(int id)

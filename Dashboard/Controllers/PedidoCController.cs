@@ -184,12 +184,27 @@ namespace Dashboard.Controllers
         public ActionResult OrderLineCreate(int id)
         {
             var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
-            ViewBag.idOrder = id;
+            //ViewBag.idOrder = id;
 
             var model = new mOderLineCreate();
+            model.Num_ped = id;
+
             model.ArticleList = new SelectList(store.Almacen_Productos.Select(x => x.Articulos).ToList(), "IdArticulo", "Nombre");
             
             return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult OrderLineCreate(Linea_pedido_c element)
+        {
+            var order = _gPedidoC.FindBy(x => x.Num_ped == element.Num_ped).FirstOrDefault();
+            order.Linea_pedido_c.Add(element);
+
+            _gPedidoC.Save();
+
+            var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(order.Linea_pedido_c.ToList()).ToList();
+
+            return PartialView(modelList);
         }
 
         public ActionResult OrderLines(int id)
@@ -202,6 +217,10 @@ namespace Dashboard.Controllers
 
             return PartialView(modelList);
         }
+
+
+
+
 
         #endregion
     }

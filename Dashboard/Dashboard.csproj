@@ -1279,6 +1279,7 @@
     <Content Include="Views\PedidoC\OpenOrder.cshtml" />
     <Content Include="Views\PedidoC\OrderLineCreate.cshtml" />
     <Content Include="Views\PedidoC\OrderLines.cshtml" />
+    <Content Include="Views\Article\_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

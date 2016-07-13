@@ -12,9 +12,13 @@ using Domain.Connection;
 
 namespace Domain.Manage
 {
-    public class gPedidoC : GenericRepository<Entities , Pedido_c>
+    public class gPedidoC : GenericRepository<Entities , Pedido_c>, IOrderLineServices<Linea_pedido_c>
     {
         public gPedidoC() { }
 
+        public void addOrderLine(Linea_pedido_c element)
+        {
+           
+        }
     }
 }

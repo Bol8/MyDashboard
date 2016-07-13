@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStatusRepository.cs" />
+    <Compile Include="Interfaces\IOrderLineServices.cs" />
     <Compile Include="Manage\ControlClient.cs" />
     <Compile Include="Manage\gPaymentType.cs" />
     <Compile Include="Manage\gStoreArticle.cs" />

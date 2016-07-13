@@ -111,7 +111,7 @@ namespace Dashboard.Configuration
                 .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.EstadosPedido.Nombre));
 
             CreateMap<Pedido_c, mPedidoCCreate>();
-            CreateMap<Linea_pedido_c, Linea_pedido_c>();
+            CreateMap<Linea_pedido_c, mOrderLine>();
 
         }
 

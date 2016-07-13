@@ -45,10 +45,10 @@
                                 @Html.DisplayFor(x => x.Observaciones)
                             </p>
                             
-                            <div>
+                            @*<div>
                                 <br />
                                 @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default flat" })
-                            </div>
+                            </div>*@
 
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
@@ -58,7 +58,7 @@
            @Html.Action("OrderLineCreate",new { id = Model.Num_ped})
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" id="OrderLineList">
             @Html.Action("OrderLines", new { id = Model.Num_ped })
         </div>
 

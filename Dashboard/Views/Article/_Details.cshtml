@@ -1,0 +1,25 @@
+﻿@model Domain.Models.Articulo.mArticle
+
+
+<div>
+    <p>
+        <strong>@Html.DisplayNameFor(x => x.Nombre):</strong>
+        @Html.DisplayFor(x => x.Nombre)
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(x => x.Peso):</strong>
+        @Html.DisplayFor(x => x.Peso) gr.
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(x => x.Precio):</strong>
+        @Html.DisplayFor(x => x.Precio) €
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
+        @Html.DisplayFor(x => x.sEstado)
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(x => x.sIVA):</strong>
+        @Html.DisplayFor(x => x.sIVA)%  
+    </p>
+</div>
