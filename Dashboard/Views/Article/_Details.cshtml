@@ -8,18 +8,35 @@
     </p>
     <p>
         <strong>@Html.DisplayNameFor(x => x.Peso):</strong>
-        @Html.DisplayFor(x => x.Peso) gr.
+        @if (Model != null)
+        {
+            @Html.DisplayFor(x => x.Peso);<span> gr.</span>
+            
+        }
+
     </p>
     <p>
         <strong>@Html.DisplayNameFor(x => x.Precio):</strong>
-        @Html.DisplayFor(x => x.Precio) €
+        @if (Model != null)
+        {
+            @Html.DisplayFor(x => x.Precio); <span> €</span>
+        }
+       
     </p>
     <p>
         <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
-        @Html.DisplayFor(x => x.sEstado)
+        @if (Model != null)
+        {
+            @Html.DisplayFor(x => x.sEstado)
+        }
+       
     </p>
     <p>
         <strong>@Html.DisplayNameFor(x => x.sIVA):</strong>
-        @Html.DisplayFor(x => x.sIVA)%  
+        @if (Model != null)
+        {
+            @Html.DisplayFor(x => x.sIVA) <span>%</span>
+        }
+       
     </p>
 </div>

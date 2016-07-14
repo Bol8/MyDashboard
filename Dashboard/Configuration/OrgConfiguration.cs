@@ -108,10 +108,20 @@ namespace Dashboard.Configuration
             CreateMap<Pedido_c, mPedidoC>()
                 .ForMember<string>(x => x.clienteNombre, opt => opt.MapFrom(x => x.Clientes.Razon_Social))
                 .ForMember<string>(x => x.sForma_pago, opt => opt.MapFrom(x => x.FormaPago.Nombre))
-                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.EstadosPedido.Nombre));
+                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.EstadosPedido.Nombre))
+                .ForMember<decimal>(x => (decimal)x.Importe, opt => opt.MapFrom(x => x.Linea_pedido_c.Sum(y => y.Cantidad * y.Articulos.Precio)))
+                .ForMember<decimal>(x => (decimal)x.Peso, opt => opt.MapFrom(x => x.Linea_pedido_c.Sum(y => y.Cantidad * y.Articulos.Peso)))
+                ;
 
             CreateMap<Pedido_c, mPedidoCCreate>();
-            CreateMap<Linea_pedido_c, mOrderLine>();
+
+            CreateMap<Linea_pedido_c, mOrderLine>()
+                 .ForMember<string>(x => x.sArticulo, opt => opt.MapFrom(x => x.Articulos.Nombre))
+                .ForMember<decimal>(x => x.Precio , opt => opt.MapFrom(x => x.Articulos.Precio))
+                .ForMember<decimal>(x => x.Peso, opt => opt.MapFrom(x => x.Articulos.Peso))
+                .ForMember<decimal>(x => (decimal) x.Total, opt => opt.MapFrom(x => (x.Articulos.Precio * x.Cantidad)))
+                .ForMember<decimal>(x => x.TotalPeso, opt => opt.MapFrom(x => (x.Articulos.Peso * x.Cantidad)))
+                ;
 
         }
 

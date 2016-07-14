@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Linea)</th>
-                    <th>@Html.DisplayNameFor(model => model.IdArticulo)</th>
+                    <th>@Html.DisplayNameFor(model => model.sArticulo)</th>
                     <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
                     <th>@Html.DisplayNameFor(model => model.Precio)</th>
                     <th>@Html.DisplayNameFor(model => model.Peso)</th>
@@ -26,15 +26,13 @@
                 {
                     <tr>
                         <td>@Html.DisplayFor(model => item.Linea)</td>
-                        <td>@Html.DisplayFor(model => item.IdArticulo)</td>
+                        <td>@Html.DisplayFor(model => item.sArticulo)</td>
                         <td>@Html.DisplayFor(model => item.Cantidad)</td>
-                        <td>@Html.DisplayFor(model => item.Precio)</td>
-                        <td>@Html.DisplayFor(model => item.Peso)</td>
-                        <td>@Html.DisplayFor(model => item.TotalPeso)</td>
-                        <td>@Html.DisplayFor(model => item.Total)</td>
+                        <td>@Html.DisplayFor(model => item.Precio) €</td>
+                        <td>@Html.DisplayFor(model => item.Peso) gr.</td>
+                        <td>@Html.DisplayFor(model => item.TotalPeso) gr.</td>
+                        <td>@Html.DisplayFor(model => item.Total) €</td>
                         <td>
-                            @Html.ActionLink(" ", "EditOrderLine", "PedidoC", new { idOrder = item.Num_ped, idOrderLine = item.Linea }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-pencil", title = "Editar" })
-                            <span> </span>
                             @Html.ActionLink(" ", "DeleteOrderLine", "PedidoC", new { idOrder = item.Num_ped, idOrderLine = item.Linea }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })
                         </td>
                     </tr>

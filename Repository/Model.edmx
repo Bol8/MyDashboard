@@ -167,7 +167,7 @@
             <PropertyRef Name="Linea" />
           </Key>
           <Property Name="Num_ped" Type="int" Nullable="false" />
-          <Property Name="Linea" Type="int" Nullable="false" />
+          <Property Name="Linea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="Total" Type="float" Nullable="false" />
           <Property Name="IdArticulo" Type="int" Nullable="false" />

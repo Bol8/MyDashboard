@@ -29,6 +29,14 @@
                 </div>
             </div>
             <div class="form-group">
+                <div class="col-md-offset-2 col-md-4">
+                    <div class="CheckContent">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe,new { @Class= "CkLabel" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-offset-2 col-md-8">
                     <input type="submit" name="login" value="Iniciar sesión" class="btn btn-default flat" />
                 </div>

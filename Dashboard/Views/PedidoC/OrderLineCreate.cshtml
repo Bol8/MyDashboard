@@ -8,7 +8,7 @@
 
         <div class="form-horizontal">
 
-            @using (Ajax.BeginForm("OrderLineCreate", "PedidoC",null,new AjaxOptions { HttpMethod = "POST" , InsertionMode = InsertionMode.Replace , UpdateTargetId = "OrderLineList"},null))
+            @using (Ajax.BeginForm("OrderLineCreate", "PedidoC",null,new AjaxOptions { HttpMethod = "POST" , InsertionMode = InsertionMode.Replace , UpdateTargetId = "Odrlist",OnSuccess="clearInput()"},null))
             {
                 @Html.HiddenFor(x => x.Num_ped)
 
@@ -75,6 +75,9 @@
         });
     });
 
+    function clearInput() {
+        $(".form-control").val('');
+    }
     
 
 

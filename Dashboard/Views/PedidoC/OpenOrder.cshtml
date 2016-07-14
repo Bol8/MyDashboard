@@ -38,7 +38,7 @@
                             </p>
                             <p>
                                 <strong>@Html.DisplayNameFor(x => x.Importe):</strong>
-                                @Html.DisplayFor(x => x.Importe)
+                                @Html.DisplayFor(x => x.Importe) €
                             </p>
                             <p>
                                 <strong>@Html.DisplayNameFor(x => x.Observaciones):</strong>
@@ -58,9 +58,25 @@
            @Html.Action("OrderLineCreate",new { id = Model.Num_ped})
         </div>
 
-        <div class="col-md-12" id="OrderLineList">
-            @Html.Action("OrderLines", new { id = Model.Num_ped })
+        <div class="ajaxPartialContents col-md-12" id="Odrlist" data-url="@Url.Action("OrderLines", new { id = Model.Num_ped })">
+            <img src="~/images/indicator.white.gif" /> Cargando ...
         </div>
+
+        @*<div class="col-md-12" id="Odrlist">
+            @Html.Action("OrderLines", new { id = Model.Num_ped })
+        </div>*@
 
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".ajaxPartialContents").each(function (index, item) {
+            var url = $(item).data("url");
+            if (url && url.length > 0) {
+                $(item).load(url);
+            }
+        });
+    });
+</script>

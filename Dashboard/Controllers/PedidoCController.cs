@@ -203,18 +203,20 @@ namespace Dashboard.Controllers
             _gPedidoC.Save();
 
             var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(order.Linea_pedido_c.ToList()).ToList();
+            if (Request.IsAjaxRequest()) return PartialView("OrderLines",modelList);
 
-            return PartialView(modelList);
+
+            return RedirectToAction("OpenOrder", new { id = element.Num_ped });
         }
 
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
         public ActionResult OrderLines(int id)
         {
             var order = _gPedidoC.FindBy(x => x.Num_ped == id).FirstOrDefault();
             var list = order.Linea_pedido_c.ToList();
 
             var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(list).ToList();
-
-
+          
             return PartialView(modelList);
         }
 

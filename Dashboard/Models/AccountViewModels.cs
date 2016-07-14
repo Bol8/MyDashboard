@@ -54,16 +54,16 @@ namespace Dashboard.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Recordar contraseña?")]
         public bool RememberMe { get; set; }
 
 
 
-        [Display(Name = "UserName")]
+        [Display(Name = "Usuario")]
         public string UserName { get; set; }
     }
 

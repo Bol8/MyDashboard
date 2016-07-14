@@ -49,9 +49,12 @@ namespace Domain.Models.PedidoC
 
 
 
+
         [Display(Name = "Articulo")]
         public int IdArticulo { get; set; }
 
 
+        [Display(Name = "Articulo")]
+        public string sArticulo { get; set; }
     }
 }
