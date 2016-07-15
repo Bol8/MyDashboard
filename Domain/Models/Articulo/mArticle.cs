@@ -52,10 +52,10 @@ namespace Domain.Models.Articulo
         public decimal Precio { get; set; }
 
 
-
         [Display(Name = "IVA")]
         [Required(ErrorMessage = "Campo obligatorio")]
         public int IVA { get; set; }
+
 
         [Display(Name = "IVA")]
         public string sIVA { get; set; }
@@ -66,8 +66,11 @@ namespace Domain.Models.Articulo
         public string Descripcion { get; set; }
 
 
+        [Display(Name = "Stock")]
+        public int stock { get; set; }
+
+
         public string Imagen { get; set; }
 
-        
     }
 }

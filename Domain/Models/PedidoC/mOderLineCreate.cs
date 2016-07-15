@@ -23,7 +23,7 @@ namespace Domain.Models.PedidoC
 
 
 
-        [Display(Name = "Cantidad")]
+        [Display(Name = "Unidades")]
         [Range(1,9999,ErrorMessage ="Números entre {1} y {2}")]
         public int Cantidad { get; set; }
 

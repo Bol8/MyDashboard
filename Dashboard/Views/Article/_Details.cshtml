@@ -1,42 +1,50 @@
-﻿@model Domain.Models.Articulo.mArticle
+﻿@model Domain.Models.AlmacenProducto.mAlmacenProducto
 
 
 <div>
     <p>
-        <strong>@Html.DisplayNameFor(x => x.Nombre):</strong>
-        @Html.DisplayFor(x => x.Nombre)
+        <strong>@Html.DisplayNameFor(x => x.Article.Nombre):</strong>
+        @Html.DisplayFor(x => x.Article.Nombre)
     </p>
     <p>
-        <strong>@Html.DisplayNameFor(x => x.Peso):</strong>
+        <strong>@Html.DisplayNameFor(x => x.Article.Peso):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.Peso);<span> gr.</span>
+            @Html.DisplayFor(x => x.Article.Peso);<span> gr.</span>
             
         }
 
     </p>
     <p>
-        <strong>@Html.DisplayNameFor(x => x.Precio):</strong>
+        <strong>@Html.DisplayNameFor(x => x.Article.Precio):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.Precio); <span> €</span>
+            @Html.DisplayFor(x => x.Article.Precio); <span> €</span>
         }
        
     </p>
     <p>
-        <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
+        <strong>@Html.DisplayNameFor(x => x.Article.sEstado):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.sEstado)
+            @Html.DisplayFor(x => x.Article.sEstado)
         }
        
     </p>
     <p>
-        <strong>@Html.DisplayNameFor(x => x.sIVA):</strong>
+        <strong>@Html.DisplayNameFor(x => x.Article.sIVA):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.sIVA) <span>%</span>
+            @Html.DisplayFor(x => x.Article.sIVA) <span>%</span>
         }
        
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(x => x.Stock):</strong>
+        @if (Model != null)
+        {
+            @Html.DisplayFor(x => x.Stock) <span> Ud.</span>
+        }
+
     </p>
 </div>

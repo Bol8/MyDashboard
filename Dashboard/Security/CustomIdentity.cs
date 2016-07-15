@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Security.Principal;
 using System.Web.Security;
+using Domain.DefaultValues;
 
 namespace Dashboard.Security
 {
@@ -20,6 +21,8 @@ namespace Dashboard.Security
         public string Mail { get; set; }
         public int Role { get; set; }
         public string RoleName { get; set; }
+        public int ActiveStore { get; set; }
+
 
 
         public string AuthenticationType
@@ -53,6 +56,7 @@ namespace Dashboard.Security
                 RoleName = custonMembershipUser.RoleName;
                 Phone = custonMembershipUser.Phone;
                 Role = custonMembershipUser.Role;
+                ActiveStore = DefaultStoreValues.DefaultStore;
             }
 
         }

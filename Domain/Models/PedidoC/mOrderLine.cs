@@ -21,7 +21,7 @@ namespace Domain.Models.PedidoC
 
 
 
-        [Display(Name = "Cantidad")]
+        [Display(Name = "Unidades")]
         public int Cantidad { get; set; }
 
 

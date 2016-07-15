@@ -15,7 +15,7 @@
                     <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
                     <th>@Html.DisplayNameFor(model => model.Precio)</th>
                     <th>@Html.DisplayNameFor(model => model.Peso)</th>
-                    <th>@Html.DisplayNameFor(model => model.TotalPeso)</th>
+                    <th>@Html.DisplayNameFor(model => model.TotalPeso) (Kg.)</th>
                     <th>@Html.DisplayNameFor(model => model.Total)</th>
                     <th>Opciones</th>
                 </tr>
@@ -30,7 +30,7 @@
                         <td>@Html.DisplayFor(model => item.Cantidad)</td>
                         <td>@Html.DisplayFor(model => item.Precio) €</td>
                         <td>@Html.DisplayFor(model => item.Peso) gr.</td>
-                        <td>@Html.DisplayFor(model => item.TotalPeso) gr.</td>
+                        <td>@Html.DisplayFor(model => item.TotalPeso) Kg.</td>
                         <td>@Html.DisplayFor(model => item.Total) €</td>
                         <td>
                             @Html.ActionLink(" ", "DeleteOrderLine", "PedidoC", new { idOrder = item.Num_ped, idOrderLine = item.Linea }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })

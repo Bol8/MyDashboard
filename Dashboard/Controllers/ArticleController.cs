@@ -8,6 +8,8 @@ using Repository;
 using Domain.Manage;
 using Domain.Interfaces;
 using Domain.Models.Articulo;
+using Dashboard.Security;
+using Domain.Models.AlmacenProducto;
 
 namespace Dashboard.Controllers
 {
@@ -17,19 +19,21 @@ namespace Dashboard.Controllers
         private IGenericRepository<TipoProducto> _gArticleType;
         private IGenericRepository<Iva> _gIVA;
         private IGenericRepository<Estados> _gStatus;
+        private IGenericRepository<Almacenes> _gStore;
 
         #region Constructors
 
         public ArticleController(IGenericRepository<Articulos> gArticle,
                                  IGenericRepository<TipoProducto> gArticleType,
                                  IGenericRepository<Iva> gIVA,
-                                 IGenericRepository<Estados> gStatus)
+                                 IGenericRepository<Estados> gStatus,
+                                 IGenericRepository<Almacenes> gStore)
         {
             this._gArticle = gArticle;
             this._gArticleType = gArticleType;
             this._gIVA = gIVA;
             this._gStatus = gStatus;
-         
+            this._gStore = gStore;
         }
         #endregion
 
@@ -119,8 +123,10 @@ namespace Dashboard.Controllers
 
         public ActionResult _Details(int id)
         {
-            var element = _gArticle.FindBy(x => x.IdArticulo == id).FirstOrDefault();
-            var model = AutoMapper.Mapper.Map<Articulos, mArticle>(element);
+            var idStore = User.ToCustomPrincipal().CustomIdentity.ActiveStore;
+            var e = _gStore.FindBy(x => x.Id == idStore).FirstOrDefault();
+            var element = e.Almacen_Productos.Where(x => x.Articulo == id).FirstOrDefault();
+            var model = AutoMapper.Mapper.Map<Almacen_Productos, mAlmacenProducto>(element);
 
             return PartialView(model);
         }

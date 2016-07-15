@@ -66,7 +66,8 @@ namespace Dashboard
             container.RegisterType<ArticleController>(new InjectionConstructor(new ResolvedParameter<gProduct>("gArticle"),
                                                                               new ResolvedParameter<gTypeProduct>("gArticleType"),
                                                                               new ResolvedParameter<gIVA>("gIVA"),
-                                                                              new ResolvedParameter<gStatus>("gStatus")
+                                                                              new ResolvedParameter<gStatus>("gStatus"),
+                                                                              new ResolvedParameter<gStore>("gStore")
                                                                               ));
 
             container.RegisterType<HomeController>(new InjectionConstructor(new ResolvedParameter<gUser>("gUser"),
