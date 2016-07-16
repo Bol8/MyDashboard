@@ -78,7 +78,8 @@ namespace Dashboard
                                                                                new ResolvedParameter<gOrderStatus>("gOrderStatus"),
                                                                                new ResolvedParameter<gPaymentType>("gPaymentType"),
                                                                                new ResolvedParameter<gClient>("gClient"),
-                                                                               new ResolvedParameter<gStore>("gStore")
+                                                                               new ResolvedParameter<gStore>("gStore"),
+                                                                               new ResolvedParameter<gLineaPedidoC>("gOrderLine")
                                                                                ));
             
 

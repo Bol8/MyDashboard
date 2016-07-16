@@ -21,6 +21,7 @@ namespace Dashboard.Controllers
         private IGenericRepository<FormaPago> _gPaymentType;
         private IGenericRepository<EstadosPedido> _gOrderStatus;
         private IGenericRepository<Almacenes> _gStore;
+        private IGenericRepository<Linea_pedido_c> _gOrderLine;
 
         #endregion
 
@@ -31,13 +32,15 @@ namespace Dashboard.Controllers
                                  IGenericRepository<EstadosPedido> gOrderStatus,
                                  IGenericRepository<FormaPago> gPaymentType,
                                  IGenericRepository<Clientes> gClient,
-                                 IGenericRepository<Almacenes> gStore)
+                                 IGenericRepository<Almacenes> gStore,
+                                 IGenericRepository<Linea_pedido_c> gOrderLine)
         {
             this._gPedidoC = gPedidoC;
             this._gOrderStatus = gOrderStatus;
             this._gPaymentType = gPaymentType;
             this._gClient = gClient;
             this._gStore = gStore;
+            this._gOrderLine = gOrderLine;
         }
 
         #endregion
@@ -210,18 +213,21 @@ namespace Dashboard.Controllers
                 order.Peso += element.Cantidad * article.Articulos.Peso;
                 order.Importe += (float) (element.Cantidad * article.Articulos.Precio);
 
-                element.Total = (double)(element.Cantidad * article.Articulos.Precio); 
+                element.Total = (double)(element.Cantidad * article.Articulos.Precio);
 
-                order.Linea_pedido_c.Add(element);
+                _gOrderLine.Add(element);
 
+                _gOrderLine.Save();
                 _gPedidoC.Save();
                 _gStore.Save();
 
+               
                 TempData["MessageSucces"] = "Completado correctamente";
                 TempData["Importe"] = order.Importe.ToString();
                 TempData["Peso"] = (order.Peso/1000).ToString();
 
-                var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(order.Linea_pedido_c.ToList()).ToList();
+                var updateOrder = _gPedidoC.FindBy(x => x.Num_ped == element.Num_ped).FirstOrDefault();
+                var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(updateOrder.Linea_pedido_c.ToList()).ToList();
                 if (Request.IsAjaxRequest()) return PartialView("OrderLines", modelList);
 
             }else
@@ -244,7 +250,39 @@ namespace Dashboard.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult DeleteOrderLine(int idOrder , int idOrderLine)
+        {
+            try
+            {
+                var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
+                var order = _gPedidoC.FindBy(x => x.Num_ped == idOrder).FirstOrDefault();
+                var orderLine = order.Linea_pedido_c.Where(x => x.Linea == idOrderLine).FirstOrDefault();
+                var article = store.Almacen_Productos.Where(x => x.Articulo == orderLine.Articulos.IdArticulo).FirstOrDefault();
 
+                order.Importe -= (float)(orderLine.Cantidad * orderLine.Articulos.Precio);
+                order.Peso -= (orderLine.Cantidad * orderLine.Articulos.Peso);
+                article.Stock += orderLine.Cantidad;
+                
+                order.Linea_pedido_c.Remove(orderLine);
+
+                _gPedidoC.Save();
+                _gStore.Save();
+
+                TempData["MessageSucces"] = "Completado correctamente";
+                TempData["Importe"] = order.Importe.ToString();
+                TempData["Peso"] = (order.Peso / 1000).ToString();
+
+                var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(order.Linea_pedido_c.ToList()).ToList();
+
+                return PartialView("OrderLines",modelList);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar eliminar una linea de pedido. " + ex);
+            }
+
+        }
 
 
         #endregion

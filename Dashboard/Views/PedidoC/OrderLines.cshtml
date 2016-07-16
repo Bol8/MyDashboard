@@ -14,8 +14,6 @@
 }
 
 
-
-
 <div class="box box-primary flat">
     <div class="box-header with-border">
         <h3 class="box-title">Detalles pedido</h3>
@@ -48,8 +46,12 @@
                         <td>@Html.DisplayFor(model => item.TotalPeso) Kg.</td>
                         <td>@Html.DisplayFor(model => item.Total) €</td>
                         <td>
-                            @Html.ActionLink(" ", "DeleteOrderLine", "PedidoC", new { idOrder = item.Num_ped, idOrderLine = item.Linea }, new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })
+                            @Ajax.ActionLink(" ", "DeleteOrderLine", "PedidoC",
+                                             new { idOrder = item.Num_ped, idOrderLine = item.Linea },
+                                             new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace ,UpdateTargetId = "Odrlist" },
+                                             new { @class = "btn btn-default btn-sm flat glyphicon glyphicon-trash", title = "Eliminar" })
                         </td>
+
                     </tr>
                 }
             </tbody>

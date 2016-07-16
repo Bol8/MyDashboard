@@ -32,6 +32,11 @@ namespace Domain.Connection
             _entities.Set<T>().Remove(entity);
         }
 
+        public void Dispose()
+        {
+            _entities.Dispose();
+        }
+
         public void Edit(T entity)
         {
             _entities.Entry(entity).State = EntityState.Modified;
