@@ -1042,6 +1042,8 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\lobibox.css" />
+    <Content Include="Content\lobibox.min.css" />
     <Content Include="CSS\MyStyle.css" />
     <Content Include="Error\Forbidden.html" />
     <Content Include="Error\GatewayTimeout.html" />
@@ -1199,6 +1201,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lobibox.js" />
+    <Content Include="Scripts\lobibox.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -1281,6 +1285,7 @@
     <Content Include="Views\PedidoC\OrderLineCreate.cshtml" />
     <Content Include="Views\PedidoC\OrderLines.cshtml" />
     <Content Include="Views\Article\_Details.cshtml" />
+    <Content Include="Scripts\lobibox.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

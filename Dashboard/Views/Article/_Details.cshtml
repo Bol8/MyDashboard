@@ -4,13 +4,13 @@
 <div>
     <p>
         <strong>@Html.DisplayNameFor(x => x.Article.Nombre):</strong>
-        @Html.DisplayFor(x => x.Article.Nombre)
+        <span class="lbl">@Html.DisplayFor(x => x.Article.Nombre)</span>
     </p>
     <p>
         <strong>@Html.DisplayNameFor(x => x.Article.Peso):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.Article.Peso);<span> gr.</span>
+           <span class="lbl">@Html.DisplayFor(x => x.Article.Peso)</span><span class="lbl"> gr.</span>
             
         }
 
@@ -19,7 +19,7 @@
         <strong>@Html.DisplayNameFor(x => x.Article.Precio):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.Article.Precio); <span> €</span>
+            <span class="lbl">@Html.DisplayFor(x => x.Article.Precio)</span> <span class="lbl"> €</span>
         }
        
     </p>
@@ -27,7 +27,7 @@
         <strong>@Html.DisplayNameFor(x => x.Article.sEstado):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.Article.sEstado)
+            <span class="lbl">@Html.DisplayFor(x => x.Article.sEstado)</span>
         }
        
     </p>
@@ -35,7 +35,7 @@
         <strong>@Html.DisplayNameFor(x => x.Article.sIVA):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.Article.sIVA) <span>%</span>
+           <span class="lbl">@Html.DisplayFor(x => x.Article.sIVA)</span>  <span class="lbl">%</span>
         }
        
     </p>
@@ -43,7 +43,7 @@
         <strong>@Html.DisplayNameFor(x => x.Stock):</strong>
         @if (Model != null)
         {
-            @Html.DisplayFor(x => x.Stock) <span> Ud.</span>
+            <span class="lbl" id="lblStock">@Html.DisplayFor(x => x.Stock)</span><span class="lbl"> Ud.</span>
         }
 
     </p>

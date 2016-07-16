@@ -8,6 +8,7 @@ using Domain.Interfaces;
 using Repository;
 using AutoMapper;
 using Domain.DefaultValues;
+using Domain.Tools;
 
 namespace Dashboard.Controllers
 {
@@ -194,17 +195,39 @@ namespace Dashboard.Controllers
             return PartialView(model);
         }
 
+
         [HttpPost]
         public ActionResult OrderLineCreate(Linea_pedido_c element)
         {
-            var order = _gPedidoC.FindBy(x => x.Num_ped == element.Num_ped).FirstOrDefault();
-            order.Linea_pedido_c.Add(element);
+            var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
+            var article = store.Almacen_Productos.Where(x => x.Articulo == element.IdArticulo).FirstOrDefault();
 
-            _gPedidoC.Save();
+            if(article.Stock >= element.Cantidad)
+            {
+                var order = _gPedidoC.FindBy(x => x.Num_ped == element.Num_ped).FirstOrDefault();
+                article.Stock -= element.Cantidad;
 
-            var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(order.Linea_pedido_c.ToList()).ToList();
-            if (Request.IsAjaxRequest()) return PartialView("OrderLines",modelList);
+                order.Peso += element.Cantidad * article.Articulos.Peso;
+                order.Importe += (float) (element.Cantidad * article.Articulos.Precio);
 
+                element.Total = (double)(element.Cantidad * article.Articulos.Precio); 
+
+                order.Linea_pedido_c.Add(element);
+
+                _gPedidoC.Save();
+                _gStore.Save();
+
+                TempData["MessageSucces"] = "Completado correctamente";
+                TempData["Importe"] = order.Importe.ToString();
+                TempData["Peso"] = (order.Peso/1000).ToString();
+
+                var modelList = Mapper.Map<IEnumerable<Linea_pedido_c>, IEnumerable<mOrderLine>>(order.Linea_pedido_c.ToList()).ToList();
+                if (Request.IsAjaxRequest()) return PartialView("OrderLines", modelList);
+
+            }else
+            {
+                TempData["MessageWarning"] = "No hay unidades suficientes";
+            }
 
             return RedirectToAction("OpenOrder", new { id = element.Num_ped });
         }

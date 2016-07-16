@@ -4,7 +4,6 @@
     ViewBag.Title = "Pedido cliente";
 }
 
-
 <div class="row">
     <div class="col-md-12">
         <div class="col-md-4">
@@ -34,11 +33,11 @@
                             </p>
                             <p>
                                 <strong>@Html.DisplayNameFor(x => x.Peso):</strong>
-                                @Html.DisplayFor(x => x.Peso) Kg.
+                                <span id="spPeso">@Html.DisplayFor(x => x.Peso)</span> Kg.
                             </p>
                             <p>
                                 <strong>@Html.DisplayNameFor(x => x.Importe):</strong>
-                                @Html.DisplayFor(x => x.Importe) €
+                                <span id="spImporte">@Html.DisplayFor(x => x.Importe)</span> €
                             </p>
                             <p>
                                 <strong>@Html.DisplayNameFor(x => x.Observaciones):</strong>
@@ -70,7 +69,12 @@
 </div>
 
 <script type="text/javascript">
+
     $(document).ready(function () {
+
+        //Lobibox.notify('info',{
+        //    msg: 'Hola',
+        //});
 
         $(".ajaxPartialContents").each(function (index, item) {
             var url = $(item).data("url");

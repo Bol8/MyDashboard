@@ -88,6 +88,7 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IStatusRepository.cs" />
     <Compile Include="Interfaces\IOrderLineServices.cs" />
+    <Compile Include="Interfaces\IStoreServices.cs" />
     <Compile Include="Manage\ControlClient.cs" />
     <Compile Include="Manage\gPaymentType.cs" />
     <Compile Include="Manage\gStoreArticle.cs" />
@@ -133,11 +134,11 @@
       <DependentUpon>Factura.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Tools\cJsonResultData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Models\Observers\" />
-    <Folder Include="Tools\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Repository\Repository.csproj">

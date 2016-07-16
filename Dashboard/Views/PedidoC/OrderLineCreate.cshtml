@@ -1,5 +1,21 @@
 ﻿@model Domain.Models.PedidoC.mOderLineCreate
 
+ @if (TempData["MessageWarning"] != null)
+ {
+    <script>
+        $(".spValidation").show();
+    </script>
+ }
+
+@if (TempData["MessageSucces"] != null)
+{
+    <script>
+        $(".MyInput").val('');
+        $(".lbl").text('');
+    </script>
+}
+
+
 <div class="box box-primary flat">
     <div class="box-header with-border">
         <h3 class="box-title">Añadir detalle</h3>
@@ -8,7 +24,7 @@
 
         <div class="form-horizontal">
 
-            @using (Ajax.BeginForm("OrderLineCreate", "PedidoC",null,new AjaxOptions { HttpMethod = "POST" , InsertionMode = InsertionMode.Replace , UpdateTargetId = "Odrlist",OnSuccess="clearInput()"},null))
+            @using (Ajax.BeginForm("OrderLineCreate", "PedidoC",null,new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "Odrlist" }, new { id="_ajaxForm"}))
             {
                 @Html.HiddenFor(x => x.Num_ped)
 
@@ -16,14 +32,15 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.IdArticulo, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.IdArticulo, Model.ArticleList, "-- Selecciona --", new { @class = "form-control CformControl", id = "ArticleDrop" })
+                            @Html.DropDownListFor(model => model.IdArticulo, Model.ArticleList, "-- Selecciona --", new { @class = "form-control CformControl MyInput", id = "ArticleDrop" })
                             <small>@Html.ValidationMessageFor(model => model.IdArticulo, "", new { @class = "text-danger" })</small>
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control CformControl" } })
+                            @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control CformControl MyInput" ,id="inputUd"} })
+                            <small><span class="text-danger spValidation">No hay unidades suficientes</span></small>
                             <small>@Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })</small>
                         </div>
                     </div>
@@ -31,7 +48,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default flat" })
-                            <input type="submit" value="Guardar" class="btn btn-primary flat" />
+                            <input type="button" onclick="ajaxSubmit()" value="Guardar" class="btn btn-primary flat" />
                         </div>
                     </div>
                 </div>
@@ -58,7 +75,6 @@
 
     $("#ArticleDrop").change(function () {
         var idArticle = $(this).val();
-        console.log("idArticle " + idArticle);
 
         $.ajax({
             type: "POST",
@@ -66,18 +82,46 @@
             data: { id: idArticle },
             dataType: 'html',
             success: function (data) {
-              // $("#ArtDetail").html(data)
                $("#ArtDetail").html(data)
             },
             error: function () {
-               
             }
         });
     });
 
-    function clearInput() {
-        $(".form-control").val('');
+
+    function ajaxSubmit() {
+        var stock = Number($("#lblStock").text());
+        var unidades = Number($("#inputUd").val());
+
+        if (unidades <= stock) {
+            $("#_ajaxForm").submit();
+        } else {
+            $(".spValidation").show();
+            setTimeout(function () { $(".spValidation").hide(); }, 1000);
+        }
+
+
     }
+
+    //function showMessage(data) {
+
+    //    if (!data.success) {
+           
+    //    } else {
+           
+    //         console.log("Warning");
+
+    //    }
+
+    //     console.log("Ejecutando showMessage");
+    //};
+
+    //function clearInput() {
+    //    $(".MyInput").val('');
+    //    //$(".lbl").text('');
+    //    $(".lbl").remove();
+    //}
     
 
 

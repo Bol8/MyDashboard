@@ -1,6 +1,21 @@
 ﻿@model IEnumerable<Domain.Models.PedidoC.mOrderLine>
 
 
+@if (TempData["MessageSucces"] != null)
+{
+    <script>
+        $(".MyInput").val('');
+        $(".lbl").text('');
+        var peso = '@TempData["Peso"]';
+        var importe = '@TempData["Importe"]';
+        $("#spPeso").text(peso)
+        $("#spImporte").text(importe)
+    </script>
+}
+
+
+
+
 <div class="box box-primary flat">
     <div class="box-header with-border">
         <h3 class="box-title">Detalles pedido</h3>
