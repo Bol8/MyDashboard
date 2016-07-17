@@ -130,6 +130,7 @@ namespace Dashboard.Controllers
             try
             {
                 _gContact.Delete(element);
+                _gContact.Save();
             }
             catch (Exception ex)
             {

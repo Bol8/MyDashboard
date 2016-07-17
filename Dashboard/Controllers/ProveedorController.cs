@@ -143,6 +143,7 @@ namespace Dashboard.Controllers
             try
             {
                 _gProveedores.Delete(element);
+                _gProveedores.Save();
             }
             catch (Exception ex)
             {

@@ -20,7 +20,8 @@
                     @using (Html.BeginForm("Delete", "Contact", new { id = Model.IdContacto }, FormMethod.Post))
                     {
                         @Html.HiddenFor(model => model.IdContacto)
-
+                        @Html.HiddenFor(model => model.Nombre)
+                      
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Nombre):</strong>
                             @Html.DisplayFor(x => x.Nombre)

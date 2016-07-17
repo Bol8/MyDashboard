@@ -19,6 +19,9 @@
                     @using (Html.BeginForm("Delete", "Client", new { id = Model.IdCliente }, FormMethod.Post))
                     {
                         @Html.HiddenFor(model => model.IdCliente)
+                        @Html.HiddenFor(model => model.Razon_Social)
+                        @Html.HiddenFor(model => model.Domicilio)
+                        @Html.HiddenFor(model => model.NIF)
 
                         <p>
                             <strong>@Html.DisplayNameFor(x => x.Razon_Social):</strong>
