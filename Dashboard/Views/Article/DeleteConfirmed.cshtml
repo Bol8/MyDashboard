@@ -1,0 +1,85 @@
+﻿@model Domain.Models.Articulo.mArticle
+
+@{
+    ViewBag.Title = "Eliminar articulo";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger flat">
+            <div class="box-header with-border">
+                <h3 class="box-title">¿Seguro que desea eliminar este articulo?</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div>
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger alert-dismissable", style = "margin:20px;" })
+                </div>
+
+                <div class="col-xs-12">
+
+                    @using (Html.BeginForm("Delete", "Article", new {  id = Model.IdArticulo }, FormMethod.Post))
+                    {
+                        @Html.HiddenFor(model => model.IdArticulo)
+                        @Html.HiddenFor(model => model.Nombre)
+                        @Html.HiddenFor(model => model.Peso)
+                        @Html.HiddenFor(model => model.Precio)
+                        @Html.HiddenFor(model => model.IVA)
+                        @Html.HiddenFor(model => model.Tipo)
+                        @Html.HiddenFor(model => model.Estado)
+
+
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Nombre):</strong>
+                            @Html.DisplayFor(x => x.Nombre)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Codigo):</strong>
+                            @Html.DisplayFor(x => x.Codigo)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Peso):</strong>
+                            @Html.DisplayFor(x => x.Peso) gr.
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Precio):</strong>
+                            @Html.DisplayFor(x => x.Precio) €
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.sIVA):</strong>
+                            @Html.DisplayFor(x => x.sIVA)%
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
+                            @Html.DisplayFor(x => x.sEstado)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.sTipo):</strong>
+                            @Html.DisplayFor(x => x.sTipo)
+                        </p>
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.stockMin):</strong>
+                            @Html.DisplayFor(x => x.stockMin)
+                        </p>
+                       
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.stockMax):</strong>
+                            @Html.DisplayFor(x => x.stockMax)
+                        </p>
+                      
+                        <p>
+                            <strong>@Html.DisplayNameFor(x => x.Descripcion):</strong>
+                            @Html.DisplayFor(x => x.Descripcion)
+                        </p>
+
+                        <div>
+                            <br />
+                            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default flat" })
+                            <input class="btn btn-danger flat" type="submit" value="Eliminar" />
+                        </div>
+                    }
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+

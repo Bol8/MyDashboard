@@ -203,7 +203,7 @@ namespace Dashboard.Controllers
         public ActionResult OrderLineCreate(Linea_pedido_c element)
         {
             var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
-            var article = store.Almacen_Productos.Where(x => x.Articulo == element.IdArticulo).FirstOrDefault();
+            var article = store.Almacen_Productos.Where(x => x.Articulo == element.Producto).FirstOrDefault();
 
             if(article.Stock >= element.Cantidad)
             {
@@ -258,10 +258,10 @@ namespace Dashboard.Controllers
                 var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
                 var order = _gPedidoC.FindBy(x => x.Num_ped == idOrder).FirstOrDefault();
                 var orderLine = order.Linea_pedido_c.Where(x => x.Linea == idOrderLine).FirstOrDefault();
-                var article = store.Almacen_Productos.Where(x => x.Articulo == orderLine.Articulos.IdArticulo).FirstOrDefault();
+                var article = store.Almacen_Productos.Where(x => x.Articulo == orderLine.Almacen_Productos.Articulos.IdArticulo).FirstOrDefault();
 
-                order.Importe -= (float)(orderLine.Cantidad * orderLine.Articulos.Precio);
-                order.Peso -= (orderLine.Cantidad * orderLine.Articulos.Peso);
+                order.Importe -= (float)(orderLine.Cantidad * orderLine.Almacen_Productos.Articulos.Precio);
+                order.Peso -= (orderLine.Cantidad * orderLine.Almacen_Productos.Articulos.Peso);
                 article.Stock += orderLine.Cantidad;
                 
                 order.Linea_pedido_c.Remove(orderLine);

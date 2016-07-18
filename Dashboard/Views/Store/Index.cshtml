@@ -4,6 +4,10 @@
     ViewBag.Title = "Almacén";
 }
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-default flat">
@@ -12,7 +16,7 @@
                 @Html.ActionLink("Añadir articulo", "Create", "Store", new { idStore = ViewBag.idStore}, new { @class = "btn btn-primary pull-right flat" })
             </div><!-- /.box-header -->
             <div class="box-body">
-                <table id="example2" class="table table-bordered">
+                <table id="example2" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"  width="100%">
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.Article.Codigo)</th>
@@ -63,11 +67,7 @@
         </div><!-- /.box -->
     </div><!-- /.col -->
 </div><!-- /.row -->
-<!-- DATA TABES SCRIPT -->
 
-<script src="~/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="~/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- page script -->
 
 <script type="text/javascript">
     $(function () {

@@ -109,6 +109,7 @@
     <Compile Include="Models\AlmacenProducto\mAlmacenProducto.cs" />
     <Compile Include="Models\AlmacenProducto\mStoreArticleCreate.cs" />
     <Compile Include="Models\Articulo\mArticle.cs" />
+    <Compile Include="Models\Articulo\mArticleCreate.cs" />
     <Compile Include="Models\Cliente\mClientCreate.cs" />
     <Compile Include="Models\Cliente\mCliente.cs" />
     <Compile Include="Models\Contact\mContact.cs" />

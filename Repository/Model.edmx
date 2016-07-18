@@ -15,13 +15,13 @@
           <Key>
             <PropertyRef Name="Almacen" />
             <PropertyRef Name="Articulo" />
+            <PropertyRef Name="Lote" />
           </Key>
           <Property Name="Almacen" Type="int" Nullable="false" />
           <Property Name="Articulo" Type="int" Nullable="false" />
+          <Property Name="Lote" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Stock" Type="int" Nullable="false" />
-          <Property Name="StockDisponible" Type="int" Nullable="false" />
-          <Property Name="StockMin" Type="int" Nullable="false" />
-          <Property Name="StockMax" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Almacenes">
           <Key>
@@ -50,6 +50,8 @@
           <Property Name="IVA" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar(max)" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="250" />
+          <Property Name="StockMin" Type="int" />
+          <Property Name="StockMax" Type="int" />
         </EntityType>
         <EntityType Name="Clientes">
           <Key>
@@ -71,6 +73,7 @@
           <Property Name="Mail" Type="nvarchar" MaxLength="250" />
           <Property Name="Nota" Type="nvarchar(max)" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="400" />
+          <Property Name="Tipo" Type="int" />
         </EntityType>
         <EntityType Name="Contactos">
           <Key>
@@ -170,7 +173,9 @@
           <Property Name="Linea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="Total" Type="float" Nullable="false" />
-          <Property Name="IdArticulo" Type="int" Nullable="false" />
+          <Property Name="Lote" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Almacen" Type="int" Nullable="false" />
+          <Property Name="Producto" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Linea_pedido_p">
           <Key>
@@ -245,6 +250,15 @@
           <Property Name="IdTarifa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="45" Nullable="false" />
           <Property Name="Porcentaje" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrecioAplicar" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DescuentoAplicar" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="TipoProducto">
           <Key>
@@ -359,6 +373,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Clientes_TipoCliente">
+          <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="Tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Empresas_Usuarios1">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
           <End Role="Empresas" Type="Self.Empresas" Multiplicity="*" />
@@ -407,15 +433,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Linea_pedido_c_Articulos">
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
+        <Association Name="FK_Linea_pedido_c_Almacen_Productos">
+          <End Role="Almacen_Productos" Type="Self.Almacen_Productos" Multiplicity="1" />
           <End Role="Linea_pedido_c" Type="Self.Linea_pedido_c" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="IdArticulo" />
+            <Principal Role="Almacen_Productos">
+              <PropertyRef Name="Almacen" />
+              <PropertyRef Name="Articulo" />
+              <PropertyRef Name="Lote" />
             </Principal>
             <Dependent Role="Linea_pedido_c">
-              <PropertyRef Name="IdArticulo" />
+              <PropertyRef Name="Almacen" />
+              <PropertyRef Name="Producto" />
+              <PropertyRef Name="Lote" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -430,18 +460,6 @@
             </Principal>
             <Dependent Role="Linea_pedido_c">
               <PropertyRef Name="Num_ped" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Linea_pedido_p_Articulos">
-          <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
-          <End Role="Linea_pedido_p" Type="Self.Linea_pedido_p" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="IdArticulo" />
-            </Principal>
-            <Dependent Role="Linea_pedido_p">
-              <PropertyRef Name="IdArticulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -588,6 +606,7 @@
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tarifas" EntityType="Self.Tarifas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposPedido" EntityType="Self.TiposPedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
@@ -619,6 +638,10 @@
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
+          <AssociationSet Name="FK_Clientes_TipoCliente" Association="Self.FK_Clientes_TipoCliente">
+            <End Role="TipoCliente" EntitySet="TipoCliente" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
           <AssociationSet Name="FK_Empresas_Usuarios1" Association="Self.FK_Empresas_Usuarios1">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Empresas" EntitySet="Empresas" />
@@ -635,17 +658,13 @@
             <End Role="Pedido_c" EntitySet="Pedido_c" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Linea_pedido_c_Articulos" Association="Self.FK_Linea_pedido_c_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
+          <AssociationSet Name="FK_Linea_pedido_c_Almacen_Productos" Association="Self.FK_Linea_pedido_c_Almacen_Productos">
+            <End Role="Almacen_Productos" EntitySet="Almacen_Productos" />
             <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
           </AssociationSet>
           <AssociationSet Name="FK_Linea_pedido_c_Pedido_c" Association="Self.FK_Linea_pedido_c_Pedido_c">
             <End Role="Pedido_c" EntitySet="Pedido_c" />
             <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Linea_pedido_p_Articulos" Association="Self.FK_Linea_pedido_p_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
-            <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
           </AssociationSet>
           <AssociationSet Name="FK_Linea_pedido_p_Pedido_p" Association="Self.FK_Linea_pedido_p_Pedido_p">
             <End Role="Pedido_p" EntitySet="Pedido_p" />
@@ -762,19 +781,6 @@
           <Property Name="Precio" Type="Single" Nullable="false" />
           <Property Name="IVA" Type="Single" Nullable="false" />
           <Property Name="Importe" Type="Single" />
-        </EntityType>
-        <EntityType Name="Linea_pedido_c">
-          <Key>
-            <PropertyRef Name="Num_ped" />
-            <PropertyRef Name="Linea" />
-          </Key>
-          <Property Name="Num_ped" Type="Int32" Nullable="false" />
-          <Property Name="Linea" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <Property Name="Total" Type="Double" Nullable="false" />
-          <Property Name="IdArticulo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Pedido_c" Relationship="Model.FK_Linea_pedido_c_Pedido_c" FromRole="Linea_pedido_c" ToRole="Pedido_c" />
-          <NavigationProperty Name="Articulos" Relationship="Model.FK_Linea_pedido_c_Articulos" FromRole="Linea_pedido_c" ToRole="Articulos" />
         </EntityType>
         <EntityType Name="Linea_pedido_p">
           <Key>
@@ -931,7 +937,6 @@
           <EntitySet Name="Facturas" EntityType="Self.Facturas" />
           <EntitySet Name="FormaPago" EntityType="Self.FormaPago" />
           <EntitySet Name="linea_factura" EntityType="Self.linea_factura" />
-          <EntitySet Name="Linea_pedido_c" EntityType="Self.Linea_pedido_c" />
           <EntitySet Name="Linea_pedido_p" EntityType="Self.Linea_pedido_p" />
           <EntitySet Name="Pedido_p" EntityType="Self.Pedido_p" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
@@ -980,10 +985,6 @@
             <End Role="FormaPago" EntitySet="FormaPago" />
             <End Role="Pedido_c" EntitySet="Pedido_c" />
           </AssociationSet>
-          <AssociationSet Name="FK_Linea_pedido_c_Pedido_c" Association="Model.FK_Linea_pedido_c_Pedido_c">
-            <End Role="Pedido_c" EntitySet="Pedido_c" />
-            <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
-          </AssociationSet>
           <EntitySet Name="TiposPedido" EntityType="Model.TiposPedido" />
           <AssociationSet Name="FK_Pedido_p_TiposPedido" Association="Model.FK_Pedido_p_TiposPedido">
             <End Role="TiposPedido" EntitySet="TiposPedido" />
@@ -1000,13 +1001,8 @@
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Proveedores" EntitySet="Proveedores" />
           </AssociationSet>
-          <EntitySet Name="Almacen_Productos" EntityType="Model.Almacen_Productos" />
           <EntitySet Name="Almacenes" EntityType="Model.Almacenes" />
           <EntitySet Name="Empresas" EntityType="Model.Empresas" />
-          <AssociationSet Name="FK_Almacen_Productos_Almacenes" Association="Model.FK_Almacen_Productos_Almacenes">
-            <End Role="Almacenes" EntitySet="Almacenes" />
-            <End Role="Almacen_Productos" EntitySet="Almacen_Productos" />
-          </AssociationSet>
           <AssociationSet Name="FK_Almacenes_Empresas" Association="Model.FK_Almacenes_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="Almacenes" EntitySet="Almacenes" />
@@ -1020,10 +1016,6 @@
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
           <EntitySet Name="Articulos" EntityType="Model.Articulos" />
-          <AssociationSet Name="FK_Almacen_Productos_Articulos" Association="Model.FK_Almacen_Productos_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
-            <End Role="Almacen_Productos" EntitySet="Almacen_Productos" />
-          </AssociationSet>
           <AssociationSet Name="FK_Articulos_Estados" Association="Model.FK_Articulos_Estados">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Articulos" EntitySet="Articulos" />
@@ -1036,13 +1028,32 @@
             <End Role="TipoProducto" EntitySet="TipoProducto" />
             <End Role="Articulos" EntitySet="Articulos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Linea_pedido_c_Articulos" Association="Model.FK_Linea_pedido_c_Articulos">
-            <End Role="Articulos" EntitySet="Articulos" />
-            <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
-          </AssociationSet>
           <AssociationSet Name="FK_Linea_pedido_p_Articulos" Association="Model.FK_Linea_pedido_p_Articulos">
             <End Role="Articulos" EntitySet="Articulos" />
             <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
+          </AssociationSet>
+          <EntitySet Name="Linea_pedido_c" EntityType="Model.Linea_pedido_c" />
+          <EntitySet Name="TipoCliente" EntityType="Model.TipoCliente" />
+          <AssociationSet Name="FK_Clientes_TipoCliente" Association="Model.FK_Clientes_TipoCliente">
+            <End Role="TipoCliente" EntitySet="TipoCliente" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linea_pedido_c_Pedido_c" Association="Model.FK_Linea_pedido_c_Pedido_c">
+            <End Role="Pedido_c" EntitySet="Pedido_c" />
+            <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
+          </AssociationSet>
+          <EntitySet Name="Almacen_Productos" EntityType="Model.Almacen_Productos" />
+          <AssociationSet Name="FK_Almacen_Productos_Almacenes" Association="Model.FK_Almacen_Productos_Almacenes">
+            <End Role="Almacenes" EntitySet="Almacenes" />
+            <End Role="Almacen_Productos" EntitySet="Almacen_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacen_Productos_Articulos" Association="Model.FK_Almacen_Productos_Articulos">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Almacen_Productos" EntitySet="Almacen_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Linea_pedido_c_Almacen_Productos" Association="Model.FK_Linea_pedido_c_Almacen_Productos">
+            <End Role="Almacen_Productos" EntitySet="Almacen_Productos" />
+            <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Clientes">
@@ -1068,6 +1079,8 @@
           <Property Name="Movil" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Pedido_c" Relationship="Model.FK_Pedido_c_Clientes" FromRole="Clientes" ToRole="Pedido_c" />
           <NavigationProperty Name="Estados" Relationship="Model.FK_Clientes_Estados" FromRole="Clientes" ToRole="Estados" />
+          <Property Name="Tipo" Type="Int32" />
+          <NavigationProperty Name="TipoCliente" Relationship="Model.FK_Clientes_TipoCliente" FromRole="Clientes" ToRole="TipoCliente" />
         </EntityType>
         <Association Name="FK_Facturas_Clientes">
           <End Type="Model.Clientes" Role="Clientes" Multiplicity="1" />
@@ -1148,20 +1161,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Linea_pedido_c_Pedido_c">
-          <End Type="Model.Pedido_c" Role="Pedido_c" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="Model.Linea_pedido_c" Role="Linea_pedido_c" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pedido_c">
-              <PropertyRef Name="Num_ped" />
-            </Principal>
-            <Dependent Role="Linea_pedido_c">
-              <PropertyRef Name="Num_ped" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="TiposPedido">
           <Key>
             <PropertyRef Name="Id" />
@@ -1233,20 +1232,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Almacen_Productos">
-          <Key>
-            <PropertyRef Name="Almacen" />
-            <PropertyRef Name="Articulo" />
-          </Key>
-          <Property Name="Almacen" Type="Int32" Nullable="false" />
-          <Property Name="Articulo" Type="Int32" Nullable="false" />
-          <Property Name="Stock" Type="Int32" Nullable="false" />
-          <Property Name="StockDisponible" Type="Int32" Nullable="false" />
-          <Property Name="StockMin" Type="Int32" Nullable="false" />
-          <Property Name="StockMax" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Almacenes" Relationship="Model.FK_Almacen_Productos_Almacenes" FromRole="Almacen_Productos" ToRole="Almacenes" />
-          <NavigationProperty Name="Articulos" Relationship="Model.FK_Almacen_Productos_Articulos" FromRole="Almacen_Productos" ToRole="Articulos" />
-        </EntityType>
         <EntityType Name="Almacenes">
           <Key>
             <PropertyRef Name="Id" />
@@ -1259,8 +1244,8 @@
           <Property Name="Provincia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Observaciones" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Empresa" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Almacen_Productos" Relationship="Model.FK_Almacen_Productos_Almacenes" FromRole="Almacenes" ToRole="Almacen_Productos" />
           <NavigationProperty Name="Empresas" Relationship="Model.FK_Almacenes_Empresas" FromRole="Almacenes" ToRole="Empresas" />
+          <NavigationProperty Name="Almacen_Productos" Relationship="Model.FK_Almacen_Productos_Almacenes" FromRole="Almacenes" ToRole="Almacen_Productos" />
         </EntityType>
         <EntityType Name="Empresas">
           <Key>
@@ -1282,18 +1267,6 @@
           <NavigationProperty Name="Usuarios" Relationship="Model.FK_Empresas_Usuarios1" FromRole="Empresas" ToRole="Usuarios" />
           <NavigationProperty Name="Facturas" Relationship="Model.FK_Facturas_Empresas" FromRole="Empresas" ToRole="Facturas" />
         </EntityType>
-        <Association Name="FK_Almacen_Productos_Almacenes">
-          <End Type="Model.Almacenes" Role="Almacenes" Multiplicity="1" />
-          <End Type="Model.Almacen_Productos" Role="Almacen_Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Almacenes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Almacen_Productos">
-              <PropertyRef Name="Almacen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Almacenes_Empresas">
           <End Type="Model.Empresas" Role="Empresas" Multiplicity="1" />
           <End Type="Model.Almacenes" Role="Almacenes" Multiplicity="*" />
@@ -1344,25 +1317,14 @@
           <Property Name="IVA" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Imagen" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Almacen_Productos" Relationship="Model.FK_Almacen_Productos_Articulos" FromRole="Articulos" ToRole="Almacen_Productos" />
           <NavigationProperty Name="Estados" Relationship="Model.FK_Articulos_Estados" FromRole="Articulos" ToRole="Estados" />
           <NavigationProperty Name="Iva1" Relationship="Model.FK_Articulos_Iva" FromRole="Articulos" ToRole="Iva" />
           <NavigationProperty Name="TipoProducto" Relationship="Model.FK_Articulos_TipoProducto" FromRole="Articulos" ToRole="TipoProducto" />
-          <NavigationProperty Name="Linea_pedido_c" Relationship="Model.FK_Linea_pedido_c_Articulos" FromRole="Articulos" ToRole="Linea_pedido_c" />
           <NavigationProperty Name="Linea_pedido_p" Relationship="Model.FK_Linea_pedido_p_Articulos" FromRole="Articulos" ToRole="Linea_pedido_p" />
+          <Property Name="StockMin" Type="Int32" />
+          <Property Name="StockMax" Type="Int32" />
+          <NavigationProperty Name="Almacen_Productos" Relationship="Model.FK_Almacen_Productos_Articulos" FromRole="Articulos" ToRole="Almacen_Productos" />
         </EntityType>
-        <Association Name="FK_Almacen_Productos_Articulos">
-          <End Type="Model.Articulos" Role="Articulos" Multiplicity="1" />
-          <End Type="Model.Almacen_Productos" Role="Almacen_Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="IdArticulo" />
-            </Principal>
-            <Dependent Role="Almacen_Productos">
-              <PropertyRef Name="Articulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Articulos_Estados">
           <End Type="Model.Estados" Role="Estados" Multiplicity="1" />
           <End Type="Model.Articulos" Role="Articulos" Multiplicity="*" />
@@ -1399,18 +1361,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Linea_pedido_c_Articulos">
-          <End Type="Model.Articulos" Role="Articulos" Multiplicity="1" />
-          <End Type="Model.Linea_pedido_c" Role="Linea_pedido_c" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articulos">
-              <PropertyRef Name="IdArticulo" />
-            </Principal>
-            <Dependent Role="Linea_pedido_c">
-              <PropertyRef Name="IdArticulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Linea_pedido_p_Articulos">
           <End Type="Model.Articulos" Role="Articulos" Multiplicity="1" />
           <End Type="Model.Linea_pedido_p" Role="Linea_pedido_p" Multiplicity="*" />
@@ -1420,6 +1370,112 @@
             </Principal>
             <Dependent Role="Linea_pedido_p">
               <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Linea_pedido_c">
+          <Key>
+            <PropertyRef Name="Num_ped" />
+            <PropertyRef Name="Linea" />
+          </Key>
+          <Property Name="Num_ped" Type="Int32" Nullable="false" />
+          <Property Name="Linea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="Lote" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Almacen" Type="Int32" Nullable="false" />
+          <Property Name="Producto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pedido_c" Relationship="Model.FK_Linea_pedido_c_Pedido_c" FromRole="Linea_pedido_c" ToRole="Pedido_c" />
+          <NavigationProperty Name="Almacen_Productos" Relationship="Model.FK_Linea_pedido_c_Almacen_Productos" FromRole="Linea_pedido_c" ToRole="Almacen_Productos" />
+        </EntityType>
+        <EntityType Name="TipoCliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrecioAplicar" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DescuentoAplicar" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Clientes" Relationship="Model.FK_Clientes_TipoCliente" FromRole="TipoCliente" ToRole="Clientes" />
+        </EntityType>
+        <Association Name="FK_Clientes_TipoCliente">
+          <End Type="Model.TipoCliente" Role="TipoCliente" Multiplicity="0..1" />
+          <End Type="Model.Clientes" Role="Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="Tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linea_pedido_c_Pedido_c">
+          <End Type="Model.Pedido_c" Role="Pedido_c" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.Linea_pedido_c" Role="Linea_pedido_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_c">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Linea_pedido_c">
+              <PropertyRef Name="Num_ped" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Almacen_Productos">
+          <Key>
+            <PropertyRef Name="Almacen" />
+            <PropertyRef Name="Articulo" />
+            <PropertyRef Name="Lote" />
+          </Key>
+          <Property Name="Almacen" Type="Int32" Nullable="false" />
+          <Property Name="Articulo" Type="Int32" Nullable="false" />
+          <Property Name="Lote" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacenes" Relationship="Model.FK_Almacen_Productos_Almacenes" FromRole="Almacen_Productos" ToRole="Almacenes" />
+          <NavigationProperty Name="Articulos" Relationship="Model.FK_Almacen_Productos_Articulos" FromRole="Almacen_Productos" ToRole="Articulos" />
+          <NavigationProperty Name="Linea_pedido_c" Relationship="Model.FK_Linea_pedido_c_Almacen_Productos" FromRole="Almacen_Productos" ToRole="Linea_pedido_c" />
+        </EntityType>
+        <Association Name="FK_Almacen_Productos_Almacenes">
+          <End Type="Model.Almacenes" Role="Almacenes" Multiplicity="1" />
+          <End Type="Model.Almacen_Productos" Role="Almacen_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacenes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Almacen_Productos">
+              <PropertyRef Name="Almacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacen_Productos_Articulos">
+          <End Type="Model.Articulos" Role="Articulos" Multiplicity="1" />
+          <End Type="Model.Almacen_Productos" Role="Almacen_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="IdArticulo" />
+            </Principal>
+            <Dependent Role="Almacen_Productos">
+              <PropertyRef Name="Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Linea_pedido_c_Almacen_Productos">
+          <End Type="Model.Almacen_Productos" Role="Almacen_Productos" Multiplicity="1" />
+          <End Type="Model.Linea_pedido_c" Role="Linea_pedido_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen_Productos">
+              <PropertyRef Name="Almacen" />
+              <PropertyRef Name="Articulo" />
+              <PropertyRef Name="Lote" />
+            </Principal>
+            <Dependent Role="Linea_pedido_c">
+              <PropertyRef Name="Almacen" />
+              <PropertyRef Name="Producto" />
+              <PropertyRef Name="Lote" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1495,17 +1551,6 @@
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="IVA" ColumnName="IVA" />
                 <ScalarProperty Name="Importe" ColumnName="Importe" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Linea_pedido_c">
-            <EntityTypeMapping TypeName="Model.Linea_pedido_c">
-              <MappingFragment StoreEntitySet="Linea_pedido_c">
-                <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
-                <ScalarProperty Name="Linea" ColumnName="Linea" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1591,6 +1636,7 @@
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="Model.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Movil" ColumnName="Movil" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="Nota" ColumnName="Nota" />
@@ -1658,18 +1704,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Almacen_Productos">
-            <EntityTypeMapping TypeName="Model.Almacen_Productos">
-              <MappingFragment StoreEntitySet="Almacen_Productos">
-                <ScalarProperty Name="StockMax" ColumnName="StockMax" />
-                <ScalarProperty Name="StockMin" ColumnName="StockMin" />
-                <ScalarProperty Name="StockDisponible" ColumnName="StockDisponible" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
-                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Almacenes">
             <EntityTypeMapping TypeName="Model.Almacenes">
               <MappingFragment StoreEntitySet="Almacenes">
@@ -1705,6 +1739,8 @@
           <EntitySetMapping Name="Articulos">
             <EntityTypeMapping TypeName="Model.Articulos">
               <MappingFragment StoreEntitySet="Articulos">
+                <ScalarProperty Name="StockMax" ColumnName="StockMax" />
+                <ScalarProperty Name="StockMin" ColumnName="StockMin" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="IVA" ColumnName="IVA" />
@@ -1715,6 +1751,40 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Linea_pedido_c">
+            <EntityTypeMapping TypeName="Model.Linea_pedido_c">
+              <MappingFragment StoreEntitySet="Linea_pedido_c">
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCliente">
+            <EntityTypeMapping TypeName="Model.TipoCliente">
+              <MappingFragment StoreEntitySet="TipoCliente">
+                <ScalarProperty Name="DescuentoAplicar" ColumnName="DescuentoAplicar" />
+                <ScalarProperty Name="PrecioAplicar" ColumnName="PrecioAplicar" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Almacen_Productos">
+            <EntityTypeMapping TypeName="Model.Almacen_Productos">
+              <MappingFragment StoreEntitySet="Almacen_Productos">
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="NumProducto" ColumnName="NumProducto" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

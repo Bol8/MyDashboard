@@ -31,7 +31,6 @@ namespace Repository
         public virtual DbSet<Facturas> Facturas { get; set; }
         public virtual DbSet<FormaPago> FormaPago { get; set; }
         public virtual DbSet<linea_factura> linea_factura { get; set; }
-        public virtual DbSet<Linea_pedido_c> Linea_pedido_c { get; set; }
         public virtual DbSet<Linea_pedido_p> Linea_pedido_p { get; set; }
         public virtual DbSet<Pedido_p> Pedido_p { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
@@ -44,9 +43,11 @@ namespace Repository
         public virtual DbSet<Estados> Estados { get; set; }
         public virtual DbSet<Iva> Iva { get; set; }
         public virtual DbSet<TipoProducto> TipoProducto { get; set; }
-        public virtual DbSet<Almacen_Productos> Almacen_Productos { get; set; }
         public virtual DbSet<Almacenes> Almacenes { get; set; }
         public virtual DbSet<Empresas> Empresas { get; set; }
         public virtual DbSet<Articulos> Articulos { get; set; }
+        public virtual DbSet<Linea_pedido_c> Linea_pedido_c { get; set; }
+        public virtual DbSet<TipoCliente> TipoCliente { get; set; }
+        public virtual DbSet<Almacen_Productos> Almacen_Productos { get; set; }
     }
 }

@@ -29,8 +29,8 @@ namespace Repository
         public string Observaciones { get; set; }
         public int Empresa { get; set; }
     
+        public virtual Empresas Empresas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Almacen_Productos> Almacen_Productos { get; set; }
-        public virtual Empresas Empresas { get; set; }
     }
 }

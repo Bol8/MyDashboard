@@ -37,15 +37,30 @@ namespace Dashboard.Controllers
         }
         #endregion
 
+
+        public ActionResult Index()
+        {
+            var elements = _gArticle.GetAll().ToList();
+            var modelList = AutoMapper.Mapper.Map<IEnumerable<Articulos>, IEnumerable<mArticle>>(elements);
+
+            return View(modelList);
+        }
+
         
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
-            ViewBag.Tipo = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
-            ViewBag.IVA = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+            var model = new mArticleCreate();
+            model.listaEstados = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
+            model.listIva = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+            model.listaTipos = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
 
-            return View();
+
+            //ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
+            //ViewBag.Tipo = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
+            //ViewBag.IVA = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+
+            return View(model);
         }
 
 
@@ -57,7 +72,10 @@ namespace Dashboard.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    var model = AutoMapper.Mapper.Map<Articulos, mArticle>(element);
+                    var model = AutoMapper.Mapper.Map<Articulos, mArticleCreate>(element);
+                    model.listaEstados = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
+                    model.listIva = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+                    model.listaTipos = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
 
                     return View(model);
                 }
@@ -70,7 +88,7 @@ namespace Dashboard.Controllers
                 throw new Exception("Error al intentar modificar el cliente. " + ex);
             }
 
-            return RedirectToAction("Index","Store");
+            return RedirectToAction("Index");
 
         }
 
@@ -80,11 +98,11 @@ namespace Dashboard.Controllers
         public ActionResult Edit(int id)
         {
             var element = _gArticle.FindBy(x => x.IdArticulo == id).FirstOrDefault();
-            var model = AutoMapper.Mapper.Map<Articulos, mArticle>(element);
+            var model = AutoMapper.Mapper.Map<Articulos, mArticleCreate>(element);
 
-            ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
-            ViewBag.Tipo = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
-            ViewBag.IVA = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+            model.listaEstados = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
+            model.listIva = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+            model.listaTipos = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
 
             return View(model);
         }
@@ -100,11 +118,10 @@ namespace Dashboard.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    var model = AutoMapper.Mapper.Map<Articulos, mArticle>(element);
-                    ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
-                    ViewBag.Tipo = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
-                    ViewBag.IVA = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
-
+                    var model = AutoMapper.Mapper.Map<Articulos, mArticleCreate>(element);
+                    model.listaEstados = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
+                    model.listIva = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+                    model.listaTipos = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
                     return View(model);
                 }
 
@@ -149,6 +166,7 @@ namespace Dashboard.Controllers
             try
             {
                 _gArticle.Delete(element);
+                _gArticle.Save();
             }
             catch (Exception ex)
             {

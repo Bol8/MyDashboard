@@ -66,8 +66,13 @@ namespace Domain.Models.Articulo
         public string Descripcion { get; set; }
 
 
-        [Display(Name = "Stock")]
-        public int stock { get; set; }
+        [Display(Name = "Stock Min.")]
+        public int stockMin { get; set; }
+
+
+        [Display(Name = "Stock Max.")]
+        public int stockMax { get; set; }
+
 
 
         public string Imagen { get; set; }

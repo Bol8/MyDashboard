@@ -1202,6 +1202,9 @@
     <Content Include="Views\PedidoC\OrderLines.cshtml" />
     <Content Include="Views\Article\_Details.cshtml" />
     <Content Include="Scripts\lobibox.min.js.map" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Article\Edit.cshtml" />
+    <Content Include="Views\Article\DeleteConfirmed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

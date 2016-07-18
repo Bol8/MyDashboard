@@ -60,7 +60,7 @@ namespace Domain.Models.LineaPedidoC
 
             Articulos = new SelectList(articulos, "idArt", "Nombre");
             this.Num_ped = lpedido.Num_ped;
-            this.IdArticulo = lpedido.IdArticulo;
+            this.IdArticulo = lpedido.Almacen_Productos.Articulo;
             this.Cantidad = lpedido.Cantidad;
             
         }

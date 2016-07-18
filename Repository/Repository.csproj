@@ -132,6 +132,9 @@
     <Compile Include="Tarifas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="TipoCliente.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="TipoProducto.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

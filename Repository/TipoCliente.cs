@@ -12,23 +12,20 @@ namespace Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Almacen_Productos
+    public partial class TipoCliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Almacen_Productos()
+        public TipoCliente()
         {
-            this.Linea_pedido_c = new HashSet<Linea_pedido_c>();
+            this.Clientes = new HashSet<Clientes>();
         }
     
-        public int Almacen { get; set; }
-        public int Articulo { get; set; }
-        public string Lote { get; set; }
-        public int NumProducto { get; set; }
-        public int Stock { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public Nullable<decimal> PrecioAplicar { get; set; }
+        public Nullable<decimal> DescuentoAplicar { get; set; }
     
-        public virtual Almacenes Almacenes { get; set; }
-        public virtual Articulos Articulos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Linea_pedido_c> Linea_pedido_c { get; set; }
+        public virtual ICollection<Clientes> Clientes { get; set; }
     }
 }
