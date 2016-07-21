@@ -22,18 +22,20 @@ namespace Domain.Models.AlmacenProducto
         [Display(Name = "Stock")]
         public int Stock { get; set; }
 
-        [Display(Name = "Stock disponible")]
-        public int StockDisponible { get; set; }
 
 
-        [Display(Name = "Stock min.")]
-        public int StockMin { get; set; }
+        [Display(Name = "Lote")]
+        public string Lote { get; set; }
+
+        //[Display(Name = "Stock min.")]
+        //public int StockMin { get; set; }
 
 
-        [Display(Name = "Stock max.")]
-        public int StockMax { get; set; }
+        //[Display(Name = "Stock max.")]
+        //public int StockMax { get; set; }
 
-        
+
+
         public virtual mArticle Article { get; set; }
 
 

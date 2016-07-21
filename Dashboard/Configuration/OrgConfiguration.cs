@@ -61,7 +61,11 @@ namespace Dashboard.Configuration
             CreateMap<Articulos, mArticleCreate>()
               .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre))
               .ForMember<string>(x => x.sIVA, opt => opt.MapFrom(x => x.Iva1.Valor))
-              .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
+              .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre))
+               //.ForMember<string>(x => x.Stock, opt => opt.MapFrom(x => x.S))
+              ;
+
+
 
             CreateMap<mArticle, Articulos>();
 
@@ -82,19 +86,14 @@ namespace Dashboard.Configuration
                     IVA = x.Articulos.IVA,
                     sIVA = x.Articulos.Iva1.Valor.ToString(),
                     Descripcion = x.Articulos.Descripcion,
+                    stockMax = x.Articulos.StockMax,
+                    stockMin = x.Articulos.StockMin
+           
                 }));
 
+
             CreateMap<Almacen_Productos, mStoreArticleCreate>()
-               .ForMember<int>(x => x.IdArticulo, opt => opt.MapFrom(x => x.Articulos.IdArticulo))
-               .ForMember<string>(x => x.Codigo, opt => opt.MapFrom(x => x.Articulos.Codigo))
-               .ForMember<string>(x => x.Nombre, opt => opt.MapFrom(x => x.Articulos.Nombre))
-               .ForMember<decimal?>(x => x.Peso, opt => opt.MapFrom(x => x.Articulos.Peso))
-               .ForMember<int>(x => x.Tipo, opt => opt.MapFrom(x => x.Articulos.Tipo))
-               .ForMember<int>(x => x.Estado, opt => opt.MapFrom(x => x.Articulos.Estado))
-               .ForMember<decimal>(x => x.Precio, opt => opt.MapFrom(x => x.Articulos.Precio))
-               .ForMember<int>(x => x.IVA, opt => opt.MapFrom(x => x.Articulos.IVA))
-               .ForMember<string>(x => x.Descripcion, opt => opt.MapFrom(x => x.Articulos.Descripcion))
-               .ForMember<decimal>(x => x.Precio, opt => opt.MapFrom(x => x.Articulos.Precio))
+               //.ForMember<int>(x => x., opt => opt.MapFrom(x => x.Articulos.IdArticulo))
                ;
 
 

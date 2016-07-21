@@ -67,12 +67,15 @@ namespace Domain.Models.Articulo
 
 
         [Display(Name = "Stock Min.")]
-        public int stockMin { get; set; }
+        public int? stockMin { get; set; }
 
 
         [Display(Name = "Stock Max.")]
-        public int stockMax { get; set; }
+        public int? stockMax { get; set; }
 
+
+        //[Display(Name = "Stock")]
+        //public int Stock { get; set; }
 
 
         public string Imagen { get; set; }

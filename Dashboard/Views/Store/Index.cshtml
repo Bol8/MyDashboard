@@ -20,17 +20,15 @@
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.Article.Codigo)</th>
+                            <th>@Html.DisplayNameFor(model => model.Lote)</th>
                             <th>@Html.DisplayNameFor(model => model.Article.Nombre)</th>
-                            <th>@Html.DisplayNameFor(model => model.Article.Tipo)</th>
                             <th>@Html.DisplayNameFor(model => model.Article.IVA)</th>
                             <th>@Html.DisplayNameFor(model => model.Article.Precio)</th>
                             <th>@Html.DisplayNameFor(model => model.Article.Peso) (gr.)</th>
-                            <th>@Html.DisplayNameFor(model => model.Article.Estado)</th>
                             <th>@Html.DisplayNameFor(model => model.Stock)</th>
-                            <th>@Html.DisplayNameFor(model => model.StockDisponible)</th>
-                            <th>@Html.DisplayNameFor(model => model.StockMax)</th>
-                            <th>@Html.DisplayNameFor(model => model.StockMin)</th>
-                            <th>@Html.DisplayNameFor(model => model.Article.Descripcion)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.stockMin)</th>
+                            <th>@Html.DisplayNameFor(model => model.Article.stockMax)</th>
+                            @*<th>@Html.DisplayNameFor(model => model.Article.Descripcion)</th>*@
                           
                             <th>Opciones</th>
                         </tr>
@@ -41,17 +39,15 @@
                         {
                             <tr>
                                 <td>@Html.DisplayFor(model => item.Article.Codigo)</td>
+                                <td>@Html.DisplayFor(model => item.Lote)</td>
                                 <td>@Html.DisplayFor(model => item.Article.Nombre)</td>
-                                <td>@Html.DisplayFor(model => item.Article.sTipo)</td>
                                 <td>@Html.DisplayFor(model => item.Article.sIVA)%</td>
                                 <td>@Html.DisplayFor(model => item.Article.Precio) €</td>
                                 <td>@Html.DisplayFor(model => item.Article.Peso) gr.</td>
-                                <td>@Html.DisplayFor(model => item.Article.sEstado)</td>
                                 <td>@Html.DisplayFor(model => item.Stock)</td>
-                                <td>@Html.DisplayFor(model => item.StockDisponible)</td>
-                                <td>@Html.DisplayFor(model => item.StockMax)</td>
-                                <td>@Html.DisplayFor(model => item.StockMin)</td>
-                                <td>@Html.DisplayFor(model => item.Article.Descripcion)</td>
+                                <td>@Html.DisplayFor(model => item.Article.stockMin)</td>
+                                <td>@Html.DisplayFor(model => item.Article.stockMax)</td>
+                                @*<td>@Html.DisplayFor(model => item.Article.Descripcion)</td>*@
                                 
                                 <td>
                                     @Html.ActionLink(" ", "Edit", "Store", new { idStore = ViewBag.idStore , idArticle = item.Articulo }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })

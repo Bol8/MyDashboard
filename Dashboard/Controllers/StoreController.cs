@@ -44,7 +44,7 @@ namespace Dashboard.Controllers
 
         #endregion
 
-        
+
 
         // GET: Store
         public ActionResult Index()
@@ -54,20 +54,27 @@ namespace Dashboard.Controllers
             var list = store.Almacen_Productos.ToList();
             var modelList = Mapper.Map<IEnumerable<Almacen_Productos>, IEnumerable<mAlmacenProducto>>(list).ToList();
 
-
             return View(modelList);
         }
 
 
-        
 
-       
+
+
         public ActionResult Create(int idStore)
         {
             var model = new mStoreArticleCreate(idStore);
-            ViewBag.Estado = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
-            ViewBag.Tipo = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
-            ViewBag.IVA = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+            var list = _gArticle.GetAll().Select(x =>
+                new
+                {
+                    id = x.IdArticulo,
+                    Name = x.Codigo + " - " + x.Nombre
+                }
+
+                ).ToList();
+
+            model.Articles = new SelectList(list, "id", "Name");
+            
 
             return View(model);
         }
@@ -87,18 +94,14 @@ namespace Dashboard.Controllers
 
                     return View(model);
                 }
-                
-               //Damos de alta el articulo
-               var article = Mapper.Map<mStoreArticleCreate, Articulos>(model);
-               _gArticle.Add(article);
-               _gArticle.Save();
 
-               //Después lo referenciamos en el almacén
-               var storeArticle = Mapper.Map<mStoreArticleCreate, Almacen_Productos>(model);
-               storeArticle.Articulo = article.IdArticulo;
-               _gStoreArticle.Add(storeArticle);
-               _gStoreArticle.Save();
-                
+        
+                //Después lo referenciamos en el almacén
+                var storeArticle = Mapper.Map<mStoreArticleCreate, Almacen_Productos>(model);
+                //storeArticle.Articulo = article.IdArticulo;
+                _gStoreArticle.Add(storeArticle);
+                _gStoreArticle.Save();
+
                 return RedirectToAction("Index");
 
             }
@@ -112,15 +115,23 @@ namespace Dashboard.Controllers
 
         // GET: Store/Edit/5
         //TODO: resolver problema con los decimales
-        public ActionResult Edit(int idStore , int idArticle)
+        public ActionResult Edit(int idStore, int idArticle)
         {
             var store = _gStore.FindBy(x => x.Id == idStore).FirstOrDefault();
             var article = store.Almacen_Productos.Where(x => x.Articulo == idArticle).FirstOrDefault();
-            
+
             var model = Mapper.Map<Almacen_Productos, mStoreArticleCreate>(article);
-            model.Estados = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
-            model.Ivas = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
-            model.Tipos = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
+            var list = _gArticle.GetAll().Select(x =>
+               new
+               {
+                   id = x.IdArticulo,
+                   Name = x.Codigo + " - " + x.Nombre
+               }
+
+               ).ToList();
+
+            model.Articles = new SelectList(list, "id", "Name");
+        
 
             return View(model);
         }
@@ -134,17 +145,17 @@ namespace Dashboard.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    model.Estados = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
-                    model.Ivas = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
-                    model.Tipos = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
+                    //model.Estados = new SelectList(_gStatus.GetAll().ToList(), "Id", "Nombre");
+                    //model.Ivas = new SelectList(_gIVA.GetAll().ToList(), "Id", "Valor");
+                    //model.Tipos = new SelectList(_gArticleType.GetAll().ToList(), "Id", "Nombre");
 
                     return View(model);
                 }
 
-                //Damos de alta el articulo
-                var article = Mapper.Map<mStoreArticleCreate, Articulos>(model);
-                _gArticle.Edit(article);
-                _gArticle.Save();
+                ////Damos de alta el articulo
+                //var article = Mapper.Map<mStoreArticleCreate, Articulos>(model);
+                //_gArticle.Edit(article);
+                //_gArticle.Save();
 
                 //Después lo referenciamos en el almacén
                 var storeArticle = Mapper.Map<mStoreArticleCreate, Almacen_Productos>(model);
@@ -152,7 +163,7 @@ namespace Dashboard.Controllers
                 _gStoreArticle.Save();
 
                 return RedirectToAction("Index");
-                
+
             }
             catch (Exception ex)
             {

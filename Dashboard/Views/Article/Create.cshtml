@@ -50,7 +50,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.Tipo, Model.Tipos, "-- Selecciona --", new { @class = "form-control CformControl" })
+                                @Html.DropDownListFor(model => model.Tipo, Model.listaTipos, "-- Selecciona --", new { @class = "form-control CformControl" })
                                 <small>@Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })</small>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.Estado, Model.Estados, "-- Selecciona --", new { @class = "form-control CformControl" })
+                                @Html.DropDownListFor(model => model.Estado, Model.listaEstados, "-- Selecciona --", new { @class = "form-control CformControl" })
                                 <small>@Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })</small>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.IVA, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.IVA, Model.Ivas, "-- Selecciona --", new { @class = "form-control CformControl" })
+                                @Html.DropDownListFor(model => model.IVA, Model.listIva, "-- Selecciona --", new { @class = "form-control CformControl" })
                                 <small>@Html.ValidationMessageFor(model => model.IVA, "", new { @class = "text-danger" })</small>
                             </div>
                         </div>
