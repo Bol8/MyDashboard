@@ -20,10 +20,10 @@ namespace Repository
             this.Linea_pedido_c = new HashSet<Linea_pedido_c>();
         }
     
+        public int Id { get; set; }
         public int Almacen { get; set; }
         public int Articulo { get; set; }
         public string Lote { get; set; }
-        public int NumProducto { get; set; }
         public int Stock { get; set; }
     
         public virtual Almacenes Almacenes { get; set; }

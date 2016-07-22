@@ -46,14 +46,14 @@
         <AssociationConnector Association="Model.FK_Articulos_Iva" />
         <AssociationConnector Association="Model.FK_Articulos_TipoProducto" />
         <AssociationConnector Association="Model.FK_Linea_pedido_p_Articulos" />
-        <EntityTypeShape EntityType="Model.Linea_pedido_c" Width="1.5" PointX="10.75" PointY="17.25" />
         <EntityTypeShape EntityType="Model.TipoCliente" Width="1.5" PointX="1.25" PointY="8" />
         <AssociationConnector Association="Model.FK_Clientes_TipoCliente" />
-        <AssociationConnector Association="Model.FK_Linea_pedido_c_Pedido_c" />
         <EntityTypeShape EntityType="Model.Almacen_Productos" Width="1.5" PointX="8.5" PointY="19.5" />
+        <EntityTypeShape EntityType="Model.Linea_pedido_c" Width="1.5" PointX="10.75" PointY="17.125" />
         <AssociationConnector Association="Model.FK_Almacen_Productos_Almacenes" />
         <AssociationConnector Association="Model.FK_Almacen_Productos_Articulos" />
         <AssociationConnector Association="Model.FK_Linea_pedido_c_Almacen_Productos" />
+        <AssociationConnector Association="Model.FK_Linea_pedido_c_Pedido_c" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

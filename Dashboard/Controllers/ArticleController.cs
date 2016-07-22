@@ -142,7 +142,7 @@ namespace Dashboard.Controllers
         {
             var idStore = User.ToCustomPrincipal().CustomIdentity.ActiveStore;
             var e = _gStore.FindBy(x => x.Id == idStore).FirstOrDefault();
-            var element = e.Almacen_Productos.Where(x => x.Articulo == id).FirstOrDefault();
+            var element = e.Almacen_Productos.Where(x => x.Id == id).FirstOrDefault();
             var model = AutoMapper.Mapper.Map<Almacen_Productos, mAlmacenProducto>(element);
 
             return PartialView(model);

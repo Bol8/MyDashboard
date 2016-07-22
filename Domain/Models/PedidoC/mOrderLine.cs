@@ -14,11 +14,12 @@ namespace Domain.Models.PedidoC
 
 
 
-
         [Display(Name = "Linea")]
         public int Linea { get; set; }
 
 
+        [Display(Name = "Lote")]
+        public string Lote { get; set; }
 
 
         [Display(Name = "Unidades")]

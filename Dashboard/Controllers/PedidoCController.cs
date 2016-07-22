@@ -184,7 +184,7 @@ namespace Dashboard.Controllers
             return View(model);
         }
 
-
+        [HttpGet]
         public ActionResult OrderLineCreate(int id)
         {
             var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
@@ -193,7 +193,16 @@ namespace Dashboard.Controllers
             var model = new mOderLineCreate();
             model.Num_ped = id;
 
-            model.ArticleList = new SelectList(store.Almacen_Productos.Select(x => x.Articulos).ToList(), "IdArticulo", "Nombre");
+
+            var list = store.Almacen_Productos.Select(X =>
+              new
+              {
+                  id = X.Id,
+                  Name = X.Lote + " - " + X.Articulos.Nombre 
+              }
+            );
+
+            model.ArticleList = new SelectList(list, "id", "Name");
             
             return PartialView(model);
         }
@@ -203,7 +212,7 @@ namespace Dashboard.Controllers
         public ActionResult OrderLineCreate(Linea_pedido_c element)
         {
             var store = _gStore.FindBy(x => x.Id == DefaultStoreValues.DefaultStore).FirstOrDefault();
-            var article = store.Almacen_Productos.Where(x => x.Articulo == element.Producto).FirstOrDefault();
+            var article = store.Almacen_Productos.Where(x => x.Id == element.idArticulo).FirstOrDefault();
 
             if(article.Stock >= element.Cantidad)
             {

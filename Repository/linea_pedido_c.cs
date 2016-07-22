@@ -18,11 +18,9 @@ namespace Repository
         public int Linea { get; set; }
         public int Cantidad { get; set; }
         public double Total { get; set; }
-        public string Lote { get; set; }
-        public int Almacen { get; set; }
-        public int Producto { get; set; }
+        public int idArticulo { get; set; }
     
-        public virtual Pedido_c Pedido_c { get; set; }
         public virtual Almacen_Productos Almacen_Productos { get; set; }
+        public virtual Pedido_c Pedido_c { get; set; }
     }
 }

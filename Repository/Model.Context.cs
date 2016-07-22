@@ -46,8 +46,8 @@ namespace Repository
         public virtual DbSet<Almacenes> Almacenes { get; set; }
         public virtual DbSet<Empresas> Empresas { get; set; }
         public virtual DbSet<Articulos> Articulos { get; set; }
-        public virtual DbSet<Linea_pedido_c> Linea_pedido_c { get; set; }
         public virtual DbSet<TipoCliente> TipoCliente { get; set; }
         public virtual DbSet<Almacen_Productos> Almacen_Productos { get; set; }
+        public virtual DbSet<Linea_pedido_c> Linea_pedido_c { get; set; }
     }
 }

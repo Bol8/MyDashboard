@@ -118,6 +118,7 @@ namespace Dashboard.Configuration
             CreateMap<Pedido_c, mPedidoCCreate>();
 
             CreateMap<Linea_pedido_c, mOrderLine>()
+                .ForMember<string>(x => x.Lote, opt => opt.MapFrom(x => x.Almacen_Productos.Lote))
                 .ForMember<string>(x => x.sArticulo, opt => opt.MapFrom(x => x.Almacen_Productos.Articulos.Nombre))
                 .ForMember<decimal>(x => x.Precio , opt => opt.MapFrom(x => x.Almacen_Productos.Articulos.Precio))
                 .ForMember<decimal>(x => x.Peso, opt => opt.MapFrom(x => x.Almacen_Productos.Articulos.Peso))
