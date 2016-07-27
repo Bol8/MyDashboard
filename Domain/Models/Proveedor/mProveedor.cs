@@ -21,6 +21,10 @@ namespace Domain.Models.Proveedor
         [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
         public string RazonSocial { get; set; }
 
+        [Display(Name = "Nº R.Sanitario")]
+        [StringLength(250, ErrorMessage = "Max. {1} caracteres")]
+        public string R_Sanitario { get; set; }
+
 
         [Display(Name = "Nombre comercial")]
         [StringLength(250, ErrorMessage = "Max. {1} caracteres")]

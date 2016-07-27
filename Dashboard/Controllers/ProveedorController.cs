@@ -45,7 +45,10 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            return View();
+            var element = _gProveedores.FindBy(x => x.IdProveedor == id).FirstOrDefault();
+            var model = Mapper.Map<Proveedores, mProveedor>(element);
+
+            return View(model);
         }
 
 
@@ -152,5 +155,17 @@ namespace Dashboard.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+
+        public ActionResult Articles(int id)
+        {
+            var element = _gProveedores.FindBy(x => x.IdProveedor == id).FirstOrDefault();
+            var articles = element.MateriaPrima.ToList();
+
+            return PartialView(articles);
+        }
+
+
     }
 }

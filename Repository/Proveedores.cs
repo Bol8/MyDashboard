@@ -18,6 +18,7 @@ namespace Repository
         public Proveedores()
         {
             this.Pedido_p = new HashSet<Pedido_p>();
+            this.MateriaPrima = new HashSet<MateriaPrima>();
         }
     
         public int IdProveedor { get; set; }
@@ -36,9 +37,12 @@ namespace Repository
         public string Imagen { get; set; }
         public string NombreComercial { get; set; }
         public string Movil { get; set; }
+        public string R_Sanitario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido_p> Pedido_p { get; set; }
         public virtual Estados Estados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MateriaPrima> MateriaPrima { get; set; }
     }
 }

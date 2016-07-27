@@ -31,8 +31,10 @@ namespace Dashboard.Configuration
         {
             CreateMap<Clientes, mCliente>()
                 .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
+
             CreateMap<Clientes, mClientCreate>()
                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
+
             CreateMap<mCliente, Clientes>();
         }
 
@@ -40,8 +42,10 @@ namespace Dashboard.Configuration
         {
             CreateMap<Proveedores, mProveedor>()
              .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
+
             CreateMap<Proveedores, mProveedorCreate>()
                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
+
             CreateMap<mProveedor, Proveedores>();
         }
 

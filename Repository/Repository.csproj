@@ -96,6 +96,9 @@
     <Compile Include="Linea_pedido_p.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="MateriaPrima.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Metadata\ClientMetadata.cs" />
     <Compile Include="Metadata\ContactMetadata.cs" />
     <Compile Include="Metadata\PedidoCMetadata.cs" />

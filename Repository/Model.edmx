@@ -184,6 +184,14 @@
           <Property Name="Total" Type="real" />
           <Property Name="IdArticulo" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="MateriaPrima">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Pedido_c">
           <Key>
             <PropertyRef Name="Num_ped" />
@@ -218,6 +226,7 @@
           <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RazonSocial" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="NombreComercial" Type="nvarchar" MaxLength="250" />
+          <Property Name="R_Sanitario" Type="nvarchar" MaxLength="50" />
           <Property Name="NIF" Type="nvarchar" MaxLength="9" Nullable="false" />
           <Property Name="Domicilio" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="CP" Type="nvarchar" MaxLength="5" />
@@ -469,6 +478,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MateriaPrima_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="MateriaPrima" Type="Self.MateriaPrima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="MateriaPrima">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Pedido_c_Clientes">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
           <End Role="Pedido_c" Type="Self.Pedido_c" Multiplicity="*" />
@@ -593,6 +614,7 @@
           <EntitySet Name="linea_factura" EntityType="Self.linea_factura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Linea_pedido_c" EntityType="Self.Linea_pedido_c" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Linea_pedido_p" EntityType="Self.Linea_pedido_p" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MateriaPrima" EntityType="Self.MateriaPrima" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pedido_c" EntityType="Self.Pedido_c" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pedido_p" EntityType="Self.Pedido_p" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
@@ -661,6 +683,10 @@
           <AssociationSet Name="FK_Linea_pedido_p_Pedido_p" Association="Self.FK_Linea_pedido_p_Pedido_p">
             <End Role="Pedido_p" EntitySet="Pedido_p" />
             <End Role="Linea_pedido_p" EntitySet="Linea_pedido_p" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MateriaPrima_Proveedores" Association="Self.FK_MateriaPrima_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="MateriaPrima" EntitySet="MateriaPrima" />
           </AssociationSet>
           <AssociationSet Name="FK_Pedido_c_Clientes" Association="Self.FK_Pedido_c_Clientes">
             <End Role="Clientes" EntitySet="Clientes" />
@@ -827,6 +853,8 @@
           <Property Name="NombreComercial" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Movil" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Estados" Relationship="Model.FK_Proveedores_Estados" FromRole="Proveedores" ToRole="Estados" />
+          <Property Name="R_Sanitario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MateriaPrima" Relationship="Model.FK_MateriaPrima_Proveedores" FromRole="Proveedores" ToRole="MateriaPrima" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -1046,6 +1074,11 @@
           <AssociationSet Name="FK_Linea_pedido_c_Pedido_c" Association="Model.FK_Linea_pedido_c_Pedido_c">
             <End Role="Pedido_c" EntitySet="Pedido_c" />
             <End Role="Linea_pedido_c" EntitySet="Linea_pedido_c" />
+          </AssociationSet>
+          <EntitySet Name="MateriaPrima" EntityType="Model.MateriaPrima" />
+          <AssociationSet Name="FK_MateriaPrima_Proveedores" Association="Model.FK_MateriaPrima_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="MateriaPrima" EntitySet="MateriaPrima" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Clientes">
@@ -1463,6 +1496,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MateriaPrima">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Proveedores" Relationship="Model.FK_MateriaPrima_Proveedores" FromRole="MateriaPrima" ToRole="Proveedores" />
+        </EntityType>
+        <Association Name="FK_MateriaPrima_Proveedores">
+          <End Type="Model.Proveedores" Role="Proveedores" Multiplicity="1" />
+          <End Type="Model.MateriaPrima" Role="MateriaPrima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="MateriaPrima">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1566,6 +1620,7 @@
           <EntitySetMapping Name="Proveedores">
             <EntityTypeMapping TypeName="Model.Proveedores">
               <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="R_Sanitario" ColumnName="R_Sanitario" />
                 <ScalarProperty Name="Movil" ColumnName="Movil" />
                 <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
@@ -1767,6 +1822,15 @@
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Linea" ColumnName="Linea" />
                 <ScalarProperty Name="Num_ped" ColumnName="Num_ped" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MateriaPrima">
+            <EntityTypeMapping TypeName="Model.MateriaPrima">
+              <MappingFragment StoreEntitySet="MateriaPrima">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

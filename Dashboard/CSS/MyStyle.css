@@ -48,3 +48,15 @@
 .MyTable{
     width:auto;
 }
+
+
+.BaseHeader{
+    padding:15px;
+    margin:15px;
+}
+
+
+.BaseBody{
+    padding:15px;
+    margin:15px;
+}
