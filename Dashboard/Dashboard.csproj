@@ -1210,6 +1210,8 @@
     <Content Include="Views\Proveedor\Articles.cshtml" />
     <Content Include="Views\Proveedor\DeliveryNotes.cshtml" />
     <Content Include="Views\ProductProvider\Create.cshtml" />
+    <Content Include="Views\Proveedor\CreateArticle.cshtml" />
+    <Content Include="Views\Proveedor\EditArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

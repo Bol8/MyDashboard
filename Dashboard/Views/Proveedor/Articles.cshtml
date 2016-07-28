@@ -17,7 +17,7 @@
 
         <div id="Container">
             <div class="BaseHeader">
-                @Ajax.ActionLink("Nuevo", "Create", "ProductProvider", new { idProvider = ViewBag.IdProvider }, new AjaxOptions { UpdateTargetId = "Container", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-primary pull-right flat" })
+                @Ajax.ActionLink("Nuevo", "CreateArticle", "Proveedor", new { idProvider = ViewBag.IdProvider }, new AjaxOptions { UpdateTargetId = "Container", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-primary pull-right flat" })
             </div>
 
             <div class="BaseBody">
@@ -36,10 +36,18 @@
                                 <td>@Html.DisplayFor(model => item.Nombre)</td>
 
                                 <td>
-                                    @Html.ActionLink(" ", "Edit", "Store", new { idStore = ViewBag.idStore, idArticle = item.Id }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                                    @Ajax.ActionLink(" ", "EditArticle", "Proveedor", new { idArticle = item.Id },
+                                                                                    new AjaxOptions { UpdateTargetId = "Container", InsertionMode = InsertionMode.Replace, },
+                                                                                    new { @Class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+
+                                    @*@Html.ActionLink(" ", "Edit", "Store", new { idStore = ViewBag.idStore, idArticle = item.Id }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })*@
                                     <span> </span>
-                                    @Html.ActionLink(" ", "DeleteConfirmed", "Store", new { idStore = ViewBag.idStore, idArticle = item.Id }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                    @Ajax.ActionLink(" ", "DeleteArticle", "Proveedor", new { idArticle = item.Id },
+                                                                                    new AjaxOptions { UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace, },
+                                                                                    new { @Class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
+                                    @*@Html.ActionLink(" ", "DeleteConfirmed", "Store", new { idStore = ViewBag.idStore, idArticle = item.Id }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })*@
                                 </td>
+
                             </tr>
                         }
                     </tbody>
@@ -49,7 +57,7 @@
     </div>
 </div>
 
-<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+@*<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js" type="text/javascript"></script>*@
 <!-- page script -->

@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Domain.Interfaces;
+using Repository;
 
 namespace Dashboard.Controllers
 {
     public class ProductProviderController : Controller
     {
 
+        private IGenericRepository<MateriaPrima> _gProductProvider;
+        
+        public ProductProviderController(IGenericRepository<MateriaPrima> gProductProvider)
+        {
+            this._gProductProvider = gProductProvider;
+        }
 
 
         // GET: ProductProvider
@@ -38,11 +46,18 @@ namespace Dashboard.Controllers
 
         // POST: ProductProvider/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(MateriaPrima element)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (!ModelState.IsValid)
+                {
+                    return PartialView();
+                }
+
+                _gProductProvider.Add(element);
+                _gProductProvider.Save();
+
 
                 return RedirectToAction("Index");
             }

@@ -39,6 +39,8 @@ namespace Dashboard
             container.RegisterType<IGenericRepository<Pedido_c>, gPedidoC>();
             container.RegisterType<IGenericRepository<FormaPago>, gPaymentType>();
             container.RegisterType<IGenericRepository<EstadosPedido>, gOrderStatus>();
+            container.RegisterType<IGenericRepository<MateriaPrima>, gProductProvider>();
+
 
 
 
@@ -48,7 +50,8 @@ namespace Dashboard
 
            
             container.RegisterType<ProveedorController>(new InjectionConstructor(new ResolvedParameter<gProveedor>("gProveedor"),
-                                                                                 new ResolvedParameter<gStatus>("gStatus")
+                                                                                 new ResolvedParameter<gStatus>("gStatus"),
+                                                                                  new ResolvedParameter<gProductProvider>("gProductProvider")
                                                                                 ));
 
             

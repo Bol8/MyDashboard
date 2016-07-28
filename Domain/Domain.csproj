@@ -91,6 +91,7 @@
     <Compile Include="Interfaces\IStoreServices.cs" />
     <Compile Include="Manage\ControlClient.cs" />
     <Compile Include="Manage\gPaymentType.cs" />
+    <Compile Include="Manage\gProductProvider.cs" />
     <Compile Include="Manage\gStoreArticle.cs" />
     <Compile Include="Manage\gClient.cs" />
     <Compile Include="Manage\gCompany.cs" />
