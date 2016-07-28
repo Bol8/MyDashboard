@@ -120,6 +120,7 @@
     <Compile Include="Models\PedidoC\mPedidoCCreate.cs" />
     <Compile Include="Models\PedidoProveedor\mPedidoProvCreate.cs" />
     <Compile Include="Models\PedidoProveedor\mPedidoProveedor.cs" />
+    <Compile Include="Models\ProductProvider\mProductProvider.cs" />
     <Compile Include="Models\Proveedor\mProveedor.cs" />
     <Compile Include="Models\Proveedor\mProveedorCreate.cs" />
     <Compile Include="Others\Column.cs" />

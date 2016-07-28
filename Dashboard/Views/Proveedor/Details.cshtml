@@ -4,11 +4,18 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary flat">
+
             <div class="box-header with-border">
                 <h3 class="box-title">Información</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
+
             <div class="box-body">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <p>
                         <strong>@Html.DisplayNameFor(x => x.RazonSocial):</strong>
                         @Html.DisplayFor(x => x.RazonSocial)
@@ -21,6 +28,13 @@
                         <strong>@Html.DisplayNameFor(x => x.R_Sanitario):</strong>
                         @Html.DisplayFor(x => x.R_Sanitario)
                     </p>
+
+                    <p>
+                        <strong>@Html.DisplayNameFor(x => x.Fecha_A):</strong>
+                        @Html.DisplayFor(x => x.Fecha_A)
+                    </p>
+                </div>
+                <div class="col-md-4">
                     <p>
                         <strong>@Html.DisplayNameFor(x => x.Domicilio):</strong>
                         @Html.DisplayFor(x => x.Domicilio)
@@ -37,10 +51,8 @@
                         <strong>@Html.DisplayNameFor(x => x.Pais):</strong>
                         @Html.DisplayFor(x => x.Pais)
                     </p>
-                    <p>
-                        <strong>@Html.DisplayNameFor(x => x.Fecha_A):</strong>
-                        @Html.DisplayFor(x => x.Fecha_A)
-                    </p>
+                </div>
+                <div class="col-md-4">
                     <p>
                         <strong>@Html.DisplayNameFor(x => x.sEstado):</strong>
                         @Html.DisplayFor(x => x.sEstado)

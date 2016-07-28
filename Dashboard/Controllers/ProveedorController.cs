@@ -162,10 +162,20 @@ namespace Dashboard.Controllers
         {
             var element = _gProveedores.FindBy(x => x.IdProveedor == id).FirstOrDefault();
             var articles = element.MateriaPrima.ToList();
+            ViewBag.IdProvider = id;
 
             return PartialView(articles);
         }
 
+
+        public ActionResult DeliveryNotes(int id)
+        {
+            var element = _gProveedores.FindBy(x => x.IdProveedor == id).FirstOrDefault();
+            var deliveryNotes = element.Pedido_p.ToList();
+            ViewBag.IdProvider = id;
+
+            return PartialView(deliveryNotes);
+        }
 
     }
 }

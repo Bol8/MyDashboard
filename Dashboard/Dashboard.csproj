@@ -266,6 +266,7 @@
     <Compile Include="Controllers\PedidoCController.cs" />
     <Compile Include="Controllers\PedidoProveedorController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductProviderController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="CustomControllers\CustomControlFactory.cs" />
@@ -1207,6 +1208,8 @@
     <Content Include="Views\Article\DeleteConfirmed.cshtml" />
     <Content Include="Views\Proveedor\Details.cshtml" />
     <Content Include="Views\Proveedor\Articles.cshtml" />
+    <Content Include="Views\Proveedor\DeliveryNotes.cshtml" />
+    <Content Include="Views\ProductProvider\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
