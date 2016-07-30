@@ -19,7 +19,7 @@ namespace Repository
         {
             this.Linea_pedido_p = new HashSet<Linea_pedido_p>();
         }
-    
+
         public int Num_ped { get; set; }
         public int idProv { get; set; }
         public int Tipo { get; set; }

@@ -54,6 +54,8 @@ namespace Dashboard.Controllers
             var list = store.Almacen_Productos.ToList();
             var modelList = Mapper.Map<IEnumerable<Almacen_Productos>, IEnumerable<mAlmacenProducto>>(list).ToList();
 
+            
+
             return View(modelList);
         }
 
@@ -118,7 +120,7 @@ namespace Dashboard.Controllers
         public ActionResult Edit(int idStore, int idArticle)
         {
             var store = _gStore.FindBy(x => x.Id == idStore).FirstOrDefault();
-            var article = store.Almacen_Productos.Where(x => x.Articulo == idArticle).FirstOrDefault();
+            var article = store.Almacen_Productos.FirstOrDefault(x => x.Articulo == idArticle);
 
             var model = Mapper.Map<Almacen_Productos, mStoreArticleCreate>(article);
             var list = _gArticle.GetAll().Select(x =>

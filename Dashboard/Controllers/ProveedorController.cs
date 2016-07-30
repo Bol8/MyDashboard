@@ -78,7 +78,7 @@ namespace Dashboard.Controllers
                 if (!ModelState.IsValid)
                 {
                     var model = new mProveedorCreate(element);
-                    return View(element);
+                    return View(model);
                 }
 
                 _gProveedores.Add(element);
@@ -116,7 +116,7 @@ namespace Dashboard.Controllers
                 if (!ModelState.IsValid)
                 {
                     var model = new mProveedorCreate(element);
-                    return View(element);
+                    return View(model);
                 }
 
                 _gProveedores.Edit(element);
@@ -178,8 +178,7 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult CreateArticle(int idProvider)
         {
-            var model = new mProductProvider();
-            model.IdProveedor = idProvider;
+            var model = new mProductProvider {IdProveedor = idProvider};
 
             return PartialView(model);
         }
