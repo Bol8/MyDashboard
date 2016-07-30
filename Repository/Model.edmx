@@ -11,6 +11,20 @@
           </Key>
           <Property Name="Numero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <EntityType Name="Almacen_MateriaPrima">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaRecogida" Type="datetime" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Unidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lote" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CodigoInterno" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IdAlbaran" Type="int" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="Almacen_Productos">
           <Key>
             <PropertyRef Name="Id" />
@@ -294,6 +308,30 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Imagen" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <Association Name="FK_Almacen_MateriaPrima_MateriaPrima">
+          <End Role="MateriaPrima" Type="Self.MateriaPrima" Multiplicity="1" />
+          <End Role="Almacen_MateriaPrima" Type="Self.Almacen_MateriaPrima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MateriaPrima">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Almacen_MateriaPrima">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacen_MateriaPrima_Pedido_p">
+          <End Role="Pedido_p" Type="Self.Pedido_p" Multiplicity="0..1" />
+          <End Role="Almacen_MateriaPrima" Type="Self.Almacen_MateriaPrima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_p">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Almacen_MateriaPrima">
+              <PropertyRef Name="IdAlbaran" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Almacen_Productos_Almacenes">
           <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="1" />
           <End Role="Almacen_Productos" Type="Self.Almacen_Productos" Multiplicity="*" />
@@ -600,6 +638,7 @@
         </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Albaranes" EntityType="Self.Albaranes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Almacen_MateriaPrima" EntityType="Self.Almacen_MateriaPrima" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Almacen_Productos" EntityType="Self.Almacen_Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
@@ -624,6 +663,14 @@
           <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposPedido" EntityType="Self.TiposPedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Almacen_MateriaPrima_MateriaPrima" Association="Self.FK_Almacen_MateriaPrima_MateriaPrima">
+            <End Role="MateriaPrima" EntitySet="MateriaPrima" />
+            <End Role="Almacen_MateriaPrima" EntitySet="Almacen_MateriaPrima" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacen_MateriaPrima_Pedido_p" Association="Self.FK_Almacen_MateriaPrima_Pedido_p">
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
+            <End Role="Almacen_MateriaPrima" EntitySet="Almacen_MateriaPrima" />
+          </AssociationSet>
           <AssociationSet Name="FK_Almacen_Productos_Almacenes" Association="Self.FK_Almacen_Productos_Almacenes">
             <End Role="Almacenes" EntitySet="Almacenes" />
             <End Role="Almacen_Productos" EntitySet="Almacen_Productos" />
@@ -830,6 +877,7 @@
           <NavigationProperty Name="Linea_pedido_p" Relationship="Self.FK_Linea_pedido_p_Pedido_p" FromRole="Pedido_p" ToRole="Linea_pedido_p" />
           <NavigationProperty Name="Proveedores" Relationship="Self.FK_Pedido_p_Proveedores" FromRole="Pedido_p" ToRole="Proveedores" />
           <NavigationProperty Name="TiposPedido" Relationship="Model.FK_Pedido_p_TiposPedido" FromRole="Pedido_p" ToRole="TiposPedido" />
+          <NavigationProperty Name="Almacen_MateriaPrima" Relationship="Model.FK_Almacen_MateriaPrima_Pedido_p" FromRole="Pedido_p" ToRole="Almacen_MateriaPrima" />
         </EntityType>
         <EntityType Name="Proveedores">
           <Key>
@@ -1079,6 +1127,15 @@
           <AssociationSet Name="FK_MateriaPrima_Proveedores" Association="Model.FK_MateriaPrima_Proveedores">
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="MateriaPrima" EntitySet="MateriaPrima" />
+          </AssociationSet>
+          <EntitySet Name="Almacen_MateriaPrima" EntityType="Model.Almacen_MateriaPrima" />
+          <AssociationSet Name="FK_Almacen_MateriaPrima_MateriaPrima" Association="Model.FK_Almacen_MateriaPrima_MateriaPrima">
+            <End Role="MateriaPrima" EntitySet="MateriaPrima" />
+            <End Role="Almacen_MateriaPrima" EntitySet="Almacen_MateriaPrima" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacen_MateriaPrima_Pedido_p" Association="Model.FK_Almacen_MateriaPrima_Pedido_p">
+            <End Role="Pedido_p" EntitySet="Pedido_p" />
+            <End Role="Almacen_MateriaPrima" EntitySet="Almacen_MateriaPrima" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Clientes">
@@ -1504,6 +1561,7 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="IdProveedor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Proveedores" Relationship="Model.FK_MateriaPrima_Proveedores" FromRole="MateriaPrima" ToRole="Proveedores" />
+          <NavigationProperty Name="Almacen_MateriaPrima" Relationship="Model.FK_Almacen_MateriaPrima_MateriaPrima" FromRole="MateriaPrima" ToRole="Almacen_MateriaPrima" />
         </EntityType>
         <Association Name="FK_MateriaPrima_Proveedores">
           <End Type="Model.Proveedores" Role="Proveedores" Multiplicity="1" />
@@ -1514,6 +1572,46 @@
             </Principal>
             <Dependent Role="MateriaPrima">
               <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Almacen_MateriaPrima">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaRecogida" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Unidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoInterno" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdAlbaran" Type="Int32" />
+          <Property Name="Ubicacion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MateriaPrima" Relationship="Model.FK_Almacen_MateriaPrima_MateriaPrima" FromRole="Almacen_MateriaPrima" ToRole="MateriaPrima" />
+          <NavigationProperty Name="Pedido_p" Relationship="Model.FK_Almacen_MateriaPrima_Pedido_p" FromRole="Almacen_MateriaPrima" ToRole="Pedido_p" />
+          <Property Name="Lote" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Almacen_MateriaPrima_MateriaPrima">
+          <End Type="Model.MateriaPrima" Role="MateriaPrima" Multiplicity="1" />
+          <End Type="Model.Almacen_MateriaPrima" Role="Almacen_MateriaPrima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MateriaPrima">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Almacen_MateriaPrima">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacen_MateriaPrima_Pedido_p">
+          <End Type="Model.Pedido_p" Role="Pedido_p" Multiplicity="0..1" />
+          <End Type="Model.Almacen_MateriaPrima" Role="Almacen_MateriaPrima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido_p">
+              <PropertyRef Name="Num_ped" />
+            </Principal>
+            <Dependent Role="Almacen_MateriaPrima">
+              <PropertyRef Name="IdAlbaran" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1830,6 +1928,21 @@
               <MappingFragment StoreEntitySet="MateriaPrima">
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Almacen_MateriaPrima">
+            <EntityTypeMapping TypeName="Model.Almacen_MateriaPrima">
+              <MappingFragment StoreEntitySet="Almacen_MateriaPrima">
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="IdAlbaran" ColumnName="IdAlbaran" />
+                <ScalarProperty Name="CodigoInterno" ColumnName="CodigoInterno" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="FechaRecogida" ColumnName="FechaRecogida" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

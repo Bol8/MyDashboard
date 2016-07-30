@@ -14,10 +14,18 @@ namespace Repository
     
     public partial class MateriaPrima
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MateriaPrima()
+        {
+            this.Almacen_MateriaPrima = new HashSet<Almacen_MateriaPrima>();
+        }
+    
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int IdProveedor { get; set; }
     
         public virtual Proveedores Proveedores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Almacen_MateriaPrima> Almacen_MateriaPrima { get; set; }
     }
 }

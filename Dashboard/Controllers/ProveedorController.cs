@@ -275,8 +275,7 @@ namespace Dashboard.Controllers
         #endregion
 
 
-
-
+        #region DeliveryNotes
 
         public ActionResult DeliveryNotes(int id)
         {
@@ -286,6 +285,21 @@ namespace Dashboard.Controllers
 
             return PartialView(deliveryNotes);
         }
+
+
+        public ActionResult CreateDeliveryNotes(int id)
+        {
+            
+
+
+            return PartialView();
+        }
+
+        #endregion
+
+
+
+
 
     }
 }

@@ -10,46 +10,50 @@
     <div class="nav-tabs-custom">
 
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Productos</a></li>
-            <li>@Ajax.ActionLink("Albaranes", "DeliveryNotes", new { id = ViewBag.IdProvider }, new AjaxOptions { UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace })</li>
-            <li><a href="#">Historial</a></li>
+            <li role="presentation" class="active">
+                <a href="#">ListProducts</a>
+            </li>
+            <li>@Ajax.ActionLink("Albaranes", "DeliveryNotes", new {id = ViewBag.IdProvider}, new AjaxOptions {UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace})</li>
+            <li>
+                <a href="#">Historial</a>
+            </li>
         </ul>
 
         <div id="Container">
             <div class="BaseHeader">
-                @Ajax.ActionLink("Nuevo", "CreateArticle", "Proveedor", new { idProvider = ViewBag.IdProvider }, new AjaxOptions { UpdateTargetId = "Container", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-primary pull-right flat" })
+                @Ajax.ActionLink("Nuevo", "CreateArticle", "Proveedor", new {idProvider = ViewBag.IdProvider}, new AjaxOptions {UpdateTargetId = "Container", InsertionMode = InsertionMode.Replace}, new {@class = "btn btn-primary pull-right flat"})
             </div>
 
             <div class="BaseBody">
                 <table id="example2" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-                            <th>Opciones</th>
-                        </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                        <th>Opciones</th>
+                    </tr>
                     </thead>
 
                     <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(model => item.Nombre)</td>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(model => item.Nombre)</td>
 
-                                <td>
-                                    @Ajax.ActionLink(" ", "EditArticle", "Proveedor", new { idArticle = item.Id },
-                                                                                    new AjaxOptions { UpdateTargetId = "Container", InsertionMode = InsertionMode.Replace, },
-                                                                                    new { @Class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })
+                            <td>
+                                @Ajax.ActionLink(" ", "EditArticle", "Proveedor", new {idArticle = item.Id},
+                                    new AjaxOptions {UpdateTargetId = "Container", InsertionMode = InsertionMode.Replace},
+                                    new {Class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar"})
 
-                                    @*@Html.ActionLink(" ", "Edit", "Store", new { idStore = ViewBag.idStore, idArticle = item.Id }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })*@
-                                    <span> </span>
-                                    @Ajax.ActionLink(" ", "DeleteArticle", "Proveedor", new { idArticle = item.Id },
-                                                                                    new AjaxOptions { UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace, },
-                                                                                    new { @Class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })
-                                    @*@Html.ActionLink(" ", "DeleteConfirmed", "Store", new { idStore = ViewBag.idStore, idArticle = item.Id }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })*@
-                                </td>
+                                @*@Html.ActionLink(" ", "Edit", "Store", new { idStore = ViewBag.idStore, idArticle = item.Id }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-pencil", title = "Editar" })*@
+                                <span> </span>
+                                @Ajax.ActionLink(" ", "DeleteArticle", "Proveedor", new {idArticle = item.Id},
+                                    new AjaxOptions {UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace},
+                                    new {Class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar"})
+                                @*@Html.ActionLink(" ", "DeleteConfirmed", "Store", new { idStore = ViewBag.idStore, idArticle = item.Id }, new { @class = "btn btn-default flat btn-sm glyphicon glyphicon-trash", title = "Eliminar" })*@
+                            </td>
 
-                            </tr>
-                        }
+                        </tr>
+                    }
                     </tbody>
                 </table>
             </div>

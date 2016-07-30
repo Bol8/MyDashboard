@@ -40,6 +40,7 @@ namespace Dashboard
             container.RegisterType<IGenericRepository<FormaPago>, gPaymentType>();
             container.RegisterType<IGenericRepository<EstadosPedido>, gOrderStatus>();
             container.RegisterType<IGenericRepository<MateriaPrima>, gProductProvider>();
+            container.RegisterType<IGenericRepository<Almacen_MateriaPrima>, gStoreProductProvider>();
 
 
 
@@ -48,13 +49,13 @@ namespace Dashboard
                                                                               new ResolvedParameter<gStatus>("st")
                                                                               ));
 
-           
+
             container.RegisterType<ProveedorController>(new InjectionConstructor(new ResolvedParameter<gProveedor>("gProveedor"),
                                                                                  new ResolvedParameter<gStatus>("gStatus"),
                                                                                   new ResolvedParameter<gProductProvider>("gProductProvider")
                                                                                 ));
 
-            
+
             container.RegisterType<ContactController>(new InjectionConstructor(new ResolvedParameter<gContact>("gContact")));
 
 
@@ -84,7 +85,12 @@ namespace Dashboard
                                                                                new ResolvedParameter<gStore>("gStore"),
                                                                                new ResolvedParameter<gLineaPedidoC>("gOrderLine")
                                                                                ));
-            
+
+
+            container.RegisterType<TraceabilityController>(new InjectionConstructor(new ResolvedParameter<gStoreProductProvider>("gStoreProductProvider"),
+                                                                                    new ResolvedParameter<gProductProvider>("gProductProvider")
+                                                                                    ));
+
 
             return container;
         }

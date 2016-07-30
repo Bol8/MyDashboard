@@ -105,6 +105,7 @@
     <Compile Include="Manage\gProduct.cs" />
     <Compile Include="Manage\gProveedor.cs" />
     <Compile Include="Manage\gStore.cs" />
+    <Compile Include="Manage\gStoreProductProvider.cs" />
     <Compile Include="Manage\gTypeProduct.cs" />
     <Compile Include="Manage\gUser.cs" />
     <Compile Include="Models\AlmacenProducto\mAlmacenProducto.cs" />
@@ -124,6 +125,8 @@
     <Compile Include="Models\ProductProvider\mProductProvider.cs" />
     <Compile Include="Models\Proveedor\mProveedor.cs" />
     <Compile Include="Models\Proveedor\mProveedorCreate.cs" />
+    <Compile Include="Models\StoreProductProvider\mStoreProductProvider.cs" />
+    <Compile Include="Models\StoreProductProvider\mStoreProductProviderCreate.cs" />
     <Compile Include="Others\Column.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

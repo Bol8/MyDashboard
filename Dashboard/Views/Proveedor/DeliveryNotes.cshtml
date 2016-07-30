@@ -8,13 +8,13 @@
 <div class="col-md-12">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li>@Ajax.ActionLink("Productos", "Articles", new { id = ViewBag.IdProvider }, new AjaxOptions { UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace })</li>
+            <li>@Ajax.ActionLink("ListProducts", "Articles", new { id = ViewBag.IdProvider }, new AjaxOptions { UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace })</li>
             <li role="presentation" class="active"><a href="#">Albaranes</a></li>
             <li role="presentation"><a href="#">Historial</a></li>
         </ul>
 
         <div class="BaseHeader">
-            @*@Html.ActionLink("Añadir articulo", "Create", "Store", new { idStore = ViewBag.idStore }, new { @class = "btn btn-primary pull-right flat" })*@
+            @Html.ActionLink("Nuevo", "CreateD", "", new { idStore = ViewBag.idStore }, new { @class = "btn btn-primary pull-right flat" })
         </div>
 
         <div class="BaseBody">

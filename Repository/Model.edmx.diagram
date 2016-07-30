@@ -56,6 +56,9 @@
         <AssociationConnector Association="Model.FK_Linea_pedido_c_Pedido_c" />
         <EntityTypeShape EntityType="Model.MateriaPrima" Width="1.5" PointX="5.25" PointY="25.375" />
         <AssociationConnector Association="Model.FK_MateriaPrima_Proveedores" />
+        <EntityTypeShape EntityType="Model.Almacen_MateriaPrima" Width="2" PointX="8.625" PointY="23.625" />
+        <AssociationConnector Association="Model.FK_Almacen_MateriaPrima_MateriaPrima" />
+        <AssociationConnector Association="Model.FK_Almacen_MateriaPrima_Pedido_p" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

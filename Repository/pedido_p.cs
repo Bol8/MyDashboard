@@ -18,8 +18,9 @@ namespace Repository
         public Pedido_p()
         {
             this.Linea_pedido_p = new HashSet<Linea_pedido_p>();
+            this.Almacen_MateriaPrima = new HashSet<Almacen_MateriaPrima>();
         }
-
+    
         public int Num_ped { get; set; }
         public int idProv { get; set; }
         public int Tipo { get; set; }
@@ -35,5 +36,7 @@ namespace Repository
         public virtual ICollection<Linea_pedido_p> Linea_pedido_p { get; set; }
         public virtual Proveedores Proveedores { get; set; }
         public virtual TiposPedido TiposPedido { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Almacen_MateriaPrima> Almacen_MateriaPrima { get; set; }
     }
 }

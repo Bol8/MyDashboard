@@ -269,6 +269,7 @@
     <Compile Include="Controllers\ProductProviderController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\TraceabilityController.cs" />
     <Compile Include="CustomControllers\CustomControlFactory.cs" />
     <Compile Include="GaluDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1212,6 +1213,8 @@
     <Content Include="Views\ProductProvider\Create.cshtml" />
     <Content Include="Views\Proveedor\CreateArticle.cshtml" />
     <Content Include="Views\Proveedor\EditArticle.cshtml" />
+    <Content Include="Views\Traceability\Index.cshtml" />
+    <Content Include="Views\Traceability\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

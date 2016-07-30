@@ -11,6 +11,7 @@ using Domain.Models.Articulo;
 using Domain.Models.PedidoC;
 using Domain.Models.AlmacenProducto;
 using System.Web.Mvc;
+using Domain.Models.StoreProductProvider;
 
 namespace Dashboard.Configuration
 {
@@ -18,16 +19,22 @@ namespace Dashboard.Configuration
     {
         public OrgConfiguration()
         {
-            configureClients();
-            configureProviders();
-            configureContacts();
-            configureArticles();
-            configureClientOrder();
-            
+            ConfigureClients();
+            ConfigureProviders();
+            ConfigureContacts();
+            ConfigureArticles();
+            ConfigureClientOrder();
+            ConfigureStoreProductProvider();
+
         }
 
+        private void ConfigureStoreProductProvider()
+        {
+            CreateMap<Almacen_MateriaPrima, mStoreProductProviderCreate>();
+            CreateMap<mStoreProductProviderCreate, Almacen_MateriaPrima>();
+        }
 
-        private void configureClients()
+        private void ConfigureClients()
         {
             CreateMap<Clientes, mCliente>()
                 .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
@@ -38,7 +45,7 @@ namespace Dashboard.Configuration
             CreateMap<mCliente, Clientes>();
         }
 
-        private void configureProviders()
+        private void ConfigureProviders()
         {
             CreateMap<Proveedores, mProveedor>()
              .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre));
@@ -49,13 +56,13 @@ namespace Dashboard.Configuration
             CreateMap<mProveedor, Proveedores>();
         }
 
-        private void configureContacts()
+        private void ConfigureContacts()
         {
             CreateMap<Contactos, mContact>();
             CreateMap<mContact, Contactos>();
         }
 
-        private void configureArticles()
+        private void ConfigureArticles()
         {
             CreateMap<Articulos, mArticle>()
                .ForMember<string>(x => x.sEstado, opt => opt.MapFrom(x => x.Estados.Nombre))
@@ -109,7 +116,7 @@ namespace Dashboard.Configuration
             CreateMap<mStoreArticleCreate, Almacen_Productos>();
         }
 
-        private void configureClientOrder()
+        private void ConfigureClientOrder()
         {
             CreateMap<Pedido_c, mPedidoC>()
                 .ForMember<string>(x => x.clienteNombre, opt => opt.MapFrom(x => x.Clientes.Razon_Social))
