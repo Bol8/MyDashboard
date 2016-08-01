@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models.StoreProductProvider
 {
-    public class mStoreProductProvider
+    public class MStoreProductProvider
     {
-
+       
         [Display(Name = "ID")]
         public int Id { get; set; }
 
 
+
         [Display(Name = "Fecha recogida")]
-        public System.DateTime FechaRecogida { get; set; }
+        public DateTime FechaRecogida { get; set; }
 
 
         [Display(Name = "Producto")]
@@ -45,6 +42,25 @@ namespace Domain.Models.StoreProductProvider
         [Display(Name = "Lote")]
         public string Lote { get; set; }
 
+
+        [Display(Name = "Producto")]
+        public string NombreProducto { get; set; }
+
+
+        [Display(Name = "Proveedor")]
+        public string NombreProveedor { get; set; }
+
+
+        //public MStoreProductProvider(string nombreProveedor, string nombreProducto)
+        //{
+        //    NombreProveedor = nombreProveedor;
+        //    NombreProducto = nombreProducto;
+        //}
+
+        //protected MStoreProductProvider()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
     }
 }

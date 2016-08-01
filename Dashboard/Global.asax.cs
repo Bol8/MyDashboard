@@ -18,6 +18,7 @@ using Dashboard.Controllers;
 using System.Reflection;
 using Dashboard.CustomControllers;
 using Dashboard.Security;
+using Domain.Models.Lote;
 
 namespace Dashboard
 {
@@ -29,7 +30,7 @@ namespace Dashboard
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ModelBinders.Binders.Add(typeof(PruebaBinder), new ContactBinder());
+            //ModelBinders.Binders.Add(typeof(ModelView), new PersonBinder());
             //RegisterCustomControllerFactory();
 
             Mapper.Initialize(cfg => {

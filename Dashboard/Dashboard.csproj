@@ -262,6 +262,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\LineaPedidoCController.cs" />
+    <Compile Include="Controllers\LoteController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PedidoCController.cs" />
     <Compile Include="Controllers\PedidoProveedorController.cs" />
@@ -285,6 +286,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ModelBinding\ContactBinder.cs" />
+    <Compile Include="ModelBinding\PersonBinder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article\mArticleLists.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1215,6 +1217,7 @@
     <Content Include="Views\Proveedor\EditArticle.cshtml" />
     <Content Include="Views\Traceability\Index.cshtml" />
     <Content Include="Views\Traceability\Create.cshtml" />
+    <Content Include="Views\Lote\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

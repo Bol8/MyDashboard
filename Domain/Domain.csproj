@@ -56,6 +56,10 @@
     <Reference Include="GenericRepository">
       <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\GenericRepository\GenericRepository\bin\Debug\GenericRepository.dll</HintPath>
     </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.1.5.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.1.5\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -116,6 +120,8 @@
     <Compile Include="Models\Cliente\mCliente.cs" />
     <Compile Include="Models\Contact\mContact.cs" />
     <Compile Include="Models\LineaPedidoC\mCLineaPedido.cs" />
+    <Compile Include="Models\Lote\ModelView.cs" />
+    <Compile Include="Models\Lote\Person.cs" />
     <Compile Include="Models\PedidoC\mOderLineCreate.cs" />
     <Compile Include="Models\PedidoC\mOrderLine.cs" />
     <Compile Include="Models\PedidoC\mPedidoC.cs" />

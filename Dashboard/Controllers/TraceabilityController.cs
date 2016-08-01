@@ -7,7 +7,7 @@ using Domain.Interfaces;
 using Repository;
 using Domain.Manage;
 using Domain.Models.StoreProductProvider;
-
+using AutoMapper;
 
 namespace Dashboard.Controllers
 {
@@ -29,8 +29,9 @@ namespace Dashboard.Controllers
         public ActionResult Index()
         {
             var list = _gStoreProducProvider.GetAll().ToList();
+            var modelList = Mapper.Map<IEnumerable<Almacen_MateriaPrima>, IEnumerable<MStoreProductProvider>>(list).ToList();
 
-            return View(list);
+            return View(modelList);
         }
 
 
@@ -45,7 +46,7 @@ namespace Dashboard.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var model = new mStoreProductProviderCreate
+            var model = new MStoreProductProviderCreate
             {
                 ListProducts = new SelectList(_gProductProvider.GetAll().ToList(), "Id", "Nombre")
             };

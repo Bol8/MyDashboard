@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Domain.Models.Lote.Person>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <button onclick="NewLine()" type="button">Nueva linea</button>
+
+        @using (Html.BeginForm("Create", "Lote", FormMethod.Post))
+        {
+            <button class="btn btn-default pull-right" type="submit">Nueva linea</button>
+
+            <table class="table" id="TablaPrueba">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Dirección</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+              
+               
+                </tbody>
+
+            </table>
+        }
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    function NewLine() {
+
+        var id = getIndex();
+        if (id == null) {
+            id = 0;
+        } else {
+            id = (Number(id) + 1).toString();
+        }
+
+
+        console.log("Id = " + id);
+
+        $('#TablaPrueba > tbody:last-child').append($(
+            '<tr id = "' + id + '">' +
+                '<td>' +
+            '       <input class = "form-control text-box single-line input-sm" type = "text" Value="" Name = "persons['+id+'].Nombre" />' +
+            '   </td>' +
+              '<td>' +
+            '       <input class = "form-control text-box single-line input-sm" type = "text" Value="" Name = "persons[' + id + '].Apellidos" />' +
+            '   </td>' +
+             '<td>' +
+            '       <input class = "form-control text-box single-line input-sm" type = "text" Value="" Name = "persons[' + id + '].Direccion" />' +
+            '   </td>' +
+            '</tr>'
+
+            ));
+    }
+
+
+    function getIndex() {
+        console.log("Buscamos id");
+
+        var id = $('#TablaPrueba tr:last').attr('id');
+
+        console.log("Mostramos id = " + id);
+
+        return id;
+    }
+
+</script>
+

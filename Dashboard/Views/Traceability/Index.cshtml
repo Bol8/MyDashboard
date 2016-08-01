@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Repository.Almacen_MateriaPrima>
+﻿@model IEnumerable<Domain.Models.StoreProductProvider.MStoreProductProvider>
 
 @{
     ViewBag.Title = "Trazabilidad hacia atrás";
@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="nav-tabs-custom">
+        <div class="nav-tabs-custom flat">
 
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active">
@@ -37,7 +37,8 @@
                             <tr>
                                 <th>@Html.DisplayNameFor(model => model.Id)</th>
                                 <th>@Html.DisplayNameFor(model => model.FechaRecogida)</th>
-                                <th>@Html.DisplayNameFor(model => model.MateriaPrima.Nombre)</th>
+                                <th>@Html.DisplayNameFor(model => model.NombreProducto)</th>
+                                <th>@Html.DisplayNameFor(model => model.NombreProveedor)</th>
                                 <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
                                 <th>@Html.DisplayNameFor(model => model.Unidad)</th>
                                 <th>@Html.DisplayNameFor(model => model.Lote)</th>
@@ -54,7 +55,8 @@
                                 <tr>
                                     <td>@Html.DisplayFor(model => item.Id)</td>
                                     <td>@Html.DisplayFor(model => item.FechaRecogida)</td>
-                                    <td>@Html.DisplayFor(model => item.MateriaPrima.Nombre)</td>
+                                    <td>@Html.DisplayFor(model => item.NombreProducto)</td>
+                                    <td>@Html.DisplayFor(model => item.NombreProveedor)</td>
                                     <td>@Html.DisplayFor(model => item.Cantidad)</td>
                                     <td>@Html.DisplayFor(model => item.Unidad)</td>
                                     <td>@Html.DisplayFor(model => item.Lote)</td>
