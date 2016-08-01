@@ -19,11 +19,21 @@ using System.Reflection;
 using Dashboard.CustomControllers;
 using Dashboard.Security;
 using Domain.Models.Lote;
+using System.Globalization;
+using Dashboard.Helpers;
+using System.Threading;
 
 namespace Dashboard
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        protected void Application_OnBeginRequest()
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("es-ES");
+            //// Get the culture of the client
+            //CultureHelper.ApplyUserCulture(Request);
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -51,10 +61,10 @@ namespace Dashboard
             }
         }
 
-        private void RegisterCustomControllerFactory()
-        {
-            IControllerFactory factory = new CustomControlFactory();
-            ControllerBuilder.Current.SetControllerFactory(factory);
-        }
+        //private void RegisterCustomControllerFactory()
+        //{
+        //    IControllerFactory factory = new CustomControlFactory();
+        //    ControllerBuilder.Current.SetControllerFactory(factory);
+        //}
     }
 }

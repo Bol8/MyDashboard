@@ -12,7 +12,7 @@
                 <h3 class="box-title">Nuevo Articulo</h3>
             </div><!-- /.box-header -->
             <div class="box-body">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Create","Article",FormMethod.Post,new {id="MyForm"}))
                 {
                     @Html.AntiForgeryToken()
 
