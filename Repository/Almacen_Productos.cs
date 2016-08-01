@@ -25,6 +25,10 @@ namespace Repository
         public int Articulo { get; set; }
         public string Lote { get; set; }
         public int Stock { get; set; }
+        public Nullable<System.DateTime> FechaCaducidad { get; set; }
+        public Nullable<System.DateTime> FechaFabricacion { get; set; }
+        public Nullable<System.DateTime> FechaEnvasado { get; set; }
+        public string Observaciones { get; set; }
     
         public virtual Almacenes Almacenes { get; set; }
         public virtual Articulos Articulos { get; set; }

@@ -34,6 +34,10 @@
           <Property Name="Articulo" Type="int" Nullable="false" />
           <Property Name="Lote" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="FechaCaducidad" Type="datetime" />
+          <Property Name="FechaFabricacion" Type="datetime" />
+          <Property Name="FechaEnvasado" Type="datetime" />
+          <Property Name="Observaciones" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Almacenes">
           <Key>
@@ -1489,6 +1493,10 @@
           <NavigationProperty Name="Almacenes" Relationship="Model.FK_Almacen_Productos_Almacenes" FromRole="Almacen_Productos" ToRole="Almacenes" />
           <NavigationProperty Name="Articulos" Relationship="Model.FK_Almacen_Productos_Articulos" FromRole="Almacen_Productos" ToRole="Articulos" />
           <NavigationProperty Name="Linea_pedido_c" Relationship="Model.FK_Linea_pedido_c_Almacen_Productos" FromRole="Almacen_Productos" ToRole="Linea_pedido_c" />
+          <Property Name="FechaCaducidad" Type="DateTime" Precision="3" />
+          <Property Name="FechaFabricacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaEnvasado" Type="DateTime" Precision="3" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Linea_pedido_c">
           <Key>
@@ -1904,6 +1912,10 @@
           <EntitySetMapping Name="Almacen_Productos">
             <EntityTypeMapping TypeName="Model.Almacen_Productos">
               <MappingFragment StoreEntitySet="Almacen_Productos">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaEnvasado" ColumnName="FechaEnvasado" />
+                <ScalarProperty Name="FechaFabricacion" ColumnName="FechaFabricacion" />
+                <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
                 <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="Lote" ColumnName="Lote" />
                 <ScalarProperty Name="Articulo" ColumnName="Articulo" />
