@@ -51,6 +51,10 @@ namespace Domain.Models.StoreProductProvider
         public string NombreProveedor { get; set; }
 
 
+        [Display(Name = "Cliente")]
+        public int IdCliente { get; set; }
+
+
         //public MStoreProductProvider(string nombreProveedor, string nombreProducto)
         //{
         //    NombreProveedor = nombreProveedor;

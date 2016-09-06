@@ -1,5 +1,5 @@
 ﻿@model Domain.Models.StoreProductProvider.MStoreProductProviderCreate
-    
+
 @{
     ViewBag.Title = "Nuevo registro";
 }
@@ -14,7 +14,7 @@
 
         <div class="FormBody">
             @*@using (Ajax.BeginForm("Create", "Traceability", null, new AjaxOptions { UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }))*@
-            @using(Html.BeginForm("Create","Traceability",FormMethod.Post,null))
+            @using (Html.BeginForm("Create", "Traceability", FormMethod.Post, null))
             {
                 @Html.AntiForgeryToken()
 
@@ -24,42 +24,50 @@
                     <div class="col-xs-6">
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.FechaRecogida, htmlAttributes: new {@class = "control-label col-md-2"})
+                            @Html.LabelFor(model => model.FechaRecogida, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.FechaRecogida, new {htmlAttributes = new {@class = "form-control CformControl"}})
-                                <small>@Html.ValidationMessageFor(model => model.FechaRecogida, "", new {@class = "text-danger"})</small>
+                                @Html.EditorFor(model => model.FechaRecogida, new { htmlAttributes = new { @class = "form-control CformControl" } })
+                                <small>@Html.ValidationMessageFor(model => model.FechaRecogida, "", new { @class = "text-danger" })</small>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.IdProducto, htmlAttributes: new {@class = "control-label col-md-2"})
+                            @Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.IdProducto, Model.ListProducts, "-- Select --", new {@Class = "form-control input-sm", style = "max-width:100%", id = "dropProduct"})
-                                <small>@Html.ValidationMessageFor(model => model.IdProducto, "", new {@class = "text-danger"})</small>
+                                @Html.DropDownListFor(model => model.IdCliente, Model.ListProviders, "-- Selecciona --", new { @Class = "form-control input-sm", style = "max-width:100%", id = "dropClient" })
+                                <small>@Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })</small>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Cantidad, htmlAttributes: new {@class = "control-label col-md-2"})
+                            @Html.LabelFor(model => model.IdProducto, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Cantidad, new {htmlAttributes = new {@class = "form-control CformControl"}})
-                                <small>@Html.ValidationMessageFor(model => model.Cantidad, "", new {@class = "text-danger"})</small>
+                                @Html.DropDownListFor(model => model.IdProducto, Model.ListProducts, "-- Selecciona --", new { @Class = "form-control input-sm", style = "max-width:100%", id = "dropProduct" })
+                                <small>@Html.ValidationMessageFor(model => model.IdProducto, "", new { @class = "text-danger" })</small>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Unidad, htmlAttributes: new {@class = "control-label col-md-2"})
+                            @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Unidad, new {htmlAttributes = new {@class = "form-control CformControl"}})
-                                <small>@Html.ValidationMessageFor(model => model.Unidad, "", new {@class = "text-danger"})</small>
+                                @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control CformControl" } })
+                                <small>@Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })</small>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Lote, htmlAttributes: new {@class = "control-label col-md-2"})
+                            @Html.LabelFor(model => model.Unidad, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Lote, new {htmlAttributes = new {@class = "form-control CformControl"}})
-                                <small>@Html.ValidationMessageFor(model => model.Lote, "", new {@class = "text-danger"})</small>
+                                @Html.EditorFor(model => model.Unidad, new { htmlAttributes = new { @class = "form-control CformControl" } })
+                                <small>@Html.ValidationMessageFor(model => model.Unidad, "", new { @class = "text-danger" })</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Lote, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Lote, new { htmlAttributes = new { @class = "form-control CformControl" } })
+                                <small>@Html.ValidationMessageFor(model => model.Lote, "", new { @class = "text-danger" })</small>
                             </div>
                         </div>
 
@@ -89,7 +97,7 @@
             }
 
             <div class="col-xs-12">
-              @*  @Ajax.ActionLink("Volver", "Articles", "Proveedor", new { id = Model.IdProveedor }, new AjaxOptions { UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-default flat" })*@
+                @*  @Ajax.ActionLink("Volver", "Articles", "Proveedor", new { id = Model.IdProveedor }, new AjaxOptions { UpdateTargetId = "ProviderOptions", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-default flat" })*@
                 @Html.ActionLink("Volver", "Index", "Traceability", null, new { @class = "btn btn-default flat" })
             </div>
 
@@ -100,5 +108,32 @@
 <br />
 
 
+<script type="text/javascript">
+    $('#dropClient').change(function () {
+        var idProvider = $('#dropClient').val();
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetProductForProvider", "Traceability")',
+            data: { idProvider: idProvider },
+            dataType: 'json',
+            success: function (data) {
+                $("#dropProduct").html('');
+                $("#dropProduct").append('<option value=""> -- Selecciona --</option>');
+
+                $.each(data, function (id, option) {
+                    $("#dropProduct").append('<option value="' + option.id + '">' +
+                          option.name + '</option>');
+                });
+            },
+            error: function () {
+                $("#dropProduct").html('');
+                $("#dropProduct").append('<option value=""> -- Select --</option>');
+            }
+        });
+
+    });
+
+</script>
 
 

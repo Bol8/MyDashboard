@@ -88,7 +88,8 @@ namespace Dashboard
 
 
             container.RegisterType<TraceabilityController>(new InjectionConstructor(new ResolvedParameter<gStoreProductProvider>("gStoreProductProvider"),
-                                                                                    new ResolvedParameter<gProductProvider>("gProductProvider")
+                                                                                    new ResolvedParameter<gProductProvider>("gProductProvider"),
+                                                                                    new ResolvedParameter<gProveedor>("gProvider")
                                                                                     ));
 
 

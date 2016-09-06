@@ -13,14 +13,17 @@ namespace Dashboard.Controllers
 {
     public class TraceabilityController : Controller
     {
-        private IGenericRepository<Almacen_MateriaPrima> _gStoreProducProvider;
-        private IGenericRepository<MateriaPrima> _gProductProvider;
+        private readonly IGenericRepository<Almacen_MateriaPrima> _gStoreProducProvider;
+        private readonly IGenericRepository<MateriaPrima> _gProductProvider;
+        private readonly IGenericRepository<Proveedores> _gProvider;
 
 
-        public TraceabilityController(IGenericRepository<Almacen_MateriaPrima> gStoreProductProvider, IGenericRepository<MateriaPrima> gProductProvider )
+        public TraceabilityController(IGenericRepository<Almacen_MateriaPrima> gStoreProductProvider, IGenericRepository<MateriaPrima> gProductProvider, IGenericRepository<Proveedores> gProvider )
         {
-            this._gStoreProducProvider = gStoreProductProvider;
-            this._gProductProvider = gProductProvider;
+            _gStoreProducProvider = gStoreProductProvider;
+            _gProductProvider = gProductProvider;
+            _gProvider = gProvider;
+
         }
 
 
@@ -48,12 +51,24 @@ namespace Dashboard.Controllers
         {
             var model = new MStoreProductProviderCreate
             {
-                ListProducts = new SelectList(_gProductProvider.GetAll().ToList(), "Id", "Nombre")
+                ListProviders = new SelectList(_gProvider.GetAll().ToList(),"IdProveedor","RazonSocial"),
+                ListProducts = new SelectList(_gProductProvider.GetAll().Where(x => x.IdProveedor == -1).ToList(), "Id", "Nombre")
             };
 
             return PartialView(model);
         }
 
+
+        [HttpPost]
+        public ActionResult GetProductForProvider(int idProvider)
+        {
+            var products = _gProductProvider.GetAll().Where(x => x.IdProveedor == idProvider)
+                                                     .Select(x => new {id = x.IdProveedor, name = x.Nombre})
+                                                     .OrderBy(x => x.name)
+                                                     .ToList();
+
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
 
       
         [HttpPost]
